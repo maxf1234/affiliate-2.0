@@ -13,59 +13,59 @@
 - Scan the QR code with your WhatsApp → stays logged in after that
   */
 
-require(“dotenv”).config();
-const fs = require(“fs”);
-const path = require(“path”);
-const axios = require(“axios”);
-const cheerio = require(“cheerio”);
-const cron = require(“node-cron”);
-const { Client, LocalAuth } = require(“whatsapp-web.js”);
-const qrcode = require(“qrcode-terminal”);
+require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
+const axios = require('axios';
+const cheerio = require('cheerio');
+const cron = require('node-cron');
+const { Client, LocalAuth } = require('whatsapp-web.js');
+const qrcode = require('qrcode-terminal');
 
 // ── CONFIG ────────────────────────────────────────────────────────────────────
-const AFFILIATE_TAG     = process.env.AMAZON_AFFILIATE_TAG || “youraffid-20”;
-const DEALS_JSON_PATH   = path.join(__dirname, “..”, “public”, “deals.json”);
-const MIN_DISCOUNT_PCT  = parseInt(process.env.MIN_DISCOUNT_PCT || “20”);
-const MAX_DEALS_PER_RUN = parseInt(process.env.MAX_DEALS_PER_RUN || “10”);
-const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || “30”);
+const AFFILIATE_TAG     = process.env.AMAZON_AFFILIATE_TAG || 'youraffid-20';
+const DEALS_JSON_PATH   = path.join(__dirname, '..', 'public', 'deals.json');
+const MIN_DISCOUNT_PCT  = parseInt(process.env.MIN_DISCOUNT_PCT || '20');
+const MAX_DEALS_PER_RUN = parseInt(process.env.MAX_DEALS_PER_RUN || '10');
+const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || '30');
 // Comma-separated WhatsApp group names exactly as they appear in your WhatsApp
-const WHATSAPP_GROUPS   = (process.env.WHATSAPP_GROUPS || “”).split(”,”).map(g => g.trim()).filter(Boolean);
+const WHATSAPP_GROUPS   = (process.env.WHATSAPP_GROUPS || '').split(',').map(g => g.trim()).filter(Boolean);
 
 // ── WHATSAPP CLIENT ───────────────────────────────────────────────────────────
 const whatsapp = new Client({
 authStrategy: new LocalAuth(), // saves session so you only scan QR once
 puppeteer: {
-args: [”–no-sandbox”, “–disable-setuid-sandbox”],
+args: ['–no-sandbox', '–disable-setuid-sandbox'],
 },
 });
 
 let whatsappReady = false;
 
 whatsapp.on(“qr”, (qr) => {
-console.log(”\n📱 Scan this QR code with your WhatsApp:\n”);
+console.log('\n📱 Scan this QR code with your WhatsApp:\n');
 qrcode.generate(qr, { small: true });
-console.log(”\nOpen WhatsApp → Linked Devices → Link a Device\n”);
+console.log('\nOpen WhatsApp → Linked Devices → Link a Device\n');
 });
 
-whatsapp.on(“ready”, () => {
+whatsapp.on('ready', () => {
 whatsappReady = true;
-console.log(“✅ WhatsApp connected — messages will send from your number!”);
+console.log('WhatsApp connected — messages will send from your number!');
 });
 
 whatsapp.on(“auth_failure”, () => {
-console.error(“❌ WhatsApp auth failed — delete .wwebjs_auth folder and restart.”);
+console.error('❌ WhatsApp auth failed — delete .wwebjs_auth folder and restart.');
 });
 
-whatsapp.on(“disconnected”, () => {
+whatsapp.on('disconnected', () => {
 whatsappReady = false;
-console.warn(“⚠️  WhatsApp disconnected. Reconnecting…”);
+console.warn('⚠️  WhatsApp disconnected. Reconnecting…');
 whatsapp.initialize();
 });
 
 // ── SCRAPER ───────────────────────────────────────────────────────────────────
 const HEADERS_POOL = [
-{ “User-Agent”: “Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36”, “Accept-Language”: “en-US,en;q=0.9” },
-{ “User-Agent”: “Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15”, “Accept-Language”: “en-GB,en;q=0.9” },
+{ "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Accept-Language": "en-US,en;q=0.9" },
+{ "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15", "Accept-Language": "en-GB,en;q=0.9" },
 ];
 
 function randomHeaders() {
@@ -74,7 +74,7 @@ return HEADERS_POOL[Math.floor(Math.random() * HEADERS_POOL.length)];
 
 function parsePrice(text) {
 if (!text) return null;
-const num = parseFloat(text.replace(/[$,]/g, “”).trim());
+const num = parseFloat(text.replace(/[$,]/g, "").trim());
 return isNaN(num) ? null : num;
 }
 
@@ -88,7 +88,7 @@ const seen = new Set();
 
 try {
 await sleep(2000 + Math.random() * 3000);
-const { data: html } = await axios.get(“https://www.amazon.com/gp/goldbox”, {
+const { data: html } = await axios.get('https://www.amazon.com/gp/goldbox', {
 headers: randomHeaders(),
 timeout: 15000,
 });
