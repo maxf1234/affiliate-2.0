@@ -52,7 +52,7 @@ whatsappReady = true;
 console.log('WhatsApp connected — messages will send from your number!');
 });
 
-whatsapp.on(“auth_failure”, () => {
+whatsapp.on('auth_failure', () => {
 console.error('❌ WhatsApp auth failed — delete .wwebjs_auth folder and restart.');
 });
 
