@@ -96,7 +96,7 @@ timeout: 15000,
 ```
 const $ = cheerio.load(html);
 const cards = $("div[data-asin]").toArray();
-console.log(`Found ${cards.length} candidate cards`);
+console.log('Found ${cards.length} candidate cards');
 
 for (const card of cards.slice(0, MAX_DEALS_PER_RUN * 3)) {
   try {
@@ -126,7 +126,7 @@ for (const card of cards.slice(0, MAX_DEALS_PER_RUN * 3)) {
       dealPrice,
       discount,
       image,
-      affiliate_url: `https://www.amazon.com/dp/${asin}?tag=${AFFILIATE_TAG}`,
+      affiliate_url: 'https://www.amazon.com/dp/${asin}?tag=${AFFILIATE_TAG}',
       store: "Amazon",
       expires,
       hot: discount >= 40,
@@ -142,10 +142,10 @@ for (const card of cards.slice(0, MAX_DEALS_PER_RUN * 3)) {
 ```
 
 } catch (err) {
-console.warn(`Scrape failed: ${err.message}`);
+console.warn('Scrape failed: ${err.message}');
 }
 
-console.log(`Scraped ${deals.length} valid deals (≥${MIN_DISCOUNT_PCT}% off)`);
+console.log('Scraped ${deals.length} valid deals (≥${MIN_DISCOUNT_PCT}% off)');
 return deals;
 }
 
@@ -153,7 +153,7 @@ return deals;
 function saveDeals(deals) {
 let existing = [];
 try {
-existing = JSON.parse(fs.readFileSync(DEALS_JSON_PATH, “utf8”));
+existing = JSON.parse(fs.readFileSync(DEALS_JSON_PATH, 'utf8'));
 } catch (e) {
 // file doesn’t exist yet
 }
@@ -162,25 +162,25 @@ const existingIds = new Set(existing.map(d => d.id));
 const newDeals = deals.filter(d => !existingIds.has(d.id));
 
 if (!newDeals.length) {
-console.log(“No new deals to save.”);
+console.log('No new deals to save.');
 return 0;
 }
 
 const allDeals = […newDeals, …existing].slice(0, 100);
 fs.mkdirSync(path.dirname(DEALS_JSON_PATH), { recursive: true });
 fs.writeFileSync(DEALS_JSON_PATH, JSON.stringify(allDeals, null, 2));
-console.log(`Saved ${newDeals.length} new deals → deals.json`);
+console.log('Saved ${newDeals.length} new deals → deals.json');
 return newDeals.length;
 }
 
 // ── WHATSAPP SENDER ───────────────────────────────────────────────────────────
 async function sendToWhatsApp(deals) {
 if (!whatsappReady) {
-console.warn(“WhatsApp not ready — skipping messages.”);
+console.warn('WhatsApp not ready — skipping messages.');
 return;
 }
 if (!WHATSAPP_GROUPS.length) {
-console.warn(“No WHATSAPP_GROUPS configured — skipping.”);
+console.warn('No WHATSAPP_GROUPS configured — skipping.');
 return;
 }
 
@@ -194,8 +194,8 @@ c => c.isGroup && WHATSAPP_GROUPS.some(name => c.name.toLowerCase().includes(nam
 );
 
 if (!groupChats.length) {
-console.warn(`No matching WhatsApp groups found. Check WHATSAPP_GROUPS in .env`);
-console.log(“Available groups:”, chats.filter(c => c.isGroup).map(c => c.name).join(”, “));
+console.warn('No matching WhatsApp groups found. Check WHATSAPP_GROUPS in .env');
+console.log('Available groups:', chats.filter(c => c.isGroup).map(c => c.name).join(', '));
 return;
 }
 
@@ -214,10 +214,10 @@ const message =
 for (const group of groupChats) {
   try {
     await group.sendMessage(message);
-    console.log(`✅ Sent to group: ${group.name}`);
+    console.log('✅ Sent to group: ${group.name}');
     await sleep(2000); // small delay between messages
   } catch (err) {
-    console.error(`Failed to send to ${group.name}: ${err.message}`);
+    console.error('Failed to send to ${group.name}: ${err.message}');
   }
 }
 ```
@@ -227,12 +227,12 @@ for (const group of groupChats) {
 
 // ── MAIN RUN ──────────────────────────────────────────────────────────────────
 async function runBot() {
-console.log(”=”.repeat(55));
-console.log(`🤖 DealsPulse scanning at ${new Date().toLocaleTimeString()}`);
+console.log('='.repeat(55));
+console.log('🤖 DealsPulse scanning at ${new Date().toLocaleTimeString()}');
 
 const deals = await scrapeDeals();
 if (!deals.length) {
-console.log(“No qualifying deals this run.”);
+console.log('No qualifying deals this run.');
 return;
 }
 
@@ -241,15 +241,15 @@ if (saved) {
 await sendToWhatsApp(deals);
 }
 
-console.log(`✅ Done: ${saved} new deals saved.`);
+console.log('✅ Done: ${saved} new deals saved.');
 }
 
 // ── START ─────────────────────────────────────────────────────────────────────
-console.log(“🚀 DealsPulse Bot starting…”);
+console.log('🚀 DealsPulse Bot starting…');
 whatsapp.initialize();
 
 // Wait for WhatsApp to connect then do first run
-whatsapp.once(“ready”, async () => {
+whatsapp.once('ready', async () => {
 await runBot();
 // Schedule recurring runs
 cron.schedule(`*/${SCAN_INTERVAL_MIN} * * * *`, runBot);
