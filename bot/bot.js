@@ -166,8 +166,7 @@ console.log('No new deals to save.');
 return 0;
 }
 
-const allDeals = […newDeals, …existing].slice(0, 100);
-fs.mkdirSync(path.dirname(DEALS_JSON_PATH), { recursive: true });
+const allDeals = [...newDeals, ...existing].slice(0, 100);fs.mkdirSync(path.dirname(DEALS_JSON_PATH), { recursive: true });
 fs.writeFileSync(DEALS_JSON_PATH, JSON.stringify(allDeals, null, 2));
 console.log('Saved ${newDeals.length} new deals → deals.json');
 return newDeals.length;
