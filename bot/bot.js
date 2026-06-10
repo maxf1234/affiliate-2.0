@@ -41,7 +41,7 @@ args: ['–no-sandbox', '–disable-setuid-sandbox'],
 
 let whatsappReady = false;
 
-whatsapp.on(“qr”, (qr) => {
+whatsapp.on('qr', (qr) => {
 console.log('\n📱 Scan this QR code with your WhatsApp:\n');
 qrcode.generate(qr, { small: true });
 console.log('\nOpen WhatsApp → Linked Devices → Link a Device\n');
