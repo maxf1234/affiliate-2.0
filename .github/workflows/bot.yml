@@ -35,7 +35,7 @@ jobs:
           MAX_DEALS_PER_RUN: '10'
           GITHUB_PUSH: 'false'   # GitHub Actions handles the git push below
         run: |
-          python bot/bot_actions.py
+         node bot/bot.js
  
       - name: Commit and push deals.json
         run: |
