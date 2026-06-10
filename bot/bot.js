@@ -16,7 +16,7 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const axios = require('axios';
+const axios = require('axios');
 const cheerio = require('cheerio');
 const cron = require('node-cron');
 const { Client, LocalAuth } = require('whatsapp-web.js');
