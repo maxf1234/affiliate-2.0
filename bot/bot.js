@@ -184,7 +184,7 @@ return;
 }
 
 // Get top 3 hottest deals
-const top3 = […deals].sort((a, b) => b.discount - a.discount).slice(0, 3);
+const top3 = [...newDeals].sort((a, b) => b.discount - a.discount).slice(0, 3);
 
 // Find group chats by name
 const chats = await whatsapp.getChats();
