@@ -13,7 +13,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: cd bot && npm install
       - run: cd bot && node bot_actions.js
         env:
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
@@ -23,3 +22,4 @@ jobs:
           git add public/deals.json
           git diff --staged --quiet || git commit -m "bot: update deals"
           git push
+ 
