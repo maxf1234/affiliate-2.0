@@ -1,44 +1,25 @@
-
 name: DealsPulse Bot
- 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '* * * * *'  # every minute
-  workflow_dispatch:      # manual trigger from Actions tab
- 
+    - cron: '*/5 * * * *'
 jobs:
   run-bot:
     runs-on: ubuntu-latest
- 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_TOKEN }}
- 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
- 
-      - name: Install dependencies
-        run: |
-          cd bot
-          npm install
- 
-      - name: Run deal bot
+      - run: cd bot && npm install
+      - run: cd bot && node bot_actions.js
         env:
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
-          MIN_DISCOUNT_PCT: '20'
-          MAX_DEALS_PER_RUN: '10'
-        run: |
-          cd bot
-          node bot_actions.js
- 
-      - name: Commit and push deals.json
-        run: |
+      - run: |
           git config user.name "DealsPulse Bot"
           git config user.email "bot@dealspulse.com"
           git add public/deals.json
-          git diff --staged --quiet || git commit -m "bot: update deals [$(date -u '+%Y-%m-%d %H:%M') UTC]"
+          git diff --staged --quiet || git commit -m "bot: update deals"
           git push
