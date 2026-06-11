@@ -1,9 +1,10 @@
+
 name: DealsPulse Bot
  
 on:
   schedule:
-    - cron: '*/30 * * * *'  # every 30 minutes
-  workflow_dispatch:         # manual trigger from Actions tab
+    - cron: '* * * * *'  # every minute
+  workflow_dispatch:      # manual trigger from Actions tab
  
 jobs:
   run-bot:
@@ -25,7 +26,7 @@ jobs:
           cd bot
           npm install
  
-      - name: Run deal bot (scrape + save deals.json)
+      - name: Run deal bot
         env:
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
           MIN_DISCOUNT_PCT: '20'
@@ -41,4 +42,3 @@ jobs:
           git add public/deals.json
           git diff --staged --quiet || git commit -m "bot: update deals [$(date -u '+%Y-%m-%d %H:%M') UTC]"
           git push
- 
