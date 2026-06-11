@@ -2,8 +2,8 @@ name: DealsPulse Bot
  
 on:
   schedule:
-    - cron: '*/30 * * * *'  # runs every 30 minutes
-  workflow_dispatch:         # allows manual trigger from GitHub Actions tab
+    - cron: '*/30 * * * *'  # every 30 minutes
+  workflow_dispatch:         # manual trigger from Actions tab
  
 jobs:
   run-bot:
@@ -15,27 +15,24 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
  
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
+          node-version: '20'
  
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4 python-dotenv twilio
+          cd bot
+          npm install
  
-      - name: Run deal bot
+      - name: Run deal bot (scrape + save deals.json)
         env:
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
-          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
-          TWILIO_WHATSAPP_FROM: ${{ secrets.TWILIO_WHATSAPP_FROM }}
-          WHATSAPP_NUMBERS: ${{ secrets.WHATSAPP_NUMBERS }}
           MIN_DISCOUNT_PCT: '20'
           MAX_DEALS_PER_RUN: '10'
-          GITHUB_PUSH: 'false'   # GitHub Actions handles the git push below
         run: |
-         node bot/bot.js
+          cd bot
+          node bot_actions.js
  
       - name: Commit and push deals.json
         run: |
