@@ -1,5 +1,19 @@
 [
   {
+    "id": "4m96ke",
+    "title": "Select Chase Cardholders: Purchase a Sam's Club Membership Earn 40% Back (New Customers, up to $20 Back)",
+    "category": "General",
+    "originalPrice": 28,
+    "dealPrice": 20,
+    "discount": 29,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://slickdeals.net/f/19597524-chase-visa-offers-40-cash-back-on-a-sams-club-membership-max-of-20-back-ymmv-exp-7-30?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
+    "store": "Various",
+    "expires": "2026-06-14",
+    "hot": false,
+    "posted_at": "2026-06-12T08:50:18.507Z"
+  },
+  {
     "id": "qdbm5e",
     "title": "TV Store Online Summer Blowout Clearance Sale: Sweatpants, Hoodies, Shirts $4 & More + Free S&H",
     "category": "Electronics",
@@ -1384,19 +1398,5 @@
     "expires": "2026-06-13",
     "hot": true,
     "posted_at": "2026-06-11T17:45:24.861Z"
-  },
-  {
-    "id": "29gwzx",
-    "title": "Harbor Freight Stores: 46\" Yukon 9-Drawer Mobile Storage Cabinet w/ Solid Wood Top $300 (In-Store Only)",
-    "category": "General",
-    "originalPrice": 420,
-    "dealPrice": 300,
-    "discount": 29,
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
-    "affiliate_url": "https://slickdeals.net/f/19605555-yukon-46-inch-9-drawer-tool-chest?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
-    "store": "Various",
-    "expires": "2026-06-13",
-    "hot": false,
-    "posted_at": "2026-06-11T17:44:20.650Z"
   }
 ]
