@@ -1,5 +1,33 @@
 [
   {
+    "id": "gmpyp1",
+    "title": "32 Degrees Men's Air Luxe Polo (4 colors) $7",
+    "category": "General",
+    "originalPrice": 23.75,
+    "dealPrice": 6.99,
+    "discount": 71,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://slickdeals.net/f/19615779-32-degrees-men-s-air-luxe-polo-4-colors-sizes-s-xxl-6-99-free-shipping-23-75?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
+    "store": "Various",
+    "expires": "2026-06-14",
+    "hot": true,
+    "posted_at": "2026-06-12T00:15:21.365Z"
+  },
+  {
+    "id": "nwgimo",
+    "title": "Select Accts: 12-Pk 16-Oz BodyArmor Lyte Sports Drink (Blueberry Pomegranate) $9 w/ S&S",
+    "category": "General",
+    "originalPrice": 12,
+    "dealPrice": 9,
+    "discount": 25,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://slickdeals.net/f/19618455-sns-ac-9-12-pk-16-oz-bodyarmor-lyte-hydration-sports-drink-blueberry-pom-at-amazon?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
+    "store": "Various",
+    "expires": "2026-06-14",
+    "hot": false,
+    "posted_at": "2026-06-12T00:15:21.365Z"
+  },
+  {
     "id": "m4ityc",
     "title": "CRAFTSMAN V20 20V Variable Speed Belt Cordless Sander w/ 2Ah Battery $59 + Free S&H",
     "category": "General",
