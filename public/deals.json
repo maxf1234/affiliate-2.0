@@ -1,5 +1,19 @@
 [
   {
+    "id": "bkrs5p",
+    "title": "Neuromancer: Sprawl Trilogy: Book 1 (eBook) $2",
+    "category": "Books",
+    "originalPrice": 2.8,
+    "dealPrice": 2,
+    "discount": 29,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://slickdeals.net/f/19612971-1-99-neuromancer-sprawl-trilogy-book-1-ebook-by-william-gibson?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
+    "store": "Various",
+    "expires": "2026-06-14",
+    "hot": false,
+    "posted_at": "2026-06-12T07:35:17.002Z"
+  },
+  {
     "id": "24kp7y",
     "title": "PlayStation PC Games: Marvel's Spider-Man Remastered $21.80, Days Gone $13.60 & More",
     "category": "Electronics",
@@ -1384,19 +1398,5 @@
     "expires": "2026-06-13",
     "hot": false,
     "posted_at": "2026-06-11T16:46:20.093Z"
-  },
-  {
-    "id": "ckro1t",
-    "title": "Ohniyou 52\" Low Profile Ceiling Fan w/ LED Light & App/Remote Control (Black) $43.80 + Free S&H",
-    "category": "General",
-    "originalPrice": 59.99,
-    "dealPrice": 16.2,
-    "discount": 73,
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
-    "affiliate_url": "https://slickdeals.net/f/19587804-ohniyou-52-low-profile-ceiling-fan-w-led-light-app-remote-control-black-43-79-free-shipping?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
-    "store": "Various",
-    "expires": "2026-06-13",
-    "hot": true,
-    "posted_at": "2026-06-11T16:32:20.437Z"
   }
 ]
