@@ -1,5 +1,19 @@
 [
   {
+    "id": "9v58c5",
+    "title": "Select Accts: 40-Pk 1-Oz Cheez-It Cheese Baked Snack Crackers (Extra Toasty) $8.55 w/ S&S",
+    "category": "General",
+    "originalPrice": 11.37,
+    "dealPrice": 8.55,
+    "discount": 25,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://slickdeals.net/f/19619853-sns-ac-8-53-cheez-it-cheese-crackers-baked-snack-crackers-single-serve-extra-toasty-40-pouches-at-amazon?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
+    "store": "Various",
+    "expires": "2026-06-14",
+    "hot": false,
+    "posted_at": "2026-06-12T06:02:14.237Z"
+  },
+  {
     "id": "phc6h6",
     "title": "10,000mAh AsperX Mag Safe Power Bank w/ 22.5w PD & USB-C Cable $15",
     "category": "General",
@@ -1384,19 +1398,5 @@
     "expires": "2026-06-13",
     "hot": false,
     "posted_at": "2026-06-11T16:29:22.650Z"
-  },
-  {
-    "id": "ep327d",
-    "title": "Barnes & Noble: Select Lionsgate Studio Films (4K UHD / Blu-ray / DVD) 50% Off + Free S&H on $60+",
-    "category": "General",
-    "originalPrice": 84,
-    "dealPrice": 60,
-    "discount": 29,
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
-    "affiliate_url": "https://slickdeals.net/f/19617192-barnes-noble-50-off-all-lionsgate-films?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
-    "store": "Various",
-    "expires": "2026-06-13",
-    "hot": false,
-    "posted_at": "2026-06-11T16:29:22.651Z"
   }
 ]
