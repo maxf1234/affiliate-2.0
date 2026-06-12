@@ -1,5 +1,19 @@
 [
   {
+    "id": "q82veo",
+    "title": "12-Pk 12-Oz Diet Coke Caffeine Free Soda $4.70",
+    "category": "General",
+    "originalPrice": 6.58,
+    "dealPrice": 4.7,
+    "discount": 29,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://slickdeals.net/f/19618350-4-68-12-pk-12-oz-diet-coke-caffeine-free-soda-at-amazon?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
+    "store": "Various",
+    "expires": "2026-06-14",
+    "hot": false,
+    "posted_at": "2026-06-12T06:12:16.048Z"
+  },
+  {
     "id": "dsdug",
     "title": "40mm Citizen Men's Classic Quartz Watch (SS w/ Blue Sunray Dial) $99 + Free S&H",
     "category": "General",
@@ -1383,20 +1397,6 @@
     "store": "Various",
     "expires": "2026-06-13",
     "hot": true,
-    "posted_at": "2026-06-11T16:29:22.650Z"
-  },
-  {
-    "id": "wnx3lb",
-    "title": "1-Probe GoveeLife Smart Wireless Meat Thermometer $23.55 + Free S&H",
-    "category": "General",
-    "originalPrice": 32.97,
-    "dealPrice": 23.55,
-    "discount": 29,
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
-    "affiliate_url": "https://slickdeals.net/f/19606494-goveelife-smart-wireless-meat-thermometer-23-50-free-s-h?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
-    "store": "Various",
-    "expires": "2026-06-13",
-    "hot": false,
     "posted_at": "2026-06-11T16:29:22.650Z"
   }
 ]
