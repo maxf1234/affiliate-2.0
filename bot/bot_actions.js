@@ -65,7 +65,15 @@ async function fetchProductImage(amazonUrl) {
 }
 
 function replaceAffiliateTag(url) {
-  return url.replace(STUNDEALS_TAG, AFFILIATE_TAG);
+  try {
+    const u = new URL(url);
+    if (u.searchParams.get("tag")) {
+      u.searchParams.set("tag", AFFILIATE_TAG);
+    }
+    return u.toString();
+  } catch (e) {
+    return url.replace(STUNDEALS_TAG, AFFILIATE_TAG);
+  }
 }
 
 function extractPrices(text) {
