@@ -1,18 +1,5 @@
 [
-  {
-    "id": "domsoj",
-    "title": "Amazon Deal (B01B1X3USS)",
-    "category": "General",
-    "originalPrice": 0,
-    "dealPrice": 0,
-    "discount": 0,
-    "image": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&q=80",
-    "affiliate_url": "https://www.amazon.com/dp/B01B1X3USS?tag=maxdeals062-20\\u0026linkCode=ogi\\u0026th=1\\u0026psc=1\\",
-    "store": "Amazon",
-    "expires": "2026-06-14",
-    "hot": false,
-    "posted_at": "2026-06-12T10:26:17.011Z"
-  },
+  
   {
     "id": "nbkvwk",
     "title": "Amazon Deal (B0G6YB821B)",
