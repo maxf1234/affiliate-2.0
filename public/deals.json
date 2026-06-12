@@ -1,5 +1,19 @@
 [
   {
+    "id": "croqhx",
+    "title": "Star Wars: Heir to the Empire - The Thrawn Trilogy Book 1 (eBook) $2",
+    "category": "Books",
+    "originalPrice": 2.8,
+    "dealPrice": 2,
+    "discount": 29,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://slickdeals.net/f/19613745-1-99-heir-to-the-empire-star-wars-legends-the-thrawn-trilogy-star-wars-the-thrawn-trilogy-book-1-ebook-by-timothy-zahn?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
+    "store": "Various",
+    "expires": "2026-06-14",
+    "hot": false,
+    "posted_at": "2026-06-12T08:00:24.233Z"
+  },
+  {
     "id": "2kk2i0",
     "title": "Neuromancer: Sprawl Trilogy: Book 1 (eBook) $2",
     "category": "Books",
@@ -1384,19 +1398,5 @@
     "expires": "2026-06-13",
     "hot": false,
     "posted_at": "2026-06-11T16:59:16.838Z"
-  },
-  {
-    "id": "ogtjrx",
-    "title": "Cuisinart Hurricane Pro 3.5 Peak HP Blender (CBT-2000P1) $160 + Free S&H",
-    "category": "Home & Kitchen",
-    "originalPrice": 224,
-    "dealPrice": 160,
-    "discount": 29,
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
-    "affiliate_url": "https://slickdeals.net/f/19587480-cuisinart-hurricane-pro-3-5-peak-hp-blender-professional-grade-free-shipping-159-95?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
-    "store": "Various",
-    "expires": "2026-06-13",
-    "hot": false,
-    "posted_at": "2026-06-11T16:54:20.250Z"
   }
 ]
