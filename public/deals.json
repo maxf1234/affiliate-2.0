@@ -1,5 +1,19 @@
 [
   {
+    "id": "4vdxkb",
+    "title": "Amazon Deal (B0DVMQ2CNC)",
+    "category": "General",
+    "originalPrice": 0,
+    "dealPrice": 0,
+    "discount": 15,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://www.amazon.com/dp/B0DVMQ2CNC?tag=maxdeals062-20\\u0026linkCode=ogi\\u0026th=1\\u0026psc=1\\",
+    "store": "Amazon",
+    "expires": "2026-06-14",
+    "hot": false,
+    "posted_at": "2026-06-12T13:34:24.172Z"
+  },
+  {
     "id": "domsoj",
     "title": "Amazon Deal (B01B1X3USS)",
     "category": "General",
@@ -684,19 +698,5 @@
     "expires": "2026-06-14",
     "hot": false,
     "posted_at": "2026-06-12T05:09:14.756Z"
-  },
-  {
-    "id": "6j54kc",
-    "title": "Prime Members: Dragonlance: Legends Trilogy (Hardcover Book) $17.45 + Free S&H",
-    "category": "Books",
-    "originalPrice": 24.43,
-    "dealPrice": 17.45,
-    "discount": 29,
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
-    "affiliate_url": "https://slickdeals.net/f/19612671-prime-17-47-dragonlance-legends-trilogy-hardcover-book-at-amazon?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
-    "store": "Various",
-    "expires": "2026-06-14",
-    "hot": false,
-    "posted_at": "2026-06-12T04:59:13.161Z"
   }
 ]
