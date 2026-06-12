@@ -1,5 +1,19 @@
 [
   {
+    "id": "ob2qtd",
+    "title": "Amazon Deal (B0DNTV6T42)",
+    "category": "Electronics",
+    "originalPrice": 0,
+    "dealPrice": 0,
+    "discount": 15,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://www.amazon.com/dp/B0DNTV6T42?tag=maxdeals062-20\\u0026linkCode=ogi\\u0026th=1\\u0026psc=1\\",
+    "store": "Amazon",
+    "expires": "2026-06-14",
+    "hot": false,
+    "posted_at": "2026-06-12T14:00:37.563Z"
+  },
+  {
     "id": "fqijpw",
     "title": "Amazon Deal (B0DMWMW6Y6)",
     "category": "General",
@@ -684,19 +698,5 @@
     "expires": "2026-06-14",
     "hot": false,
     "posted_at": "2026-06-12T05:57:14.828Z"
-  },
-  {
-    "id": "oqm9p2",
-    "title": "5-Cam Blink Outdoor 4 Wireless Security Camera System w/ Sync Module Core $105 + Free S&H",
-    "category": "Electronics",
-    "originalPrice": 147,
-    "dealPrice": 105,
-    "discount": 29,
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
-    "affiliate_url": "https://slickdeals.net/f/19617009-blink-outdoor-4-wireless-smart-security-cameras-w-sync-module-core-5-camera-system-104-99-free-shipping?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
-    "store": "Various",
-    "expires": "2026-06-14",
-    "hot": false,
-    "posted_at": "2026-06-12T05:13:13.086Z"
   }
 ]
