@@ -1,5 +1,19 @@
 [
   {
+    "id": "fqijpw",
+    "title": "Amazon Deal (B0DMWMW6Y6)",
+    "category": "General",
+    "originalPrice": 0,
+    "dealPrice": 0,
+    "discount": 15,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://www.amazon.com/dp/B0DMWMW6Y6?tag=maxdeals062-20\\u0026linkCode=ogi\\u0026th=1\\u0026psc=1\\",
+    "store": "Amazon",
+    "expires": "2026-06-14",
+    "hot": false,
+    "posted_at": "2026-06-12T13:40:27.795Z"
+  },
+  {
     "id": "4vdxkb",
     "title": "Amazon Deal (B0DVMQ2CNC)",
     "category": "General",
@@ -684,19 +698,5 @@
     "expires": "2026-06-14",
     "hot": false,
     "posted_at": "2026-06-12T05:13:13.086Z"
-  },
-  {
-    "id": "qb19ai",
-    "title": "Nike Men's Air Diamond Turf 2 Shoes (Prime Red/White/Black/Metallic Gold) $110 + Free S&H",
-    "category": "Fashion",
-    "originalPrice": 110,
-    "dealPrice": 109.99,
-    "discount": 5,
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
-    "affiliate_url": "https://slickdeals.net/f/19614897-nike-men-s-air-diamond-turf-2-shoes-prime-red-white-black-metallic-gold-109-99-free-shipping?utm_source=rss&amp;utm_content=fp&amp;utm_medium=RSS2",
-    "store": "Various",
-    "expires": "2026-06-14",
-    "hot": false,
-    "posted_at": "2026-06-12T05:09:14.756Z"
   }
 ]
