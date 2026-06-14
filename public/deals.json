@@ -1,5 +1,19 @@
 [
   {
+    "id": "6ofgm8",
+    "title": "Under Armour Men's Charged Edge Sneakers",
+    "category": "Fashion",
+    "originalPrice": 70,
+    "dealPrice": 30,
+    "discount": 57,
+    "image": "https://m.media-amazon.com/images/I/31tVv2EYquL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CJT653TZ?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-06-16",
+    "hot": true,
+    "posted_at": "2026-06-14T14:35:18.084Z"
+  },
+  {
     "id": "8fkz9v",
     "title": "2 Bump N' Bounce Body Bumpers",
     "category": "General",
