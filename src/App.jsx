@@ -249,7 +249,7 @@ export default function App() {
           <div style={{ fontSize: "36px", marginBottom: "12px" }}>💬</div>
           <h2 style={{ margin: "0 0 10px", fontSize: "24px" }}>Get Deals on WhatsApp</h2>
           <p style={{ color: "#b0b8cc", marginBottom: "20px", fontSize: "14px" }}>Join our WhatsApp group and get instant alerts the moment our bot finds a deal.</p>
-          <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer"
+          <a href="https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx?s=hd&p=i&ilr=4&amv=0" target="_blank" rel="noopener noreferrer"
             style={{ display: "inline-block", background: "#25d366", color: "#fff", textDecoration: "none", padding: "13px 28px", borderRadius: "10px", fontWeight: "700", fontSize: "15px" }}>
             Join WhatsApp Group
           </a>
