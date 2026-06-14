@@ -2,6 +2,10 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/share/deal/:id",
+      "destination": "/api/deal?id=:id"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
