@@ -1,5 +1,19 @@
 [
   {
+    "id": "axqizn",
+    "title": "Amazon Deal (B00KM8G53G)",
+    "category": "General",
+    "originalPrice": 0,
+    "dealPrice": 0,
+    "discount": 15,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://www.amazon.com/dp/B00KM8G53G?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-06-16",
+    "hot": false,
+    "posted_at": "2026-06-14T02:00:32.102Z"
+  },
+  {
     "id": "jgx1je",
     "title": "Amazon Deal (B003TRXCJM)",
     "category": "General",
