@@ -54,7 +54,7 @@ function DealPage({ deals, id, onBack }) {
  
   const savings = deal.originalPrice > 0 ? (deal.originalPrice - deal.dealPrice).toFixed(2) : null;
   const daysLeft = deal.expires ? Math.max(0, Math.ceil((new Date(deal.expires) - new Date()) / 86400000)) : null;
-  const shareUrl = window.location.href;
+  const shareUrl = window.location.origin + "/share/deal/" + encodeURIComponent(deal.id);
  
   const copyLink = () => {
     navigator.clipboard.writeText(shareUrl);
@@ -408,4 +408,3 @@ export default function App() {
     </div>
   );
 }
- 
