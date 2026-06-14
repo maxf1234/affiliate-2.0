@@ -1,6 +1,5 @@
 /**
  * DealsPulse Bot — stundeals.com scraper
- * Uses two passes: escaped regex for titles/prices, raw regex for Amazon links
  */
  
 const fs = require("fs");
@@ -72,83 +71,84 @@ async function scrapeStundeals() {
     const html = await fetchPage("https://www.stundeals.com");
     console.log(`Got ${html.length} bytes`);
  
-    // PASS 1: Get all escaped deal objects (has name, price, images)
-    const escapedDeals = {};
-    const escapedIdRegex = /\\"id\\":(\d+),\\"name\\":\\"([^\\]+)\\",\\"link\\":\\"([^\\]+)\\"/g;
-    let m;
-    while ((m = escapedIdRegex.exec(html)) !== null) {
-      const id = m[1];
-      const name = m[2];
-      const pos = m.index;
-      const chunk = html.slice(pos, pos + 1500);
- 
-      const priceMatch = chunk.match(/\\"price\\":\\"(\d+\.?\d*)\\"/);
-      const origMatch = chunk.match(/\\"originalPrice\\":\\"(\d+\.?\d*)\\"/);
-      const picMatch = chunk.match(/\\"marketplacePictures\\":\[\\"([^"\\][^\\]*)\\"/);
- 
-      const dealPrice = priceMatch ? parseFloat(priceMatch[1]) : 0;
-      const origPrice = origMatch ? parseFloat(origMatch[1]) : 0;
-      const image = picMatch ? picMatch[1].replace(/\\u002[fF]/g, "/").replace(/\\/g, "") : null;
- 
-      escapedDeals[id] = { id, name, dealPrice, origPrice, image };
-    }
-    console.log(`Found ${Object.keys(escapedDeals).length} escaped deal objects`);
- 
-    // PASS 2: Get all Amazon links with stundeals tag (these have full URLs)
+    // Find all Amazon affiliate links
     const amazonLinkRegex = /https?:\/\/(?:www\.)?amazon\.com\/[^\s"'\\]*tag=stundeals[^\s"'\\]*/g;
     const allAmazonLinks = [...new Set(html.match(amazonLinkRegex) || [])];
     console.log(`Found ${allAmazonLinks.length} Amazon affiliate links`);
  
-    // PASS 3: Match Amazon links to deal objects using ASIN or position
-    // For each Amazon link, find which deal it belongs to by looking at nearby context
     for (const link of allAmazonLinks) {
       const affiliateUrl = replaceAffiliateTag(link);
-      
-      // Find ASIN from link
       const asinMatch = link.match(/\/dp\/([A-Z0-9]{10})/);
-      
-      // Find position of this link in HTML and look for nearby deal id
       const linkPos = html.indexOf(link);
-      const nearbyHtml = html.slice(Math.max(0, linkPos - 2000), linkPos + 500);
+ 
+      // Look in a wide window around this link for metadata
+      const before = html.slice(Math.max(0, linkPos - 3000), linkPos);
+      const after = html.slice(linkPos, linkPos + 1000);
+      const context = before + after;
+ 
+      // Find name - look for escaped name field nearby
+      const nameMatch = before.match(/\\"name\\":\\"([^\\]+)\\"/g);
+      // Get last name match before this link (most likely to be this deal)
+      let name = null;
+      if (nameMatch) {
+        const lastMatch = nameMatch[nameMatch.length - 1];
+        name = lastMatch.replace(/\\"name\\":\\"/, "").replace(/\\"$/, "");
+      }
+      if (!name && asinMatch) name = `Amazon Deal (${asinMatch[1]})`;
+      if (!name) name = "Amazon Deal";
+ 
+      // Find prices - look for price patterns in context
+      const priceMatches = context.match(/\\"price\\":\\"(\d+\.?\d*)\\"/g) || [];
+      const origPriceMatches = context.match(/\\"originalPrice\\":\\"(\d+\.?\d*)\\"/g) || [];
       
-      // Try to find deal id near this link
-      const nearbyIdMatch = nearbyHtml.match(/\\"id\\":(\d+)/g);
-      let matchedDeal = null;
-      
-      if (nearbyIdMatch) {
-        // Get the closest id before this link
-        const lastId = nearbyIdMatch[nearbyIdMatch.length - 1].match(/\d+/)[0];
-        if (escapedDeals[lastId]) {
-          matchedDeal = escapedDeals[lastId];
-        }
+      // Also try unescaped price patterns
+      const priceMatches2 = context.match(/"price":"(\d+\.?\d*)"/g) || [];
+      const origPriceMatches2 = context.match(/"originalPrice":"(\d+\.?\d*)"/g) || [];
+ 
+      let dealPrice = 0;
+      let origPrice = 0;
+ 
+      if (priceMatches.length > 0) {
+        dealPrice = parseFloat(priceMatches[priceMatches.length - 1].match(/(\d+\.?\d*)/)[0]);
+      } else if (priceMatches2.length > 0) {
+        dealPrice = parseFloat(priceMatches2[priceMatches2.length - 1].match(/(\d+\.?\d*)/)[0]);
       }
  
-      // Get image from nearby marketplacePictures
-      const nearbyPicMatch = nearbyHtml.match(/\\"marketplacePictures\\":\[\\"([^"\\][^\\]*)\\"/);
-      const image = nearbyPicMatch
-        ? nearbyPicMatch[1].replace(/\\u002[fF]/g, "/").replace(/\\/g, "")
-        : (matchedDeal && matchedDeal.image) || "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80";
+      if (origPriceMatches.length > 0) {
+        origPrice = parseFloat(origPriceMatches[origPriceMatches.length - 1].match(/(\d+\.?\d*)/)[0]);
+      } else if (origPriceMatches2.length > 0) {
+        origPrice = parseFloat(origPriceMatches2[origPriceMatches2.length - 1].match(/(\d+\.?\d*)/)[0]);
+      }
  
-      // Get prices
-      const dealPrice = matchedDeal ? matchedDeal.dealPrice : 0;
-      const origPrice = matchedDeal ? matchedDeal.origPrice : 0;
-      const name = matchedDeal ? matchedDeal.name : (asinMatch ? `Amazon Deal (${asinMatch[1]})` : "Amazon Deal");
-      const id = matchedDeal ? `sd_${matchedDeal.id}` : hashId(link);
+      console.log(`Deal: ${name.slice(0,40)} | price: $${dealPrice} | orig: $${origPrice}`);
  
-      if (!dealPrice) continue;
+      // Find image - look for marketplace pictures
+      const picMatch = before.match(/\\"marketplacePictures\\":\[\\"([^"\\][^\\]*)\\"/g);
+      let image = null;
+      if (picMatch) {
+        const lastPic = picMatch[picMatch.length - 1];
+        image = lastPic.match(/\[\\"([^"\\][^\\]*)\\"/)
+          ? lastPic.match(/\[\\"([^"\\][^\\]*)\\"/) [1].replace(/\\/g, "")
+          : null;
+      }
+      if (!image) {
+        // Try unescaped
+        const picMatch2 = before.match(/"marketplacePictures":\["([^"]+)"/);
+        if (picMatch2) image = picMatch2[1];
+      }
  
-      const discount = origPrice > dealPrice
+      const discount = origPrice > dealPrice && dealPrice > 0
         ? Math.round((1 - dealPrice / origPrice) * 100)
-        : 10;
+        : 15;
  
       deals.push({
-        id,
+        id: hashId(link),
         title: name.slice(0, 120),
         category: guessCategory(name),
-        originalPrice: origPrice || parseFloat((dealPrice * 1.3).toFixed(2)),
-        dealPrice: parseFloat(dealPrice.toFixed(2)),
+        originalPrice: origPrice || (dealPrice ? parseFloat((dealPrice * 1.3).toFixed(2)) : 0),
+        dealPrice: dealPrice || 0,
         discount: Math.max(discount, 5),
-        image,
+        image: image || "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
         affiliate_url: affiliateUrl,
         store: "Amazon",
         expires: new Date(Date.now() + 2 * 86400000).toISOString().split("T")[0],
@@ -202,4 +202,3 @@ function saveDeals(deals) {
     console.log("No deals found this run.");
   }
 })();
- 
