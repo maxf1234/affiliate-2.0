@@ -123,17 +123,13 @@ async function scrapeStundeals() {
       console.log(`Deal: ${name.slice(0,40)} | price: $${dealPrice} | orig: $${origPrice}`);
  
       // Find image - look for marketplace pictures
-      const picMatch = before.match(/\\"marketplacePictures\\":\[\\"([^"\\][^\\]*)\\"/g);
+     const picMatch = after.match(/\\"marketplacePictures\\":\[\\"([^"\\][^\\]*)\\"/);
       let image = null;
       if (picMatch) {
-        const lastPic = picMatch[picMatch.length - 1];
-        image = lastPic.match(/\[\\"([^"\\][^\\]*)\\"/)
-          ? lastPic.match(/\[\\"([^"\\][^\\]*)\\"/) [1].replace(/\\/g, "")
-          : null;
+        image = picMatch[1].replace(/\\/g, "");
       }
       if (!image) {
-        // Try unescaped
-        const picMatch2 = before.match(/"marketplacePictures":\["([^"]+)"/);
+        const picMatch2 = after.match(/"marketplacePictures":\["([^"]+)"/);
         if (picMatch2) image = picMatch2[1];
       }
  
