@@ -1,5 +1,6 @@
+
 /**
- * DealsPulse Bot — parses stundeals.com embedded JSON data
+ * DealsPulse Bot — debug version to find correct pattern
  */
  
 const fs = require("fs");
@@ -62,116 +63,93 @@ function guessCategory(name) {
   return "General";
 }
  
-function extractDealsWithRegex(html) {
-  const deals = [];
-  
-  // Extract each deal object individually using regex
-  // Match pattern: {"id":NUMBER,"name":"...","link":"...","price":"...","originalPrice":"...","marketplacePictures":[...]}
-  const idRegex = /"id":(\d+),"name":"([^"]+)","link":"([^"]+)"/g;
-  let m;
-  
-  while ((m = idRegex.exec(html)) !== null) {
-    const [, id, name, rawLink] = m;
-    const pos = m.index;
-    
-    // Extract a chunk around this deal to find price and images
-    const chunk = html.slice(pos, pos + 2000);
-    
-    // Extract price
-    const priceMatch = chunk.match(/"price":"?(\d+\.?\d*)"?/);
-    const origPriceMatch = chunk.match(/"originalPrice":"?(\d+\.?\d*)"?/);
-    
-    const dealPrice = priceMatch ? parseFloat(priceMatch[1]) : 0;
-    const origPrice = origPriceMatch ? parseFloat(origPriceMatch[1]) : 0;
-    
-    if (!dealPrice) continue;
-    
-    // Fix link - unescape unicode
-    const link = rawLink
-      .replace(/\\u002[fF]/g, "/")
-      .replace(/\\u0026/g, "&")
-      .replace(/\\/g, "");
-    
-    if (!link.includes("amazon.com") && !link.includes("amzn.to")) continue;
-    
-    // Extract marketplace pictures
-    const picMatch = chunk.match(/"marketplacePictures":\["([^"]+)"/);
-    const image = picMatch 
-      ? picMatch[1].replace(/\\u002[fF]/g, "/")
-      : "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80";
-    
-    // Extract expiry
-    const expiredMatch = chunk.match(/"expired":"([^"]+)"/);
-    let expires = expiredMatch ? expiredMatch[1] : null;
-    // Convert MM/DD/YYYY to YYYY-MM-DD
-    if (expires && expires.includes("/")) {
-      const parts = expires.split("/");
-      expires = `${parts[2]}-${parts[0].padStart(2,"0")}-${parts[1].padStart(2,"0")}`;
-    }
-    if (!expires) {
-      expires = new Date(Date.now() + 2 * 86400000).toISOString().split("T")[0];
-    }
- 
-    // Check for hot flags
-    const hotMatch = chunk.match(/"flags":\[([^\]]*)\]/);
-    const isHot = hotMatch ? hotMatch[1].includes("lowest") || hotMatch[1].includes("prime") : false;
- 
-    const discount = origPrice > dealPrice
-      ? Math.round((1 - dealPrice / origPrice) * 100)
-      : 10;
- 
-    const affiliateUrl = replaceAffiliateTag(link);
- 
-    deals.push({
-      id: `sd_${id}`,
-      title: name.slice(0, 120),
-      category: guessCategory(name),
-      originalPrice: origPrice || parseFloat((dealPrice * 1.3).toFixed(2)),
-      dealPrice: parseFloat(dealPrice.toFixed(2)),
-      discount: Math.max(discount, 5),
-      image,
-      affiliate_url: affiliateUrl,
-      store: "Amazon",
-      expires,
-      hot: isHot || discount >= 30,
-      posted_at: new Date().toISOString(),
-    });
-  }
- 
-  return deals;
-}
- 
 async function scrapeStundeals() {
+  const deals = [];
+ 
   try {
     console.log("Fetching stundeals.com...");
     const html = await fetchPage("https://www.stundeals.com");
     console.log(`Got ${html.length} bytes`);
  
-    // Extract all Next.js push data
-    let fullData = "";
-    const pushRegex = /self\.__next_f\.push\(\[1,"([\s\S]*?)"\]\)/g;
-    let m;
-    while ((m = pushRegex.exec(html)) !== null) {
-      fullData += m[1];
+    // Find where "id" appears in the raw HTML
+    const idIdx = html.indexOf('"id":33');
+    console.log(`First deal id found at index: ${idIdx}`);
+    if (idIdx > 0) {
+      console.log(`Context around first id: ${html.slice(idIdx, idIdx + 300)}`);
     }
  
-    // Partial unescape - just enough to read the fields we need
-    fullData = fullData
-      .replace(/\\u002[fF]/g, "/")
-      .replace(/\\u0026/g, "&")
-      .replace(/\\u003[cC]/g, "<")
-      .replace(/\\u003[eE]/g, ">");
+    // Try finding amazon links directly in raw HTML
+    const amazonMatches = html.match(/amazon\.com[^"\\]*/g) || [];
+    console.log(`Amazon URLs found in raw HTML: ${amazonMatches.length}`);
+    if (amazonMatches.length > 0) {
+      console.log(`Sample: ${amazonMatches[0]}`);
+    }
  
-    console.log(`Extracted ${fullData.length} chars`);
+    // Try finding "name" field
+    const nameIdx = html.indexOf('\\"name\\":\\"');
+    console.log(`Escaped name field at: ${nameIdx}`);
+    if (nameIdx > 0) {
+      console.log(`Context: ${html.slice(nameIdx, nameIdx + 100)}`);
+    }
  
-    const deals = extractDealsWithRegex(fullData);
-    console.log(`Found ${deals.length} Amazon deals`);
-    return deals;
+    // Look for the pattern with escaped quotes (raw HTML format)
+    const escapedIdRegex = /\\"id\\":(\d+),\\"name\\":\\"([^\\]+)\\",\\"link\\":\\"([^\\]+)\\"/g;
+    let m;
+    let count = 0;
+    while ((m = escapedIdRegex.exec(html)) !== null) {
+      count++;
+      if (count <= 3) {
+        console.log(`Found deal: id=${m[1]}, name=${m[2]}, link=${m[3]}`);
+      }
+ 
+      const id = m[1];
+      const name = m[2];
+      const rawLink = m[3].replace(/\\u002f/gi, "/").replace(/\\u0026/gi, "&");
+      const pos = m.index;
+      const chunk = html.slice(pos, pos + 1000);
+ 
+      const priceMatch = chunk.match(/\\"price\\":\\"(\d+\.?\d*)\\"/);
+      const origMatch = chunk.match(/\\"originalPrice\\":\\"(\d+\.?\d*)\\"/);
+      const picMatch = chunk.match(/\\"marketplacePictures\\":\[\\"([^\\]+)\\"/);
+ 
+      const dealPrice = priceMatch ? parseFloat(priceMatch[1]) : 0;
+      const origPrice = origMatch ? parseFloat(origMatch[1]) : 0;
+ 
+      if (!dealPrice) continue;
+      if (!rawLink.includes("amazon.com") && !rawLink.includes("amzn.to")) continue;
+ 
+      const image = picMatch
+        ? picMatch[1].replace(/\\u002f/gi, "/")
+        : "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80";
+ 
+      const discount = origPrice > dealPrice
+        ? Math.round((1 - dealPrice / origPrice) * 100)
+        : 10;
+ 
+      deals.push({
+        id: `sd_${id}`,
+        title: name.slice(0, 120),
+        category: guessCategory(name),
+        originalPrice: origPrice || parseFloat((dealPrice * 1.3).toFixed(2)),
+        dealPrice: parseFloat(dealPrice.toFixed(2)),
+        discount: Math.max(discount, 5),
+        image,
+        affiliate_url: replaceAffiliateTag(rawLink),
+        store: "Amazon",
+        expires: new Date(Date.now() + 2 * 86400000).toISOString().split("T")[0],
+        hot: discount >= 30,
+        posted_at: new Date().toISOString(),
+      });
+    }
+ 
+    console.log(`Total deals with escaped regex: ${count} found, ${deals.length} valid Amazon`);
  
   } catch (e) {
     console.error(`Scrape failed: ${e.message}`);
-    return [];
+    console.error(e.stack);
   }
+ 
+  return deals;
 }
  
 function saveDeals(deals) {
@@ -202,6 +180,7 @@ function saveDeals(deals) {
   console.log("=".repeat(55));
   console.log(`DealsPulse Bot — ${new Date().toUTCString()}`);
   const deals = await scrapeStundeals();
+  console.log(`Found ${deals.length} deals`);
   if (deals.length) {
     const saved = saveDeals(deals);
     console.log(`Done: ${saved} new deals saved.`);
@@ -209,4 +188,3 @@ function saveDeals(deals) {
     console.log("No deals found this run.");
   }
 })();
- 
