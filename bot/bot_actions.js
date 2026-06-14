@@ -1,6 +1,5 @@
 /**
- * DealsPulse Bot — parses stundeals.com JSON data from page source
- * All deal data including images, prices, titles is embedded in the page
+ * DealsPulse Bot — parses stundeals.com embedded JSON data
  */
  
 const fs = require("fs");
@@ -63,15 +62,6 @@ function guessCategory(name) {
   return "General";
 }
  
-function hashId(str) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = ((hash << 5) - hash) + str.charCodeAt(i);
-    hash |= 0;
-  }
-  return Math.abs(hash).toString(36);
-}
- 
 async function scrapeStundeals() {
   const deals = [];
  
@@ -80,36 +70,74 @@ async function scrapeStundeals() {
     const html = await fetchPage("https://www.stundeals.com");
     console.log(`Got ${html.length} bytes`);
  
-    // Extract the JSON data embedded in the page script tags
-    // Look for the deals array in the Next.js data
-    const jsonMatch = html.match(/\\"data\\":\[(\{[\s\S]*?\})\]/);
- 
-    // Better approach: find all deal objects by looking for the data pattern
-    // The deals are embedded as JSON in self.__next_f.push calls
-    const allScripts = html.match(/self\.__next_f\.push\(\[1,\s*"([\s\S]*?)"\]\)/g) || [];
-    let combinedData = "";
-    for (const script of allScripts) {
-      combinedData += script;
+    // The data is in self.__next_f.push calls as escaped JSON strings
+    // Extract all push content and combine
+    let fullData = "";
+    const pushRegex = /self\.__next_f\.push\(\[1,"([\s\S]*?)"\]\)/g;
+    let m;
+    while ((m = pushRegex.exec(html)) !== null) {
+      fullData += m[1];
     }
  
-    // Unescape the JSON string content
-    combinedData = combinedData
-      .replace(/\\n/g, "")
+    // Unescape the string
+    fullData = fullData
       .replace(/\\"/g, '"')
-      .replace(/\\\\/g, "\\");
+      .replace(/\\n/g, " ")
+      .replace(/\\r/g, " ")
+      .replace(/\\\\/g, "\\")
+      .replace(/\\u0026/g, "&")
+      .replace(/\\u003c/g, "<")
+      .replace(/\\u003e/g, ">")
+      .replace(/\\u002[fF]/g, "/");
  
-    // Find all deal objects - they have "name", "link", "price", "originalPrice"
-    const dealPattern = /\{"id":(\d+),"name":"([^"]+)","link":"([^"]+)"[^}]*?"price":"?([^",}]*)"?[^}]*?"originalPrice":"?([^",}]*)"?[^}]*?"marketplacePictures":\[(.*?)\]/g;
+    console.log(`Extracted ${fullData.length} chars of data`);
  
-    let match;
-    while ((match = dealPattern.exec(combinedData)) !== null) {
-      const [, id, name, link, priceStr, origPriceStr, picturesStr] = match;
+    // Find the deals array - it starts with {"id": and has "name", "link"
+    // Try to find a JSON array of deals
+    const startIdx = fullData.indexOf('"data":[{"id"');
+    if (startIdx === -1) {
+      console.log("Could not find data array — trying alternative parse");
+      // Try finding individual deal objects
+      const altStart = fullData.indexOf('{"id":');
+      console.log(`Alternative start at index: ${altStart}`);
+      console.log(`Sample data: ${fullData.slice(Math.max(0, altStart), altStart + 500)}`);
+      return deals;
+    }
  
-      // Skip non-Amazon deals
-      if (!link.includes("amazon.com") && !link.includes("amzn.to")) continue;
+    // Extract from "data":[ to the end of the array
+    const dataStr = fullData.slice(startIdx + 8); // skip "data":
+    
+    // Find matching bracket
+    let depth = 0;
+    let endIdx = 0;
+    for (let i = 0; i < dataStr.length; i++) {
+      if (dataStr[i] === "[") depth++;
+      if (dataStr[i] === "]") {
+        depth--;
+        if (depth === 0) { endIdx = i + 1; break; }
+      }
+    }
  
-      const dealPrice = parseFloat(priceStr) || 0;
-      const origPrice = parseFloat(origPriceStr) || 0;
+    const arrStr = dataStr.slice(0, endIdx);
+    console.log(`Found data array of length ${arrStr.length}`);
+ 
+    let dealsArray;
+    try {
+      dealsArray = JSON.parse(arrStr);
+    } catch (e) {
+      console.error(`JSON parse failed: ${e.message}`);
+      console.log(`First 500 chars: ${arrStr.slice(0, 500)}`);
+      return deals;
+    }
+ 
+    console.log(`Parsed ${dealsArray.length} items from data array`);
+ 
+    for (const item of dealsArray) {
+      if (!item.name || !item.link) continue;
+      if (!item.link.includes("amazon.com") && !item.link.includes("amzn.to")) continue;
+ 
+      const dealPrice = parseFloat(item.price) || 0;
+      const origPrice = parseFloat(item.originalPrice) || 0;
  
       if (!dealPrice) continue;
  
@@ -117,30 +145,30 @@ async function scrapeStundeals() {
         ? Math.round((1 - dealPrice / origPrice) * 100)
         : 10;
  
-      // Get first image from marketplacePictures
-      const imgMatch = picturesStr.match(/"(https:\/\/m\.media-amazon\.com\/[^"]+)"/);
-      const image = imgMatch ? imgMatch[1] : null;
+      // Get first marketplace picture
+      const image = (item.marketplacePictures && item.marketplacePictures.length > 0)
+        ? item.marketplacePictures[0]
+        : "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80";
  
-      const affiliateUrl = replaceAffiliateTag(link);
-      const category = guessCategory(name);
+      const affiliateUrl = replaceAffiliateTag(item.link);
  
       deals.push({
-        id: `sd_${id}`,
-        title: name.slice(0, 120),
-        category,
+        id: `sd_${item.id}`,
+        title: item.name.slice(0, 120),
+        category: guessCategory(item.name),
         originalPrice: origPrice || parseFloat((dealPrice * 1.3).toFixed(2)),
         dealPrice: parseFloat(dealPrice.toFixed(2)),
         discount: Math.max(discount, 5),
-        image: image || "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+        image,
         affiliate_url: affiliateUrl,
         store: "Amazon",
-        expires: new Date(Date.now() + 2 * 86400000).toISOString().split("T")[0],
-        hot: discount >= 30,
+        expires: item.expired || new Date(Date.now() + 2 * 86400000).toISOString().split("T")[0],
+        hot: discount >= 30 || (item.flags && item.flags.some(f => f.name && f.name.toLowerCase().includes("lowest"))),
         posted_at: new Date().toISOString(),
       });
     }
  
-    console.log(`Parsed ${deals.length} deals from page data`);
+    console.log(`Parsed ${deals.length} valid Amazon deals`);
  
   } catch (e) {
     console.error(`Scrape failed: ${e.message}`);
