@@ -360,7 +360,7 @@ export default function App() {
  
       <div style={{ background: "#fff3e0", borderBottom: "1px solid #ffe0b2", padding: "10px 24px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", gap: "24px", fontSize: "13px", color: "#e65100", fontWeight: "600", flexWrap: "wrap" }}>
-          <span>Last updated: <strong>{lastUpdated ? lastUpdated.toLocaleString() : "Loading..."}</strong></span>
+          <span>Last updated: <strong>{lastUpdated ? lastUpdated.toLocaleString([], {month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"}) : "Loading..."}</strong></span>
           <span><strong>{deals.length}</strong> active deals</span>
         </div>
       </div>
