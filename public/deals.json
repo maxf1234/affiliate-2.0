@@ -1,5 +1,33 @@
 [
   {
+    "id": "1z22pm",
+    "title": "Amazon Deal (B0GT6RFQZY)",
+    "category": "General",
+    "originalPrice": 0,
+    "dealPrice": 0,
+    "discount": 15,
+    "image": "https://m.media-amazon.com/images/I/41WjR4mCbiL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0GT6RFQZY?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-06-17",
+    "hot": false,
+    "posted_at": "2026-06-15T16:27:16.615Z"
+  },
+  {
+    "id": "8ldgiu",
+    "title": "prime deal",
+    "category": "General",
+    "originalPrice": 999.99,
+    "dealPrice": 479.99,
+    "discount": 52,
+    "image": "https://m.media-amazon.com/images/I/41hyRqx5GtL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0D4YWL6HC?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-06-17",
+    "hot": true,
+    "posted_at": "2026-06-15T16:27:16.615Z"
+  },
+  {
     "id": "2zshfa",
     "title": "MimAuto 4 in 1 Retractable Car Charger",
     "category": "Electronics",
