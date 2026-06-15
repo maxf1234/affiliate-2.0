@@ -73,7 +73,7 @@ async function scrapeStundeals() {
  
     // Find all Amazon affiliate links
     const amazonLinkRegex = /https?:\/\/(?:www\.)?amazon\.com\/[^\s"'\\]*tag=stundeals[^\s"'\\]*/g;
-    const allAmazonLinks = [...new Set(html.match(amazonLinkRegex) || [])].slice(0, 1);
+    const allAmazonLinks = [...new Set(html.match(amazonLinkRegex) || [])].slice(0, 5);
     console.log(`Found ${allAmazonLinks.length} Amazon affiliate links`);
  
     for (const link of allAmazonLinks) {
