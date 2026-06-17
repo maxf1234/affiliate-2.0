@@ -1,5 +1,33 @@
 [
   {
+    "id": "fr772b",
+    "title": "8-Pack Kleenex Facial Tissues 200 ct.",
+    "category": "General",
+    "originalPrice": 0,
+    "dealPrice": 0,
+    "discount": 15,
+    "image": "https://m.media-amazon.com/images/I/41YktM2Bl5L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CTD2XLX5?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-06-19",
+    "hot": false,
+    "posted_at": "2026-06-17T13:57:39.173Z"
+  },
+  {
+    "id": "nglg4w",
+    "title": "Hamilton Beach Chest Freezer 7 Cu Ft Capacity",
+    "category": "General",
+    "originalPrice": 295,
+    "dealPrice": 211.99,
+    "discount": 28,
+    "image": "https://m.media-amazon.com/images/I/31u57YDxIML._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0C1M7VPWB?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-06-19",
+    "hot": false,
+    "posted_at": "2026-06-17T13:57:39.173Z"
+  },
+  {
     "id": "kjk472",
     "title": "FDW 6 Foot Folding Table",
     "category": "Furniture",
