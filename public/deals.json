@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_33850",
+    "title": "Ring Video Doorbell Set",
+    "category": "General",
+    "originalPrice": 59.99,
+    "dealPrice": 23.99,
+    "discount": 60,
+    "image": "https://m.media-amazon.com/images/I/31jAesiVibL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DGQZ8JZK?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-20",
+    "hot": true,
+    "posted_at": "2026-06-18T16:56:48.428Z"
+  },
+  {
     "id": "sd_33845",
     "title": "Dyson Tower Fan with 70° Oscillation",
     "category": "Home & Kitchen",
