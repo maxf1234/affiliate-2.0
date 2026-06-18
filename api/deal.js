@@ -51,10 +51,11 @@ module.exports = async (req, res) => {
     "Shop this deal on Amazon via DealsPulse."
   );
 
-  // Use the real product image. No hardcoded width/height — let WhatsApp detect
-  // the true dimensions so it doesn't reject a size mismatch and fall back to a
-  // tiny preview.
-  const image = escapeHtml(deal.image || "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80");
+  // Use the real product image, but route it through our own image proxy so
+  // crawlers that won't hotlink from Amazon still get a valid image from our
+  // domain. Fall back to a generic image if none exists.
+  const rawImage = deal.image || "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80";
+  const image = escapeHtml(siteUrl + "/api/img?u=" + encodeURIComponent(rawImage));
 
   res.setHeader("Content-Type", "text/html");
   // Let crawlers cache, but allow refresh
