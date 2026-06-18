@@ -159,7 +159,7 @@ async function sendToWhatsApp(deals) {
       try {
         await group.sendMessage(message, { linkPreview: true });
         console.log(`Sent: ${deal.title.slice(0, 45)} -> ${group.name}`);
-        await sleep(3000);
+        await sleep(5000);
       } catch (err) {
         console.error(`Failed to send to ${group.name}: ${err.message}`);
       }
