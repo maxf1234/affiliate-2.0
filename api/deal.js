@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
   }
  
   const siteUrl = "https://" + req.headers.host;
-  const dealUrl = siteUrl + "/#/deal/" + encodeURIComponent(deal.id);
+  const dealUrl = siteUrl + "/share/deal/" + encodeURIComponent(deal.id);
   const title = deal.title + " - " + (deal.dealPrice > 0 ? "$" + deal.dealPrice.toFixed(2) : "Great Deal") + " | DealsPulse";
   const description = (deal.discount > 0 ? deal.discount + "% OFF! " : "") +
     (deal.originalPrice > 0 ? "Was $" + deal.originalPrice.toFixed(2) + ", now $" + deal.dealPrice.toFixed(2) + ". " : "") +
@@ -53,8 +53,8 @@ module.exports = async (req, res) => {
   <meta property="og:title" content="${title}" />
   <meta property="og:description" content="${description}" />
   <meta property="og:image" content="${image}" />
-  <meta property="og:image:width" content="500" />
-  <meta property="og:image:height" content="500" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="${dealUrl}" />
   <meta property="og:site_name" content="DealsPulse" />
  
