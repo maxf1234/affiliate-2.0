@@ -20,19 +20,20 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 
 // ── CONFIG ────────────────────────────────────────────────────────────────────
+const IS_MAC            = process.platform === "darwin";
 const DEALS_URL         = process.env.DEALS_URL || "https://affilate-marketing-20.vercel.app/deals.json";
 const SITE_BASE         = process.env.SITE_BASE || "https://affilate-marketing-20.vercel.app";
 const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || "60");
 const MAX_PER_RUN       = parseInt(process.env.MAX_DEALS_PER_RUN || "1"); // post one deal per run
-const SEEN_FILE         = path.join(__dirname, "announced.json"); // tracks what we've posted
+const SEEN_FILE         = IS_MAC ? path.join(__dirname, "announced.json") : "/data/announced.json";
 const WHATSAPP_GROUPS   = (process.env.WHATSAPP_GROUPS || "").split(",").map(g => g.trim()).filter(Boolean);
 const GROUP_LINK        = process.env.GROUP_LINK || ""; // your WhatsApp group invite link (https://chat.whatsapp.com/...)
 
 // ── WHATSAPP CLIENT ───────────────────────────────────────────────────────────
-const IS_MAC = process.platform === "darwin";
+const SESSION_PATH = process.env.SESSION_PATH || (IS_MAC ? undefined : "/data/wwebjs_auth");
 
 const whatsapp = new Client({
-  authStrategy: new LocalAuth(),
+  authStrategy: new LocalAuth({ dataPath: SESSION_PATH }),
   puppeteer: {
     executablePath: IS_MAC ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" : undefined,
     args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
@@ -42,8 +43,13 @@ const whatsapp = new Client({
 let whatsappReady = false;
 
 whatsapp.on("qr", (qr) => {
+  // Terminal QR for local use
   console.log("\nScan this QR code with your WhatsApp:\n");
   qrcode.generate(qr, { small: true });
+  // Also print a URL you can open in a browser to scan (for cloud deploys)
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`;
+  console.log("\nOR open this URL in your browser to scan:\n");
+  console.log(qrUrl);
   console.log("\nOpen WhatsApp -> Linked Devices -> Link a Device\n");
 });
 
