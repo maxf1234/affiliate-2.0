@@ -1,256 +1,233 @@
 /**
+ * DealsPulse WhatsApp Bot — Local
+ * ================================
+ * Reads deals from your LIVE site's deals.json (the single source of truth,
+ * maintained by GitHub Actions), tracks which deals it has already announced,
+ * and posts any NEW deals to your WhatsApp group(s) from YOUR number.
+ *
+ * RUN:
+ *   node bot.js
+ *   Scan the QR code on first run.
+ */
 
-- DealsPulse Bot — Node.js version
-- =================================
-- Scrapes Amazon deals, updates public/deals.json,
-- and sends messages from YOUR WhatsApp number to your groups.
-- 
-- SETUP:
-- npm install axios cheerio whatsapp-web.js qrcode-terminal node-cron dotenv
-- 
-- FIRST RUN:
-- node bot/bot.js
-- Scan the QR code with your WhatsApp → stays logged in after that
-  */
-
-require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
-const axios = require('axios');
-const cheerio = require('cheerio');
-const cron = require('node-cron');
-const { Client, LocalAuth } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
+require("dotenv").config();
+const fs = require("fs");
+const path = require("path");
+const https = require("https");
+const http = require("http");
+const cron = require("node-cron");
+const { Client, LocalAuth } = require("whatsapp-web.js");
+const qrcode = require("qrcode-terminal");
 
 // ── CONFIG ────────────────────────────────────────────────────────────────────
-const AFFILIATE_TAG     = process.env.AMAZON_AFFILIATE_TAG || 'youraffid-20';
-const DEALS_JSON_PATH   = path.join(__dirname, '..', 'public', 'deals.json');
-const MIN_DISCOUNT_PCT  = parseInt(process.env.MIN_DISCOUNT_PCT || '20');
-const MAX_DEALS_PER_RUN = parseInt(process.env.MAX_DEALS_PER_RUN || '10');
-const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || '30');
-// Comma-separated WhatsApp group names exactly as they appear in your WhatsApp
-const WHATSAPP_GROUPS   = (process.env.WHATSAPP_GROUPS || '').split(',').map(g => g.trim()).filter(Boolean);
+const DEALS_URL         = process.env.DEALS_URL || "https://affilate-marketing-20.vercel.app/deals.json";
+const SITE_BASE         = process.env.SITE_BASE || "https://affilate-marketing-20.vercel.app";
+const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || "60");
+const MAX_PER_RUN       = parseInt(process.env.MAX_DEALS_PER_RUN || "1"); // post one deal per run
+const SEEN_FILE         = path.join(__dirname, "announced.json"); // tracks what we've posted
+const WHATSAPP_GROUPS   = (process.env.WHATSAPP_GROUPS || "").split(",").map(g => g.trim()).filter(Boolean);
+const GROUP_LINK        = process.env.GROUP_LINK || ""; // your WhatsApp group invite link (https://chat.whatsapp.com/...)
 
 // ── WHATSAPP CLIENT ───────────────────────────────────────────────────────────
+const IS_MAC = process.platform === "darwin";
+
 const whatsapp = new Client({
-authStrategy: new LocalAuth(), // saves session so you only scan QR once
-puppeteer: {
-args: ['–no-sandbox', '–disable-setuid-sandbox'],
-},
+  authStrategy: new LocalAuth(),
+  puppeteer: {
+    executablePath: IS_MAC ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" : undefined,
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
+  },
 });
 
 let whatsappReady = false;
 
-whatsapp.on('qr', (qr) => {
-console.log('\n📱 Scan this QR code with your WhatsApp:\n');
-qrcode.generate(qr, { small: true });
-console.log('\nOpen WhatsApp → Linked Devices → Link a Device\n');
+whatsapp.on("qr", (qr) => {
+  console.log("\nScan this QR code with your WhatsApp:\n");
+  qrcode.generate(qr, { small: true });
+  console.log("\nOpen WhatsApp -> Linked Devices -> Link a Device\n");
 });
 
-whatsapp.on('ready', () => {
-whatsappReady = true;
-console.log('WhatsApp connected — messages will send from your number!');
+whatsapp.on("ready", () => {
+  whatsappReady = true;
+  console.log("WhatsApp connected - messages will send from your number!");
 });
 
-whatsapp.on('auth_failure', () => {
-console.error('❌ WhatsApp auth failed — delete .wwebjs_auth folder and restart.');
+whatsapp.on("auth_failure", () => {
+  console.error("WhatsApp auth failed - delete .wwebjs_auth folder and restart.");
 });
 
-whatsapp.on('disconnected', () => {
-whatsappReady = false;
-console.warn('⚠️  WhatsApp disconnected. Reconnecting…');
-whatsapp.initialize();
+whatsapp.on("disconnected", () => {
+  whatsappReady = false;
+  console.warn("WhatsApp disconnected. Reconnecting...");
+  whatsapp.initialize();
 });
 
-// ── SCRAPER ───────────────────────────────────────────────────────────────────
-const HEADERS_POOL = [
-{ "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Accept-Language": "en-US,en;q=0.9" },
-{ "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15", "Accept-Language": "en-GB,en;q=0.9" },
-];
-
-function randomHeaders() {
-return HEADERS_POOL[Math.floor(Math.random() * HEADERS_POOL.length)];
-}
-
-function parsePrice(text) {
-if (!text) return null;
-const num = parseFloat(text.replace(/[$,]/g, "").trim());
-return isNaN(num) ? null : num;
-}
-
+// ── HELPERS ───────────────────────────────────────────────────────────────────
 function sleep(ms) {
-return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(r => setTimeout(r, ms));
 }
 
-async function scrapeDeals() {
-const deals = [];
-const seen = new Set();
-
-try {
-await sleep(2000 + Math.random() * 3000);
-const { data: html } = await axios.get('https://www.amazon.com/gp/goldbox', {
-headers: randomHeaders(),
-timeout: 15000,
-});
-
-```
-const $ = cheerio.load(html);
-const cards = $("div[data-asin]").toArray();
-console.log('Found ${cards.length} candidate cards');
-
-for (const card of cards.slice(0, MAX_DEALS_PER_RUN * 3)) {
-  try {
-    const asin = $(card).attr("data-asin");
-    if (!asin || seen.has(asin)) continue;
-
-    const titleEl = $(card).find("a[aria-label], .a-size-base-plus, h2 a").first();
-    if (!titleEl.length) continue;
-    const title = titleEl.text().trim();
-
-    const dealPrice = parsePrice($(card).find(".a-price .a-offscreen, .dealPriceText").first().text());
-    const origPrice = parsePrice($(card).find(".a-text-price .a-offscreen, .originalPriceText").first().text());
-
-    if (!dealPrice || !origPrice || origPrice <= dealPrice) continue;
-    const discount = Math.round((1 - dealPrice / origPrice) * 100);
-    if (discount < MIN_DISCOUNT_PCT) continue;
-
-    const image    = $(card).find("img").first().attr("src") || "";
-    const category = $(card).find(".a-color-secondary").first().text().trim() || "General";
-    const expires  = new Date(Date.now() + 2 * 86400000).toISOString().split("T")[0];
-
-    deals.push({
-      id: asin,
-      title: title.slice(0, 120),
-      category,
-      originalPrice: origPrice,
-      dealPrice,
-      discount,
-      image,
-      affiliate_url: 'https://www.amazon.com/dp/${asin}?tag=${AFFILIATE_TAG}',
-      store: "Amazon",
-      expires,
-      hot: discount >= 40,
-      posted_at: new Date().toISOString(),
+function fetchJson(url) {
+  return new Promise((resolve, reject) => {
+    const lib = url.startsWith("https") ? https : http;
+    const req = lib.get(url, {
+      headers: { "User-Agent": "DealsPulseBot/1.0", "Accept": "application/json" }
+    }, res => {
+      if ([301, 302, 307, 308].includes(res.statusCode) && res.headers.location) {
+        return fetchJson(res.headers.location).then(resolve).catch(reject);
+      }
+      let data = "";
+      res.on("data", chunk => data += chunk);
+      res.on("end", () => {
+        try { resolve(JSON.parse(data)); }
+        catch (e) { reject(new Error("Bad JSON from " + url)); }
+      });
     });
+    req.on("error", reject);
+    req.setTimeout(15000, () => { req.destroy(); reject(new Error("Timeout")); });
+  });
+}
 
-    seen.add(asin);
-    if (deals.length >= MAX_DEALS_PER_RUN) break;
+function loadAnnounced() {
+  try {
+    return new Set(JSON.parse(fs.readFileSync(SEEN_FILE, "utf8")));
   } catch (e) {
-    // skip bad card
+    return new Set();
   }
 }
-```
 
-} catch (err) {
-console.warn('Scrape failed: ${err.message}');
-}
-
-console.log('Scraped ${deals.length} valid deals (≥${MIN_DISCOUNT_PCT}% off)');
-return deals;
-}
-
-// ── SAVE DEALS ────────────────────────────────────────────────────────────────
-function saveDeals(deals) {
-let existing = [];
-try {
-existing = JSON.parse(fs.readFileSync(DEALS_JSON_PATH, 'utf8'));
-} catch (e) {
-// file doesn’t exist yet
-}
-
-const existingIds = new Set(existing.map(d => d.id));
-const newDeals = deals.filter(d => !existingIds.has(d.id));
-
-if (!newDeals.length) {
-console.log('No new deals to save.');
-return 0;
-}
-
-const allDeals = [...newDeals, ...existing].slice(0, 100);fs.mkdirSync(path.dirname(DEALS_JSON_PATH), { recursive: true });
-fs.writeFileSync(DEALS_JSON_PATH, JSON.stringify(allDeals, null, 2));
-console.log('Saved ${newDeals.length} new deals → deals.json');
-return newDeals.length;
+function saveAnnounced(set) {
+  try {
+    fs.writeFileSync(SEEN_FILE, JSON.stringify([...set]));
+  } catch (e) {
+    console.error("Could not save announced list:", e.message);
+  }
 }
 
 // ── WHATSAPP SENDER ───────────────────────────────────────────────────────────
 async function sendToWhatsApp(deals) {
-if (!whatsappReady) {
-console.warn('WhatsApp not ready — skipping messages.');
-return;
-}
-if (!WHATSAPP_GROUPS.length) {
-console.warn('No WHATSAPP_GROUPS configured — skipping.');
-return;
-}
-
-// Get top 3 hottest deals
-const top3 = [...newDeals].sort((a, b) => b.discount - a.discount).slice(0, 3);
-
-// Find group chats by name
-const chats = await whatsapp.getChats();
-const groupChats = chats.filter(
-c => c.isGroup && WHATSAPP_GROUPS.some(name => c.name.toLowerCase().includes(name.toLowerCase()))
-);
-
-if (!groupChats.length) {
-console.warn('No matching WhatsApp groups found. Check WHATSAPP_GROUPS in .env');
-console.log('Available groups:', chats.filter(c => c.isGroup).map(c => c.name).join(', '));
-return;
-}
-
-for (const deal of top3) {
-const savings = (deal.originalPrice - deal.dealPrice).toFixed(2);
-const message =
-`🔥 *DealsPulse Alert!*\n\n` +
-`*${deal.title}*\n\n` +
-`💰 ~$${deal.originalPrice.toFixed(2)}~ → *$${deal.dealPrice.toFixed(2)}* (${deal.discount}% OFF)\n` +
-`💵 You save *$${savings}*\n\n` +
-`🛒 ${deal.affiliate_url}\n\n` +
-`⏰ Expires: ${deal.expires}\n` +
-`_Via DealsPulse · Amazon Affiliate_`;
-
-```
-for (const group of groupChats) {
-  try {
-    await group.sendMessage(message);
-    console.log('✅ Sent to group: ${group.name}');
-    await sleep(2000); // small delay between messages
-  } catch (err) {
-    console.error('Failed to send to ${group.name}: ${err.message}');
+  if (!whatsappReady) {
+    console.warn("WhatsApp not ready - skipping.");
+    return false;
   }
-}
-```
+  if (!WHATSAPP_GROUPS.length) {
+    console.warn("No WHATSAPP_GROUPS configured - skipping.");
+    return false;
+  }
 
-}
+  const chats = await whatsapp.getChats();
+  const groupChats = chats.filter(
+    c => c.isGroup && WHATSAPP_GROUPS.some(name => c.name.toLowerCase().includes(name.toLowerCase()))
+  );
+
+  if (!groupChats.length) {
+    console.warn("No matching WhatsApp groups found. Check WHATSAPP_GROUPS in .env");
+    console.log("Available groups:", chats.filter(c => c.isGroup).map(c => c.name).join(", "));
+    return false;
+  }
+
+  for (const deal of deals) {
+    const shareLink = `${SITE_BASE}/share/deal/${encodeURIComponent(deal.id)}`;
+
+    // Line 1: product name
+    let message = `*${deal.title}*\n\n`;
+
+    // Line 2: price + original price crossed out (~text~ renders as strikethrough in WhatsApp)
+    if (deal.dealPrice > 0) {
+      message += `*$${deal.dealPrice.toFixed(2)}*`;
+      if (deal.originalPrice > deal.dealPrice) {
+        message += `  ~$${deal.originalPrice.toFixed(2)}~`;
+      }
+      message += `\n\n`;
+    }
+
+    // Line 3: website link (WhatsApp auto-generates the preview from this)
+    message += `${shareLink}\n`;
+
+    // Line 4: group invite link
+    if (GROUP_LINK) {
+      message += `\nJoin for more deals: ${GROUP_LINK}`;
+    }
+
+    for (const group of groupChats) {
+      try {
+        await group.sendMessage(message);
+        console.log(`Sent: ${deal.title.slice(0, 45)} -> ${group.name}`);
+        await sleep(3000);
+      } catch (err) {
+        console.error(`Failed to send to ${group.name}: ${err.message}`);
+      }
+    }
+  }
+  return true;
 }
 
 // ── MAIN RUN ──────────────────────────────────────────────────────────────────
 async function runBot() {
-console.log('='.repeat(55));
-console.log('🤖 DealsPulse scanning at ${new Date().toLocaleTimeString()}');
+  console.log("=".repeat(55));
+  console.log(`Checking for new deals at ${new Date().toLocaleTimeString()}`);
 
-const deals = await scrapeDeals();
-if (!deals.length) {
-console.log('No qualifying deals this run.');
-return;
+  let deals;
+  try {
+    deals = await fetchJson(DEALS_URL);
+  } catch (e) {
+    console.error(`Could not fetch deals: ${e.message}`);
+    return;
+  }
+
+  if (!Array.isArray(deals) || !deals.length) {
+    console.log("No deals on site yet.");
+    return;
+  }
+
+  const announced = loadAnnounced();
+  // Work through un-announced deals oldest-first so it drips steadily
+  const unannounced = deals.filter(d => !announced.has(d.id));
+  unannounced.sort((a, b) => new Date(a.posted_at) - new Date(b.posted_at));
+  const newDeals = unannounced.slice(0, MAX_PER_RUN);
+
+  if (!newDeals.length) {
+    console.log("No new deals to announce.");
+    return;
+  }
+
+  console.log(`Found ${newDeals.length} new deal(s) to announce`);
+  const sent = await sendToWhatsApp(newDeals);
+
+  if (sent) {
+    // Mark these as announced so we never repost them
+    newDeals.forEach(d => announced.add(d.id));
+    saveAnnounced(announced);
+    console.log(`Done: announced ${newDeals.length} deal(s).`);
+  }
 }
 
-const saved = saveDeals(deals);
-if (saved) {
-await sendToWhatsApp(deals);
-}
-
-console.log('✅ Done: ${saved} new deals saved.');
+// ── FIRST-RUN SEEDING ─────────────────────────────────────────────────────────
+// On the very first run, mark all existing deals as already-announced so the bot
+// doesn't blast every old deal at once. Comment out the seeding block below if
+// you DO want it to post the current deals on first launch.
+async function seedIfFirstRun() {
+  if (fs.existsSync(SEEN_FILE)) return; // already initialized
+  try {
+    const deals = await fetchJson(DEALS_URL);
+    if (Array.isArray(deals)) {
+      const ids = deals.map(d => d.id);
+      saveAnnounced(new Set(ids));
+      console.log(`First run: marked ${ids.length} existing deals as already announced.`);
+      console.log("Future new deals will be posted to WhatsApp going forward.");
+    }
+  } catch (e) {
+    console.warn("Could not seed on first run:", e.message);
+  }
 }
 
 // ── START ─────────────────────────────────────────────────────────────────────
-console.log('🚀 DealsPulse Bot starting…');
+console.log("DealsPulse WhatsApp Bot starting...");
 whatsapp.initialize();
 
-// Wait for WhatsApp to connect then do first run
-whatsapp.once('ready', async () => {
-await runBot();
-// Schedule recurring runs
-cron.schedule(`*/${SCAN_INTERVAL_MIN} * * * *`, runBot);
-console.log(`⏰ Scheduled to run every ${SCAN_INTERVAL_MIN} minutes`);
+whatsapp.once("ready", async () => {
+  await seedIfFirstRun();
+  await runBot();
+  cron.schedule(`*/${SCAN_INTERVAL_MIN} * * * *`, runBot);
+  console.log(`Scheduled to check every ${SCAN_INTERVAL_MIN} minutes`);
 });
