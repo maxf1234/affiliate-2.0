@@ -1,5 +1,47 @@
 [
   {
+    "id": "sd_33864",
+    "title": "10-Pack Slim Clear Storage Containers",
+    "category": "General",
+    "originalPrice": 54.99,
+    "dealPrice": 30.29,
+    "discount": 45,
+    "image": "https://m.media-amazon.com/images/I/31pn-o0NdkL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B01GTX8KQ2?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-20",
+    "hot": true,
+    "posted_at": "2026-06-18T19:33:16.983Z"
+  },
+  {
+    "id": "sd_33863",
+    "title": "Apple Watch Ultra 3",
+    "category": "General",
+    "originalPrice": 799,
+    "dealPrice": 699.99,
+    "discount": 12,
+    "image": "https://m.media-amazon.com/images/I/41H6S7vjc+L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FQFHVZYL?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-23",
+    "hot": false,
+    "posted_at": "2026-06-18T19:33:16.983Z"
+  },
+  {
+    "id": "sd_33799",
+    "title": "8-Pack Kleenex Facial Tissues 200 ct.",
+    "category": "General",
+    "originalPrice": 17.49,
+    "dealPrice": 10.39,
+    "discount": 41,
+    "image": "https://m.media-amazon.com/images/I/41YktM2Bl5L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CTD2XLX5?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-21",
+    "hot": true,
+    "posted_at": "2026-06-18T19:33:16.982Z"
+  },
+  {
     "id": "sd_33859",
     "title": "74 Load ARM \\u0026 HAMMER Laundry Detergent 96 oz",
     "category": "General",
@@ -656,47 +698,5 @@
     "expires": "2026-06-20",
     "hot": true,
     "posted_at": "2026-06-18T02:08:02.411Z"
-  },
-  {
-    "id": "sd_33739",
-    "title": "Monopoly App-Enabled Game",
-    "category": "Toys & Games",
-    "originalPrice": 24.99,
-    "dealPrice": 4.49,
-    "discount": 82,
-    "image": "https://m.media-amazon.com/images/I/51+PaYY6S8L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DN39W4ZB?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T02:08:02.411Z"
-  },
-  {
-    "id": "sd_33793",
-    "title": "Hamilton Beach Chest Freezer 7 Cu Ft Capacity",
-    "category": "General",
-    "originalPrice": 295,
-    "dealPrice": 211.99,
-    "discount": 28,
-    "image": "https://m.media-amazon.com/images/I/31u57YDxIML._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0C1M7VPWB?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T02:08:02.410Z"
-  },
-  {
-    "id": "sd_33800",
-    "title": "Apple AirPods Pro 3",
-    "category": "Electronics",
-    "originalPrice": 249,
-    "dealPrice": 160.55,
-    "discount": 36,
-    "image": "https://m.media-amazon.com/images/I/218Mmzk0EaL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FQFB8FMG?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T02:08:02.409Z"
   }
 ]
