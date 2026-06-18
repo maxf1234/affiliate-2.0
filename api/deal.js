@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
   }
  
   const siteUrl = "https://" + req.headers.host;
-  const dealUrl = siteUrl + "/share/deal/" + encodeURIComponent(deal.id);
+  const dealUrl = siteUrl + "/#/deal/" + encodeURIComponent(deal.id);
   const title = deal.title + " - " + (deal.dealPrice > 0 ? "$" + deal.dealPrice.toFixed(2) : "Great Deal") + " | DealsPulse";
   const description = (deal.discount > 0 ? deal.discount + "% OFF! " : "") +
     (deal.originalPrice > 0 ? "Was $" + deal.originalPrice.toFixed(2) + ", now $" + deal.dealPrice.toFixed(2) + ". " : "") +
