@@ -33,7 +33,8 @@ module.exports = async (req, res) => {
   }
  
   const siteUrl = "https://" + req.headers.host;
-  const dealUrl = siteUrl + "/#/deal/" + encodeURIComponent(deal.id);
+  const shareUrl = siteUrl + "/share/deal/" + encodeURIComponent(deal.id);
+  const hashUrl = siteUrl + "/#/deal/" + encodeURIComponent(deal.id);
   const title = deal.title + " - " + (deal.dealPrice > 0 ? "$" + deal.dealPrice.toFixed(2) : "Great Deal") + " | DealsPulse";
   const description = (deal.discount > 0 ? deal.discount + "% OFF! " : "") +
     (deal.originalPrice > 0 ? "Was $" + deal.originalPrice.toFixed(2) + ", now $" + deal.dealPrice.toFixed(2) + ". " : "") +
@@ -48,14 +49,14 @@ module.exports = async (req, res) => {
   <title>${title}</title>
   <meta name="description" content="${description}" />
  
-  <!-- Open Graph (WhatsApp, Facebook) -->
+  <!-- Open Graph (WhatsApp, Facebook) — use share URL for crawlers -->
   <meta property="og:type" content="product" />
   <meta property="og:title" content="${title}" />
   <meta property="og:description" content="${description}" />
   <meta property="og:image" content="${image}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="${dealUrl}" />
+  <meta property="og:url" content="${shareUrl}" />
   <meta property="og:site_name" content="DealsPulse" />
  
   <!-- Twitter -->
@@ -64,12 +65,12 @@ module.exports = async (req, res) => {
   <meta name="twitter:description" content="${description}" />
   <meta name="twitter:image" content="${image}" />
  
-  <!-- Redirect to the actual deal page after crawlers have read the meta tags -->
-  <meta http-equiv="refresh" content="0;url=${dealUrl}" />
-  <script>window.location.href = "${dealUrl}";</script>
+  <!-- Redirect to the hash-based URL after crawlers have read the meta tags -->
+  <meta http-equiv="refresh" content="0;url=${hashUrl}" />
+  <script>window.location.href = "${hashUrl}";</script>
 </head>
 <body>
-  <p>Redirecting to deal... <a href="${dealUrl}">Click here</a></p>
+  <p>Redirecting to deal... <a href="${hashUrl}">Click here</a></p>
 </body>
 </html>`);
 };
