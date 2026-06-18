@@ -135,30 +135,31 @@ async function sendToWhatsApp(deals) {
   for (const deal of deals) {
     const shareLink = `${SITE_BASE}/share/deal/${encodeURIComponent(deal.id)}`;
 
-    // Line 1: product name
-    let message = `*${deal.title}*\n\n`;
-
-    // Line 2: price + original price crossed out (~text~ renders as strikethrough in WhatsApp)
+    // Put the share link FIRST so WhatsApp previews it with the product image
+    let message = `${shareLink}\n\n`;
+    message += `*${deal.title}*\n\n`;
     if (deal.dealPrice > 0) {
       message += `*$${deal.dealPrice.toFixed(2)}*`;
       if (deal.originalPrice > deal.dealPrice) {
         message += `  ~$${deal.originalPrice.toFixed(2)}~`;
       }
-      message += `\n\n`;
-    }
-
-    // Line 3: website link (WhatsApp auto-generates the preview from this)
-    message += `${shareLink}\n`;
-
-    // Line 4: group invite link
-    if (GROUP_LINK) {
-      message += `\nJoin for more deals: ${GROUP_LINK}`;
+      message += `\n`;
     }
 
     for (const group of groupChats) {
       try {
-        await group.sendMessage(message);
+        await group.sendMessage(message, { linkPreview: true });
         console.log(`Sent: ${deal.title.slice(0, 45)} -> ${group.name}`);
+
+        // Send group invite as separate message every 5th deal
+        if (GROUP_LINK) {
+          const announced = loadAnnounced();
+          if (announced.size % 5 === 0) {
+            await sleep(1000);
+            await group.sendMessage(`Join for more deals: ${GROUP_LINK}`);
+          }
+        }
+
         await sleep(3000);
       } catch (err) {
         console.error(`Failed to send to ${group.name}: ${err.message}`);
