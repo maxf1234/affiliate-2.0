@@ -2,7 +2,7 @@ name: DealsPulse Bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '0 * * * *'   # once an hour, on the hour
 jobs:
   run-bot:
     runs-on: ubuntu-latest
@@ -16,6 +16,7 @@ jobs:
       - run: cd bot && node bot_actions.js
         env:
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
+          MAX_DEALS_PER_RUN: '25'
       - run: |
           git config user.name "DealsPulse Bot"
           git config user.email "bot@dealspulse.com"
@@ -24,4 +25,3 @@ jobs:
           git push
       - name: Trigger Vercel redeploy
         run: curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_ORo4O4shiKWVNnQGO8butlHKugDy/JJwu21OuCu"
- 
