@@ -21,8 +21,8 @@ const qrcode = require("qrcode-terminal");
 
 // ── CONFIG ────────────────────────────────────────────────────────────────────
 const IS_MAC            = process.platform === "darwin";
-const DEALS_URL         = process.env.DEALS_URL || "https://affilate-marketing-20.vercel.app/deals.json";
-const SITE_BASE         = process.env.SITE_BASE || "https://affilate-marketing-20.vercel.app";
+const DEALS_URL         = process.env.DEALS_URL || "https://affilate-2-0.vercel.app/deals.json";
+const SITE_BASE         = process.env.SITE_BASE || "https://affilate-2-0.vercel.app";
 const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || "60");
 const MAX_PER_RUN       = parseInt(process.env.MAX_DEALS_PER_RUN || "1"); // post one deal per run
 const SEEN_FILE         = IS_MAC ? path.join(__dirname, "announced.json") : "/data/announced.json";
@@ -156,8 +156,8 @@ async function sendToWhatsApp(deals) {
     }
 
     for (const group of groupChats) {
-      try {        
-        await group.sendMessage(message, { linkPreview: true });
+      try {
+        await group.sendMessage(message);
         console.log(`Sent: ${deal.title.slice(0, 45)} -> ${group.name}`);
         await sleep(3000);
       } catch (err) {
