@@ -156,10 +156,8 @@ async function sendToWhatsApp(deals) {
     }
 
     for (const group of groupChats) {
-      try {
-        
+      try {        
         await group.sendMessage(message, { linkPreview: true });
-        await sleep(3000);
         console.log(`Sent: ${deal.title.slice(0, 45)} -> ${group.name}`);
         await sleep(3000);
       } catch (err) {
