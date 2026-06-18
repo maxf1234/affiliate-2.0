@@ -19,7 +19,7 @@ const cron = require("node-cron");
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 
-// ── CONFIG ────────────────────────────────────────────────────────────────────
+// ── CONFIG ─────────────────────────────────────────────────────────────
 const IS_MAC            = process.platform === "darwin";
 const DEALS_URL         = process.env.DEALS_URL || "https://affilate-marketing-20.vercel.app/deals.json";
 const SITE_BASE         = process.env.SITE_BASE || "https://affilate-marketing-20.vercel.app";
@@ -29,7 +29,7 @@ const SEEN_FILE         = IS_MAC ? path.join(__dirname, "announced.json") : "/da
 const WHATSAPP_GROUPS   = (process.env.WHATSAPP_GROUPS || "").split(",").map(g => g.trim()).filter(Boolean);
 const GROUP_LINK        = process.env.GROUP_LINK || ""; // your WhatsApp group invite link (https://chat.whatsapp.com/...)
 
-// ── WHATSAPP CLIENT ───────────────────────────────────────────────────────────
+// ── WHATSAPP CLIENT ──────────────────────────────────────────────────────────
 const SESSION_PATH = process.env.SESSION_PATH || (IS_MAC ? undefined : "/data/wwebjs_auth");
 
 const whatsapp = new Client({
@@ -68,7 +68,7 @@ whatsapp.on("disconnected", () => {
   whatsapp.initialize();
 });
 
-// ── HELPERS ───────────────────────────────────────────────────────────────────
+// ── HELPERS ─────────────────────────────────────────────────────────────
 function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
@@ -110,7 +110,7 @@ function saveAnnounced(set) {
   }
 }
 
-// ── WHATSAPP SENDER ───────────────────────────────────────────────────────────
+// ── WHATSAPP SENDER ──────────────────────────────────────────────────────────
 async function sendToWhatsApp(deals) {
   if (!whatsappReady) {
     console.warn("WhatsApp not ready - skipping.");
@@ -156,8 +156,10 @@ async function sendToWhatsApp(deals) {
     }
 
     for (const group of groupChats) {
-      try {        
-        await group.sendMessage(message, { linkPreview: true });
+      try {
+        // Send image first
+        const imageUrl = deal.image || "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80";
+        await group.sendMessage(imageUrl, { sendMediaAsDocument: false, caption: message });
         console.log(`Sent: ${deal.title.slice(0, 45)} -> ${group.name}`);
         await sleep(3000);
       } catch (err) {
@@ -168,7 +170,7 @@ async function sendToWhatsApp(deals) {
   return true;
 }
 
-// ── MAIN RUN ──────────────────────────────────────────────────────────────────
+// ── MAIN RUN ────────────────────────────────────────────────────────────
 async function runBot() {
   console.log("=".repeat(55));
   console.log(`Checking for new deals at ${new Date().toLocaleTimeString()}`);
@@ -218,7 +220,7 @@ async function seedIfFirstRun() {
   console.log("First run: starting fresh. Will post existing deals one per hour, oldest first.");
 }
 
-// ── START ─────────────────────────────────────────────────────────────────────
+// ── START ─────────────────────────────────────────────────────────────
 console.log("DealsPulse WhatsApp Bot starting...");
 whatsapp.initialize();
 
