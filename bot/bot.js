@@ -209,22 +209,13 @@ async function runBot() {
 }
 
 // ── FIRST-RUN SEEDING ─────────────────────────────────────────────────────────
-// On the very first run, mark all existing deals as already-announced so the bot
-// doesn't blast every old deal at once. Comment out the seeding block below if
-// you DO want it to post the current deals on first launch.
+// On the very first run we DON'T mark everything as announced — we want the bot
+// to drip out the existing backlog one per hour. We just create an empty seen
+// file so the seeding only happens once.
 async function seedIfFirstRun() {
   if (fs.existsSync(SEEN_FILE)) return; // already initialized
-  try {
-    const deals = await fetchJson(DEALS_URL);
-    if (Array.isArray(deals)) {
-      const ids = deals.map(d => d.id);
-      saveAnnounced(new Set(ids));
-      console.log(`First run: marked ${ids.length} existing deals as already announced.`);
-      console.log("Future new deals will be posted to WhatsApp going forward.");
-    }
-  } catch (e) {
-    console.warn("Could not seed on first run:", e.message);
-  }
+  saveAnnounced(new Set());
+  console.log("First run: starting fresh. Will post existing deals one per hour, oldest first.");
 }
 
 // ── START ─────────────────────────────────────────────────────────────────────
