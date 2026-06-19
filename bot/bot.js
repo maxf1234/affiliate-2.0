@@ -135,31 +135,41 @@ async function sendToWhatsApp(deals) {
   for (const deal of deals) {
     const shareLink = `${SITE_BASE}/share/deal/${encodeURIComponent(deal.id)}`;
 
-    // Put the share link FIRST so WhatsApp previews it with the product image
-    let message = `${shareLink}\n\n`;
-    message += `*${deal.title}*\n\n`;
+    // Build caption text
+    let caption = `*${deal.title}*\n\n`;
     if (deal.dealPrice > 0) {
-      message += `*$${deal.dealPrice.toFixed(2)}*`;
+      caption += `*$${deal.dealPrice.toFixed(2)}*`;
       if (deal.originalPrice > deal.dealPrice) {
-        message += `  ~$${deal.originalPrice.toFixed(2)}~`;
+        caption += `  ~$${deal.originalPrice.toFixed(2)}~`;
       }
-      message += `\n`;
+      caption += `\n\n`;
+    }
+    caption += shareLink;
+    if (GROUP_LINK) {
+      caption += `\n\nJoin for more deals: ${GROUP_LINK}`;
     }
 
     for (const group of groupChats) {
       try {
-        await group.sendMessage(message, { linkPreview: true });
-        console.log(`Sent: ${deal.title.slice(0, 45)} -> ${group.name}`);
-
-        // Send group invite as separate message every 5th deal
-        if (GROUP_LINK) {
-          const announced = loadAnnounced();
-          if (announced.size % 5 === 0) {
-            await sleep(1000);
-            await group.sendMessage(`Join for more deals: ${GROUP_LINK}`);
+        // Try to send as image with caption (guaranteed visible image)
+        let sent = false;
+        if (deal.image && deal.image.startsWith("http")) {
+          try {
+            const { MessageMedia } = require("whatsapp-web.js");
+            const media = await MessageMedia.fromUrl(deal.image, { unsafeMime: true });
+            await group.sendMessage(media, { caption });
+            sent = true;
+          } catch (imgErr) {
+            console.warn(`Image send failed, falling back to text: ${imgErr.message}`);
           }
         }
 
+        // Fallback: send as plain text if image failed
+        if (!sent) {
+          await group.sendMessage(caption);
+        }
+
+        console.log(`Sent: ${deal.title.slice(0, 45)} -> ${group.name}`);
         await sleep(3000);
       } catch (err) {
         console.error(`Failed to send to ${group.name}: ${err.message}`);
