@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_33901",
+    "title": "Radio Flyer Kids Scooter",
+    "category": "General",
+    "originalPrice": 39.99,
+    "dealPrice": 31.57,
+    "discount": 21,
+    "image": "https://m.media-amazon.com/images/I/41-J8CfjBGL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B01MY4UCUK?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-21",
+    "hot": false,
+    "posted_at": "2026-06-19T21:16:24.820Z"
+  },
+  {
     "id": "sd_33900",
     "title": "Kenneth Cole Reversible Leather Belt",
     "category": "General",
@@ -680,20 +694,6 @@
     "discount": 40,
     "image": "https://m.media-amazon.com/images/I/41Q+mB3uq-L._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B0014D2B2C?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T18:00:31.033Z"
-  },
-  {
-    "id": "sd_33853",
-    "title": "Ring Wired 2k Smart Doorbell",
-    "category": "General",
-    "originalPrice": 79.99,
-    "dealPrice": 39.99,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/21KBNCZcR8L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FJJ66YZ1?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-06-20",
     "hot": true,
