@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_33848",
+    "title": "Tylenol Extra Strength Caplets 100 Count",
+    "category": "General",
+    "originalPrice": 0,
+    "dealPrice": 6.58,
+    "discount": 0,
+    "image": "https://m.media-amazon.com/images/I/41XUNM5N83L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B01J24FMIE?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-21",
+    "hot": false,
+    "posted_at": "2026-06-19T15:16:24.214Z"
+  },
+  {
     "id": "sd_33878",
     "title": "Flybar Jolt Pogo Stick",
     "category": "General",
@@ -684,19 +698,5 @@
     "expires": "2026-06-23",
     "hot": true,
     "posted_at": "2026-06-18T16:00:44.975Z"
-  },
-  {
-    "id": "sd_33849",
-    "title": "Homedics White Noise Sound Machine",
-    "category": "General",
-    "originalPrice": 23.99,
-    "dealPrice": 16.79,
-    "discount": 30,
-    "image": "https://m.media-amazon.com/images/I/41KbxE0e-eS._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B07DDJFF1F?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T16:00:44.974Z"
   }
 ]
