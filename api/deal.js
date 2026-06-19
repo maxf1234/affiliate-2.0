@@ -42,13 +42,18 @@ module.exports = async (req, res) => {
   const shareUrl = siteUrl + "/share/deal/" + encodeURIComponent(deal.id);
   const hashUrl = siteUrl + "/#/deal/" + encodeURIComponent(deal.id);
 
+  // Compute savings for display
+  const hasSavings = deal.originalPrice > 0 && deal.originalPrice > deal.dealPrice && deal.dealPrice > 0;
+  const savings = hasSavings ? (deal.originalPrice - deal.dealPrice).toFixed(2) : null;
+  const pctOff = hasSavings ? Math.round((1 - deal.dealPrice / deal.originalPrice) * 100) : null;
+
+  const priceStr = deal.dealPrice > 0 ? "$" + deal.dealPrice.toFixed(2) : "Great Deal";
   const title = escapeHtml(
-    deal.title + " - " + (deal.dealPrice > 0 ? "$" + deal.dealPrice.toFixed(2) : "Great Deal") + " | DealsPulse"
+    "\uD83D\uDD25 " + deal.title + " \u2013 " + priceStr
   );
   const description = escapeHtml(
-    (deal.discount > 0 ? deal.discount + "% OFF! " : "") +
-    (deal.originalPrice > 0 ? "Was $" + deal.originalPrice.toFixed(2) + ", now $" + deal.dealPrice.toFixed(2) + ". " : "") +
-    "Shop this deal on Amazon via DealsPulse."
+    (hasSavings ? "Save $" + savings + " (" + pctOff + "% OFF). " : "") +
+    "Tap to view the deal."
   );
 
   // Use the real product image, but route it through our own image proxy so
