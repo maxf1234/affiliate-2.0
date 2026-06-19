@@ -1,5 +1,33 @@
 [
   {
+    "id": "sd_33874",
+    "title": "Philips Electric Toothbrush with Pressure Sensor",
+    "category": "General",
+    "originalPrice": 109.99,
+    "dealPrice": 59.96,
+    "discount": 45,
+    "image": "https://m.media-amazon.com/images/I/41XTqKIyLfL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0GQWSKBLD?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-21",
+    "hot": true,
+    "posted_at": "2026-06-19T04:00:30.626Z"
+  },
+  {
+    "id": "sd_33873",
+    "title": "20-Piece latware Set Service for 4",
+    "category": "General",
+    "originalPrice": 34.68,
+    "dealPrice": 19.97,
+    "discount": 42,
+    "image": "https://m.media-amazon.com/images/I/31FMIvaKYEL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B08778JRSQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-21",
+    "hot": true,
+    "posted_at": "2026-06-19T04:00:30.626Z"
+  },
+  {
     "id": "sd_33871",
     "title": "Ninja DualBrew Pro Coffee Maker with Frother",
     "category": "Home & Kitchen",
@@ -670,33 +698,5 @@
     "expires": "2026-06-20",
     "hot": true,
     "posted_at": "2026-06-18T14:00:39.429Z"
-  },
-  {
-    "id": "sd_33814",
-    "title": "Cuisinart Air Fryer Oven 15-in-1 Extra Large",
-    "category": "Home & Kitchen",
-    "originalPrice": 299.95,
-    "dealPrice": 149.95,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/41SqfaVcNtL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FPP4RCV3?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T14:00:39.429Z"
-  },
-  {
-    "id": "sd_33830",
-    "title": "BELLA Rapid Egg Cooker",
-    "category": "Home & Kitchen",
-    "originalPrice": 15.99,
-    "dealPrice": 11.19,
-    "discount": 30,
-    "image": "https://m.media-amazon.com/images/I/31GG6O1Pm1S._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B08P26DYTJ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-18",
-    "hot": true,
-    "posted_at": "2026-06-18T14:00:39.428Z"
   }
 ]
