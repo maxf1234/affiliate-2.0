@@ -135,18 +135,26 @@ async function sendToWhatsApp(deals) {
   for (const deal of deals) {
     const shareLink = `${SITE_BASE}/share/deal/${encodeURIComponent(deal.id)}`;
 
-    // Build caption text
-    let caption = `*${deal.title}*\n\n`;
+    // Compute savings
+    const hasSavings = deal.originalPrice > 0 && deal.originalPrice > deal.dealPrice && deal.dealPrice > 0;
+    const savings = hasSavings ? (deal.originalPrice - deal.dealPrice).toFixed(2) : null;
+    const pctOff = hasSavings ? Math.round((1 - deal.dealPrice / deal.originalPrice) * 100) : null;
+
+    // Build caption
+    let caption = `🔥 HOT DEAL\n\n`;
+    caption += `📦 *${deal.title}*\n\n`;
     if (deal.dealPrice > 0) {
-      caption += `*$${deal.dealPrice.toFixed(2)}*`;
-      if (deal.originalPrice > deal.dealPrice) {
-        caption += `  ~$${deal.originalPrice.toFixed(2)}~`;
+      caption += `💲 *Now:* $${deal.dealPrice.toFixed(2)}\n`;
+      if (hasSavings) {
+        caption += `🏷️ Was: ~$${deal.originalPrice.toFixed(2)}~\n`;
+        caption += `💸 Save $${savings} (${pctOff}% OFF)\n`;
       }
-      caption += `\n\n`;
+      caption += `\n`;
     }
-    caption += shareLink;
+    caption += `🛒 *Grab it here:*\n${shareLink}\n\n`;
+    caption += `━━━━━━━━━━━━━━\n\n`;
     if (GROUP_LINK) {
-      caption += `\n\nJoin for more deals: ${GROUP_LINK}`;
+      caption += `📲 *Join DealsPulse for more daily deals:*\n${GROUP_LINK}`;
     }
 
     for (const group of groupChats) {
