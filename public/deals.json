@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_33891",
+    "title": "3 Pack TRESemmé Rich Moisture Hydrating Shampoo 28 oz",
+    "category": "Beauty",
+    "originalPrice": 17.97,
+    "dealPrice": 10.51,
+    "discount": 42,
+    "image": "https://m.media-amazon.com/images/I/61bMZm4Cq9L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B08BTMXSG6?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-25",
+    "hot": true,
+    "posted_at": "2026-06-19T15:18:05.523Z"
+  },
+  {
     "id": "sd_33848",
     "title": "Tylenol Extra Strength Caplets 100 Count",
     "category": "General",
@@ -682,20 +696,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GGLXDQM8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T16:00:44.975Z"
-  },
-  {
-    "id": "sd_33840",
-    "title": "Propane Gas Grill",
-    "category": "Home & Kitchen",
-    "originalPrice": 279.99,
-    "dealPrice": 223.99,
-    "discount": 20,
-    "image": "https://m.media-amazon.com/images/I/41qyj+IN0KL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DXF98H6M?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-23",
     "hot": true,
     "posted_at": "2026-06-18T16:00:44.975Z"
   }
