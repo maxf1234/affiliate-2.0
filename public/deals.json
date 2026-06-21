@@ -1,5 +1,47 @@
 [
   {
+    "id": "sd_33799",
+    "title": "8-Pack Kleenex Facial Tissues 200 ct.",
+    "category": "General",
+    "originalPrice": 17.49,
+    "dealPrice": 10.39,
+    "discount": 41,
+    "image": "https://m.media-amazon.com/images/I/41YktM2Bl5L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CTD2XLX5?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-21",
+    "hot": true,
+    "posted_at": "2026-06-21T06:01:46.938Z"
+  },
+  {
+    "id": "sd_33919",
+    "title": "Elite Gourmet Slim Portable Induction Cooktop",
+    "category": "Furniture",
+    "originalPrice": 59.99,
+    "dealPrice": 27.99,
+    "discount": 53,
+    "image": "https://m.media-amazon.com/images/I/51SOrDxgq9L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0G1VYXTJR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-23",
+    "hot": true,
+    "posted_at": "2026-06-21T06:01:46.938Z"
+  },
+  {
+    "id": "sd_33918",
+    "title": "Rubbermaid Brilliance 14 Piece Food Storage Containers",
+    "category": "General",
+    "originalPrice": 39.99,
+    "dealPrice": 27.99,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/51dezbmpBDL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B07X1TMQ34?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-23",
+    "hot": true,
+    "posted_at": "2026-06-21T06:01:46.938Z"
+  },
+  {
     "id": "sd_33908",
     "title": "Blink 4-Camera System Video Doorbell with Extended Range",
     "category": "Electronics",
@@ -656,47 +698,5 @@
     "expires": "2026-06-23",
     "hot": true,
     "posted_at": "2026-06-19T00:27:05.023Z"
-  },
-  {
-    "id": "sd_33733",
-    "title": "BLACK+DECKER 5-in-1 Microwave Oven",
-    "category": "Home & Kitchen",
-    "originalPrice": 180.99,
-    "dealPrice": 101.99,
-    "discount": 44,
-    "image": "https://m.media-amazon.com/images/I/31tCS1PaA+L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DY11H2PJ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T22:08:51.163Z"
-  },
-  {
-    "id": "sd_33760",
-    "title": "FDW 6 Foot Folding Table",
-    "category": "Furniture",
-    "originalPrice": 57.99,
-    "dealPrice": 41.9,
-    "discount": 28,
-    "image": "https://m.media-amazon.com/images/I/31NJtJKRozL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DQP1BJSH?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T22:08:51.162Z"
-  },
-  {
-    "id": "sd_33718",
-    "title": "Get 3 for the price of 2 on Dove!",
-    "category": "General",
-    "originalPrice": 129.95,
-    "dealPrice": 64.99,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/31qjMfNJ4xL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/promotion/psp/A2YOZ3CWGJHH95?redirectAsin=B00SK71SAG&redirectMerchantId=ATVPDKIKX0DER&linkCode=ll2&tag=maxdeals062-20&linkId=25218e688c7dac6e25c98703a1b20d50&language=en_US&ref_=as_li_ss_tl",
-    "store": "Amazon",
-    "expires": "2026-06-20",
-    "hot": true,
-    "posted_at": "2026-06-18T22:00:29.501Z"
   }
 ]
