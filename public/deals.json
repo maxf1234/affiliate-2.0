@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_33994",
+    "title": "Amazon Basics50-Pack 30-Gal Trash Bags",
+    "category": "General",
+    "originalPrice": 11.73,
+    "dealPrice": 6.77,
+    "discount": 42,
+    "image": "https://m.media-amazon.com/images/I/41T4XAqizDL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B095PL2MPZ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-23",
+    "hot": true,
+    "posted_at": "2026-06-21T21:14:18.651Z"
+  },
+  {
     "id": "sd_33990",
     "title": "GE Cync Smart Indoor Plug",
     "category": "General",
@@ -680,20 +694,6 @@
     "discount": 40,
     "image": "https://m.media-amazon.com/images/I/41Ovm9RLi0L._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B0BV158K8M?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-23",
-    "hot": true,
-    "posted_at": "2026-06-21T10:00:31.710Z"
-  },
-  {
-    "id": "sd_33929",
-    "title": "U.S. Traveler 2 Piece Expandable Hardside Luggage Set",
-    "category": "Home & Kitchen",
-    "originalPrice": 159.99,
-    "dealPrice": 85.91,
-    "discount": 46,
-    "image": "https://m.media-amazon.com/images/I/41HW2kRIXoL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B085B42CZM?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-06-23",
     "hot": true,
