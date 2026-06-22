@@ -1,5 +1,33 @@
 [
   {
+    "id": "sd_33872",
+    "title": "Sound Machine with Alarm Clock",
+    "category": "General",
+    "originalPrice": 24.99,
+    "dealPrice": 8.64,
+    "discount": 65,
+    "image": "https://m.media-amazon.com/images/I/41j2HxoRdrL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FCXTS3KP?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-23",
+    "hot": true,
+    "posted_at": "2026-06-22T10:00:32.439Z"
+  },
+  {
+    "id": "sd_33760",
+    "title": "FDW 6 Foot Folding Table",
+    "category": "Furniture",
+    "originalPrice": 57.99,
+    "dealPrice": 41.9,
+    "discount": 28,
+    "image": "https://m.media-amazon.com/images/I/31NJtJKRozL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DQP1BJSH?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-24",
+    "hot": true,
+    "posted_at": "2026-06-22T10:00:32.439Z"
+  },
+  {
     "id": "sd_33875",
     "title": "2 Pack Head \\u0026 Shoulders Shampoo 32.1 oz",
     "category": "Beauty",
@@ -670,33 +698,5 @@
     "expires": "2026-06-26",
     "hot": true,
     "posted_at": "2026-06-21T15:51:33.970Z"
-  },
-  {
-    "id": "sd_33933",
-    "title": "Apple AirPods Pro 3",
-    "category": "Electronics",
-    "originalPrice": 249,
-    "dealPrice": 169,
-    "discount": 32,
-    "image": "https://m.media-amazon.com/images/I/218Mmzk0EaL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FQFB8FMG?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-23",
-    "hot": true,
-    "posted_at": "2026-06-21T15:51:33.970Z"
-  },
-  {
-    "id": "sd_33973",
-    "title": "Sketchers Glide Step Vortex Sneakers",
-    "category": "Fashion",
-    "originalPrice": 70,
-    "dealPrice": 47.99,
-    "discount": 31,
-    "image": "https://m.media-amazon.com/images/I/41oHIbWaDDL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FLT5DS1Y?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-23",
-    "hot": true,
-    "posted_at": "2026-06-21T15:51:33.969Z"
   }
 ]
