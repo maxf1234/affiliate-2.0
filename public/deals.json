@@ -1,5 +1,33 @@
 [
   {
+    "id": "sd_33933",
+    "title": "Apple AirPods Pro 3",
+    "category": "Electronics",
+    "originalPrice": 249,
+    "dealPrice": 169,
+    "discount": 32,
+    "image": "https://m.media-amazon.com/images/I/218Mmzk0EaL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FQFB8FMG?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-24",
+    "hot": true,
+    "posted_at": "2026-06-22T10:38:00.488Z"
+  },
+  {
+    "id": "sd_33973",
+    "title": "Sketchers Glide Step Vortex Sneakers",
+    "category": "Fashion",
+    "originalPrice": 70,
+    "dealPrice": 47.99,
+    "discount": 31,
+    "image": "https://m.media-amazon.com/images/I/41oHIbWaDDL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FLT5DS1Y?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-24",
+    "hot": true,
+    "posted_at": "2026-06-22T10:38:00.487Z"
+  },
+  {
     "id": "sd_33872",
     "title": "Sound Machine with Alarm Clock",
     "category": "General",
@@ -670,33 +698,5 @@
     "expires": "2026-06-23",
     "hot": true,
     "posted_at": "2026-06-21T15:51:33.972Z"
-  },
-  {
-    "id": "sd_33972",
-    "title": "Amazon Essentials Cotton Blend Henley Sweater",
-    "category": "General",
-    "originalPrice": 17,
-    "dealPrice": 11.9,
-    "discount": 30,
-    "image": "https://m.media-amazon.com/images/I/31YodJIld6L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B08TVMG5XT?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-23",
-    "hot": true,
-    "posted_at": "2026-06-21T15:51:33.971Z"
-  },
-  {
-    "id": "sd_33941",
-    "title": "INIU Ultra Compact Power Bank 10000mAh",
-    "category": "General",
-    "originalPrice": 24.99,
-    "dealPrice": 11.46,
-    "discount": 54,
-    "image": "https://m.media-amazon.com/images/I/41gj0bu0vFL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DC9PV394?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-26",
-    "hot": true,
-    "posted_at": "2026-06-21T15:51:33.970Z"
   }
 ]
