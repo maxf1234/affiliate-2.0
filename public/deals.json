@@ -1,5 +1,33 @@
 [
   {
+    "id": "sd_34284",
+    "title": "Utopia Home Steam Iron 1200W",
+    "category": "General",
+    "originalPrice": 21.99,
+    "dealPrice": 8.99,
+    "discount": 59,
+    "image": "https://m.media-amazon.com/images/I/41Yw2B+rLOL._SL500_.jpg",
+    "affiliate_url": "https://amzn.to/4xLHz6m",
+    "store": "Amazon",
+    "expires": "2026-06-26",
+    "hot": true,
+    "posted_at": "2026-06-23T22:13:22.819Z"
+  },
+  {
+    "id": "sd_34152",
+    "title": "Rowenta 1800W Professional Steam Station",
+    "category": "General",
+    "originalPrice": 349.95,
+    "dealPrice": 279.99,
+    "discount": 20,
+    "image": "https://m.media-amazon.com/images/I/41aopTfBjzL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B084JBZPLG?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-25",
+    "hot": true,
+    "posted_at": "2026-06-23T22:13:22.817Z"
+  },
+  {
     "id": "sd_34278",
     "title": "2 AXE Body Spray Midnight Amber 2.9 oz + $8 Amazon Credit",
     "category": "General",
@@ -669,34 +697,6 @@
     "store": "Amazon",
     "expires": "2026-06-25",
     "hot": true,
-    "posted_at": "2026-06-23T15:48:31.416Z"
-  },
-  {
-    "id": "sd_34209",
-    "title": "Lenovo Idea Tab 11\\\\",
-    "category": "General",
-    "originalPrice": 212.5,
-    "dealPrice": 139.99,
-    "discount": 34,
-    "image": "https://m.media-amazon.com/images/I/31VJf6AnybL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FGYCJ7NJ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-25",
-    "hot": true,
-    "posted_at": "2026-06-23T15:48:31.416Z"
-  },
-  {
-    "id": "sd_34207",
-    "title": "Breville Smart Oven Air Fryer",
-    "category": "Home & Kitchen",
-    "originalPrice": 399.95,
-    "dealPrice": 319.95,
-    "discount": 20,
-    "image": "https://m.media-amazon.com/images/I/41TRpr3DNlL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B01N5UPTZS?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-27",
-    "hot": false,
     "posted_at": "2026-06-23T15:48:31.416Z"
   }
 ]
