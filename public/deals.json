@@ -1,5 +1,47 @@
 [
   {
+    "id": "sd_30556",
+    "title": "12 Double Rolls = 24 Regular Sparkle Paper Towels",
+    "category": "Home & Kitchen",
+    "originalPrice": 31.72,
+    "dealPrice": 13.94,
+    "discount": 56,
+    "image": "https://m.media-amazon.com/images/I/51wYCCH7a1L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FN5154SV?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-25",
+    "hot": true,
+    "posted_at": "2026-06-23T09:39:13.481Z"
+  },
+  {
+    "id": "sd_33872",
+    "title": "Sound Machine with Alarm Clock",
+    "category": "General",
+    "originalPrice": 24.99,
+    "dealPrice": 8.64,
+    "discount": 65,
+    "image": "https://m.media-amazon.com/images/I/41j2HxoRdrL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FCXTS3KP?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-23",
+    "hot": true,
+    "posted_at": "2026-06-23T09:39:13.479Z"
+  },
+  {
+    "id": "sd_33973",
+    "title": "Sketchers Glide Step Vortex Sneakers",
+    "category": "Fashion",
+    "originalPrice": 70,
+    "dealPrice": 47.99,
+    "discount": 31,
+    "image": "https://m.media-amazon.com/images/I/41oHIbWaDDL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FLT5DS1Y?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-25",
+    "hot": true,
+    "posted_at": "2026-06-23T09:39:13.478Z"
+  },
+  {
     "id": "sd_33760",
     "title": "FDW 6 Foot Folding Table",
     "category": "Furniture",
@@ -656,47 +698,5 @@
     "expires": "2026-06-24",
     "hot": true,
     "posted_at": "2026-06-22T15:52:01.154Z"
-  },
-  {
-    "id": "sd_33941",
-    "title": "INIU Ultra Compact Power Bank 10000mAh",
-    "category": "General",
-    "originalPrice": 24.99,
-    "dealPrice": 11.46,
-    "discount": 54,
-    "image": "https://m.media-amazon.com/images/I/41gj0bu0vFL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DC9PV394?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-26",
-    "hot": true,
-    "posted_at": "2026-06-22T15:52:01.153Z"
-  },
-  {
-    "id": "sd_34011",
-    "title": "Razor Jr. Lil' Kick Scooter",
-    "category": "General",
-    "originalPrice": 39.94,
-    "dealPrice": 19.97,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/41t+KgrlPIL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B01EM4MJCG?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-24",
-    "hot": true,
-    "posted_at": "2026-06-22T15:52:01.152Z"
-  },
-  {
-    "id": "sd_33933",
-    "title": "Apple AirPods Pro 3",
-    "category": "Electronics",
-    "originalPrice": 249,
-    "dealPrice": 169,
-    "discount": 32,
-    "image": "https://m.media-amazon.com/images/I/218Mmzk0EaL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FQFB8FMG?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-24",
-    "hot": true,
-    "posted_at": "2026-06-22T10:38:00.488Z"
   }
 ]
