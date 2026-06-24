@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34271",
+    "title": "Skechers Go Walk Flex Sneakers",
+    "category": "Fashion",
+    "originalPrice": 55,
+    "dealPrice": 37.99,
+    "discount": 31,
+    "image": "https://m.media-amazon.com/images/I/319CIao8Z4L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0B9BMV6NF?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-26",
+    "hot": true,
+    "posted_at": "2026-06-24T04:10:55.836Z"
+  },
+  {
     "id": "sd_34325",
     "title": "Rowenta Steam Station 1,800W",
     "category": "General",
@@ -683,20 +697,6 @@
     "store": "Amazon",
     "expires": "2026-06-25",
     "hot": false,
-    "posted_at": "2026-06-23T20:08:21.189Z"
-  },
-  {
-    "id": "sd_34264",
-    "title": "Cuisinart 14-Cup Food Processor",
-    "category": "General",
-    "originalPrice": 319.95,
-    "dealPrice": 218.45,
-    "discount": 32,
-    "image": "https://m.media-amazon.com/images/I/31EgI8MahjL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B01AXM4WV2?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-25",
-    "hot": true,
     "posted_at": "2026-06-23T20:08:21.189Z"
   }
 ]
