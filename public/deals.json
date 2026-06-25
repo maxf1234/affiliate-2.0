@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34152",
+    "title": "Rowenta 1800W Professional Steam Station",
+    "category": "General",
+    "originalPrice": 349.95,
+    "dealPrice": 279.99,
+    "discount": 20,
+    "image": "https://m.media-amazon.com/images/I/41aopTfBjzL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B084JBZPLG?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-27",
+    "hot": true,
+    "posted_at": "2026-06-25T15:20:02.766Z"
+  },
+  {
     "id": "sd_34414",
     "title": "Britax Compact Travel Stroller",
     "category": "General",
@@ -680,20 +694,6 @@
     "discount": 52,
     "image": "https://m.media-amazon.com/images/I/51tJVrQaA1L._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B00EUBD14C?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-26",
-    "hot": true,
-    "posted_at": "2026-06-24T19:46:10.314Z"
-  },
-  {
-    "id": "sd_34364",
-    "title": "128 Piece Beblox Building Blocks",
-    "category": "General",
-    "originalPrice": 14.99,
-    "dealPrice": 7.21,
-    "discount": 52,
-    "image": "https://m.media-amazon.com/images/I/51ofa-GPIJL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B00NNY5FBE?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-06-26",
     "hot": true,
