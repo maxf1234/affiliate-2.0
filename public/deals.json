@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34011",
+    "title": "Razor Jr. Lil' Kick Scooter",
+    "category": "General",
+    "originalPrice": 39.94,
+    "dealPrice": 18.97,
+    "discount": 53,
+    "image": "https://m.media-amazon.com/images/I/41t+KgrlPIL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B01EM4MJCG?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-27",
+    "hot": true,
+    "posted_at": "2026-06-25T07:42:21.220Z"
+  },
+  {
     "id": "sd_34123",
     "title": "Panasonic Cordless Phone 2 Handset",
     "category": "Electronics",
@@ -682,20 +696,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B0DPLMTPFN?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-06-28",
-    "hot": true,
-    "posted_at": "2026-06-24T17:04:39.487Z"
-  },
-  {
-    "id": "sd_34346",
-    "title": "SPEEDPARK Hiking Backpack 40L",
-    "category": "General",
-    "originalPrice": 35.98,
-    "dealPrice": 10.23,
-    "discount": 72,
-    "image": "https://m.media-amazon.com/images/I/51WWsFasi5L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0993KHMVL?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-25",
     "hot": true,
     "posted_at": "2026-06-24T17:04:39.487Z"
   }
