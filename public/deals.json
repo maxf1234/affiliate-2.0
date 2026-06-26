@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34550",
+    "title": "Skechers Go Walk Flex Sneakers",
+    "category": "Fashion",
+    "originalPrice": 55,
+    "dealPrice": 33.99,
+    "discount": 38,
+    "image": "https://m.media-amazon.com/images/I/41v4lF8vaPL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0B9BRK4TJ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-28",
+    "hot": true,
+    "posted_at": "2026-06-26T22:00:29.262Z"
+  },
+  {
     "id": "sd_34548",
     "title": "Rubbermaid Step-On Trash Can 12.4 Gallon",
     "category": "General",
@@ -684,19 +698,5 @@
     "expires": "2026-06-29",
     "hot": true,
     "posted_at": "2026-06-26T16:00:28.813Z"
-  },
-  {
-    "id": "sd_34520",
-    "title": "Prime Deals on Dove!",
-    "category": "General",
-    "originalPrice": 449.99,
-    "dealPrice": 379.05,
-    "discount": 16,
-    "image": "https://m.media-amazon.com/images/I/41fdF44u47L._SL500_.jpg",
-    "affiliate_url": "https://amzn.to/44vzCVh",
-    "store": "Amazon",
-    "expires": "2026-06-28",
-    "hot": false,
-    "posted_at": "2026-06-26T16:00:28.810Z"
   }
 ]
