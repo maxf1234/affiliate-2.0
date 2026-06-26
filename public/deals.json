@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34520",
+    "title": "Prime Deals on Dove!",
+    "category": "General",
+    "originalPrice": 449.99,
+    "dealPrice": 379.05,
+    "discount": 16,
+    "image": "https://m.media-amazon.com/images/I/41fdF44u47L._SL500_.jpg",
+    "affiliate_url": "https://amzn.to/44vzCVh",
+    "store": "Amazon",
+    "expires": "2026-06-28",
+    "hot": false,
+    "posted_at": "2026-06-26T22:13:13.128Z"
+  },
+  {
     "id": "sd_34550",
     "title": "Skechers Go Walk Flex Sneakers",
     "category": "Fashion",
@@ -682,20 +696,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B00AWMP862?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-06-28",
-    "hot": true,
-    "posted_at": "2026-06-26T16:00:28.813Z"
-  },
-  {
-    "id": "sd_34503",
-    "title": "2 Pack Head \\u0026 Shoulders 32.1 oz",
-    "category": "General",
-    "originalPrice": 30.98,
-    "dealPrice": 18.71,
-    "discount": 40,
-    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
-    "affiliate_url": "https://www.amazon.com/dp/B07NH5DB3P?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-29",
     "hot": true,
     "posted_at": "2026-06-26T16:00:28.813Z"
   }
