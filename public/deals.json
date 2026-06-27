@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34551",
+    "title": "Step2 Push Around Buggy",
+    "category": "General",
+    "originalPrice": 79.99,
+    "dealPrice": 50.99,
+    "discount": 36,
+    "image": "https://m.media-amazon.com/images/I/31uypmvmqmL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B004Y8TF96?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-29",
+    "hot": true,
+    "posted_at": "2026-06-27T00:07:31.134Z"
+  },
+  {
     "id": "sd_34520",
     "title": "Prime Deals on Dove!",
     "category": "General",
@@ -680,20 +694,6 @@
     "discount": 15,
     "image": "https://m.media-amazon.com/images/I/41JsdIWDEhL._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B073XQ9VR7?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-28",
-    "hot": true,
-    "posted_at": "2026-06-26T16:00:28.813Z"
-  },
-  {
-    "id": "sd_34504",
-    "title": "Dream On Me Portable Bassinet",
-    "category": "Furniture",
-    "originalPrice": 65.91,
-    "dealPrice": 44.74,
-    "discount": 32,
-    "image": "https://m.media-amazon.com/images/I/31Ieopup+DL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B00AWMP862?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-06-28",
     "hot": true,
