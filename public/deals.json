@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34633",
+    "title": "Pull Down Kitchen Faucet",
+    "category": "Home & Kitchen",
+    "originalPrice": 65.99,
+    "dealPrice": 24.99,
+    "discount": 62,
+    "image": "https://m.media-amazon.com/images/I/41rcKu+rlvL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0GS94GCX1?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-30",
+    "hot": true,
+    "posted_at": "2026-06-28T22:00:28.852Z"
+  },
+  {
     "id": "sd_34630",
     "title": "Lodge Cast Iron Skillet",
     "category": "General",
@@ -680,20 +694,6 @@
     "discount": 50,
     "image": "https://m.media-amazon.com/images/I/21Vie7kQN5L._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B0DDV3FRHR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-30",
-    "hot": true,
-    "posted_at": "2026-06-28T13:46:25.362Z"
-  },
-  {
-    "id": "sd_34584",
-    "title": "DUMOS High Back Mesh Office Chair",
-    "category": "Furniture",
-    "originalPrice": 89.99,
-    "dealPrice": 59.99,
-    "discount": 33,
-    "image": "https://m.media-amazon.com/images/I/51VNANypqNL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0H3KS5KH1?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-06-30",
     "hot": true,
