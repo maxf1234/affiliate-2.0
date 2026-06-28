@@ -1,5 +1,47 @@
 [
   {
+    "id": "sd_34583",
+    "title": "4 Piece Rockland Luggage Set",
+    "category": "General",
+    "originalPrice": 64.94,
+    "dealPrice": 50.3,
+    "discount": 23,
+    "image": "https://m.media-amazon.com/images/I/51BZY7MijBL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B00CBT5IR8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-30",
+    "hot": true,
+    "posted_at": "2026-06-28T08:51:48.057Z"
+  },
+  {
+    "id": "sd_34582",
+    "title": "Frigidaire 8,000 BTU Window Air Conditioner",
+    "category": "General",
+    "originalPrice": 279,
+    "dealPrice": 184.14,
+    "discount": 34,
+    "image": "https://m.media-amazon.com/images/I/41PM+EafNkL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CFYFMZCP?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-30",
+    "hot": true,
+    "posted_at": "2026-06-28T08:51:48.057Z"
+  },
+  {
+    "id": "sd_34103",
+    "title": "Bosch Universal Plus Stand Mixer",
+    "category": "General",
+    "originalPrice": 449,
+    "dealPrice": 399,
+    "discount": 11,
+    "image": "https://m.media-amazon.com/images/I/31dk6fwD5VL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CJCKHQGK?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-30",
+    "hot": true,
+    "posted_at": "2026-06-28T08:51:48.056Z"
+  },
+  {
     "id": "sd_34581",
     "title": "Serta Ainsley Convertible Sleeper Sofa 72\\\\",
     "category": "Furniture",
@@ -656,47 +698,5 @@
     "expires": "2026-06-28",
     "hot": true,
     "posted_at": "2026-06-26T18:51:28.664Z"
-  },
-  {
-    "id": "sd_34528",
-    "title": "Baby Einstein Sea Dreams Soother",
-    "category": "General",
-    "originalPrice": 34.92,
-    "dealPrice": 13.19,
-    "discount": 62,
-    "image": "https://m.media-amazon.com/images/I/41tnZ9m2v7L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B07DM86Z43?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-28",
-    "hot": true,
-    "posted_at": "2026-06-26T18:51:28.664Z"
-  },
-  {
-    "id": "sd_34208",
-    "title": "Prime Deals on Starbucks, Lavazza, Peet's, Green Mountain Coffee Pods!",
-    "category": "Home & Kitchen",
-    "originalPrice": 39.99,
-    "dealPrice": 26.35,
-    "discount": 34,
-    "image": "https://m.media-amazon.com/images/I/41SboL-6CBL._SL500_.jpg",
-    "affiliate_url": "https://amzn.to/43RMt44",
-    "store": "Amazon",
-    "expires": "2026-06-27",
-    "hot": true,
-    "posted_at": "2026-06-26T18:51:28.663Z"
-  },
-  {
-    "id": "sd_34540",
-    "title": "CAP Barbell 32 LB Dumbbell Set",
-    "category": "General",
-    "originalPrice": 39.99,
-    "dealPrice": 26.35,
-    "discount": 34,
-    "image": "https://m.media-amazon.com/images/I/41SboL-6CBL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0GZLWTJH3?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-28",
-    "hot": true,
-    "posted_at": "2026-06-26T18:51:28.663Z"
   }
 ]
