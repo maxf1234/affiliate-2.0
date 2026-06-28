@@ -1,5 +1,33 @@
 [
   {
+    "id": "sd_34585",
+    "title": "Sony WH-1000XM5 Noise-Canceling Headphones",
+    "category": "Electronics",
+    "originalPrice": 399.99,
+    "dealPrice": 198,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/21Vie7kQN5L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DDV3FRHR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-30",
+    "hot": true,
+    "posted_at": "2026-06-28T13:46:25.362Z"
+  },
+  {
+    "id": "sd_34584",
+    "title": "DUMOS High Back Mesh Office Chair",
+    "category": "Furniture",
+    "originalPrice": 89.99,
+    "dealPrice": 59.99,
+    "discount": 33,
+    "image": "https://m.media-amazon.com/images/I/51VNANypqNL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0H3KS5KH1?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-30",
+    "hot": true,
+    "posted_at": "2026-06-28T13:46:25.362Z"
+  },
+  {
     "id": "sd_34583",
     "title": "4 Piece Rockland Luggage Set",
     "category": "General",
@@ -669,34 +697,6 @@
     "store": "Amazon",
     "expires": "2026-06-28",
     "hot": false,
-    "posted_at": "2026-06-26T18:51:28.664Z"
-  },
-  {
-    "id": "sd_34530",
-    "title": "LEGO City F1 Race Car Set",
-    "category": "Toys & Games",
-    "originalPrice": 19.99,
-    "dealPrice": 11.99,
-    "discount": 40,
-    "image": "https://m.media-amazon.com/images/I/51freJUzquL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DJ17WGMB?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-28",
-    "hot": true,
-    "posted_at": "2026-06-26T18:51:28.664Z"
-  },
-  {
-    "id": "sd_34529",
-    "title": "2 CangLong Modern Accent Chairs",
-    "category": "Furniture",
-    "originalPrice": 82.57,
-    "dealPrice": 82.57,
-    "discount": 0,
-    "image": "https://m.media-amazon.com/images/I/41D6BLGk13L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09NWBR9Q8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-06-28",
-    "hot": true,
     "posted_at": "2026-06-26T18:51:28.664Z"
   }
 ]
