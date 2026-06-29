@@ -1,5 +1,47 @@
 [
   {
+    "id": "sd_34629",
+    "title": "DJI Mini Drone 4K",
+    "category": "General",
+    "originalPrice": 299,
+    "dealPrice": 209,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/31yhwXPlaNL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CXJDDJ9X?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-01",
+    "hot": true,
+    "posted_at": "2026-06-29T22:00:25.009Z"
+  },
+  {
+    "id": "sd_34626",
+    "title": "Men's Ratchet Belt",
+    "category": "General",
+    "originalPrice": 9.99,
+    "dealPrice": 4.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/51SL4n95iTL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DB268TN3?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-01",
+    "hot": true,
+    "posted_at": "2026-06-29T22:00:25.009Z"
+  },
+  {
+    "id": "sd_34625",
+    "title": "Adamantite Karaoke Microphone",
+    "category": "Electronics",
+    "originalPrice": 7.99,
+    "dealPrice": 3.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41jc0WdtKLL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0C9TPYJQ8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-01",
+    "hot": true,
+    "posted_at": "2026-06-29T22:00:25.009Z"
+  },
+  {
     "id": "sd_34675",
     "title": "12 Piece Glass Mixing Bowls",
     "category": "General",
@@ -656,47 +698,5 @@
     "expires": "2026-07-01",
     "hot": true,
     "posted_at": "2026-06-29T03:56:58.418Z"
-  },
-  {
-    "id": "sd_34637",
-    "title": "MSI PRO 24\\\\",
-    "category": "General",
-    "originalPrice": 99.99,
-    "dealPrice": 74.99,
-    "discount": 25,
-    "image": "https://m.media-amazon.com/images/I/41nFz5gD6LL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0GV1K9HR5?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-01",
-    "hot": false,
-    "posted_at": "2026-06-29T03:56:58.418Z"
-  },
-  {
-    "id": "sd_34634",
-    "title": "East Oak 17\\\\",
-    "category": "General",
-    "originalPrice": 209.99,
-    "dealPrice": 89.24,
-    "discount": 58,
-    "image": "https://m.media-amazon.com/images/I/41hArJa8DCL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DFCR889X?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-01",
-    "hot": true,
-    "posted_at": "2026-06-29T01:18:33.187Z"
-  },
-  {
-    "id": "sd_34635",
-    "title": "16 Pack Pampers Baby Wipes 1,344 Ct.",
-    "category": "General",
-    "originalPrice": 44.99,
-    "dealPrice": 19.97,
-    "discount": 56,
-    "image": "https://m.media-amazon.com/images/I/41Smk2MoyvL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0CMVJXXZ2?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-02",
-    "hot": true,
-    "posted_at": "2026-06-29T01:18:33.184Z"
   }
 ]
