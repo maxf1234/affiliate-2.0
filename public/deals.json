@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34635",
+    "title": "16 Pack Pampers Baby Wipes 1,344 Ct.",
+    "category": "General",
+    "originalPrice": 44.99,
+    "dealPrice": 19.97,
+    "discount": 56,
+    "image": "https://m.media-amazon.com/images/I/41Smk2MoyvL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CMVJXXZ2?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-02",
+    "hot": true,
+    "posted_at": "2026-06-29T22:57:37.494Z"
+  },
+  {
     "id": "sd_34629",
     "title": "DJI Mini Drone 4K",
     "category": "General",
@@ -680,20 +694,6 @@
     "discount": 40,
     "image": "https://m.media-amazon.com/images/I/41LLeaN7UxL._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B00009RF1E?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-01",
-    "hot": true,
-    "posted_at": "2026-06-29T03:56:58.418Z"
-  },
-  {
-    "id": "sd_34638",
-    "title": "24 Pack Duracell AA Batteries",
-    "category": "General",
-    "originalPrice": 24.49,
-    "dealPrice": 11.86,
-    "discount": 52,
-    "image": "https://m.media-amazon.com/images/I/41BBknWWFBL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0035LCFNQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-01",
     "hot": true,
