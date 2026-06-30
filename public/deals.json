@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34681",
+    "title": "3 Pack Duck Painter's Tape",
+    "category": "General",
+    "originalPrice": 12.49,
+    "dealPrice": 3.42,
+    "discount": 73,
+    "image": "https://m.media-amazon.com/images/I/516t2Qj2ySS._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0054P49YE?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-02",
+    "hot": true,
+    "posted_at": "2026-06-30T00:12:46.769Z"
+  },
+  {
     "id": "sd_34635",
     "title": "16 Pack Pampers Baby Wipes 1,344 Ct.",
     "category": "General",
@@ -680,20 +694,6 @@
     "discount": 32,
     "image": "https://m.media-amazon.com/images/I/51v462UzQrL._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B001QXDIX6?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-01",
-    "hot": true,
-    "posted_at": "2026-06-29T03:56:58.418Z"
-  },
-  {
-    "id": "sd_34639",
-    "title": "Wahl Groomsman Beard Trimmer",
-    "category": "General",
-    "originalPrice": 31.51,
-    "dealPrice": 18.87,
-    "discount": 40,
-    "image": "https://m.media-amazon.com/images/I/41LLeaN7UxL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B00009RF1E?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-01",
     "hot": true,
