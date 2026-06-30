@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34570",
+    "title": "Men's Leather Belt",
+    "category": "General",
+    "originalPrice": 9.99,
+    "dealPrice": 4.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41tscdHk5HL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B08R2G69JK?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-06-30",
+    "hot": true,
+    "posted_at": "2026-06-30T22:00:27.467Z"
+  },
+  {
     "id": "sd_34717",
     "title": "4 Pack Mini Fire Extinguishers",
     "category": "General",
@@ -680,20 +694,6 @@
     "discount": 47,
     "image": "https://m.media-amazon.com/images/I/51Nr3gHA23L._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B0FX23WC9J?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-01",
-    "hot": true,
-    "posted_at": "2026-06-29T21:39:56.018Z"
-  },
-  {
-    "id": "sd_34669",
-    "title": "Cordless Electric Box Cutter",
-    "category": "General",
-    "originalPrice": 17.99,
-    "dealPrice": 8.99,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/41wWExZGlML._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FLWJRJKX?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-01",
     "hot": true,
