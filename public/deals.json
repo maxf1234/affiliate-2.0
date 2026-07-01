@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34725",
+    "title": "12 Mega Rolls= 40 Regular Amazon Basics Paper Towels",
+    "category": "Home & Kitchen",
+    "originalPrice": 22.86,
+    "dealPrice": 12.55,
+    "discount": 45,
+    "image": "https://m.media-amazon.com/images/I/418CyhucbNL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B09BWFX1L6?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-03",
+    "hot": true,
+    "posted_at": "2026-07-01T22:00:27.849Z"
+  },
+  {
     "id": "sd_34762",
     "title": "LEVOIT Standing Fan",
     "category": "Sports",
@@ -680,20 +694,6 @@
     "discount": 0,
     "image": "https://m.media-amazon.com/images/I/3159RUMUkXL._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B089J3N9R7?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-03",
-    "hot": true,
-    "posted_at": "2026-07-01T03:55:14.260Z"
-  },
-  {
-    "id": "sd_34724",
-    "title": "Cosco Simple Fold High Chair",
-    "category": "Furniture",
-    "originalPrice": 59.99,
-    "dealPrice": 39.2,
-    "discount": 35,
-    "image": "https://m.media-amazon.com/images/I/41VGIO1sPhL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B017VNNWXA?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-03",
     "hot": true,
