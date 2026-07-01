@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34766",
+    "title": "LEGO City Airport Fire Truck",
+    "category": "Toys & Games",
+    "originalPrice": 69.99,
+    "dealPrice": 55.99,
+    "discount": 20,
+    "image": "https://m.media-amazon.com/images/I/51XDYJkyVsL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FMS7JZ83?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-04",
+    "hot": false,
+    "posted_at": "2026-07-01T23:34:34.163Z"
+  },
+  {
     "id": "sd_34767",
     "title": "Acer 22\\\\",
     "category": "General",
