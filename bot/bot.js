@@ -217,7 +217,20 @@ async function runBot() {
   }
 
   console.log(`Found ${newDeals.length} new deal(s) to announce`);
-  const sent = await sendToWhatsApp(newDeals);
+
+  // Watchdog: if sending hangs (zombie WhatsApp session), exit so Railway
+  // restarts us with a fresh connection instead of stalling silently forever.
+  const watchdog = setTimeout(() => {
+    console.error("Send timed out after 2 minutes - session likely dead. Exiting for restart.");
+    process.exit(1);
+  }, 2 * 60 * 1000);
+
+  let sent = false;
+  try {
+    sent = await sendToWhatsApp(newDeals);
+  } finally {
+    clearTimeout(watchdog);
+  }
 
   if (sent) {
     // Mark these as announced so we never repost them
