@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34693",
+    "title": "4 Lb OxiClean Laundry Whitener Powder",
+    "category": "General",
+    "originalPrice": 17.53,
+    "dealPrice": 5.59,
+    "discount": 68,
+    "image": "https://m.media-amazon.com/images/I/51qKIEuS4NL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FDYV3KK4?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-04",
+    "hot": true,
+    "posted_at": "2026-07-01T08:14:11.194Z"
+  },
+  {
     "id": "sd_34635",
     "title": "16 Pack Pampers Baby Wipes 1,344 Ct.",
     "category": "General",
@@ -683,20 +697,6 @@
     "store": "Amazon",
     "expires": "2026-07-02",
     "hot": false,
-    "posted_at": "2026-06-30T15:27:57.764Z"
-  },
-  {
-    "id": "sd_34691",
-    "title": "36 Pack Coca-Cola Soda 12 oz",
-    "category": "General",
-    "originalPrice": 26.67,
-    "dealPrice": 17.34,
-    "discount": 35,
-    "image": "https://m.media-amazon.com/images/I/41EgVvjMT5L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B000T9WLTK?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-03",
-    "hot": true,
     "posted_at": "2026-06-30T15:27:57.764Z"
   }
 ]
