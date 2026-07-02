@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34671",
+    "title": "Towel Warmer Bucket",
+    "category": "Home & Kitchen",
+    "originalPrice": 99.99,
+    "dealPrice": 43.79,
+    "discount": 56,
+    "image": "https://m.media-amazon.com/images/I/31eAPUBR-0L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DLJX9F32?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-02",
+    "hot": true,
+    "posted_at": "2026-07-02T23:07:15.990Z"
+  },
+  {
     "id": "sd_34797",
     "title": "CUCKOO 10-Cup Rice Cooker",
     "category": "Home & Kitchen",
@@ -682,20 +696,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B0D1W1KBLM?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-04",
-    "hot": true,
-    "posted_at": "2026-07-01T21:43:28.032Z"
-  },
-  {
-    "id": "sd_34763",
-    "title": "DEWALT Tool Organizer",
-    "category": "General",
-    "originalPrice": 44.99,
-    "dealPrice": 35.91,
-    "discount": 20,
-    "image": "https://m.media-amazon.com/images/I/41DAROKHGoL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B00BF4VUKO?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-03",
     "hot": true,
     "posted_at": "2026-07-01T21:43:28.032Z"
   }
