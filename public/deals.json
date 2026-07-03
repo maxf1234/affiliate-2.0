@@ -1,5 +1,33 @@
 [
   {
+    "id": "sd_34800",
+    "title": "Tommee Tippee Electric Nail File",
+    "category": "General",
+    "originalPrice": 19.99,
+    "dealPrice": 13.79,
+    "discount": 31,
+    "image": "https://m.media-amazon.com/images/I/41rIj18HY9L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B09NDTRCYD?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-05",
+    "hot": true,
+    "posted_at": "2026-07-03T04:00:34.645Z"
+  },
+  {
+    "id": "sd_34799",
+    "title": "Coolwill Mini Handheld Fan",
+    "category": "Sports",
+    "originalPrice": 7.99,
+    "dealPrice": 4.31,
+    "discount": 46,
+    "image": "https://m.media-amazon.com/images/I/31U5KuYHe8L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0D62W1QDB?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-05",
+    "hot": true,
+    "posted_at": "2026-07-03T04:00:34.645Z"
+  },
+  {
     "id": "sd_30472",
     "title": "Monopoly Junior Super Mario Edition",
     "category": "Toys & Games",
@@ -670,33 +698,5 @@
     "expires": "2026-07-03",
     "hot": false,
     "posted_at": "2026-07-01T23:29:52.598Z"
-  },
-  {
-    "id": "sd_34725",
-    "title": "12 Mega Rolls= 40 Regular Amazon Basics Paper Towels",
-    "category": "Home & Kitchen",
-    "originalPrice": 22.86,
-    "dealPrice": 12.55,
-    "discount": 45,
-    "image": "https://m.media-amazon.com/images/I/418CyhucbNL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09BWFX1L6?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-03",
-    "hot": true,
-    "posted_at": "2026-07-01T22:00:27.849Z"
-  },
-  {
-    "id": "sd_34762",
-    "title": "LEVOIT Standing Fan",
-    "category": "Sports",
-    "originalPrice": 89.99,
-    "dealPrice": 54.99,
-    "discount": 39,
-    "image": "https://m.media-amazon.com/images/I/41vN3bKGaOL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0GXC6H1D9?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-03",
-    "hot": true,
-    "posted_at": "2026-07-01T21:43:28.033Z"
   }
 ]
