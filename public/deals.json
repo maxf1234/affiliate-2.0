@@ -1,5 +1,47 @@
 [
   {
+    "id": "sd_34822",
+    "title": "Brother Skitch Embroidery Machine",
+    "category": "General",
+    "originalPrice": 529.99,
+    "dealPrice": 288.67,
+    "discount": 46,
+    "image": "https://m.media-amazon.com/images/I/41L5YQotIbL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CC3116H3?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-05",
+    "hot": true,
+    "posted_at": "2026-07-03T17:25:58.232Z"
+  },
+  {
+    "id": "sd_34820",
+    "title": "12 Piece T-fal Cookware Set",
+    "category": "Home & Kitchen",
+    "originalPrice": 329.95,
+    "dealPrice": 188.99,
+    "discount": 43,
+    "image": "https://m.media-amazon.com/images/I/41PSffFfP5L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0B5FN1F47?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-05",
+    "hot": true,
+    "posted_at": "2026-07-03T17:25:58.232Z"
+  },
+  {
+    "id": "sd_34821",
+    "title": "Nescafe Instant Coffee Pouch 8 oz",
+    "category": "Home & Kitchen",
+    "originalPrice": 12.99,
+    "dealPrice": 9.09,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/41UO8WrkaxL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B005N2VCLQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-08",
+    "hot": true,
+    "posted_at": "2026-07-03T17:25:58.229Z"
+  },
+  {
     "id": "sd_34817",
     "title": "Kenneth Cole Mankind Cologne 1.7 oz",
     "category": "Beauty",
@@ -656,47 +698,5 @@
     "expires": "2026-07-02",
     "hot": false,
     "posted_at": "2026-07-02T19:27:52.921Z"
-  },
-  {
-    "id": "sd_34704",
-    "title": "2 Pack Windex Glass Cleaner 23 oz",
-    "category": "General",
-    "originalPrice": 7.94,
-    "dealPrice": 5.71,
-    "discount": 28,
-    "image": "https://m.media-amazon.com/images/I/51guQVJcNXL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DYF1PJT9?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-04",
-    "hot": false,
-    "posted_at": "2026-07-02T19:27:52.920Z"
-  },
-  {
-    "id": "sd_34790",
-    "title": "TRESemmé Plumping Mousse 10.5 oz",
-    "category": "General",
-    "originalPrice": 6.98,
-    "dealPrice": 1.85,
-    "discount": 73,
-    "image": "https://m.media-amazon.com/images/I/61FZCG+7I4L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0CQRRG68J?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-05",
-    "hot": true,
-    "posted_at": "2026-07-02T19:27:52.918Z"
-  },
-  {
-    "id": "sd_34787",
-    "title": "Neutrogena Beach Defense Sunscreen Spray 6.5 oz",
-    "category": "General",
-    "originalPrice": 13.19,
-    "dealPrice": 2.63,
-    "discount": 80,
-    "image": "https://m.media-amazon.com/images/I/31YlD1YxX7L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B00ANL8QHA?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-06",
-    "hot": true,
-    "posted_at": "2026-07-02T17:48:02.194Z"
   }
 ]
