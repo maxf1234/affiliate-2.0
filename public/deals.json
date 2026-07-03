@@ -1,5 +1,47 @@
 [
   {
+    "id": "sd_34823",
+    "title": "3 Pack Toysmith Pro-Ball Set",
+    "category": "Toys & Games",
+    "originalPrice": 17.99,
+    "dealPrice": 12.59,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/41PhNA6JOcL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B000PXP3DQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-05",
+    "hot": true,
+    "posted_at": "2026-07-03T19:22:38.496Z"
+  },
+  {
+    "id": "sd_34704",
+    "title": "2 Pack Windex Glass Cleaner 23 oz",
+    "category": "General",
+    "originalPrice": 7.94,
+    "dealPrice": 5.71,
+    "discount": 28,
+    "image": "https://m.media-amazon.com/images/I/51guQVJcNXL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DYF1PJT9?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-05",
+    "hot": false,
+    "posted_at": "2026-07-03T19:22:38.495Z"
+  },
+  {
+    "id": "sd_34790",
+    "title": "TRESemmé Plumping Mousse 10.5 oz",
+    "category": "General",
+    "originalPrice": 6.98,
+    "dealPrice": 1.85,
+    "discount": 73,
+    "image": "https://m.media-amazon.com/images/I/61FZCG+7I4L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CQRRG68J?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-05",
+    "hot": true,
+    "posted_at": "2026-07-03T19:22:38.494Z"
+  },
+  {
     "id": "sd_34822",
     "title": "Brother Skitch Embroidery Machine",
     "category": "General",
@@ -656,47 +698,5 @@
     "expires": "2026-07-04",
     "hot": true,
     "posted_at": "2026-07-02T21:07:38.634Z"
-  },
-  {
-    "id": "sd_34791",
-    "title": "18 Pack Nescafe Instant Coffee Sticks",
-    "category": "Home & Kitchen",
-    "originalPrice": 9.8,
-    "dealPrice": 4.96,
-    "discount": 49,
-    "image": "https://m.media-amazon.com/images/I/51xSkgbWZdL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B01IC1M8U8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-04",
-    "hot": true,
-    "posted_at": "2026-07-02T21:07:38.633Z"
-  },
-  {
-    "id": "sd_34789",
-    "title": "Ingenuity Baby Bouncer Seat",
-    "category": "General",
-    "originalPrice": 59.99,
-    "dealPrice": 47.68,
-    "discount": 21,
-    "image": "https://m.media-amazon.com/images/I/41Gmah7NuEL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09S1B4YF8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-04",
-    "hot": true,
-    "posted_at": "2026-07-02T19:27:52.922Z"
-  },
-  {
-    "id": "sd_34652",
-    "title": "36 Pack Pepsi Zero Sugar Cola 12 oz",
-    "category": "General",
-    "originalPrice": 20.91,
-    "dealPrice": 15.21,
-    "discount": 27,
-    "image": "https://m.media-amazon.com/images/I/41gSqhmp3nL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B001E6UUKE?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-02",
-    "hot": false,
-    "posted_at": "2026-07-02T19:27:52.921Z"
   }
 ]
