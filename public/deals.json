@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_32896",
+    "title": "24 Pack LaCroix Sparkling Water 12 oz",
+    "category": "General",
+    "originalPrice": 23.98,
+    "dealPrice": 11.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41OJrXI7h1L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CW7D4WQL?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-07",
+    "hot": true,
+    "posted_at": "2026-07-05T10:00:37.770Z"
+  },
+  {
     "id": "sd_31942",
     "title": "6 Pack Dusk to Dawn Night Lights",
     "category": "General",
@@ -683,20 +697,6 @@
     "store": "Amazon",
     "expires": "2026-07-05",
     "hot": false,
-    "posted_at": "2026-07-03T03:16:32.180Z"
-  },
-  {
-    "id": "sd_34798",
-    "title": "Amazon Basics Car Charger Set 12W",
-    "category": "Electronics",
-    "originalPrice": 3.83,
-    "dealPrice": 2.75,
-    "discount": 28,
-    "image": "https://m.media-amazon.com/images/I/41YDkp4mrbL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B072N58PBY?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-05",
-    "hot": true,
     "posted_at": "2026-07-03T03:16:32.180Z"
   }
 ]
