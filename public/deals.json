@@ -1,5 +1,47 @@
 [
   {
+    "id": "sd_34862",
+    "title": "INFANS 2 in 1 Baby Stroller",
+    "category": "Sports",
+    "originalPrice": 139.99,
+    "dealPrice": 99.99,
+    "discount": 29,
+    "image": "https://m.media-amazon.com/images/I/51yw4Q9kuML._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0B68R899L?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-07",
+    "hot": true,
+    "posted_at": "2026-07-05T22:00:45.681Z"
+  },
+  {
+    "id": "sd_34103",
+    "title": "Bosch Universal Plus Stand Mixer",
+    "category": "General",
+    "originalPrice": 449,
+    "dealPrice": 399,
+    "discount": 11,
+    "image": "https://m.media-amazon.com/images/I/31dk6fwD5VL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CJCKHQGK?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-07",
+    "hot": true,
+    "posted_at": "2026-07-05T22:00:45.680Z"
+  },
+  {
+    "id": "sd_33542",
+    "title": "MimAuto 4 in 1 Retractable Car Charger",
+    "category": "Electronics",
+    "originalPrice": 17.99,
+    "dealPrice": 9.99,
+    "discount": 44,
+    "image": "https://m.media-amazon.com/images/I/51PF7Gud+dL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0G6YB821B?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-07",
+    "hot": true,
+    "posted_at": "2026-07-05T22:00:45.680Z"
+  },
+  {
     "id": "sd_34859",
     "title": "Baby Trend EZ-Lift Infant Car Seat",
     "category": "Sports",
@@ -656,47 +698,5 @@
     "expires": "2026-07-05",
     "hot": true,
     "posted_at": "2026-07-03T17:25:58.232Z"
-  },
-  {
-    "id": "sd_34821",
-    "title": "Nescafe Instant Coffee Pouch 8 oz",
-    "category": "Home & Kitchen",
-    "originalPrice": 12.99,
-    "dealPrice": 9.09,
-    "discount": 30,
-    "image": "https://m.media-amazon.com/images/I/41UO8WrkaxL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B005N2VCLQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
-    "hot": true,
-    "posted_at": "2026-07-03T17:25:58.229Z"
-  },
-  {
-    "id": "sd_34817",
-    "title": "Kenneth Cole Mankind Cologne 1.7 oz",
-    "category": "Beauty",
-    "originalPrice": 62,
-    "dealPrice": 39.99,
-    "discount": 36,
-    "image": "https://m.media-amazon.com/images/I/418KccIlXyL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B089R496ZH?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-05",
-    "hot": true,
-    "posted_at": "2026-07-03T16:00:33.832Z"
-  },
-  {
-    "id": "sd_34816",
-    "title": "GarveeLife Mini Split Air Conditioner 9000 BTU",
-    "category": "General",
-    "originalPrice": 399.99,
-    "dealPrice": 356.98,
-    "discount": 11,
-    "image": "https://m.media-amazon.com/images/I/41hG9gebo-L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0GQ78SQBN?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-05",
-    "hot": false,
-    "posted_at": "2026-07-03T16:00:33.832Z"
   }
 ]
