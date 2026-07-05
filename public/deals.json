@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_34821",
+    "title": "Nescafe Instant Coffee Pouch 8 oz",
+    "category": "Home & Kitchen",
+    "originalPrice": 12.99,
+    "dealPrice": 9.09,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/41UO8WrkaxL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B005N2VCLQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-08",
+    "hot": true,
+    "posted_at": "2026-07-05T22:09:35.177Z"
+  },
+  {
     "id": "sd_34862",
     "title": "INFANS 2 in 1 Baby Stroller",
     "category": "Sports",
@@ -680,20 +694,6 @@
     "discount": 46,
     "image": "https://m.media-amazon.com/images/I/41L5YQotIbL._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B0CC3116H3?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-05",
-    "hot": true,
-    "posted_at": "2026-07-03T17:25:58.232Z"
-  },
-  {
-    "id": "sd_34820",
-    "title": "12 Piece T-fal Cookware Set",
-    "category": "Home & Kitchen",
-    "originalPrice": 329.95,
-    "dealPrice": 188.99,
-    "discount": 43,
-    "image": "https://m.media-amazon.com/images/I/41PSffFfP5L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0B5FN1F47?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-05",
     "hot": true,
