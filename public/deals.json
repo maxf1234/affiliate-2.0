@@ -1,5 +1,19 @@
 [
   {
+    "id": "sd_30556",
+    "title": "12 Double Rolls = 24 Regular Sparkle Paper Towels",
+    "category": "Home & Kitchen",
+    "originalPrice": 31.72,
+    "dealPrice": 13.94,
+    "discount": 56,
+    "image": "https://m.media-amazon.com/images/I/51wYCCH7a1L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FN5154SV?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-07",
+    "hot": true,
+    "posted_at": "2026-07-05T04:56:30.495Z"
+  },
+  {
     "id": "sd_34831",
     "title": "4 Pack Fire Blankets",
     "category": "General",
@@ -683,20 +697,6 @@
     "store": "Amazon",
     "expires": "2026-07-05",
     "hot": true,
-    "posted_at": "2026-07-03T03:16:32.179Z"
-  },
-  {
-    "id": "sd_31942",
-    "title": "6 Pack Dusk to Dawn Night Lights",
-    "category": "General",
-    "originalPrice": 9.99,
-    "dealPrice": 9.99,
-    "discount": 0,
-    "image": "https://m.media-amazon.com/images/I/31WVThyEEcL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B01N47M3V0?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-05",
-    "hot": false,
     "posted_at": "2026-07-03T03:16:32.179Z"
   }
 ]
