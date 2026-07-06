@@ -207,6 +207,17 @@ function isExpired(deal, todayStr) {
   return deal.expires && deal.expires < todayStr;
 }
 
+// "Hot" is relative, not a fixed threshold: only the top ~15% of stored
+// deals by discount (at least 3) get the badge. A fixed cutoff made half
+// the site "hot", which means nothing to visitors.
+function rebalanceHot(deals) {
+  const hotCount = Math.max(3, Math.round(deals.length * 0.15));
+  const cutoff = [...deals]
+    .sort((a, b) => b.discount - a.discount)
+    .map(d => d.discount)[hotCount - 1] || Infinity;
+  return deals.map(d => ({ ...d, hot: d.discount >= cutoff && d.discount > 0 }));
+}
+
 function loadExisting() {
   try {
     return JSON.parse(fs.readFileSync(DEALS_JSON_PATH, "utf8"));
@@ -233,9 +244,11 @@ function saveDeals(newDeals) {
     return true;
   });
 
-  const allDeals = [...additions, ...fresh]
-    .sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at))
-    .slice(0, MAX_STORED);
+  const allDeals = rebalanceHot(
+    [...additions, ...fresh]
+      .sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at))
+      .slice(0, MAX_STORED)
+  );
 
   const changed = additions.length > 0 || purged > 0;
   if (!changed) {
@@ -274,7 +287,7 @@ async function scrapeStundeals() {
   return valid.slice(0, MAX_PER_RUN);
 }
 
-module.exports = { parseDealObjects, guessCategory, unescapeValue, extractAsin, saveDeals };
+module.exports = { parseDealObjects, guessCategory, unescapeValue, extractAsin, saveDeals, rebalanceHot };
 
 if (require.main === module) {
   (async () => {
