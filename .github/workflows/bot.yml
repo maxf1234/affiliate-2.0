@@ -17,6 +17,7 @@ jobs:
         env:
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
           MAX_DEALS_PER_RUN: '25'
+          MIN_DISCOUNT_PCT: '25'
       - run: |
           git config user.name "DealsPulse Bot"
           git config user.email "bot@dealspulse.com"

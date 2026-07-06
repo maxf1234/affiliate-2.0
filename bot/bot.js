@@ -27,7 +27,7 @@ const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || "60");
 const MAX_PER_RUN       = parseInt(process.env.MAX_DEALS_PER_RUN || "1"); // post one deal per run
 const SEEN_FILE         = IS_MAC ? path.join(__dirname, "announced.json") : "/data/announced.json";
 const WHATSAPP_GROUPS   = (process.env.WHATSAPP_GROUPS || "").split(",").map(g => g.trim()).filter(Boolean);
-const GROUP_LINK        = process.env.GROUP_LINK || ""; // your WhatsApp group invite link (https://chat.whatsapp.com/...)
+const GROUP_LINK        = process.env.GROUP_LINK || "https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx"; // WhatsApp group invite link
 
 // ── WHATSAPP CLIENT ───────────────────────────────────────────────────────────
 const SESSION_PATH = process.env.SESSION_PATH || (IS_MAC ? undefined : "/data/wwebjs_auth");
@@ -133,7 +133,8 @@ async function sendToWhatsApp(deals) {
   }
 
   for (const deal of deals) {
-    const shareLink = `${SITE_BASE}/share/deal/${encodeURIComponent(deal.id)}`;
+    // src=wa tags these clicks as WhatsApp traffic in /api/stats
+    const shareLink = `${SITE_BASE}/share/deal/${encodeURIComponent(deal.id)}?src=wa`;
 
     // Compute savings
     const hasSavings = deal.originalPrice > 0 && deal.originalPrice > deal.dealPrice && deal.dealPrice > 0;

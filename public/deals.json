@@ -11,7 +11,8 @@
     "store": "Amazon",
     "expires": "2026-07-08",
     "hot": true,
-    "posted_at": "2026-07-06T16:00:48.000Z"
+    "posted_at": "2026-07-06T16:00:48.000Z",
+    "asin": "B0CVLFGTRD"
   },
   {
     "id": "sd_34873",
@@ -24,13 +25,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B08RSQMY1G?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-08",
-    "hot": true,
-    "posted_at": "2026-07-06T16:00:48.000Z"
+    "hot": false,
+    "posted_at": "2026-07-06T16:00:48.000Z",
+    "asin": "B08RSQMY1G"
   },
   {
     "id": "sd_34869",
     "title": "Safety 1st Grow and Go Car Seat",
-    "category": "General",
+    "category": "Baby & Kids",
     "originalPrice": 104.99,
     "dealPrice": 63,
     "discount": 40,
@@ -39,12 +41,13 @@
     "store": "Amazon",
     "expires": "2026-07-08",
     "hot": true,
-    "posted_at": "2026-07-06T14:25:25.018Z"
+    "posted_at": "2026-07-06T14:25:25.018Z",
+    "asin": "B0FKLGWB87"
   },
   {
     "id": "sd_34868",
     "title": "4 Pack Seventh Generation Glass Cleaner 23 oz",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 29.42,
     "dealPrice": 14.06,
     "discount": 52,
@@ -53,12 +56,13 @@
     "store": "Amazon",
     "expires": "2026-07-10",
     "hot": true,
-    "posted_at": "2026-07-06T14:25:25.018Z"
+    "posted_at": "2026-07-06T14:25:25.018Z",
+    "asin": "B08HZXVY7Z"
   },
   {
     "id": "sd_34867",
     "title": "6 Mega Rolls 24 Regular Toilet Paper",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 7.49,
     "dealPrice": 3.99,
     "discount": 47,
@@ -67,26 +71,13 @@
     "store": "Amazon",
     "expires": "2026-07-10",
     "hot": true,
-    "posted_at": "2026-07-06T14:25:25.018Z"
-  },
-  {
-    "id": "sd_34872",
-    "title": "12 Pack Sticky Notes 3\\\\",
-    "category": "General",
-    "originalPrice": 9.54,
-    "dealPrice": 4.79,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/41Vs9RfVN8L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0D7F55HF1?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
-    "hot": true,
-    "posted_at": "2026-07-06T14:25:25.017Z"
+    "posted_at": "2026-07-06T14:25:25.018Z",
+    "asin": "B0BDSMK682"
   },
   {
     "id": "sd_34871",
     "title": "GRECELL Portable Power Station 600W",
-    "category": "Furniture",
+    "category": "Electronics",
     "originalPrice": 479.99,
     "dealPrice": 229.93,
     "discount": 52,
@@ -95,12 +86,13 @@
     "store": "Amazon",
     "expires": "2026-07-08",
     "hot": true,
-    "posted_at": "2026-07-06T14:25:25.017Z"
+    "posted_at": "2026-07-06T14:25:25.017Z",
+    "asin": "B0CX1MYDW6"
   },
   {
     "id": "sd_34870",
     "title": "16 Pads Homax Steel Wool Extra Coarse",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 5.99,
     "dealPrice": 3.89,
     "discount": 35,
@@ -108,27 +100,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B074MCD2ZC?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-08",
-    "hot": true,
-    "posted_at": "2026-07-06T14:25:25.017Z"
-  },
-  {
-    "id": "sd_34834",
-    "title": "2 Count TRESemmé Moisture Shampoo \\u0026 Conditioner 28 oz",
-    "category": "Beauty",
-    "originalPrice": 10.74,
-    "dealPrice": 5.91,
-    "discount": 45,
-    "image": "https://m.media-amazon.com/images/I/61s3H0xaxzL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B076JK8PXX?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
-    "hot": true,
-    "posted_at": "2026-07-06T10:00:46.609Z"
+    "hot": false,
+    "posted_at": "2026-07-06T14:25:25.017Z",
+    "asin": "B074MCD2ZC"
   },
   {
     "id": "sd_34704",
     "title": "2 Pack Windex Glass Cleaner 23 oz",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 7.94,
     "dealPrice": 5.71,
     "discount": 28,
@@ -137,12 +116,13 @@
     "store": "Amazon",
     "expires": "2026-07-08",
     "hot": false,
-    "posted_at": "2026-07-06T05:11:35.867Z"
+    "posted_at": "2026-07-06T05:11:35.867Z",
+    "asin": "B0DYF1PJT9"
   },
   {
     "id": "sd_34866",
     "title": "Under Armour Blitzing Cap",
-    "category": "General",
+    "category": "Fashion",
     "originalPrice": 20,
     "dealPrice": 7.99,
     "discount": 60,
@@ -151,7 +131,8 @@
     "store": "Amazon",
     "expires": "2026-07-09",
     "hot": true,
-    "posted_at": "2026-07-06T04:00:47.864Z"
+    "posted_at": "2026-07-06T04:00:47.864Z",
+    "asin": "B072J3NLV8"
   },
   {
     "id": "sd_34865",
@@ -165,7 +146,8 @@
     "store": "Amazon",
     "expires": "2026-07-09",
     "hot": true,
-    "posted_at": "2026-07-06T04:00:47.864Z"
+    "posted_at": "2026-07-06T04:00:47.864Z",
+    "asin": "B0FHJ9GR9Y"
   },
   {
     "id": "sd_34864",
@@ -179,7 +161,8 @@
     "store": "Amazon",
     "expires": "2026-07-08",
     "hot": true,
-    "posted_at": "2026-07-06T04:00:47.864Z"
+    "posted_at": "2026-07-06T04:00:47.864Z",
+    "asin": "B0BKQPM7BT"
   },
   {
     "id": "sd_34863",
@@ -193,7 +176,8 @@
     "store": "Amazon",
     "expires": "2026-07-09",
     "hot": true,
-    "posted_at": "2026-07-06T04:00:47.860Z"
+    "posted_at": "2026-07-06T04:00:47.860Z",
+    "asin": "B08KX7BDVR"
   },
   {
     "id": "sd_34821",
@@ -206,13 +190,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B005N2VCLQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-08",
-    "hot": true,
-    "posted_at": "2026-07-05T22:09:35.177Z"
+    "hot": false,
+    "posted_at": "2026-07-05T22:09:35.177Z",
+    "asin": "B005N2VCLQ"
   },
   {
     "id": "sd_34862",
     "title": "INFANS 2 in 1 Baby Stroller",
-    "category": "Sports",
+    "category": "Baby & Kids",
     "originalPrice": 139.99,
     "dealPrice": 99.99,
     "discount": 29,
@@ -220,22 +205,9 @@
     "affiliate_url": "https://www.amazon.com/dp/B0B68R899L?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T22:00:45.681Z"
-  },
-  {
-    "id": "sd_34103",
-    "title": "Bosch Universal Plus Stand Mixer",
-    "category": "General",
-    "originalPrice": 449,
-    "dealPrice": 399,
-    "discount": 11,
-    "image": "https://m.media-amazon.com/images/I/31dk6fwD5VL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0CJCKHQGK?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T22:00:45.680Z"
+    "hot": false,
+    "posted_at": "2026-07-05T22:00:45.681Z",
+    "asin": "B0B68R899L"
   },
   {
     "id": "sd_33542",
@@ -249,40 +221,13 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T22:00:45.680Z"
-  },
-  {
-    "id": "sd_34859",
-    "title": "Baby Trend EZ-Lift Infant Car Seat",
-    "category": "Sports",
-    "originalPrice": 109.99,
-    "dealPrice": 99.99,
-    "discount": 9,
-    "image": "https://m.media-amazon.com/images/I/41HjRBAm0lL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FM8TF653?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-07",
-    "hot": false,
-    "posted_at": "2026-07-05T20:59:56.084Z"
-  },
-  {
-    "id": "sd_34858",
-    "title": "InUSA Endurance 20\\\\",
-    "category": "General",
-    "originalPrice": 39.99,
-    "dealPrice": 29.99,
-    "discount": 25,
-    "image": "https://m.media-amazon.com/images/I/418iadG-dxL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09KZPS4ZX?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T20:59:56.084Z"
+    "posted_at": "2026-07-05T22:00:45.680Z",
+    "asin": "B0G6YB821B"
   },
   {
     "id": "sd_34856",
     "title": "Nostalgia Shave Ice Machine",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 29.99,
     "dealPrice": 19.99,
     "discount": 33,
@@ -290,13 +235,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B0H3W27Z66?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T20:59:56.084Z"
+    "hot": false,
+    "posted_at": "2026-07-05T20:59:56.084Z",
+    "asin": "B0H3W27Z66"
   },
   {
     "id": "sd_34855",
     "title": "3 Pack Under Armour Boxer Briefs",
-    "category": "General",
+    "category": "Fashion",
     "originalPrice": 18.25,
     "dealPrice": 11.2,
     "discount": 39,
@@ -304,8 +250,9 @@
     "affiliate_url": "https://www.amazon.com/dp/B0C3NDGHXZ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T20:59:56.084Z"
+    "hot": false,
+    "posted_at": "2026-07-05T20:59:56.084Z",
+    "asin": "B0C3NDGHXZ"
   },
   {
     "id": "sd_34854",
@@ -318,13 +265,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B0DQ6KBGH4?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T20:59:56.084Z"
+    "hot": false,
+    "posted_at": "2026-07-05T20:59:56.084Z",
+    "asin": "B0DQ6KBGH4"
   },
   {
     "id": "sd_34853",
     "title": "Skechers Digital Chronograph Watch",
-    "category": "General",
+    "category": "Fashion",
     "originalPrice": 35,
     "dealPrice": 24.98,
     "discount": 29,
@@ -332,8 +280,9 @@
     "affiliate_url": "https://www.amazon.com/dp/B014SU3B7Q?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T20:59:56.084Z"
+    "hot": false,
+    "posted_at": "2026-07-05T20:59:56.084Z",
+    "asin": "B014SU3B7Q"
   },
   {
     "id": "sd_34852",
@@ -346,13 +295,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B0F3F8KTK2?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T20:59:56.084Z"
+    "hot": false,
+    "posted_at": "2026-07-05T20:59:56.084Z",
+    "asin": "B0F3F8KTK2"
   },
   {
     "id": "sd_34845",
     "title": "2 Pack Method All-Purpose Cleaner 28 oz",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 10.98,
     "dealPrice": 5.3,
     "discount": 52,
@@ -361,7 +311,8 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T19:17:54.064Z"
+    "posted_at": "2026-07-05T19:17:54.064Z",
+    "asin": "B0BGQTZB4T"
   },
   {
     "id": "sd_34844",
@@ -374,13 +325,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B0D362MJ6G?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T19:17:54.064Z"
+    "hot": false,
+    "posted_at": "2026-07-05T19:17:54.064Z",
+    "asin": "B0D362MJ6G"
   },
   {
     "id": "sd_34843",
     "title": "Ninja FrostVault 30qt Cooler",
-    "category": "Electronics",
+    "category": "Sports",
     "originalPrice": 199.99,
     "dealPrice": 139,
     "discount": 30,
@@ -388,13 +340,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B0CV5LVYWT?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T19:17:54.064Z"
+    "hot": false,
+    "posted_at": "2026-07-05T19:17:54.064Z",
+    "asin": "B0CV5LVYWT"
   },
   {
     "id": "sd_34849",
     "title": "Hamilton Beach Electric Tea Kettle 1L",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 27.95,
     "dealPrice": 18.04,
     "discount": 35,
@@ -402,13 +355,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B074T6KZRK?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T19:17:54.063Z"
+    "hot": false,
+    "posted_at": "2026-07-05T19:17:54.063Z",
+    "asin": "B074T6KZRK"
   },
   {
     "id": "sd_34848",
     "title": "EVER ADVANCED Foldable Wagon",
-    "category": "General",
+    "category": "Sports",
     "originalPrice": 199.99,
     "dealPrice": 146.99,
     "discount": 27,
@@ -416,13 +370,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B08FSK4D22?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T19:17:54.063Z"
+    "hot": false,
+    "posted_at": "2026-07-05T19:17:54.063Z",
+    "asin": "B08FSK4D22"
   },
   {
     "id": "sd_34847",
     "title": "Cuisinart 3-Cup Mini Chopper",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 44.95,
     "dealPrice": 29.95,
     "discount": 33,
@@ -430,13 +385,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B0CFP7G6WH?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T19:17:54.063Z"
+    "hot": false,
+    "posted_at": "2026-07-05T19:17:54.063Z",
+    "asin": "B0CFP7G6WH"
   },
   {
     "id": "sd_34846",
     "title": "8 Pack Puffs Facial Tissues 148 Ct.",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 13.29,
     "dealPrice": 9.13,
     "discount": 31,
@@ -444,13 +400,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B09YKRZR22?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-10",
-    "hot": true,
-    "posted_at": "2026-07-05T19:17:54.060Z"
+    "hot": false,
+    "posted_at": "2026-07-05T19:17:54.060Z",
+    "asin": "B09YKRZR22"
   },
   {
     "id": "sd_34842",
     "title": "3 Pack Harry's Body Wash 18 oz",
-    "category": "General",
+    "category": "Beauty",
     "originalPrice": 23.97,
     "dealPrice": 12.94,
     "discount": 46,
@@ -459,7 +416,8 @@
     "store": "Amazon",
     "expires": "2026-07-09",
     "hot": true,
-    "posted_at": "2026-07-05T17:10:39.915Z"
+    "posted_at": "2026-07-05T17:10:39.915Z",
+    "asin": "B0DT7CSHPV"
   },
   {
     "id": "sd_34810",
@@ -472,27 +430,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GVQSHK36?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T17:10:39.913Z"
-  },
-  {
-    "id": "sd_34807",
-    "title": "Antarctic Star 36\\\\",
-    "category": "General",
-    "originalPrice": 69.99,
-    "dealPrice": 49.99,
-    "discount": 29,
-    "image": "https://m.media-amazon.com/images/I/31hGF20uNGL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0GN42N12N?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T17:10:39.913Z"
+    "hot": false,
+    "posted_at": "2026-07-05T17:10:39.913Z",
+    "asin": "B0GVQSHK36"
   },
   {
     "id": "sd_34801",
     "title": "175 Piece Plastic Dinnerware Set",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 39.88,
     "dealPrice": 17.95,
     "discount": 55,
@@ -501,7 +446,8 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T17:10:39.913Z"
+    "posted_at": "2026-07-05T17:10:39.913Z",
+    "asin": "B0GL1PLNJW"
   },
   {
     "id": "sd_30472",
@@ -515,7 +461,8 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": false,
-    "posted_at": "2026-07-05T16:00:39.734Z"
+    "posted_at": "2026-07-05T16:00:39.734Z",
+    "asin": "B09D44P9HK"
   },
   {
     "id": "sd_30291",
@@ -529,7 +476,8 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T16:00:39.734Z"
+    "posted_at": "2026-07-05T16:00:39.734Z",
+    "asin": "B0CMH2JVMM"
   },
   {
     "id": "sd_34725",
@@ -543,21 +491,8 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T16:00:39.732Z"
-  },
-  {
-    "id": "sd_34813",
-    "title": "Apple Magic Keyboard with Touch ID",
-    "category": "General",
-    "originalPrice": 179,
-    "dealPrice": 143.99,
-    "discount": 20,
-    "image": "https://m.media-amazon.com/images/I/31OEBf0jaKL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DL731QNW?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
-    "hot": true,
-    "posted_at": "2026-07-05T16:00:39.731Z"
+    "posted_at": "2026-07-05T16:00:39.732Z",
+    "asin": "B09BWFX1L6"
   },
   {
     "id": "sd_34839",
@@ -571,7 +506,8 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T15:12:28.960Z"
+    "posted_at": "2026-07-05T15:12:28.960Z",
+    "asin": "B0CZPGFT3M"
   },
   {
     "id": "sd_34837",
@@ -584,13 +520,14 @@
     "affiliate_url": "https://www.amazon.com/dp/B0F584C185?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T15:12:28.960Z"
+    "hot": false,
+    "posted_at": "2026-07-05T15:12:28.960Z",
+    "asin": "B0F584C185"
   },
   {
     "id": "sd_34836",
     "title": "4 Pack Over Door Hooks",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 5.99,
     "dealPrice": 2.99,
     "discount": 50,
@@ -599,26 +536,13 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T15:12:28.960Z"
-  },
-  {
-    "id": "sd_34835",
-    "title": "14 Piece Rubbermaid Food Storage Containers",
-    "category": "General",
-    "originalPrice": 84.99,
-    "dealPrice": 69.99,
-    "discount": 18,
-    "image": "https://m.media-amazon.com/images/I/51kB85-Z0BL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09QH9SCGV?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-07",
-    "hot": true,
-    "posted_at": "2026-07-05T15:12:28.960Z"
+    "posted_at": "2026-07-05T15:12:28.960Z",
+    "asin": "B0C7NM1X7G"
   },
   {
     "id": "sd_34840",
     "title": "12 Pack Evian Natural Spring Water 750 ml",
-    "category": "General",
+    "category": "Grocery",
     "originalPrice": 36.75,
     "dealPrice": 12.99,
     "discount": 65,
@@ -627,12 +551,13 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T15:12:28.959Z"
+    "posted_at": "2026-07-05T15:12:28.959Z",
+    "asin": "B00SAX0NZ6"
   },
   {
     "id": "sd_34841",
     "title": "5 Boxes Cheerios Breakfast Cereal 8.9 oz",
-    "category": "General",
+    "category": "Grocery",
     "originalPrice": 17.65,
     "dealPrice": 9.2,
     "discount": 48,
@@ -641,12 +566,13 @@
     "store": "Amazon",
     "expires": "2026-07-10",
     "hot": true,
-    "posted_at": "2026-07-05T15:12:28.956Z"
+    "posted_at": "2026-07-05T15:12:28.956Z",
+    "asin": "B019Z95UCO"
   },
   {
     "id": "sd_34838",
     "title": "25 Pack Drawer Organizer Set",
-    "category": "General",
+    "category": "Home & Kitchen",
     "originalPrice": 17.59,
     "dealPrice": 8.79,
     "discount": 50,
@@ -655,12 +581,13 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T15:12:28.956Z"
+    "posted_at": "2026-07-05T15:12:28.956Z",
+    "asin": "B0BDRRTRDT"
   },
   {
     "id": "sd_32896",
     "title": "24 Pack LaCroix Sparkling Water 12 oz",
-    "category": "General",
+    "category": "Grocery",
     "originalPrice": 23.98,
     "dealPrice": 11.99,
     "discount": 50,
@@ -669,21 +596,8 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T10:00:37.770Z"
-  },
-  {
-    "id": "sd_31942",
-    "title": "6 Pack Dusk to Dawn Night Lights",
-    "category": "General",
-    "originalPrice": 9.99,
-    "dealPrice": 9.99,
-    "discount": 0,
-    "image": "https://m.media-amazon.com/images/I/31WVThyEEcL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B01N47M3V0?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-07",
-    "hot": false,
-    "posted_at": "2026-07-05T08:04:41.673Z"
+    "posted_at": "2026-07-05T10:00:37.770Z",
+    "asin": "B0CW7D4WQL"
   },
   {
     "id": "sd_30556",
@@ -697,6 +611,7 @@
     "store": "Amazon",
     "expires": "2026-07-07",
     "hot": true,
-    "posted_at": "2026-07-05T04:56:30.495Z"
+    "posted_at": "2026-07-05T04:56:30.495Z",
+    "asin": "B0FN5154SV"
   }
 ]

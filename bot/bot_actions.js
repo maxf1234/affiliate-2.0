@@ -1,6 +1,17 @@
 /**
- * DealsPulse Bot — stundeals.com scraper (fixed parsing)
- * Parses individual deal objects from embedded Next.js JSON data
+ * DealsPulse Bot — stundeals.com scraper
+ * Parses individual deal objects from embedded Next.js JSON data.
+ *
+ * Quality gates:
+ *   - Only Amazon deals with a valid price AND >= MIN_DISCOUNT_PCT off
+ *   - Titles are properly unescaped (no more `3\\\\` artifacts)
+ *   - Expired deals are purged from deals.json on every run
+ *   - Duplicate products (same ASIN under a new deal id) are skipped
+ *
+ * Exit codes:
+ *   0 = ok (even if no new deals)
+ *   1 = page fetched fine but ZERO deals parsed -> stundeals likely changed
+ *       their markup; the GitHub Action fails so you get an email alert.
  */
 
 const fs = require("fs");
@@ -8,10 +19,11 @@ const path = require("path");
 const https = require("https");
 const http = require("http");
 
-const AFFILIATE_TAG   = process.env.AMAZON_AFFILIATE_TAG || "youraffid-20";
-const DEALS_JSON_PATH = path.join(__dirname, "..", "public", "deals.json");
-const MAX_STORED      = 50;
-const STUNDEALS_TAG   = "stundeals0d-20";
+const AFFILIATE_TAG    = process.env.AMAZON_AFFILIATE_TAG || "youraffid-20";
+const DEALS_JSON_PATH  = path.join(__dirname, "..", "public", "deals.json");
+const MAX_STORED       = 60;
+const MIN_DISCOUNT_PCT = parseInt(process.env.MIN_DISCOUNT_PCT || "25");
+const MAX_PER_RUN      = parseInt(process.env.MAX_DEALS_PER_RUN || "25");
 
 function fetchPage(url) {
   return new Promise((resolve, reject) => {
@@ -38,81 +50,114 @@ function fetchPage(url) {
   });
 }
 
-function replaceAffiliateTag(url) {
+// The deal JSON lives inside a JS string literal in the page, so every value
+// is double-escaped (JSON inside a JS string). Two JSON.parse passes undo
+// both layers; falls back to manual replacement if a chunk is truncated.
+function unescapeValue(raw) {
   try {
-    const u = new URL(url);
-    if (u.searchParams.get("tag")) {
-      u.searchParams.set("tag", AFFILIATE_TAG);
+    let s = JSON.parse('"' + raw + '"');       // undo JS-string layer
+    if (s.includes("\\")) {
+      try { s = JSON.parse('"' + s + '"'); }   // undo JSON layer
+      catch (e) { /* keep single-pass result */ }
     }
-    return u.toString();
+    return s;
   } catch (e) {
-    return url.replace(STUNDEALS_TAG, AFFILIATE_TAG);
+    return raw
+      .replace(/\\u002[fF]/g, "/")
+      .replace(/\\u0026/g, "&")
+      .replace(/\\\\/g, "\\")
+      .replace(/\\"/g, '"');
   }
 }
 
+function replaceAffiliateTag(url) {
+  try {
+    const u = new URL(url);
+    u.searchParams.set("tag", AFFILIATE_TAG);
+    return u.toString();
+  } catch (e) {
+    return url;
+  }
+}
+
+function extractAsin(url) {
+  const m = url.match(/\/dp\/([A-Z0-9]{10})/i) || url.match(/\/gp\/product\/([A-Z0-9]{10})/i);
+  return m ? m[1].toUpperCase() : null;
+}
+
+// Word-boundary matching so e.g. "Portable" no longer matches /table/.
+// First matching rule wins, so more specific categories come first.
+const CATEGORY_RULES = [
+  ["Electronics",    /\b(laptops?|phones?|smartphones?|tv|tvs|headphones?|earbuds?|speakers?|soundbars?|cameras?|tablets?|xbox|playstation|nintendo|ipads?|macbooks?|airpods?|monitors?|routers?|ssd|hdd|gpu|chargers?|cables?|bluetooth|power station|power bank|smartwatch|kindle|echo|alexa|drones?|projectors?|keyboards?|mouse|webcams?|microphones?|printers?|usb|gps)\b/],
+  ["Baby & Kids",    /\b(baby|toddler|infant|car seats?|strollers?|diapers?|cribs?|pacifiers?|onesies?|nursery|bottle warmers?|high chairs?|playpens?)\b/],
+  ["Toys & Games",   /\b(toys?|lego|board games?|puzzles?|playmobil|kinetic|dolls?|action figures?|nerf|hot wheels|monopoly|plush|rc car)\b/],
+  ["Grocery",        /\b(spring water|sparkling water|cereal|coffee pods?|k-cups?|snacks?|chips|candy|chocolate|protein bars?|energy drinks?|soda|juice|pasta|sauce|oatmeal|granola|nuts|cookies?|crackers?)\b/],
+  ["Beauty",         /\b(beauty|skincare|makeup|shampoo|conditioner|perfumes?|cologne|toothpaste|toothbrush(es)?|deodorants?|lotions?|serums?|moisturizers?|hair dryers?|straighteners?|razors?|nail|body wash|soap|sunscreen|hand sanitizer)\b/],
+  ["Home & Kitchen", /\b(kitchen|cookware|instant pot|air fryers?|blenders?|coffee|espresso|vacuums?|dyson|bedding|sheets|pillows?|towels?|pans?|pots?|grills?|cookers?|ovens?|juicers?|toasters?|stockpots?|tumblers?|water bottles?|mugs?|knife|knives|cutting boards?|storage|organizers?|cleaners?|detergents?|toilet paper|trash bags?|humidifiers?|purifiers?|lamps?|curtains?|rugs?|mattress(es)?|kettles?|choppers?|dinnerware|steel wool|tissues?|blankets?|hooks?|ice machine|shave ice|mops?|brooms?|dish|sponges?|foil|containers?|canisters?|thermos)\b/],
+  ["Fashion",        /\b(shirts?|t-shirts?|shoes?|pants|dress(es)?|jackets?|sneakers?|clothing|jeans|hoodies?|boots|socks|sunglasses|watch(es)?|handbags?|backpacks?|wallets?|leggings|bras?|underwear|boxer briefs?|boxers?|briefs?|coats?|hats?|caps?|scarf|scarves|gloves)\b/],
+  ["Sports",         /\b(sports?|fitness|gym|bikes?|bicycles?|yoga|running|golf|pool|camping|tents?|hiking|dumbbells?|treadmills?|basketball|soccer|tennis|fishing|kayaks?|scooters?|coolers?|wagons?|beach|outdoor)\b/],
+  ["Furniture",      /\b(chairs?|desks?|furniture|whiteboards?|sofas?|couch(es)?|tables?|bookshelf|bookshelves|shelf|shelves|shelving|cabinets?|dressers?|nightstands?|ottomans?|bench(es)?|stools?|patio)\b/],
+  ["Books",          /\b(books?|audible|novels?|paperback|hardcover)\b/],
+];
+
 function guessCategory(name) {
-  const t = (name || "").toLowerCase();
-  if (t.match(/laptop|phone|tv|headphone|speaker|camera|tablet|xbox|playstation|nintendo|ipad|macbook|airpod|monitor|router|ssd|gpu|battery|charger|cable|earbuds|bluetooth/)) return "Electronics";
-  if (t.match(/shirt|shoe|pants|dress|jacket|sneaker|clothing|fashion|jeans|hoodie|boots|socks|sunglasses/)) return "Fashion";
-  if (t.match(/kitchen|cookware|instant pot|air fryer|blender|coffee|vacuum|dyson|bedding|towel|pot|pan|grill|cooker|oven|juicer|toaster|stockpot|tumbler|water bottle/)) return "Home & Kitchen";
-  if (t.match(/book|kindle|audible/)) return "Books";
-  if (t.match(/toy|lego|game|gaming|puzzle|playmobil|kinetic|rocking|walker|monopoly/)) return "Toys & Games";
-  if (t.match(/beauty|skincare|makeup|shampoo|perfume|cologne|toothpaste|deodorant/)) return "Beauty";
-  if (t.match(/sport|fitness|gym|bike|yoga|running|golf|pool|fan/)) return "Sports";
-  if (t.match(/chair|desk|furniture|whiteboard|sofa|table/)) return "Furniture";
+  const t = " " + (name || "").toLowerCase() + " ";
+  for (const [cat, re] of CATEGORY_RULES) {
+    if (re.test(t)) return cat;
+  }
   return "General";
+}
+
+function looksLikeGarbageTitle(title) {
+  if (!title || title.length < 8) return true;
+  if (title.includes("\\")) return true;             // unescaping failed
+  if (!/[a-zA-Z]{3}/.test(title)) return true;       // no real words
+  return false;
 }
 
 function parseDealObjects(html) {
   const deals = [];
   const seen = new Set();
 
-  // Find each deal by looking for the escaped JSON pattern:
-  // \"id\":NUMBER,\"name\":\"TITLE\"
-  // Then extract ALL fields for that specific deal from the chunk that follows
-  const dealStartRegex = /\\"id\\":(\d{4,6}),\\"name\\":\\"((?:[^\\]|\\[^"])*)\\"/g;
+  // Each deal appears as JSON double-escaped inside a JS string literal:
+  //   \"id\":NUMBER,\"name\":\"TITLE\"
+  // Inside TITLE, a quote is \\\" and a backslash is \\\\ — both must be
+  // consumed as units so the lazy match doesn't stop at an escaped quote
+  // (that's what produced titles like `12 Pack Sticky Notes 3\\`).
+  // Value tokens: \\\" (escaped quote) | \\\\ (escaped backslash) |
+  //               \\x (JSON escape like \n) | \x (JS escape like &) | plain
+  const STR = String.raw`((?:\\\\\\"|\\\\\\\\|\\\\[^"\\]|\\[^"\\]|[^"\\])*?)`;
+  const dealStartRegex = new RegExp(String.raw`\\"id\\":(\d{4,7}),\\"name\\":\\"` + STR + String.raw`\\"`, "g");
+  const linkRegex = new RegExp(String.raw`\\"link\\":\\"` + STR + String.raw`\\"`);
   let match;
 
   while ((match = dealStartRegex.exec(html)) !== null) {
     const dealId = match[1];
-    const dealName = match[2];
+    const dealName = unescapeValue(match[2]).trim();
 
-    // Skip duplicates (same deal appears in multiple sections)
     if (seen.has(dealId)) continue;
+    if (dealName === "viewport" || dealName === "description") continue;
+    if (looksLikeGarbageTitle(dealName)) continue;
 
-    // Skip non-product entries (like viewport meta)
-    if (dealName === "viewport" || dealName === "description" || dealName.length < 3) continue;
-
-    // Grab a chunk from this deal start to extract its fields
-    // Each deal object ends before the next \"id\": or is about 1500 chars
     const chunkStart = match.index;
-    const chunkEnd = Math.min(chunkStart + 2000, html.length);
+    const chunkEnd = Math.min(chunkStart + 2500, html.length);
     const chunk = html.slice(chunkStart, chunkEnd);
 
-    // Extract link
-    const linkMatch = chunk.match(/\\"link\\":\\"((?:[^\\]|\\[^"])*)\\"/);
+    const linkMatch = chunk.match(linkRegex);
     if (!linkMatch) continue;
-    let link = linkMatch[1]
-      .replace(/\\u002[fF]/g, "/")
-      .replace(/\\u0026/g, "&");
+    const link = unescapeValue(linkMatch[1]);
 
-    // Only Amazon deals
     if (!link.includes("amazon.com") && !link.includes("amzn.to")) continue;
 
-    // Extract price (comes as "price":"12.99" or "price":null)
     const priceMatch = chunk.match(/\\"price\\":\\"(\d+\.?\d*)\\"/);
     const origPriceMatch = chunk.match(/\\"originalPrice\\":\\"(\d+\.?\d*)\\"/);
 
     const dealPrice = priceMatch ? parseFloat(priceMatch[1]) : 0;
     const origPrice = origPriceMatch ? parseFloat(origPriceMatch[1]) : 0;
 
-    // Extract first marketplace image
     const picMatch = chunk.match(/\\"marketplacePictures\\":\[\\"(https:[^\\]+)\\"/);
-    const image = picMatch
-      ? picMatch[1].replace(/\\u002[fF]/g, "/")
-      : null;
+    const image = picMatch ? unescapeValue(picMatch[1]) : null;
 
-    // Extract expiry
     const expiredMatch = chunk.match(/\\"expired\\":\\"([^\\]+)\\"/);
     let expires = null;
     if (expiredMatch) {
@@ -125,16 +170,13 @@ function parseDealObjects(html) {
       expires = new Date(Date.now() + 2 * 86400000).toISOString().split("T")[0];
     }
 
-    // Extract flags (hot, lowest price ever, prime deal)
     const flagsMatch = chunk.match(/\\"flags\\":\[(.*?)\]/);
     const isHot = flagsMatch
       ? flagsMatch[1].toLowerCase().includes("lowest") || flagsMatch[1].toLowerCase().includes("prime")
       : false;
 
-    // Build affiliate URL
     const affiliateUrl = replaceAffiliateTag(link);
 
-    // Calculate discount
     const discount = origPrice > 0 && dealPrice > 0 && origPrice > dealPrice
       ? Math.round((1 - dealPrice / origPrice) * 100)
       : 0;
@@ -143,6 +185,7 @@ function parseDealObjects(html) {
 
     deals.push({
       id: `sd_${dealId}`,
+      asin: extractAsin(affiliateUrl),
       title: dealName.slice(0, 120),
       category: guessCategory(dealName),
       originalPrice: origPrice,
@@ -152,67 +195,102 @@ function parseDealObjects(html) {
       affiliate_url: affiliateUrl,
       store: "Amazon",
       expires: expires,
-      hot: isHot || discount >= 30,
+      hot: isHot || discount >= 40,
       posted_at: new Date().toISOString(),
     });
-
-    console.log(`Deal: ${dealName.slice(0, 50)} | $${dealPrice} | was $${origPrice} | ${discount}% off | img: ${image ? "yes" : "no"}`);
   }
 
   return deals;
 }
 
-async function scrapeStundeals() {
+function isExpired(deal, todayStr) {
+  return deal.expires && deal.expires < todayStr;
+}
+
+function loadExisting() {
   try {
-    console.log("Fetching stundeals.com...");
-    const html = await fetchPage("https://www.stundeals.com");
-    console.log(`Got ${html.length} bytes`);
-
-    const allDeals = parseDealObjects(html);
-
-    // Filter: only keep deals that have a price
-    const validDeals = allDeals.filter(d => d.dealPrice > 0);
-    console.log(`Found ${allDeals.length} total Amazon deals, ${validDeals.length} with valid prices`);
-
-    return validDeals.slice(0, parseInt(process.env.MAX_DEALS_PER_RUN || "5"));
+    return JSON.parse(fs.readFileSync(DEALS_JSON_PATH, "utf8"));
   } catch (e) {
-    console.error(`Scrape failed: ${e.message}`);
     return [];
   }
 }
 
-function saveDeals(deals) {
-  let existing = [];
-  try {
-    existing = JSON.parse(fs.readFileSync(DEALS_JSON_PATH, "utf8"));
-  } catch (e) {}
+function saveDeals(newDeals) {
+  const todayStr = new Date().toISOString().split("T")[0];
+  const existing = loadExisting();
 
-  const existingIds = new Set(existing.map(d => d.id));
-  const newDeals = deals.filter(d => !existingIds.has(d.id));
+  // Purge expired deals so visitors never land on a dead/full-price link
+  const fresh = existing.filter(d => !isExpired(d, todayStr));
+  const purged = existing.length - fresh.length;
+  if (purged) console.log(`Purged ${purged} expired deal(s).`);
 
-  if (!newDeals.length) {
-    console.log("No new deals to save.");
-    return 0;
-  }
+  const existingIds = new Set(fresh.map(d => d.id));
+  const existingAsins = new Set(fresh.map(d => d.asin || extractAsin(d.affiliate_url || "")).filter(Boolean));
 
-  const allDeals = [...newDeals, ...existing]
+  const additions = newDeals.filter(d => {
+    if (existingIds.has(d.id)) return false;
+    if (d.asin && existingAsins.has(d.asin)) return false; // same product, new deal id
+    return true;
+  });
+
+  const allDeals = [...additions, ...fresh]
     .sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at))
     .slice(0, MAX_STORED);
 
+  const changed = additions.length > 0 || purged > 0;
+  if (!changed) {
+    console.log("No changes to save.");
+    return 0;
+  }
+
   fs.mkdirSync(path.dirname(DEALS_JSON_PATH), { recursive: true });
   fs.writeFileSync(DEALS_JSON_PATH, JSON.stringify(allDeals, null, 2));
-  console.log(`Saved ${newDeals.length} new deals. Total: ${allDeals.length}`);
-  return newDeals.length;
+  console.log(`Saved: +${additions.length} new, -${purged} expired. Total: ${allDeals.length}`);
+  return additions.length;
 }
 
-(async () => {
-  console.log("=".repeat(55));
-  console.log(`DealsPulse Bot — ${new Date().toUTCString()}`);
-  const deals = await scrapeStundeals();
-  if (deals.length) {
-    const saved = saveDeals(deals);
-    console.log(`Done: ${saved} new deals saved.`);
-  } else {
-    console.log("No deals found this run.");
+async function scrapeStundeals() {
+  console.log("Fetching stundeals.com...");
+  const html = await fetchPage("https://www.stundeals.com");
+  console.log(`Got ${html.length} bytes`);
+
+  if (html.length < 10000) {
+    throw new Error(`Page suspiciously small (${html.length} bytes) — possibly blocked.`);
   }
-})();
+
+  const allDeals = parseDealObjects(html);
+
+  if (!allDeals.length) {
+    // Page loaded but nothing parsed: markup almost certainly changed.
+    throw new Error("Page fetched OK but 0 deals parsed — stundeals markup may have changed.");
+  }
+
+  const valid = allDeals.filter(d => d.dealPrice > 0 && d.discount >= MIN_DISCOUNT_PCT);
+  console.log(`Parsed ${allDeals.length} Amazon deals; ${valid.length} pass filters (price>0, >=${MIN_DISCOUNT_PCT}% off)`);
+  valid.forEach(d =>
+    console.log(`  ${d.title.slice(0, 55)} | $${d.dealPrice} (was $${d.originalPrice}, -${d.discount}%) | ${d.category}`)
+  );
+
+  return valid.slice(0, MAX_PER_RUN);
+}
+
+module.exports = { parseDealObjects, guessCategory, unescapeValue, extractAsin, saveDeals };
+
+if (require.main === module) {
+  (async () => {
+    console.log("=".repeat(55));
+    console.log(`DealsPulse Bot — ${new Date().toUTCString()}`);
+    try {
+      const deals = await scrapeStundeals();
+      const saved = saveDeals(deals);
+      console.log(`Done: ${saved} new deal(s) saved.`);
+    } catch (e) {
+      if (e.message.includes("0 deals parsed") || e.message.includes("suspiciously small")) {
+        console.error(`ALERT: ${e.message}`);
+        process.exit(1); // fail the workflow -> GitHub emails you
+      }
+      // Transient network problems shouldn't spam failure emails every hour
+      console.error(`Scrape failed (transient): ${e.message}`);
+    }
+  })();
+}

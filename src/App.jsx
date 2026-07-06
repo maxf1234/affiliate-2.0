@@ -1,6 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
-const CATEGORIES = ["All", "Electronics", "Home & Kitchen", "Fashion", "Sports", "Beauty", "Furniture", "Toys & Games", "General"];
+// ── SITE CONFIG ───────────────────────────────────────────────────────────────
+const WHATSAPP_LINK = "https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx";
+const SITE_NAME = "DealsPulse";
+
+// Affiliate clicks route through /api/go so every click is counted
+// per deal and per channel before redirecting to Amazon.
+const goUrl = (deal, src) => `/api/go?id=${encodeURIComponent(deal.id)}&src=${src}`;
 
 const FALLBACK_DEALS = [
   {
@@ -13,258 +19,444 @@ const FALLBACK_DEALS = [
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80",
     affiliate_url: "https://amazon.com/?tag=youraffid-20",
     store: "Amazon",
-    expires: "2026-06-20",
+    expires: null,
     hot: true,
-  },
-  {
-    id: "demo2",
-    title: "Instant Pot Duo 7-in-1 Electric Pressure Cooker",
-    category: "Home & Kitchen",
-    originalPrice: 99.95,
-    dealPrice: 59.99,
-    discount: 40,
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80",
-    affiliate_url: "https://amazon.com/?tag=youraffid-20",
-    store: "Amazon",
-    expires: "2026-06-21",
-    hot: true,
+    posted_at: new Date().toISOString(),
   },
 ];
 
-const TagBadge = ({ label, color }) => (
-  <span style={{
-    background: color, color: "#fff", fontSize: "10px", fontWeight: "700",
-    letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 8px", borderRadius: "4px",
-  }}>{label}</span>
-);
+// ── STYLES ────────────────────────────────────────────────────────────────────
+const CSS = `
+  :root {
+    --navy: #141b34;
+    --navy-2: #1e2947;
+    --orange: #ff9900;
+    --orange-dark: #e68a00;
+    --green: #1e9e50;
+    --red: #e5484d;
+    --bg: #f4f5f9;
+    --card: #ffffff;
+    --text: #1a2036;
+    --muted: #6b7280;
+    --line: #e7e9f0;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .dp-root {
+    min-height: 100vh; background: var(--bg); color: var(--text);
+    font-family: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  }
+  .dp-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-// ── SINGLE DEAL PAGE ──────────────────────────────────────────────────────────
-function DealPage({ deals, id, onBack }) {
-  const deal = deals.find(d => d.id === id);
+  /* Header */
+  .dp-header {
+    background: var(--navy); position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(10,14,30,0.25);
+  }
+  .dp-header-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    display: flex; align-items: center; gap: 14px; height: 62px;
+  }
+  .dp-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; cursor: pointer; }
+  .dp-logo-mark {
+    width: 34px; height: 34px; background: var(--orange); border-radius: 9px;
+    display: flex; align-items: center; justify-content: center; font-size: 19px;
+    box-shadow: 0 2px 8px rgba(255,153,0,0.4);
+  }
+  .dp-logo-name { font-weight: 800; font-size: 18px; color: #fff; line-height: 1.1; }
+  .dp-logo-tag { font-size: 9.5px; color: #8d97b8; letter-spacing: 0.09em; text-transform: uppercase; }
+  .dp-search {
+    flex: 1; max-width: 420px; border: 1.5px solid var(--navy-2); border-radius: 10px;
+    padding: 9px 14px; font-size: 14px; outline: none; background: var(--navy-2);
+    color: #fff; transition: border-color 0.15s;
+  }
+  .dp-search::placeholder { color: #8d97b8; }
+  .dp-search:focus { border-color: var(--orange); }
+  .dp-sort {
+    border: 1.5px solid var(--navy-2); border-radius: 9px; padding: 8px 10px;
+    font-size: 13px; background: var(--navy-2); color: #fff; cursor: pointer; outline: none;
+  }
 
-  if (!deal) return (
-    <div style={{ textAlign: "center", padding: "80px 20px", fontFamily: "DM Sans, sans-serif" }}>
-      <div style={{ fontSize: "48px" }}>🔍</div>
-      <p style={{ fontSize: "18px", color: "#666" }}>Deal not found.</p>
-      <button onClick={onBack} style={{ marginTop: "16px", padding: "10px 24px", background: "#1a1a2e", color: "#fff", border: "none", borderRadius: "8px", cursor: "pointer", fontSize: "14px", fontWeight: "600" }}>
-        Back to Deals
-      </button>
-    </div>
-  );
+  /* Hero */
+  .dp-hero {
+    background: linear-gradient(140deg, #141b34 0%, #1b2547 55%, #14355c 100%);
+    color: #fff; padding: 36px 20px 30px; text-align: center;
+  }
+  .dp-hero-kicker {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12px; color: var(--orange); font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .dp-live-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #2ee66b;
+    animation: dp-pulse 1.6s infinite;
+  }
+  @keyframes dp-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .dp-hero h1 { margin: 0 0 8px; font-size: 34px; font-weight: 800; line-height: 1.15; }
+  .dp-hero p { margin: 0 auto; max-width: 520px; color: #aab4d4; font-size: 14.5px; line-height: 1.55; }
+  .dp-hero-stats {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px;
+  }
+  .dp-stat-chip {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 999px; padding: 7px 15px; font-size: 12.5px; color: #dfe4f2; font-weight: 600;
+  }
+  .dp-stat-chip strong { color: var(--orange); }
 
-  const savings = deal.originalPrice > 0 ? (deal.originalPrice - deal.dealPrice).toFixed(2) : null;
-  const daysLeft = deal.expires ? Math.max(0, Math.ceil((new Date(deal.expires) - new Date()) / 86400000)) : null;
-  const shareUrl = window.location.origin + "/share/deal/" + encodeURIComponent(deal.id);
+  /* Category bar */
+  .dp-catbar { background: var(--card); border-bottom: 1px solid var(--line); }
+  .dp-catbar-inner {
+    max-width: 1200px; margin: 0 auto; padding: 10px 20px;
+    display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  }
+  .dp-catbar-inner::-webkit-scrollbar { display: none; }
+  .dp-cat {
+    border: 1px solid var(--line); border-radius: 999px; padding: 7px 15px;
+    font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;
+    background: transparent; color: var(--muted); transition: all 0.15s;
+    font-family: inherit;
+  }
+  .dp-cat:hover { border-color: var(--navy); color: var(--navy); }
+  .dp-cat.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .dp-cat .count { opacity: 0.65; font-weight: 500; margin-left: 4px; }
 
-  const copyLink = () => {
-    navigator.clipboard.writeText(shareUrl);
-    alert("Link copied to clipboard!");
-  };
+  /* Grid */
+  .dp-main { max-width: 1200px; margin: 0 auto; padding: 26px 20px 40px; }
+  .dp-grid-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; gap: 10px; flex-wrap: wrap; }
+  .dp-grid-head h2 { margin: 0; font-size: 19px; font-weight: 800; }
+  .dp-updated { font-size: 12.5px; color: var(--muted); }
+  .dp-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px;
+  }
+
+  /* Card */
+  .dp-card {
+    background: var(--card); border-radius: 16px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(16,24,52,0.07); display: flex; flex-direction: column;
+    cursor: pointer; transition: transform 0.16s ease, box-shadow 0.16s ease;
+    border: 1px solid var(--line);
+  }
+  .dp-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(16,24,52,0.14); }
+  .dp-card-imgwrap { position: relative; background: #fff; height: 190px; display: flex; align-items: center; justify-content: center; padding: 14px; border-bottom: 1px solid var(--line); }
+  .dp-card-imgwrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .dp-badges { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; }
+  .dp-badge {
+    color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: 0.05em;
+    padding: 4px 9px; border-radius: 6px; text-transform: uppercase;
+  }
+  .dp-badge.pct { background: var(--green); }
+  .dp-badge.hot { background: var(--red); }
+  .dp-badge.soon { background: #f57c00; position: absolute; top: 10px; right: 10px; }
+  .dp-card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+  .dp-card-cat { font-size: 10.5px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+  .dp-card-title {
+    margin: 0; font-size: 14.5px; font-weight: 600; line-height: 1.4; color: var(--text);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    min-height: 2.8em;
+  }
+  .dp-price-row { display: flex; align-items: baseline; gap: 8px; }
+  .dp-price { font-size: 23px; font-weight: 800; color: var(--text); }
+  .dp-price-was { font-size: 13.5px; color: #9aa1b3; text-decoration: line-through; }
+  .dp-save { margin: 0; font-size: 12.5px; color: var(--green); font-weight: 700; }
+  .dp-expiry { font-size: 12px; color: var(--muted); }
+  .dp-expiry.urgent { color: var(--red); font-weight: 700; }
+  .dp-card-cta {
+    margin-top: auto; padding-top: 10px; display: block;
+    background: var(--orange); color: #17181c; text-decoration: none;
+    border-radius: 10px; padding: 12px; font-weight: 800; font-size: 14px;
+    text-align: center; transition: background 0.15s;
+  }
+  .dp-card-cta:hover { background: var(--orange-dark); }
+
+  /* Skeletons */
+  .dp-skel { border-radius: 16px; background: var(--card); border: 1px solid var(--line); overflow: hidden; }
+  .dp-skel .s-img { height: 190px; }
+  .dp-skel .s-line { height: 13px; border-radius: 6px; margin: 12px 16px 0; }
+  .dp-skel .s-line.short { width: 45%; }
+  .dp-skel .s-btn { height: 42px; border-radius: 10px; margin: 14px 16px 16px; }
+  .dp-shimmer {
+    background: linear-gradient(90deg, #eef0f5 25%, #f7f8fb 50%, #eef0f5 75%);
+    background-size: 400% 100%; animation: dp-shimmer 1.4s infinite;
+  }
+  @keyframes dp-shimmer { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+
+  /* WhatsApp CTA */
+  .dp-wa-banner {
+    background: linear-gradient(135deg, #10331f, #14532d); color: #fff;
+    border-radius: 20px; padding: 34px 28px; text-align: center; margin: 36px auto 0;
+  }
+  .dp-wa-banner h2 { margin: 0 0 8px; font-size: 23px; font-weight: 800; }
+  .dp-wa-banner p { margin: 0 0 18px; color: #b9e4c9; font-size: 14px; }
+  .dp-wa-btn {
+    display: inline-flex; align-items: center; gap: 9px; background: #25d366; color: #073317;
+    text-decoration: none; padding: 13px 26px; border-radius: 12px; font-weight: 800; font-size: 15px;
+    transition: transform 0.15s;
+  }
+  .dp-wa-btn:hover { transform: scale(1.03); }
+  .dp-wa-float {
+    position: fixed; bottom: 18px; right: 18px; z-index: 90;
+    width: 54px; height: 54px; border-radius: 50%; background: #25d366;
+    display: flex; align-items: center; justify-content: center; font-size: 27px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.28); text-decoration: none;
+  }
+
+  /* Footer */
+  .dp-footer { background: var(--navy); color: #8d97b8; padding: 30px 20px 26px; text-align: center; font-size: 12.5px; line-height: 1.7; }
+  .dp-footer a { color: #b9c2dd; }
+  .dp-disclosure { max-width: 640px; margin: 0 auto 8px; }
+
+  /* Deal page */
+  .dp-deal-main { max-width: 960px; margin: 0 auto; padding: 26px 20px 60px; }
+  .dp-back {
+    background: none; border: none; cursor: pointer; font-size: 14px; font-weight: 700;
+    color: var(--muted); display: inline-flex; align-items: center; gap: 6px; padding: 0;
+    margin-bottom: 16px; font-family: inherit;
+  }
+  .dp-back:hover { color: var(--navy); }
+  .dp-deal-card {
+    background: var(--card); border-radius: 20px; overflow: hidden;
+    box-shadow: 0 2px 20px rgba(16,24,52,0.09); border: 1px solid var(--line);
+  }
+  .dp-deal-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .dp-deal-image {
+    background: #fff; display: flex; align-items: center; justify-content: center;
+    padding: 36px; min-height: 360px; border-right: 1px solid var(--line);
+  }
+  .dp-deal-image img { max-width: 100%; max-height: 320px; object-fit: contain; }
+  .dp-deal-info { padding: 32px; }
+  .dp-deal-info h1 { margin: 0 0 16px; font-size: 22px; font-weight: 800; line-height: 1.35; }
+  .dp-deal-pricebox { background: #f7f8fb; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 16px; }
+  .dp-deal-price { font-size: 34px; font-weight: 800; }
+  .dp-cta {
+    display: block; background: var(--orange); color: #17181c; text-decoration: none;
+    border-radius: 12px; padding: 16px; font-weight: 800; font-size: 16.5px;
+    text-align: center; transition: background 0.15s; margin-bottom: 10px;
+  }
+  .dp-cta:hover { background: var(--orange-dark); }
+  .dp-cta-sub { text-align: center; font-size: 11.5px; color: var(--muted); margin: 0 0 16px; }
+  .dp-share-row { display: flex; gap: 10px; }
+  .dp-share-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
+    border-radius: 11px; padding: 12px; font-weight: 700; font-size: 13.5px;
+    cursor: pointer; text-decoration: none; text-align: center; font-family: inherit;
+  }
+  .dp-share-btn.wa { background: #25d366; color: #073317; border: none; }
+  .dp-share-btn.copy { background: #fff; color: var(--text); border: 1.5px solid var(--line); }
+  .dp-share-btn.copy:hover { border-color: var(--navy); }
+  .dp-related-title { margin: 34px 0 14px; font-size: 18px; font-weight: 800; }
+
+  /* Empty state */
+  .dp-empty { text-align: center; padding: 70px 20px; color: var(--muted); }
+  .dp-empty .icon { font-size: 44px; margin-bottom: 10px; }
+  .dp-empty button {
+    margin-top: 14px; padding: 10px 22px; background: var(--navy); color: #fff;
+    border: none; border-radius: 9px; cursor: pointer; font-size: 14px; font-weight: 700;
+    font-family: inherit;
+  }
+
+  @media (max-width: 720px) {
+    .dp-header-inner { flex-wrap: wrap; height: auto; padding: 10px 14px; row-gap: 9px; }
+    .dp-search { order: 3; flex-basis: 100%; max-width: 100%; }
+    .dp-hero { padding: 26px 16px 24px; }
+    .dp-hero h1 { font-size: 25px; }
+    .dp-main { padding: 18px 12px 40px; }
+    .dp-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .dp-card-imgwrap { height: 145px; }
+    .dp-price { font-size: 19px; }
+    .dp-card-title { font-size: 13px; }
+    .dp-deal-grid { grid-template-columns: 1fr; }
+    .dp-deal-image { min-height: 240px; padding: 20px; border-right: none; border-bottom: 1px solid var(--line); }
+    .dp-deal-info { padding: 20px; }
+    .dp-deal-info h1 { font-size: 18px; }
+    .dp-deal-price { font-size: 28px; }
+    .dp-wa-banner { border-radius: 16px; padding: 26px 18px; }
+  }
+`;
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+const todayStr = () => new Date().toISOString().split("T")[0];
+
+function daysLeftOf(deal) {
+  if (!deal.expires) return null;
+  return Math.max(0, Math.ceil((new Date(deal.expires + "T23:59:59") - new Date()) / 86400000));
+}
+
+function expiryLabel(deal) {
+  const d = daysLeftOf(deal);
+  if (d === null) return null;
+  if (d <= 0) return { text: "Ends today!", urgent: true };
+  if (d === 1) return { text: "Ends tomorrow", urgent: true };
+  return { text: `Ends in ${d} days`, urgent: false };
+}
+
+function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  }
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand("copy");
+  document.body.removeChild(ta);
+  return Promise.resolve();
+}
+
+const Badge = ({ cls, children }) => <span className={`dp-badge ${cls}`}>{children}</span>;
+
+// ── DEAL CARD ─────────────────────────────────────────────────────────────────
+function DealCard({ deal, onView }) {
+  const savings = deal.originalPrice > deal.dealPrice && deal.dealPrice > 0
+    ? (deal.originalPrice - deal.dealPrice).toFixed(2) : null;
+  const exp = expiryLabel(deal);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f5f5f7", fontFamily: "DM Sans, Segoe UI, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-      <style>{`
-        @media (max-width: 640px) {
-          .dp-deal-main {
-            padding: 16px 12px !important;
-          }
-          .dp-deal-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .dp-deal-image {
-            min-height: 220px !important;
-            padding: 20px !important;
-          }
-          .dp-deal-info {
-            padding: 20px !important;
-          }
-          .dp-deal-info h1 {
-            font-size: 18px !important;
-          }
-          .dp-deal-price {
-            font-size: 28px !important;
-          }
-        }
-      `}</style>
-
-      {/* Header */}
-      <header style={{ background: "#fff", borderBottom: "1px solid #eee", padding: "0 24px", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 1px 8px rgba(0,0,0,0.06)" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", alignItems: "center", height: "64px", gap: "16px" }}>
-          <button onClick={onBack} style={{ background: "none", border: "none", cursor: "pointer", fontSize: "14px", fontWeight: "600", color: "#555", display: "flex", alignItems: "center", gap: "6px" }}>
-            ← Back to Deals
-          </button>
-          <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "10px" }}>
-            <div style={{ width: "28px", height: "28px", background: "#f90", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "16px" }}>⚡</div>
-            <span style={{ fontWeight: "800", fontSize: "16px", color: "#1a1a2e" }}>DealsPulse</span>
-          </div>
+    <div className="dp-card" onClick={() => onView(deal.id)}>
+      <div className="dp-card-imgwrap">
+        <img src={deal.image} alt={deal.title} loading="lazy" />
+        <div className="dp-badges">
+          {deal.discount > 0 && <Badge cls="pct">-{deal.discount}%</Badge>}
+          {deal.hot && <Badge cls="hot">🔥 Hot</Badge>}
         </div>
-      </header>
-
-      {/* Deal Content */}
-      <main className="dp-deal-main" style={{ maxWidth: "900px", margin: "0 auto", padding: "32px 24px" }}>
-        <div style={{ background: "#fff", borderRadius: "20px", overflow: "hidden", boxShadow: "0 2px 20px rgba(0,0,0,0.08)" }}>
-
-          <div className="dp-deal-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0" }}>
-
-            {/* Image */}
-            <div className="dp-deal-image" style={{ background: "#f8f8f8", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px", minHeight: "350px" }}>
-              <img
-                src={deal.image}
-                alt={deal.title}
-                style={{ maxWidth: "100%", maxHeight: "300px", objectFit: "contain", borderRadius: "8px" }}
-              />
-            </div>
-
-            {/* Info */}
-            <div className="dp-deal-info" style={{ padding: "36px" }}>
-              <div style={{ display: "flex", gap: "8px", marginBottom: "12px", flexWrap: "wrap" }}>
-                {deal.hot && <TagBadge label="Hot Deal" color="#e53935" />}
-                <TagBadge label={deal.category} color="#6c63ff" />
-                {deal.discount > 0 && <TagBadge label={"-" + deal.discount + "% OFF"} color="#2e7d32" />}
-              </div>
-
-              <h1 style={{ margin: "0 0 20px", fontSize: "22px", fontWeight: "700", color: "#1a1a2e", lineHeight: 1.4 }}>
-                {deal.title}
-              </h1>
-
-              <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "8px" }}>
-                <span className="dp-deal-price" style={{ fontSize: "36px", fontWeight: "800", color: "#1a1a2e" }}>
-                  {deal.dealPrice > 0 ? "$" + deal.dealPrice.toFixed(2) : "See Price"}
-                </span>
-                {deal.originalPrice > 0 && (
-                  <span style={{ fontSize: "18px", color: "#aaa", textDecoration: "line-through" }}>
-                    ${deal.originalPrice.toFixed(2)}
-                  </span>
-                )}
-              </div>
-
-              {savings && <p style={{ margin: "0 0 20px", fontSize: "14px", color: "#4caf50", fontWeight: "600" }}>You save ${savings}!</p>}
-
-              {daysLeft !== null && (
-                <p style={{ margin: "0 0 24px", fontSize: "13px", color: daysLeft <= 1 ? "#e53935" : "#888" }}>
-                  {daysLeft > 0 ? "Expires in " + daysLeft + " day" + (daysLeft > 1 ? "s" : "") : "Expires today!"}
-                </p>
-              )}
-
-              <a
-                href={deal.affiliate_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "block", background: "#f90", color: "#111", textDecoration: "none",
-                  borderRadius: "12px", padding: "16px", fontWeight: "700", fontSize: "16px",
-                  textAlign: "center", marginBottom: "12px",
-                }}
-              >
-                View on Amazon →
-              </a>
-
-              <button
-                onClick={copyLink}
-                style={{
-                  display: "block", width: "100%", background: "#fff", color: "#1a1a2e",
-                  border: "2px solid #e5e5e5", borderRadius: "12px", padding: "14px",
-                  fontWeight: "600", fontSize: "14px", cursor: "pointer",
-                }}
-              >
-                📋 Copy Deal Link
-              </button>
-
-              {/* WhatsApp share */}
-              <a
-                href={"https://wa.me/?text=" + encodeURIComponent("Check out this deal! " + deal.title + " - " + shareUrl)}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "block", background: "#25d366", color: "#fff", textDecoration: "none",
-                  borderRadius: "12px", padding: "14px", fontWeight: "600", fontSize: "14px",
-                  textAlign: "center", marginTop: "12px",
-                }}
-              >
-                💬 Share on WhatsApp
-              </a>
-            </div>
-          </div>
+        {exp && exp.urgent && <Badge cls="soon">{exp.text}</Badge>}
+      </div>
+      <div className="dp-card-body">
+        <span className="dp-card-cat">{deal.category}</span>
+        <h3 className="dp-card-title">{deal.title}</h3>
+        <div className="dp-price-row">
+          <span className="dp-price">{deal.dealPrice > 0 ? `$${deal.dealPrice.toFixed(2)}` : "See Price"}</span>
+          {deal.originalPrice > 0 && <span className="dp-price-was">${deal.originalPrice.toFixed(2)}</span>}
         </div>
-
-        <button onClick={onBack} style={{ marginTop: "24px", padding: "12px 24px", background: "#1a1a2e", color: "#fff", border: "none", borderRadius: "10px", cursor: "pointer", fontSize: "14px", fontWeight: "600" }}>
-          ← Back to All Deals
-        </button>
-      </main>
+        {savings && <p className="dp-save">You save ${savings}</p>}
+        {exp && !exp.urgent && <span className="dp-expiry">{exp.text}</span>}
+        <a
+          className="dp-card-cta"
+          href={goUrl(deal, "site")}
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          onClick={e => e.stopPropagation()}
+        >
+          Get Deal →
+        </a>
+      </div>
     </div>
   );
 }
 
-// ── DEAL CARD ─────────────────────────────────────────────────────────────────
-const DealCard = ({ deal, onView }) => {
-  const savings = deal.originalPrice > 0 ? (deal.originalPrice - deal.dealPrice).toFixed(2) : null;
-  const daysLeft = deal.expires ? Math.max(0, Math.ceil((new Date(deal.expires) - new Date()) / 86400000)) : null;
-
+function SkeletonCard() {
   return (
-    <div
-      style={{
-        background: "#fff", borderRadius: "16px", overflow: "hidden",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.07)", display: "flex",
-        flexDirection: "column", cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s",
-      }}
-      onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(0,0,0,0.13)"; }}
-      onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.07)"; }}
-      onClick={() => onView(deal.id)}
-    >
-      <div style={{ position: "relative" }}>
-        <img src={deal.image} alt={deal.title} style={{ width: "100%", height: "180px", objectFit: "cover", display: "block" }} />
-        <div style={{ position: "absolute", top: "10px", left: "10px", display: "flex", gap: "6px" }}>
-          {deal.hot && <TagBadge label="Hot" color="#e53935" />}
-          {deal.discount > 0 && <TagBadge label={"-" + deal.discount + "%"} color="#2e7d32" />}
-        </div>
-        {daysLeft !== null && daysLeft <= 1 && (
-          <div style={{ position: "absolute", top: "10px", right: "10px" }}>
-            <TagBadge label="Ends Soon" color="#f57c00" />
-          </div>
-        )}
-      </div>
-      <div style={{ padding: "16px", flex: 1, display: "flex", flexDirection: "column", gap: "8px" }}>
-        <span style={{ fontSize: "11px", color: "#888", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.06em" }}>{deal.category}</span>
-        <h3 style={{ margin: 0, fontSize: "14px", fontWeight: "600", color: "#1a1a2e", lineHeight: "1.4" }}>{deal.title}</h3>
-        <div style={{ display: "flex", alignItems: "baseline", gap: "8px", marginTop: "4px" }}>
-          <span style={{ fontSize: "22px", fontWeight: "800", color: "#1a1a2e" }}>
-            {deal.dealPrice > 0 ? "$" + deal.dealPrice.toFixed(2) : "See Price"}
-          </span>
-          {deal.originalPrice > 0 && (
-            <span style={{ fontSize: "14px", color: "#aaa", textDecoration: "line-through" }}>${deal.originalPrice.toFixed(2)}</span>
-          )}
-        </div>
-        {savings && <p style={{ margin: 0, fontSize: "12px", color: "#4caf50", fontWeight: "600" }}>You save ${savings}</p>}
-        <div style={{ marginTop: "auto", paddingTop: "12px", display: "flex", gap: "8px" }}>
-          <button
-            onClick={e => { e.stopPropagation(); onView(deal.id); }}
-            style={{
-              flex: 1, background: "#1a1a2e", color: "#fff", border: "none",
-              borderRadius: "8px", padding: "10px", fontWeight: "700", fontSize: "13px",
-              textAlign: "center", cursor: "pointer",
-            }}
-          >
-            View Deal
-          </button>
-          <a
-            href={deal.affiliate_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-            style={{
-              flex: 1, background: "#f90", color: "#111", border: "none",
-              borderRadius: "8px", padding: "10px", fontWeight: "700", fontSize: "13px",
-              textAlign: "center", textDecoration: "none", cursor: "pointer",
-            }}
-          >
-            Buy Now →
-          </a>
-        </div>
-      </div>
+    <div className="dp-skel">
+      <div className="s-img dp-shimmer" />
+      <div className="s-line dp-shimmer" />
+      <div className="s-line short dp-shimmer" />
+      <div className="s-btn dp-shimmer" />
     </div>
   );
-};
+}
+
+// ── SINGLE DEAL PAGE ──────────────────────────────────────────────────────────
+function DealPage({ deals, id, src, onBack, onView }) {
+  const deal = deals.find(d => d.id === id);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => { window.scrollTo(0, 0); }, [id]);
+
+  if (!deal) return (
+    <div className="dp-empty" style={{ paddingTop: 100 }}>
+      <div className="icon">🔍</div>
+      <p>This deal has expired or been removed.</p>
+      <button onClick={onBack}>See Today's Deals</button>
+    </div>
+  );
+
+  const savings = deal.originalPrice > deal.dealPrice && deal.dealPrice > 0
+    ? (deal.originalPrice - deal.dealPrice).toFixed(2) : null;
+  const exp = expiryLabel(deal);
+  const shareUrl = window.location.origin + "/share/deal/" + encodeURIComponent(deal.id);
+
+  const related = deals
+    .filter(d => d.id !== deal.id)
+    .sort((a, b) => (b.category === deal.category) - (a.category === deal.category) || b.discount - a.discount)
+    .slice(0, 4);
+
+  const handleCopy = () => {
+    copyText(shareUrl).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    });
+  };
+
+  return (
+    <main className="dp-deal-main">
+      <button className="dp-back" onClick={onBack}>← All deals</button>
+
+      <div className="dp-deal-card">
+        <div className="dp-deal-grid">
+          <div className="dp-deal-image">
+            <img src={deal.image} alt={deal.title} />
+          </div>
+          <div className="dp-deal-info">
+            <div style={{ display: "flex", gap: 7, marginBottom: 12, flexWrap: "wrap" }}>
+              {deal.hot && <Badge cls="hot">🔥 Hot Deal</Badge>}
+              {deal.discount > 0 && <Badge cls="pct">-{deal.discount}% OFF</Badge>}
+              <span className="dp-card-cat" style={{ alignSelf: "center" }}>{deal.category}</span>
+            </div>
+
+            <h1>{deal.title}</h1>
+
+            <div className="dp-deal-pricebox">
+              <div className="dp-price-row">
+                <span className="dp-deal-price">{deal.dealPrice > 0 ? `$${deal.dealPrice.toFixed(2)}` : "See Price"}</span>
+                {deal.originalPrice > 0 && <span className="dp-price-was" style={{ fontSize: 16 }}>${deal.originalPrice.toFixed(2)}</span>}
+              </div>
+              {savings && <p className="dp-save" style={{ fontSize: 14, margin: "6px 0 0" }}>You save ${savings}!</p>}
+              {exp && (
+                <div className={`dp-expiry ${exp.urgent ? "urgent" : ""}`} style={{ marginTop: 6 }}>
+                  ⏳ {exp.text}
+                </div>
+              )}
+            </div>
+
+            <a
+              className="dp-cta"
+              href={goUrl(deal, src === "wa" || src === "share" ? src : "deal")}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+            >
+              Get Deal on Amazon →
+            </a>
+            <p className="dp-cta-sub">Price checked recently — may change on Amazon at any time.</p>
+
+            <div className="dp-share-row">
+              <a
+                className="dp-share-btn wa"
+                href={"https://wa.me/?text=" + encodeURIComponent(`🔥 ${deal.title} — $${deal.dealPrice.toFixed(2)}${savings ? ` (save $${savings})` : ""}\n${shareUrl}`)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                💬 Share
+              </a>
+              <button className="dp-share-btn copy" onClick={handleCopy}>
+                {copied ? "✓ Copied!" : "📋 Copy link"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {related.length > 0 && (
+        <>
+          <h2 className="dp-related-title">You might also like</h2>
+          <div className="dp-grid">
+            {related.map(d => <DealCard key={d.id} deal={d} onView={onView} />)}
+          </div>
+        </>
+      )}
+    </main>
+  );
+}
 
 // ── MAIN APP ──────────────────────────────────────────────────────────────────
 export default function App() {
@@ -273,17 +465,19 @@ export default function App() {
   const [lastUpdated, setLastUpdated] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState("hot");
-  const [currentDealId, setCurrentDealId] = useState(null);
+  const [sortBy, setSortBy] = useState("newest");
+  const [route, setRoute] = useState({ dealId: null, src: null });
 
-  // Handle URL routing
+  // Hash routing: #/deal/<id>?src=<channel>
   useEffect(() => {
     const checkRoute = () => {
       const hash = window.location.hash;
       if (hash.startsWith("#/deal/")) {
-        setCurrentDealId(decodeURIComponent(hash.replace("#/deal/", "")));
+        const [idPart, query] = hash.replace("#/deal/", "").split("?");
+        const params = new URLSearchParams(query || "");
+        setRoute({ dealId: decodeURIComponent(idPart), src: params.get("src") });
       } else {
-        setCurrentDealId(null);
+        setRoute({ dealId: null, src: null });
       }
     };
     checkRoute();
@@ -291,22 +485,21 @@ export default function App() {
     return () => window.removeEventListener("hashchange", checkRoute);
   }, []);
 
-  const navigateToDeal = (id) => {
-    window.location.hash = "/deal/" + encodeURIComponent(id);
-  };
-
-  const navigateHome = () => {
-    window.location.hash = "";
-  };
+  const navigateToDeal = (id) => { window.location.hash = "/deal/" + encodeURIComponent(id); };
+  const navigateHome = () => { window.location.hash = ""; };
 
   useEffect(() => {
-    fetch("/deals.json")
+    fetch("/deals.json?t=" + Date.now())
       .then(r => r.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
-          setDeals(data);
-          const latest = data.reduce((a, b) => new Date(a.posted_at) > new Date(b.posted_at) ? a : b);
-          setLastUpdated(new Date(latest.posted_at));
+          const today = todayStr();
+          const live = data.filter(d => !d.expires || d.expires >= today);
+          setDeals(live.length ? live : FALLBACK_DEALS);
+          if (live.length) {
+            const latest = live.reduce((a, b) => new Date(a.posted_at) > new Date(b.posted_at) ? a : b);
+            setLastUpdated(new Date(latest.posted_at));
+          }
         } else {
           setDeals(FALLBACK_DEALS);
         }
@@ -315,161 +508,148 @@ export default function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Show single deal page
-  if (currentDealId) {
-    return <DealPage deals={deals} id={currentDealId} onBack={navigateHome} />;
-  }
+  // Categories built from live data, biggest first
+  const categories = useMemo(() => {
+    const counts = {};
+    deals.forEach(d => { counts[d.category] = (counts[d.category] || 0) + 1; });
+    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    return [["All", deals.length], ...sorted];
+  }, [deals]);
 
-  const filtered = deals
-    .filter(d => activeCategory === "All" || d.category === activeCategory)
-    .filter(d => d.title.toLowerCase().includes(searchQuery.toLowerCase()))
-    .sort((a, b) => {
-      if (sortBy === "hot") return (b.hot ? 1 : 0) - (a.hot ? 1 : 0);
-      if (sortBy === "discount") return b.discount - a.discount;
-      if (sortBy === "price_low") return a.dealPrice - b.dealPrice;
-      if (sortBy === "price_high") return b.dealPrice - a.dealPrice;
-      return 0;
-    });
+  const filtered = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    return deals
+      .filter(d => activeCategory === "All" || d.category === activeCategory)
+      .filter(d => !q || d.title.toLowerCase().includes(q) || d.category.toLowerCase().includes(q))
+      .sort((a, b) => {
+        if (sortBy === "newest") return new Date(b.posted_at) - new Date(a.posted_at);
+        if (sortBy === "hot") return (b.hot ? 1 : 0) - (a.hot ? 1 : 0) || b.discount - a.discount;
+        if (sortBy === "discount") return b.discount - a.discount;
+        if (sortBy === "price_low") return a.dealPrice - b.dealPrice;
+        if (sortBy === "price_high") return b.dealPrice - a.dealPrice;
+        return 0;
+      });
+  }, [deals, activeCategory, searchQuery, sortBy]);
 
-  return (
-    <div style={{ minHeight: "100vh", background: "#f5f5f7", fontFamily: "DM Sans, Segoe UI, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-      <style>{`
-        @media (max-width: 640px) {
-          .dp-header-inner {
-            flex-wrap: wrap !important;
-            height: auto !important;
-            padding: 10px 0 !important;
-            row-gap: 10px !important;
-          }
-          .dp-search {
-            order: 3;
-            flex-basis: 100% !important;
-            max-width: 100% !important;
-          }
-          .dp-hero {
-            padding: 32px 16px !important;
-          }
-          .dp-hero h1 {
-            font-size: 28px !important;
-          }
-          .dp-main {
-            padding: 20px 12px !important;
-          }
-          .dp-grid {
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
-            gap: 12px !important;
-          }
-          .dp-deal-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .dp-deal-image {
-            min-height: 220px !important;
-            padding: 20px !important;
-          }
-          .dp-deal-info {
-            padding: 20px !important;
-          }
-          .dp-deal-info h1 {
-            font-size: 18px !important;
-          }
-        }
-      `}</style>
+  const hotCount = deals.filter(d => d.hot).length;
 
-      <header style={{ background: "#fff", borderBottom: "1px solid #eee", padding: "0 24px", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 1px 8px rgba(0,0,0,0.06)" }}>
-        <div className="dp-header-inner" style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: "64px", gap: "16px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
-            <div style={{ width: "32px", height: "32px", background: "#f90", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px" }}>⚡</div>
-            <div>
-              <div style={{ fontWeight: "800", fontSize: "17px", color: "#1a1a2e", lineHeight: 1 }}>DealsPulse</div>
-              <div style={{ fontSize: "10px", color: "#888", letterSpacing: "0.06em", textTransform: "uppercase" }}>Best Amazon Deals</div>
-            </div>
+  const header = (
+    <header className="dp-header">
+      <div className="dp-header-inner">
+        <a className="dp-logo" onClick={navigateHome}>
+          <div className="dp-logo-mark">⚡</div>
+          <div>
+            <div className="dp-logo-name">{SITE_NAME}</div>
+            <div className="dp-logo-tag">Best Amazon Deals</div>
           </div>
-          <input
-            className="dp-search"
-            type="text" placeholder="Search deals..." value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-            style={{ flex: 1, maxWidth: "380px", border: "1.5px solid #e5e5e5", borderRadius: "10px", padding: "9px 16px", fontSize: "14px", outline: "none", background: "#fafafa" }}
-          />
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
-            <span style={{ fontSize: "12px", color: "#888" }}>Sort:</span>
-            <select value={sortBy} onChange={e => setSortBy(e.target.value)}
-              style={{ border: "1.5px solid #e5e5e5", borderRadius: "8px", padding: "6px 10px", fontSize: "13px", background: "#fff", cursor: "pointer", outline: "none" }}>
-              <option value="hot">Hottest</option>
-              <option value="discount">% Discount</option>
-              <option value="price_low">Price Low</option>
-              <option value="price_high">Price High</option>
-            </select>
-          </div>
-        </div>
-      </header>
-
-      <div className="dp-hero" style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%)", color: "#fff", padding: "48px 24px", textAlign: "center" }}>
-        <div style={{ maxWidth: "600px", margin: "0 auto" }}>
-          <div style={{ fontSize: "13px", color: "#f90", fontWeight: "700", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "12px" }}>Updated Automatically by Deal Bot</div>
-          <h1 style={{ margin: "0 0 12px", fontSize: "42px", fontWeight: "800", lineHeight: 1.2 }}>The Best Amazon Deals</h1>
-          <p style={{ margin: 0, color: "#b0b8cc", fontSize: "15px", lineHeight: 1.6 }}>Our bot scans for the hottest deals and posts them here and on WhatsApp.</p>
-        </div>
-      </div>
-
-      <div style={{ background: "#fff", borderBottom: "1px solid #eee", padding: "0 24px" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", gap: "4px", overflowX: "auto", padding: "12px 0" }}>
-          {CATEGORIES.map(cat => (
-            <button key={cat} onClick={() => setActiveCategory(cat)}
-              style={{ border: "none", borderRadius: "8px", padding: "7px 16px", fontSize: "13px", fontWeight: "600", cursor: "pointer", whiteSpace: "nowrap", background: activeCategory === cat ? "#1a1a2e" : "transparent", color: activeCategory === cat ? "#fff" : "#555", transition: "all 0.15s" }}>
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div style={{ background: "#fff3e0", borderBottom: "1px solid #ffe0b2", padding: "10px 24px" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", gap: "24px", fontSize: "13px", color: "#e65100", fontWeight: "600", flexWrap: "wrap" }}>
-          <span>Last updated: <strong>{lastUpdated ? lastUpdated.toLocaleString() : "Loading..."}</strong></span>
-          <span><strong>{deals.length}</strong> active deals</span>
-        </div>
-      </div>
-
-      <main className="dp-main" style={{ maxWidth: "1200px", margin: "0 auto", padding: "32px 24px" }}>
-        {loading ? (
-          <div style={{ textAlign: "center", padding: "80px 20px", color: "#999" }}>
-            <div style={{ fontSize: "48px", marginBottom: "12px" }}>⏳</div>
-            <p>Loading deals...</p>
-          </div>
-        ) : filtered.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "80px 20px", color: "#999" }}>
-            <div style={{ fontSize: "48px", marginBottom: "12px" }}>🔍</div>
-            <p>No deals found.</p>
-          </div>
-        ) : (
+        </a>
+        {!route.dealId && (
           <>
-            <div style={{ marginBottom: "20px" }}>
-              <h2 style={{ margin: 0, fontSize: "18px", fontWeight: "700", color: "#1a1a2e" }}>
-                {activeCategory === "All" ? "All Deals" : activeCategory} ({filtered.length})
-              </h2>
-            </div>
-            <div className="dp-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "20px" }}>
-              {filtered.map(deal => <DealCard key={deal.id} deal={deal} onView={navigateToDeal} />)}
-            </div>
+            <input
+              className="dp-search"
+              type="search"
+              placeholder="Search deals…"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+            <select className="dp-sort" value={sortBy} onChange={e => setSortBy(e.target.value)}>
+              <option value="newest">Newest</option>
+              <option value="hot">Hottest</option>
+              <option value="discount">Biggest Discount</option>
+              <option value="price_low">Price: Low → High</option>
+              <option value="price_high">Price: High → Low</option>
+            </select>
           </>
         )}
-      </main>
-
-      <div style={{ background: "#1a1a2e", color: "#fff", padding: "40px 24px", textAlign: "center" }}>
-        <div style={{ maxWidth: "500px", margin: "0 auto" }}>
-          <div style={{ fontSize: "36px", marginBottom: "12px" }}>💬</div>
-          <h2 style={{ margin: "0 0 10px", fontSize: "24px" }}>Get Deals on WhatsApp</h2>
-          <p style={{ color: "#b0b8cc", marginBottom: "20px", fontSize: "14px" }}>Join our group and get instant alerts the moment our bot finds a deal.</p>
-          <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer"
-            style={{ display: "inline-block", background: "#25d366", color: "#fff", textDecoration: "none", padding: "13px 28px", borderRadius: "10px", fontWeight: "700", fontSize: "15px" }}>
-            Join WhatsApp Group
-          </a>
-        </div>
       </div>
+    </header>
+  );
 
-      <footer style={{ background: "#111", color: "#666", padding: "20px 24px", textAlign: "center", fontSize: "12px" }}>
-        <p style={{ margin: 0 }}>2026 DealsPulse - As an Amazon Associate we earn from qualifying purchases</p>
-      </footer>
+  const footer = (
+    <footer className="dp-footer">
+      <p className="dp-disclosure">
+        <strong>Affiliate disclosure:</strong> As an Amazon Associate, {SITE_NAME} earns from
+        qualifying purchases. Prices and availability were accurate at posting time but can
+        change at any moment — always confirm the final price on Amazon.
+      </p>
+      <p>© {new Date().getFullYear()} {SITE_NAME} · <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">Get deals on WhatsApp</a></p>
+    </footer>
+  );
+
+  return (
+    <div className="dp-root">
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+      <style>{CSS}</style>
+
+      {header}
+
+      {route.dealId ? (
+        <DealPage deals={deals} id={route.dealId} src={route.src} onBack={navigateHome} onView={navigateToDeal} />
+      ) : (
+        <>
+          <div className="dp-hero">
+            <div className="dp-hero-kicker"><span className="dp-live-dot" /> Live · auto-updated hourly</div>
+            <h1>Today's Best Amazon Deals</h1>
+            <p>Hand-checked discounts of 25% or more, refreshed every hour. Deals expire fast — grab them while they last.</p>
+            <div className="dp-hero-stats">
+              <span className="dp-stat-chip"><strong>{deals.length}</strong> live deals</span>
+              <span className="dp-stat-chip"><strong>{hotCount}</strong> 🔥 hot right now</span>
+              {lastUpdated && <span className="dp-stat-chip">Updated <strong>{lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</strong></span>}
+            </div>
+          </div>
+
+          <div className="dp-catbar">
+            <div className="dp-catbar-inner">
+              {categories.map(([cat, count]) => (
+                <button
+                  key={cat}
+                  className={`dp-cat ${activeCategory === cat ? "active" : ""}`}
+                  onClick={() => setActiveCategory(cat)}
+                >
+                  {cat}<span className="count">{count}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <main className="dp-main">
+            {loading ? (
+              <div className="dp-grid">
+                {[...Array(8)].map((_, i) => <SkeletonCard key={i} />)}
+              </div>
+            ) : filtered.length === 0 ? (
+              <div className="dp-empty">
+                <div className="icon">🔍</div>
+                <p>No deals match your search.</p>
+                <button onClick={() => { setSearchQuery(""); setActiveCategory("All"); }}>Clear filters</button>
+              </div>
+            ) : (
+              <>
+                <div className="dp-grid-head">
+                  <h2>{activeCategory === "All" ? "All Deals" : activeCategory} ({filtered.length})</h2>
+                  {lastUpdated && <span className="dp-updated">Last updated {lastUpdated.toLocaleString()}</span>}
+                </div>
+                <div className="dp-grid">
+                  {filtered.map(deal => <DealCard key={deal.id} deal={deal} onView={navigateToDeal} />)}
+                </div>
+              </>
+            )}
+
+            <div className="dp-wa-banner">
+              <div style={{ fontSize: 34, marginBottom: 8 }}>💬</div>
+              <h2>Never miss a deal again</h2>
+              <p>Join our free WhatsApp group — the hottest deals land there the moment our bot finds them.</p>
+              <a className="dp-wa-btn" href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                Join the WhatsApp Group →
+              </a>
+            </div>
+          </main>
+        </>
+      )}
+
+      {footer}
+
+      <a className="dp-wa-float" href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Join our WhatsApp group">💬</a>
     </div>
   );
 }

@@ -32,15 +32,21 @@ module.exports = async (req, res) => {
   const { id } = req.query;
   const deals = await fetchDeals();
   const deal = deals.find(d => d.id === id);
+  const siteUrl = "https://" + req.headers.host;
 
   if (!deal) {
-    res.status(404).send("Deal not found");
+    // Deal rotated off the site (old WhatsApp/social link):
+    // send the visitor to the homepage instead of a dead 404.
+    res.writeHead(302, { Location: siteUrl + "/" });
+    res.end();
     return;
   }
 
-  const siteUrl = "https://" + req.headers.host;
+  // Channel attribution: /share/deal/:id?src=wa (bot links) tags the visit
+  // so the deal page's Buy button reports the right source to /api/go.
+  const src = ["wa", "share", "site", "deal"].includes(req.query.src) ? req.query.src : "share";
   const shareUrl = siteUrl + "/share/deal/" + encodeURIComponent(deal.id);
-  const hashUrl = siteUrl + "/#/deal/" + encodeURIComponent(deal.id);
+  const hashUrl = siteUrl + "/#/deal/" + encodeURIComponent(deal.id) + "?src=" + src;
 
   // Compute savings for display
   const hasSavings = deal.originalPrice > 0 && deal.originalPrice > deal.dealPrice && deal.dealPrice > 0;
