@@ -1,5 +1,50 @@
 [
   {
+    "id": "sd_34863",
+    "asin": "B08KX7BDVR",
+    "title": "24 Count Dove Beauty Soap Bars",
+    "category": "Beauty",
+    "originalPrice": 47.94,
+    "dealPrice": 27.65,
+    "discount": 42,
+    "image": "https://m.media-amazon.com/images/I/41H738ADrzL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B08KX7BDVR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-09",
+    "hot": false,
+    "posted_at": "2026-07-07T22:00:42.838Z"
+  },
+  {
+    "id": "sd_34821",
+    "asin": "B005N2VCLQ",
+    "title": "Nescafe Instant Coffee Pouch 8 oz",
+    "category": "Home & Kitchen",
+    "originalPrice": 12.99,
+    "dealPrice": 9.09,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/41UO8WrkaxL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B005N2VCLQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-08",
+    "hot": false,
+    "posted_at": "2026-07-07T22:00:42.838Z"
+  },
+  {
+    "id": "sd_33542",
+    "asin": "B0G6YB821B",
+    "title": "MimAuto 4 in 1 Retractable Car Charger",
+    "category": "Electronics",
+    "originalPrice": 17.99,
+    "dealPrice": 9.99,
+    "discount": 44,
+    "image": "https://m.media-amazon.com/images/I/51PF7Gud+dL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0G6YB821B?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-09",
+    "hot": false,
+    "posted_at": "2026-07-07T22:00:42.838Z"
+  },
+  {
     "id": "sd_34108",
     "asin": "B081JDLXSJ",
     "title": "Samsonite Luggage Prime Deals",
@@ -251,7 +296,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GL1PLNJW?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-07T16:31:15.016Z"
   },
   {
@@ -551,7 +596,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B09JFGJD78?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-08",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-06T19:57:15.551Z"
   },
   {
@@ -853,50 +898,5 @@
     "hot": false,
     "posted_at": "2026-07-06T14:25:25.017Z",
     "asin": "B0CX1MYDW6"
-  },
-  {
-    "id": "sd_34870",
-    "title": "16 Pads Homax Steel Wool Extra Coarse",
-    "category": "Home & Kitchen",
-    "originalPrice": 5.99,
-    "dealPrice": 3.89,
-    "discount": 35,
-    "image": "https://m.media-amazon.com/images/I/41yTc7afBfL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B074MCD2ZC?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
-    "hot": false,
-    "posted_at": "2026-07-06T14:25:25.017Z",
-    "asin": "B074MCD2ZC"
-  },
-  {
-    "id": "sd_34704",
-    "title": "2 Pack Windex Glass Cleaner 23 oz",
-    "category": "Home & Kitchen",
-    "originalPrice": 7.94,
-    "dealPrice": 5.71,
-    "discount": 28,
-    "image": "https://m.media-amazon.com/images/I/51guQVJcNXL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DYF1PJT9?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
-    "hot": false,
-    "posted_at": "2026-07-06T05:11:35.867Z",
-    "asin": "B0DYF1PJT9"
-  },
-  {
-    "id": "sd_34866",
-    "title": "Under Armour Blitzing Cap",
-    "category": "Fashion",
-    "originalPrice": 20,
-    "dealPrice": 7.99,
-    "discount": 60,
-    "image": "https://m.media-amazon.com/images/I/51o64rR0elL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B072J3NLV8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-09",
-    "hot": true,
-    "posted_at": "2026-07-06T04:00:47.864Z",
-    "asin": "B072J3NLV8"
   }
 ]
