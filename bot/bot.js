@@ -141,8 +141,13 @@ async function sendToWhatsApp(deals) {
     const savings = hasSavings ? (deal.originalPrice - deal.dealPrice).toFixed(2) : null;
     const pctOff = hasSavings ? Math.round((1 - deal.dealPrice / deal.originalPrice) * 100) : null;
 
-    // Build caption
-    let caption = `🔥 HOT DEAL\n\n`;
+    // Build caption — "HOT DEAL" only for deals the pipeline actually
+    // flagged hot (top ~15% by discount); everything else leads with
+    // its discount so the fire emoji keeps meaning something.
+    const headline = deal.hot
+      ? "🔥 HOT DEAL"
+      : (pctOff ? `⚡ ${pctOff}% OFF` : "⚡ DEAL ALERT");
+    let caption = `${headline}\n\n`;
     caption += `📦 *${deal.title}*\n\n`;
     if (deal.dealPrice > 0) {
       caption += `💲 *Now:* $${deal.dealPrice.toFixed(2)}\n`;
