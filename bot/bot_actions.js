@@ -238,11 +238,14 @@ function saveDeals(newDeals) {
   const existingIds = new Set(fresh.map(d => d.id));
   const existingAsins = new Set(fresh.map(d => d.asin || extractAsin(d.affiliate_url || "")).filter(Boolean));
 
+  let skippedId = 0, skippedAsin = 0;
   const additions = newDeals.filter(d => {
-    if (existingIds.has(d.id)) return false;
-    if (d.asin && existingAsins.has(d.asin)) return false; // same product, new deal id
+    if (existingIds.has(d.id)) { skippedId++; return false; }
+    if (d.asin && existingAsins.has(d.asin)) { skippedAsin++; return false; } // same product, new deal id
     return true;
-  });
+  }).slice(0, MAX_PER_RUN); // cap NEW deals per run — here, not at parse time,
+                            // so deals low on the page still get saved eventually
+  console.log(`Dedupe: ${skippedId} already stored, ${skippedAsin} duplicate products, ${additions.length} genuinely new.`);
 
   const allDeals = rebalanceHot(
     [...additions, ...fresh]
@@ -281,10 +284,13 @@ async function scrapeStundeals() {
   const valid = allDeals.filter(d => d.dealPrice > 0 && d.discount >= MIN_DISCOUNT_PCT);
   console.log(`Parsed ${allDeals.length} Amazon deals; ${valid.length} pass filters (price>0, >=${MIN_DISCOUNT_PCT}% off)`);
   valid.forEach(d =>
-    console.log(`  ${d.title.slice(0, 55)} | $${d.dealPrice} (was $${d.originalPrice}, -${d.discount}%) | ${d.category}`)
+    console.log(`  ${d.id} ${d.asin || "no-asin"} | ${d.title.slice(0, 55)} | $${d.dealPrice} (was $${d.originalPrice}, -${d.discount}%) | ${d.category}`)
   );
 
-  return valid.slice(0, MAX_PER_RUN);
+  // Return everything valid — the per-run cap on NEW deals is applied in
+  // saveDeals, after dedupe. Capping here made deals below position
+  // MAX_PER_RUN on the page invisible forever once the top was all known.
+  return valid;
 }
 
 module.exports = { parseDealObjects, guessCategory, unescapeValue, extractAsin, saveDeals, rebalanceHot };
