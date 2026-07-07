@@ -1,5 +1,35 @@
 [
   {
+    "id": "sd_34704",
+    "asin": "B0DYF1PJT9",
+    "title": "2 Pack Windex Glass Cleaner 23 oz",
+    "category": "Home & Kitchen",
+    "originalPrice": 7.94,
+    "dealPrice": 5.71,
+    "discount": 28,
+    "image": "https://m.media-amazon.com/images/I/51guQVJcNXL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DYF1PJT9?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-09",
+    "hot": false,
+    "posted_at": "2026-07-07T23:01:19.419Z"
+  },
+  {
+    "id": "sd_34926",
+    "asin": "B07VRB86RQ",
+    "title": "Triple Monitor Mount",
+    "category": "Electronics",
+    "originalPrice": 74.99,
+    "dealPrice": 24.99,
+    "discount": 67,
+    "image": "https://m.media-amazon.com/images/I/41avKTOc+ML._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B07VRB86RQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-10",
+    "hot": true,
+    "posted_at": "2026-07-07T23:01:19.419Z"
+  },
+  {
     "id": "sd_34863",
     "asin": "B08KX7BDVR",
     "title": "24 Count Dove Beauty Soap Bars",
@@ -296,7 +326,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GL1PLNJW?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-07",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-07-07T16:31:15.016Z"
   },
   {
@@ -596,7 +626,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B09JFGJD78?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-08",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-07-06T19:57:15.551Z"
   },
   {
@@ -868,35 +898,5 @@
     "hot": false,
     "posted_at": "2026-07-06T14:25:25.018Z",
     "asin": "B08HZXVY7Z"
-  },
-  {
-    "id": "sd_34867",
-    "title": "6 Mega Rolls 24 Regular Toilet Paper",
-    "category": "Home & Kitchen",
-    "originalPrice": 7.49,
-    "dealPrice": 3.99,
-    "discount": 47,
-    "image": "https://m.media-amazon.com/images/I/51Sw2znUjoL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0BDSMK682?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-10",
-    "hot": false,
-    "posted_at": "2026-07-06T14:25:25.018Z",
-    "asin": "B0BDSMK682"
-  },
-  {
-    "id": "sd_34871",
-    "title": "GRECELL Portable Power Station 600W",
-    "category": "Electronics",
-    "originalPrice": 479.99,
-    "dealPrice": 229.93,
-    "discount": 52,
-    "image": "https://m.media-amazon.com/images/I/41AQ73wRdhL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0CX1MYDW6?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
-    "hot": false,
-    "posted_at": "2026-07-06T14:25:25.017Z",
-    "asin": "B0CX1MYDW6"
   }
 ]
