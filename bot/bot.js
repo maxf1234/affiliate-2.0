@@ -141,11 +141,10 @@ async function sendToWhatsApp(deals) {
     const savings = hasSavings ? (deal.originalPrice - deal.dealPrice).toFixed(2) : null;
     const pctOff = hasSavings ? Math.round((1 - deal.dealPrice / deal.originalPrice) * 100) : null;
 
-    // Headline by discount: <35% none, 35-49% bold HOT DEAL, >=50% adds 🔥
+    // Headline by discount: 40%+ gets bold HOT DEAL with fire, else none
     const pct = pctOff ?? deal.discount ?? 0;
     let caption = "";
-    if (pct >= 50) caption += `🔥 *HOT DEAL*\n\n`;
-    else if (pct >= 35) caption += `*HOT DEAL*\n\n`;
+    if (pct >= 40) caption += `🔥 *HOT DEAL*\n\n`;
     caption += `📦 *${deal.title}*\n\n`;
     if (deal.dealPrice > 0) {
       caption += `💲 *Now:* $${deal.dealPrice.toFixed(2)}\n`;
