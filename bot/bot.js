@@ -133,8 +133,9 @@ async function sendToWhatsApp(deals) {
   }
 
   for (const deal of deals) {
-    // src=wa tags these clicks as WhatsApp traffic in /api/stats
-    const shareLink = `${SITE_BASE}/share/deal/${encodeURIComponent(deal.id)}?src=wa`;
+    // Tracked link: counts the tap as WhatsApp traffic in /api/stats,
+    // then redirects to the deal page on our site.
+    const shareLink = `${SITE_BASE}/api/go?id=${encodeURIComponent(deal.id)}&src=wa&to=site`;
 
     // Compute savings
     const hasSavings = deal.originalPrice > 0 && deal.originalPrice > deal.dealPrice && deal.dealPrice > 0;

@@ -20,9 +20,10 @@ GitHub Action (hourly)
 WhatsApp bot (bot/bot.js — runs on your machine / Railway)
   └─ posts 1 new deal per hour to your groups, linking to the site (?src=wa)
 
-Every "Get Deal" click
-  └─ /api/go?id=X&src=Y  →  counts the click  →  302 to Amazon
+WhatsApp deal links (/api/go?id=X&src=wa&to=site)
+  └─ count the tap  →  redirect to the deal page on the site
        └─ view counts at /api/stats
+Website "Get Deal" buttons link straight to Amazon (plain affiliate link)
 ```
 
 -----
