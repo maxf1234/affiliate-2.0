@@ -72,25 +72,40 @@ async function trackClick(deal, src) {
   }
 }
 
+// Link-preview crawlers (WhatsApp, Facebook, etc.) fetch URLs before any
+// human taps them — don't count those as clicks.
+function isPreviewBot(req) {
+  const ua = req.headers["user-agent"] || "";
+  return /whatsapp|facebookexternalhit|twitterbot|telegrambot|linkedinbot|slackbot|discordbot|preview|crawler|spider/i.test(ua);
+}
+
 module.exports = async (req, res) => {
   const { id } = req.query;
   const src = VALID_SRC.has(req.query.src) ? req.query.src : "site";
+  // to=site: count the click, then land on OUR deal page instead of Amazon.
+  // Used by the WhatsApp bot so group-member taps are measurable.
+  const toSite = req.query.to === "site";
 
   const deals = await fetchDeals();
   const deal = deals.find(d => d.id === id);
 
+  res.setHeader("Cache-Control", "no-store");
+
   if (!deal || !deal.affiliate_url) {
     // Deal rotated off the site (old WhatsApp message, stale link):
     // send the visitor to the homepage instead of a dead end.
-    res.setHeader("Cache-Control", "no-store");
     res.writeHead(302, { Location: "/" });
     res.end();
     return;
   }
 
-  await trackClick(deal, src);
+  if (!isPreviewBot(req)) {
+    await trackClick(deal, src);
+  }
 
-  res.setHeader("Cache-Control", "no-store");
-  res.writeHead(302, { Location: deal.affiliate_url });
+  const target = toSite
+    ? "/#/deal/" + encodeURIComponent(deal.id) + "?src=" + src
+    : deal.affiliate_url;
+  res.writeHead(302, { Location: target });
   res.end();
 };

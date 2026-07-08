@@ -4,9 +4,8 @@ import { useState, useEffect, useMemo } from "react";
 const WHATSAPP_LINK = "https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx";
 const SITE_NAME = "DealsPulse";
 
-// Affiliate clicks route through /api/go so every click is counted
-// per deal and per channel before redirecting to Amazon.
-const goUrl = (deal, src) => `/api/go?id=${encodeURIComponent(deal.id)}&src=${src}`;
+// Site buttons link straight to Amazon with the affiliate tag.
+// Click tracking (/api/go) is only used for links sent to WhatsApp.
 
 const FALLBACK_DEALS = [
   {
@@ -333,7 +332,7 @@ function DealCard({ deal, onView }) {
         {exp && !exp.urgent && <span className="dp-expiry">{exp.text}</span>}
         <a
           className="dp-card-cta"
-          href={goUrl(deal, "site")}
+          href={deal.affiliate_url}
           target="_blank"
           rel="noopener noreferrer sponsored"
           onClick={e => e.stopPropagation()}
@@ -421,7 +420,7 @@ function DealPage({ deals, id, src, onBack, onView }) {
 
             <a
               className="dp-cta"
-              href={goUrl(deal, src === "wa" || src === "share" ? src : "deal")}
+              href={deal.affiliate_url}
               target="_blank"
               rel="noopener noreferrer sponsored"
             >
