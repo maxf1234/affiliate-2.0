@@ -1,5 +1,50 @@
 [
   {
+    "id": "sd_34929",
+    "asin": "B0D7QHYRMS",
+    "title": "Coleman Steel Creek Tent 6 Person",
+    "category": "Sports",
+    "originalPrice": 229.99,
+    "dealPrice": 99.99,
+    "discount": 57,
+    "image": "https://m.media-amazon.com/images/I/41sZmcHv5FL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0D7QHYRMS?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-10",
+    "hot": true,
+    "posted_at": "2026-07-08T02:41:18.272Z"
+  },
+  {
+    "id": "sd_34928",
+    "asin": "B011TCHU50",
+    "title": "6 Pack JoyJolt Shot Glasses 2 oz",
+    "category": "General",
+    "originalPrice": 13.95,
+    "dealPrice": 9.72,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/41fIAuIMYXL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B011TCHU50?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-10",
+    "hot": false,
+    "posted_at": "2026-07-08T02:41:18.272Z"
+  },
+  {
+    "id": "sd_34927",
+    "asin": "B0FY6GBKSR",
+    "title": "2 Pack Throw Pillow Inserts 12\"",
+    "category": "Home & Kitchen",
+    "originalPrice": 11.99,
+    "dealPrice": 5.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/31KIFSFGWpL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FY6GBKSR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-10",
+    "hot": false,
+    "posted_at": "2026-07-08T02:41:18.272Z"
+  },
+  {
     "id": "sd_34704",
     "asin": "B0DYF1PJT9",
     "title": "2 Pack Windex Glass Cleaner 23 oz",
@@ -266,7 +311,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0FR5GZDFC?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-09",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-07-07T19:02:11.469Z"
   },
   {
@@ -311,21 +356,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GVQSHK36?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-09",
-    "hot": false,
-    "posted_at": "2026-07-07T16:31:15.016Z"
-  },
-  {
-    "id": "sd_34801",
-    "asin": "B0GL1PLNJW",
-    "title": "175 Piece Plastic Dinnerware Set",
-    "category": "Home & Kitchen",
-    "originalPrice": 39.88,
-    "dealPrice": 17.95,
-    "discount": 55,
-    "image": "https://m.media-amazon.com/images/I/51T8ar-KoDL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0GL1PLNJW?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-07",
     "hot": false,
     "posted_at": "2026-07-07T16:31:15.016Z"
   },
@@ -868,35 +898,5 @@
     "hot": false,
     "posted_at": "2026-07-06T16:00:48.000Z",
     "asin": "B08RSQMY1G"
-  },
-  {
-    "id": "sd_34869",
-    "title": "Safety 1st Grow and Go Car Seat",
-    "category": "Baby & Kids",
-    "originalPrice": 104.99,
-    "dealPrice": 63,
-    "discount": 40,
-    "image": "https://m.media-amazon.com/images/I/31uEupGk+WL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FKLGWB87?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
-    "hot": false,
-    "posted_at": "2026-07-06T14:25:25.018Z",
-    "asin": "B0FKLGWB87"
-  },
-  {
-    "id": "sd_34868",
-    "title": "4 Pack Seventh Generation Glass Cleaner 23 oz",
-    "category": "Home & Kitchen",
-    "originalPrice": 29.42,
-    "dealPrice": 14.06,
-    "discount": 52,
-    "image": "https://m.media-amazon.com/images/I/51RuGJ9+fcL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B08HZXVY7Z?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-10",
-    "hot": false,
-    "posted_at": "2026-07-06T14:25:25.018Z",
-    "asin": "B08HZXVY7Z"
   }
 ]
