@@ -1,5 +1,50 @@
 [
   {
+    "id": "sd_34989",
+    "asin": "B01H3OMH7Y",
+    "title": "Brushed Nickel Kitchen Faucet",
+    "category": "Home & Kitchen",
+    "originalPrice": 67.99,
+    "dealPrice": 34.99,
+    "discount": 49,
+    "image": "https://m.media-amazon.com/images/I/31P9+l0tpQL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B01H3OMH7Y?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-13",
+    "hot": false,
+    "posted_at": "2026-07-09T19:49:52.430Z"
+  },
+  {
+    "id": "sd_34986",
+    "asin": "B08J8DFPRF",
+    "title": "GoodCook Baking Pan with Rack",
+    "category": "Home & Kitchen",
+    "originalPrice": 16.99,
+    "dealPrice": 10.92,
+    "discount": 36,
+    "image": "https://m.media-amazon.com/images/I/41gfqDkglfL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B08J8DFPRF?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-11",
+    "hot": false,
+    "posted_at": "2026-07-09T19:49:52.430Z"
+  },
+  {
+    "id": "sd_34988",
+    "asin": null,
+    "title": "Save 45% - 55% on First Aid Products!",
+    "category": "General",
+    "originalPrice": 32.91,
+    "dealPrice": 20.5,
+    "discount": 38,
+    "image": "https://m.media-amazon.com/images/I/61yNE-7QJIL._SL500_.jpg",
+    "affiliate_url": "https://amzn.to/44pQHQC?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-14",
+    "hot": false,
+    "posted_at": "2026-07-09T19:49:52.428Z"
+  },
+  {
     "id": "sd_34846",
     "asin": "B09YKRZR22",
     "title": "8 Pack Puffs Facial Tissues 148 Ct.",
@@ -761,7 +806,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0D7QHYRMS?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-10",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-08T02:41:18.272Z"
   },
   {
@@ -853,50 +898,5 @@
     "expires": "2026-07-09",
     "hot": false,
     "posted_at": "2026-07-07T22:00:42.838Z"
-  },
-  {
-    "id": "sd_34108",
-    "asin": "B081JDLXSJ",
-    "title": "Samsonite Luggage Prime Deals",
-    "category": "General",
-    "originalPrice": 17.99,
-    "dealPrice": 9.99,
-    "discount": 44,
-    "image": "https://m.media-amazon.com/images/I/41E09KjTYQL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B081JDLXSJ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-09",
-    "hot": false,
-    "posted_at": "2026-07-07T21:24:12.172Z"
-  },
-  {
-    "id": "sd_34924",
-    "asin": "B0B1N7BQHV",
-    "title": "Nine West Women's Fresh Pump Shoe",
-    "category": "Fashion",
-    "originalPrice": 109,
-    "dealPrice": 44.99,
-    "discount": 59,
-    "image": "https://m.media-amazon.com/images/I/31vMphznMTL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0B1N7BQHV?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-09",
-    "hot": true,
-    "posted_at": "2026-07-07T21:24:12.172Z"
-  },
-  {
-    "id": "sd_34923",
-    "asin": "B08LMHHCWQ",
-    "title": "Under Armour Hustle Sport Backpack",
-    "category": "Fashion",
-    "originalPrice": 29.97,
-    "dealPrice": 20.25,
-    "discount": 32,
-    "image": "https://m.media-amazon.com/images/I/41GSMKqT8ZL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B08LMHHCWQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-09",
-    "hot": false,
-    "posted_at": "2026-07-07T21:24:12.172Z"
   }
 ]
