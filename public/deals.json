@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_34992",
+    "asin": "B0D14XFH5M",
+    "title": "48  Pack Red Bull Sugar Free Energy Drink 8.4 oz",
+    "category": "Grocery",
+    "originalPrice": 73.44,
+    "dealPrice": 38.98,
+    "discount": 47,
+    "image": "https://m.media-amazon.com/images/I/416jBRUm4OL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0D14XFH5M?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-11",
+    "hot": false,
+    "posted_at": "2026-07-09T23:11:42.809Z"
+  },
+  {
     "id": "sd_34990",
     "asin": "B01G47W7R6",
     "title": "Cuisinart 14-Piece Cookware Set",
@@ -883,20 +898,5 @@
     "expires": "2026-07-10",
     "hot": true,
     "posted_at": "2026-07-07T23:01:19.419Z"
-  },
-  {
-    "id": "sd_34863",
-    "asin": "B08KX7BDVR",
-    "title": "24 Count Dove Beauty Soap Bars",
-    "category": "Beauty",
-    "originalPrice": 47.94,
-    "dealPrice": 27.65,
-    "discount": 42,
-    "image": "https://m.media-amazon.com/images/I/41H738ADrzL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B08KX7BDVR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-09",
-    "hot": false,
-    "posted_at": "2026-07-07T22:00:42.838Z"
   }
 ]
