@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_34990",
+    "asin": "B01G47W7R6",
+    "title": "Cuisinart 14-Piece Cookware Set",
+    "category": "Home & Kitchen",
+    "originalPrice": 279.95,
+    "dealPrice": 169.95,
+    "discount": 39,
+    "image": "https://m.media-amazon.com/images/I/31nUg4tclqL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B01G47W7R6?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-11",
+    "hot": false,
+    "posted_at": "2026-07-09T21:23:16.104Z"
+  },
+  {
     "id": "sd_34989",
     "asin": "B01H3OMH7Y",
     "title": "Brushed Nickel Kitchen Faucet",
@@ -879,21 +894,6 @@
     "discount": 42,
     "image": "https://m.media-amazon.com/images/I/41H738ADrzL._SL500_.jpg",
     "affiliate_url": "https://www.amazon.com/dp/B08KX7BDVR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-09",
-    "hot": false,
-    "posted_at": "2026-07-07T22:00:42.838Z"
-  },
-  {
-    "id": "sd_33542",
-    "asin": "B0G6YB821B",
-    "title": "MimAuto 4 in 1 Retractable Car Charger",
-    "category": "Electronics",
-    "originalPrice": 17.99,
-    "dealPrice": 9.99,
-    "discount": 44,
-    "image": "https://m.media-amazon.com/images/I/51PF7Gud+dL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0G6YB821B?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-09",
     "hot": false,
