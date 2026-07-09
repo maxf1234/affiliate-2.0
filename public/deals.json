@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_34821",
+    "asin": "B005N2VCLQ",
+    "title": "Nescafe Instant Coffee Pouch 8 oz",
+    "category": "Home & Kitchen",
+    "originalPrice": 12.99,
+    "dealPrice": 9.09,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/41UO8WrkaxL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B005N2VCLQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-08",
+    "hot": false,
+    "posted_at": "2026-07-09T00:09:53.079Z"
+  },
+  {
     "id": "sd_34959",
     "asin": "B017K90HME",
     "title": "5 Pack GoodCook Measuring Cups",
@@ -315,21 +330,6 @@
     "posted_at": "2026-07-08T18:17:10.670Z"
   },
   {
-    "id": "sd_34834",
-    "asin": "B076JK8PXX",
-    "title": "2 Count TRESemmé Moisture Shampoo & Conditioner 28 oz",
-    "category": "Beauty",
-    "originalPrice": 10.74,
-    "dealPrice": 5.91,
-    "discount": 45,
-    "image": "https://m.media-amazon.com/images/I/61s3H0xaxzL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B076JK8PXX?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
-    "hot": false,
-    "posted_at": "2026-07-08T16:38:47.187Z"
-  },
-  {
     "id": "sd_34877",
     "asin": "B09XBWCQF1",
     "title": "Under Armour Charged Assert 10 Shoes",
@@ -536,21 +536,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B08KX7BDVR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-09",
-    "hot": false,
-    "posted_at": "2026-07-07T22:00:42.838Z"
-  },
-  {
-    "id": "sd_34821",
-    "asin": "B005N2VCLQ",
-    "title": "Nescafe Instant Coffee Pouch 8 oz",
-    "category": "Home & Kitchen",
-    "originalPrice": 12.99,
-    "dealPrice": 9.09,
-    "discount": 30,
-    "image": "https://m.media-amazon.com/images/I/41UO8WrkaxL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B005N2VCLQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-08",
     "hot": false,
     "posted_at": "2026-07-07T22:00:42.838Z"
   },
