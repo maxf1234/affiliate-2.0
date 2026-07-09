@@ -94,6 +94,26 @@ function fetchJson(url) {
   });
 }
 
+// Timestamp of the last successful post, persisted so restarts/redeploys
+// don't trigger an immediate extra message.
+const LAST_POST_FILE = IS_MAC ? path.join(__dirname, "last_post.json") : "/data/last_post.json";
+
+function loadLastPost() {
+  try {
+    return JSON.parse(fs.readFileSync(LAST_POST_FILE, "utf8")).at || 0;
+  } catch (e) {
+    return 0;
+  }
+}
+
+function saveLastPost() {
+  try {
+    fs.writeFileSync(LAST_POST_FILE, JSON.stringify({ at: Date.now() }));
+  } catch (e) {
+    console.error("Could not save last-post time:", e.message);
+  }
+}
+
 function loadAnnounced() {
   try {
     return new Set(JSON.parse(fs.readFileSync(SEEN_FILE, "utf8")));
@@ -220,6 +240,16 @@ async function runBot() {
     return;
   }
 
+  // Rate limit: at most one post per SCAN_INTERVAL_MIN (with 5 min slack so
+  // a post scheduled on the hour isn't skipped over a few seconds of drift).
+  // This is what stops a redeploy/restart from firing an immediate message.
+  const sinceLast = Date.now() - loadLastPost();
+  const minGap = Math.max(0, SCAN_INTERVAL_MIN - 5) * 60 * 1000;
+  if (sinceLast < minGap) {
+    console.log(`Last post was ${Math.round(sinceLast / 60000)} min ago — waiting for the next scheduled run.`);
+    return;
+  }
+
   console.log(`Found ${newDeals.length} new deal(s) to announce`);
 
   // Watchdog: if sending hangs (zombie WhatsApp session), exit so Railway
@@ -240,6 +270,7 @@ async function runBot() {
     // Mark these as announced so we never repost them
     newDeals.forEach(d => announced.add(d.id));
     saveAnnounced(announced);
+    saveLastPost();
     console.log(`Done: announced ${newDeals.length} deal(s).`);
   }
 }
