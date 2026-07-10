@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_34935",
+    "asin": "B00KM8H4P4",
+    "title": "Rockport Men's Slip-On Loafer",
+    "category": "General",
+    "originalPrice": 129.95,
+    "dealPrice": 65,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/31QWK-b-8iL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B00KM8H4P4?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-11",
+    "hot": false,
+    "posted_at": "2026-07-10T16:24:56.989Z"
+  },
+  {
     "id": "sd_35001",
     "asin": "B014Z51ZKE",
     "title": "3 Pack POLO RALPH LAUREN Dress Socks",
@@ -883,20 +898,5 @@
     "expires": "2026-07-10",
     "hot": false,
     "posted_at": "2026-07-08T16:00:51.225Z"
-  },
-  {
-    "id": "sd_34879",
-    "asin": "B0F2QKRXRJ",
-    "title": "4 Pack Colgate MaxFresh Toothpaste 6.3 oz",
-    "category": "Beauty",
-    "originalPrice": 13.99,
-    "dealPrice": 7.99,
-    "discount": 43,
-    "image": "https://m.media-amazon.com/images/I/61C5MfLrdaL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0F2QKRXRJ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-10",
-    "hot": false,
-    "posted_at": "2026-07-08T16:00:51.224Z"
   }
 ]
