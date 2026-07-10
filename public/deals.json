@@ -1,5 +1,35 @@
 [
   {
+    "id": "sd_34879",
+    "asin": "B0F2QKRXRJ",
+    "title": "4 Pack Colgate MaxFresh Toothpaste 6.3 oz",
+    "category": "Beauty",
+    "originalPrice": 13.99,
+    "dealPrice": 7.99,
+    "discount": 43,
+    "image": "https://m.media-amazon.com/images/I/61C5MfLrdaL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0F2QKRXRJ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-10",
+    "hot": false,
+    "posted_at": "2026-07-10T18:22:59.824Z"
+  },
+  {
+    "id": "sd_35002",
+    "asin": "B072J3NLV8",
+    "title": "Under Armour Blitzing Cap",
+    "category": "Fashion",
+    "originalPrice": 20,
+    "dealPrice": 7.98,
+    "discount": 60,
+    "image": "https://m.media-amazon.com/images/I/51o64rR0elL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B072J3NLV8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-14",
+    "hot": true,
+    "posted_at": "2026-07-10T18:22:59.822Z"
+  },
+  {
     "id": "sd_34935",
     "asin": "B00KM8H4P4",
     "title": "Rockport Men's Slip-On Loafer",
@@ -311,7 +341,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0FCSMQC6B?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-11",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-07-09T16:00:39.977Z"
   },
   {
@@ -868,35 +898,5 @@
     "expires": "2026-07-11",
     "hot": false,
     "posted_at": "2026-07-08T16:38:47.186Z"
-  },
-  {
-    "id": "sd_34936",
-    "asin": null,
-    "title": "Step2 Whisper Ride Cruiser",
-    "category": "General",
-    "originalPrice": 85.99,
-    "dealPrice": 51.14,
-    "discount": 41,
-    "image": "https://m.media-amazon.com/images/I/41DVdv6F34L._SL500_.jpg",
-    "affiliate_url": "https://amzn.to/4ycD0Cf?tag=maxdeals062-20",
-    "store": "Amazon",
-    "expires": "2026-07-11",
-    "hot": false,
-    "posted_at": "2026-07-08T16:00:51.225Z"
-  },
-  {
-    "id": "sd_34934",
-    "asin": "B0FQPMWTR4",
-    "title": "16 Pack Glass Storage Bowls",
-    "category": "Home & Kitchen",
-    "originalPrice": 39.99,
-    "dealPrice": 23.08,
-    "discount": 42,
-    "image": "https://m.media-amazon.com/images/I/411PrkECyoL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FQPMWTR4?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-10",
-    "hot": false,
-    "posted_at": "2026-07-08T16:00:51.225Z"
   }
 ]
