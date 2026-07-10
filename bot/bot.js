@@ -23,11 +23,51 @@ const qrcode = require("qrcode-terminal");
 const IS_MAC            = process.platform === "darwin";
 const DEALS_URL         = process.env.DEALS_URL || "https://affilate-2-0.vercel.app/deals.json";
 const SITE_BASE         = process.env.SITE_BASE || "https://affilate-2-0.vercel.app";
-const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || "60");
-const MAX_PER_RUN       = parseInt(process.env.MAX_DEALS_PER_RUN || "1"); // post one deal per run
-const SEEN_FILE         = IS_MAC ? path.join(__dirname, "announced.json") : "/data/announced.json";
-const WHATSAPP_GROUPS   = (process.env.WHATSAPP_GROUPS || "").split(",").map(g => g.trim()).filter(Boolean);
+const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || "60"); // hourly-tier cadence + min gap between posts
+const TIMEZONE          = process.env.BOT_TIMEZONE || "America/New_York";
 const GROUP_LINK        = process.env.GROUP_LINK || "https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx"; // WhatsApp group invite link
+
+const parseGroups = (v) => (v || "").split(",").map(g => g.trim()).filter(Boolean);
+// Two tiers of groups, each with its own schedule and its own history:
+//   WHATSAPP_GROUPS     — one deal every hour (oldest un-posted first)
+//   THRICE_DAILY_GROUPS — 3 deals/day: 9 AM 2nd best, 12 PM 3rd best, 9 PM best
+const WHATSAPP_GROUPS     = parseGroups(process.env.WHATSAPP_GROUPS);
+const THRICE_DAILY_GROUPS = parseGroups(process.env.THRICE_DAILY_GROUPS);
+
+// `skip` = how many top-ranked deals to hold back, so the best of the day
+// always goes out at 9 PM.
+const POST_SLOTS = [
+  { cron: "0 9 * * *",  skip: 1, label: "9:00 AM (2nd best)" },
+  { cron: "0 12 * * *", skip: 1, label: "12:00 PM (3rd best)" },
+  { cron: "0 21 * * *", skip: 0, label: "9:00 PM (best of the day)" },
+];
+
+const dataFile = (name) => IS_MAC ? path.join(__dirname, name) : "/data/" + name;
+
+const AUDIENCES = {
+  hourly: {
+    label: "hourly",
+    groups: WHATSAPP_GROUPS,
+    seenFile: dataFile("announced.json"),          // existing file — history carries over
+    lastPostFile: dataFile("last_post.json"),
+    // steady drip: oldest un-announced deal first
+    pick(unannounced) {
+      unannounced.sort((a, b) => new Date(a.posted_at) - new Date(b.posted_at));
+      return unannounced[0];
+    },
+  },
+  thrice: {
+    label: "thrice-daily",
+    groups: THRICE_DAILY_GROUPS,
+    seenFile: dataFile("announced_thrice.json"),
+    lastPostFile: dataFile("last_post_thrice.json"),
+    // best-first by discount; skip holds the top deal(s) back for 9 PM
+    pick(unannounced, skip = 0) {
+      unannounced.sort((a, b) => (b.discount || 0) - (a.discount || 0));
+      return unannounced[Math.min(skip, unannounced.length - 1)];
+    },
+  },
+};
 
 // ── WHATSAPP CLIENT ───────────────────────────────────────────────────────────
 const SESSION_PATH = process.env.SESSION_PATH || (IS_MAC ? undefined : "/data/wwebjs_auth");
@@ -94,60 +134,54 @@ function fetchJson(url) {
   });
 }
 
-// Timestamp of the last successful post, persisted so restarts/redeploys
-// don't trigger an immediate extra message.
-const LAST_POST_FILE = IS_MAC ? path.join(__dirname, "last_post.json") : "/data/last_post.json";
-
-function loadLastPost() {
+// Timestamps of the last successful post (per tier), persisted so
+// restarts/redeploys don't trigger an immediate extra message.
+function loadLastPost(file) {
   try {
-    return JSON.parse(fs.readFileSync(LAST_POST_FILE, "utf8")).at || 0;
+    return JSON.parse(fs.readFileSync(file, "utf8")).at || 0;
   } catch (e) {
     return 0;
   }
 }
 
-function saveLastPost() {
+function saveLastPost(file) {
   try {
-    fs.writeFileSync(LAST_POST_FILE, JSON.stringify({ at: Date.now() }));
+    fs.writeFileSync(file, JSON.stringify({ at: Date.now() }));
   } catch (e) {
     console.error("Could not save last-post time:", e.message);
   }
 }
 
-function loadAnnounced() {
+function loadAnnounced(file) {
   try {
-    return new Set(JSON.parse(fs.readFileSync(SEEN_FILE, "utf8")));
+    return new Set(JSON.parse(fs.readFileSync(file, "utf8")));
   } catch (e) {
     return new Set();
   }
 }
 
-function saveAnnounced(set) {
+function saveAnnounced(file, set) {
   try {
-    fs.writeFileSync(SEEN_FILE, JSON.stringify([...set]));
+    fs.writeFileSync(file, JSON.stringify([...set]));
   } catch (e) {
     console.error("Could not save announced list:", e.message);
   }
 }
 
 // ── WHATSAPP SENDER ───────────────────────────────────────────────────────────
-async function sendToWhatsApp(deals) {
+async function sendToWhatsApp(deals, groupNames) {
   if (!whatsappReady) {
     console.warn("WhatsApp not ready - skipping.");
-    return false;
-  }
-  if (!WHATSAPP_GROUPS.length) {
-    console.warn("No WHATSAPP_GROUPS configured - skipping.");
     return false;
   }
 
   const chats = await whatsapp.getChats();
   const groupChats = chats.filter(
-    c => c.isGroup && WHATSAPP_GROUPS.some(name => c.name.toLowerCase().includes(name.toLowerCase()))
+    c => c.isGroup && groupNames.some(name => c.name.toLowerCase().includes(name.toLowerCase()))
   );
 
   if (!groupChats.length) {
-    console.warn("No matching WhatsApp groups found. Check WHATSAPP_GROUPS in .env");
+    console.warn(`No WhatsApp groups matched [${groupNames.join(", ")}]. Check the group variables in .env / Railway.`);
     console.log("Available groups:", chats.filter(c => c.isGroup).map(c => c.name).join(", "));
     return false;
   }
@@ -212,9 +246,9 @@ async function sendToWhatsApp(deals) {
 }
 
 // ── MAIN RUN ──────────────────────────────────────────────────────────────────
-async function runBot() {
+async function runBot(audience, skip = 0) {
   console.log("=".repeat(55));
-  console.log(`Checking for new deals at ${new Date().toLocaleTimeString()}`);
+  console.log(`[${audience.label}] Checking for new deals at ${new Date().toLocaleTimeString()}`);
 
   let deals;
   try {
@@ -229,28 +263,27 @@ async function runBot() {
     return;
   }
 
-  const announced = loadAnnounced();
-  // Work through un-announced deals oldest-first so it drips steadily
+  const announced = loadAnnounced(audience.seenFile);
   const unannounced = deals.filter(d => !announced.has(d.id));
-  unannounced.sort((a, b) => new Date(a.posted_at) - new Date(b.posted_at));
-  const newDeals = unannounced.slice(0, MAX_PER_RUN);
+  const picked = unannounced.length ? audience.pick(unannounced, skip) : null;
+  const newDeals = picked ? [picked] : [];
 
   if (!newDeals.length) {
-    console.log("No new deals to announce.");
+    console.log(`[${audience.label}] No new deals to announce.`);
     return;
   }
 
   // Rate limit: at most one post per SCAN_INTERVAL_MIN (with 5 min slack so
   // a post scheduled on the hour isn't skipped over a few seconds of drift).
-  // This is what stops a redeploy/restart from firing an immediate message.
-  const sinceLast = Date.now() - loadLastPost();
+  // Safety net against restarts/double-fires; each tier has its own clock.
+  const sinceLast = Date.now() - loadLastPost(audience.lastPostFile);
   const minGap = Math.max(0, SCAN_INTERVAL_MIN - 5) * 60 * 1000;
   if (sinceLast < minGap) {
-    console.log(`Last post was ${Math.round(sinceLast / 60000)} min ago — waiting for the next scheduled run.`);
+    console.log(`[${audience.label}] Last post was ${Math.round(sinceLast / 60000)} min ago — waiting for the next scheduled run.`);
     return;
   }
 
-  console.log(`Found ${newDeals.length} new deal(s) to announce`);
+  console.log(`[${audience.label}] Announcing: ${newDeals[0].title.slice(0, 50)} (-${newDeals[0].discount}%)`);
 
   // Watchdog: if sending hangs (zombie WhatsApp session), exit so Railway
   // restarts us with a fresh connection instead of stalling silently forever.
@@ -261,28 +294,30 @@ async function runBot() {
 
   let sent = false;
   try {
-    sent = await sendToWhatsApp(newDeals);
+    sent = await sendToWhatsApp(newDeals, audience.groups);
   } finally {
     clearTimeout(watchdog);
   }
 
   if (sent) {
-    // Mark these as announced so we never repost them
+    // Mark these as announced so we never repost them (per tier)
     newDeals.forEach(d => announced.add(d.id));
-    saveAnnounced(announced);
-    saveLastPost();
-    console.log(`Done: announced ${newDeals.length} deal(s).`);
+    saveAnnounced(audience.seenFile, announced);
+    saveLastPost(audience.lastPostFile);
+    console.log(`[${audience.label}] Done: announced ${newDeals.length} deal(s).`);
   }
 }
 
 // ── FIRST-RUN SEEDING ─────────────────────────────────────────────────────────
-// On the very first run we DON'T mark everything as announced — we want the bot
-// to drip out the existing backlog one per hour. We just create an empty seen
-// file so the seeding only happens once.
+// On a tier's very first run we DON'T mark everything as announced — we want
+// it to work through the existing backlog on its schedule. We just create an
+// empty seen file so the seeding only happens once per tier.
 async function seedIfFirstRun() {
-  if (fs.existsSync(SEEN_FILE)) return; // already initialized
-  saveAnnounced(new Set());
-  console.log("First run: starting fresh. Will post existing deals one per hour, oldest first.");
+  for (const audience of Object.values(AUDIENCES)) {
+    if (!audience.groups.length || fs.existsSync(audience.seenFile)) continue;
+    saveAnnounced(audience.seenFile, new Set());
+    console.log(`[${audience.label}] First run: starting fresh with the existing backlog.`);
+  }
 }
 
 // ── START ─────────────────────────────────────────────────────────────────────
@@ -291,7 +326,19 @@ whatsapp.initialize();
 
 whatsapp.once("ready", async () => {
   await seedIfFirstRun();
-  await runBot();
-  cron.schedule(`*/${SCAN_INTERVAL_MIN} * * * *`, runBot);
-  console.log(`Scheduled to check every ${SCAN_INTERVAL_MIN} minutes`);
+  // No startup post — messages go out only at the scheduled times, so
+  // redeploys/restarts never trigger an extra message.
+  if (AUDIENCES.hourly.groups.length) {
+    cron.schedule(`*/${SCAN_INTERVAL_MIN} * * * *`, () => runBot(AUDIENCES.hourly));
+    console.log(`[hourly] Every ${SCAN_INTERVAL_MIN} min -> ${AUDIENCES.hourly.groups.join(", ")}`);
+  }
+  if (AUDIENCES.thrice.groups.length) {
+    POST_SLOTS.forEach(slot =>
+      cron.schedule(slot.cron, () => runBot(AUDIENCES.thrice, slot.skip), { timezone: TIMEZONE })
+    );
+    console.log(`[thrice-daily] ${POST_SLOTS.map(s => s.label).join(" | ")} (${TIMEZONE}) -> ${AUDIENCES.thrice.groups.join(", ")}`);
+  }
+  if (!AUDIENCES.hourly.groups.length && !AUDIENCES.thrice.groups.length) {
+    console.warn("No groups configured — set WHATSAPP_GROUPS and/or THRICE_DAILY_GROUPS.");
+  }
 });
