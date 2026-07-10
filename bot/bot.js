@@ -33,6 +33,8 @@ const parseGroups = (v) => (v || "").split(",").map(g => g.trim()).filter(Boolea
 //   THRICE_DAILY_GROUPS — 3 deals/day: 9 AM 2nd best, 12 PM 3rd best, 9 PM best
 const WHATSAPP_GROUPS     = parseGroups(process.env.WHATSAPP_GROUPS);
 const THRICE_DAILY_GROUPS = parseGroups(process.env.THRICE_DAILY_GROUPS);
+// Which deal categories the thrice-daily tier may post (comma-separated).
+const THRICE_DAILY_CATEGORIES = parseGroups(process.env.THRICE_DAILY_CATEGORIES || "Fashion");
 
 // `skip` = how many top-ranked deals to hold back, so the best of the day
 // always goes out at 9 PM.
@@ -59,6 +61,7 @@ const AUDIENCES = {
   thrice: {
     label: "thrice-daily",
     groups: THRICE_DAILY_GROUPS,
+    categories: THRICE_DAILY_CATEGORIES, // only deals from these categories
     seenFile: dataFile("announced_thrice.json"),
     lastPostFile: dataFile("last_post_thrice.json"),
     // best-first by discount; skip holds the top deal(s) back for 9 PM
@@ -264,7 +267,11 @@ async function runBot(audience, skip = 0) {
   }
 
   const announced = loadAnnounced(audience.seenFile);
-  const unannounced = deals.filter(d => !announced.has(d.id));
+  let unannounced = deals.filter(d => !announced.has(d.id));
+  if (audience.categories && audience.categories.length) {
+    const wanted = audience.categories.map(c => c.toLowerCase());
+    unannounced = unannounced.filter(d => wanted.includes((d.category || "").toLowerCase()));
+  }
   const picked = unannounced.length ? audience.pick(unannounced, skip) : null;
   const newDeals = picked ? [picked] : [];
 
