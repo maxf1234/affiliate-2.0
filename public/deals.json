@@ -1,5 +1,50 @@
 [
   {
+    "id": "sd_34863",
+    "asin": "B08KX7BDVR",
+    "title": "24 Count Dove Beauty Soap Bars",
+    "category": "Beauty",
+    "originalPrice": 47.94,
+    "dealPrice": 27.65,
+    "discount": 42,
+    "image": "https://m.media-amazon.com/images/I/41H738ADrzL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B08KX7BDVR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-12",
+    "hot": false,
+    "posted_at": "2026-07-10T03:19:36.069Z"
+  },
+  {
+    "id": "sd_34704",
+    "asin": "B0DYF1PJT9",
+    "title": "2 Pack Windex Glass Cleaner 23 oz",
+    "category": "Home & Kitchen",
+    "originalPrice": 7.94,
+    "dealPrice": 5.71,
+    "discount": 28,
+    "image": "https://m.media-amazon.com/images/I/51guQVJcNXL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DYF1PJT9?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-12",
+    "hot": false,
+    "posted_at": "2026-07-10T03:19:36.069Z"
+  },
+  {
+    "id": "sd_34993",
+    "asin": "B0FP28613M",
+    "title": "3 Pack Silicone Baking Mats",
+    "category": "General",
+    "originalPrice": 9.99,
+    "dealPrice": 4.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41WCAXcwZ9L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FP28613M?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-12",
+    "hot": false,
+    "posted_at": "2026-07-10T03:19:36.069Z"
+  },
+  {
     "id": "sd_34992",
     "asin": "B0D14XFH5M",
     "title": "48  Pack Red Bull Sugar Free Energy Drink 8.4 oz",
@@ -131,7 +176,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0BHZSRDCQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-13",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-09T17:56:08.657Z"
   },
   {
@@ -853,50 +898,5 @@
     "expires": "2026-07-10",
     "hot": false,
     "posted_at": "2026-07-08T02:41:18.272Z"
-  },
-  {
-    "id": "sd_34927",
-    "asin": "B0FY6GBKSR",
-    "title": "2 Pack Throw Pillow Inserts 12\"",
-    "category": "Home & Kitchen",
-    "originalPrice": 11.99,
-    "dealPrice": 5.99,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/31KIFSFGWpL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FY6GBKSR?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-10",
-    "hot": false,
-    "posted_at": "2026-07-08T02:41:18.272Z"
-  },
-  {
-    "id": "sd_34704",
-    "asin": "B0DYF1PJT9",
-    "title": "2 Pack Windex Glass Cleaner 23 oz",
-    "category": "Home & Kitchen",
-    "originalPrice": 7.94,
-    "dealPrice": 5.71,
-    "discount": 28,
-    "image": "https://m.media-amazon.com/images/I/51guQVJcNXL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DYF1PJT9?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-09",
-    "hot": false,
-    "posted_at": "2026-07-07T23:01:19.419Z"
-  },
-  {
-    "id": "sd_34926",
-    "asin": "B07VRB86RQ",
-    "title": "Triple Monitor Mount",
-    "category": "Electronics",
-    "originalPrice": 74.99,
-    "dealPrice": 24.99,
-    "discount": 67,
-    "image": "https://m.media-amazon.com/images/I/41avKTOc+ML._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B07VRB86RQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-10",
-    "hot": true,
-    "posted_at": "2026-07-07T23:01:19.419Z"
   }
 ]
