@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_32896",
+    "asin": "B0CW7D4WQL",
+    "title": "24 Pack LaCroix Sparkling Water 12 oz",
+    "category": "Grocery",
+    "originalPrice": 23.98,
+    "dealPrice": 11.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41OJrXI7h1L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CW7D4WQL?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-14",
+    "hot": false,
+    "posted_at": "2026-07-11T08:46:38.532Z"
+  },
+  {
     "id": "sd_34907",
     "asin": "B09FFS6G3J",
     "title": "Flash Furniture 34\" Folding Table",
@@ -311,7 +326,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0BHZSRDCQ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-13",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-09T17:56:08.657Z"
   },
   {
