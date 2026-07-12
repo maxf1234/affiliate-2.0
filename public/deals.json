@@ -12,7 +12,7 @@
     "store": "Amazon",
     "expires": "2026-07-11",
     "hot": false,
-    "posted_at": "2026-07-12T06:09:23.095Z"
+    "posted_at": "2026-07-12T06:10:31.872Z"
   },
   {
     "id": "sd_34976",
@@ -27,7 +27,37 @@
     "store": "Amazon",
     "expires": "2026-07-11",
     "hot": false,
-    "posted_at": "2026-07-12T06:09:23.095Z"
+    "posted_at": "2026-07-12T06:10:31.872Z"
+  },
+  {
+    "id": "sd_34992",
+    "asin": "B0D14XFH5M",
+    "title": "48  Pack Red Bull Sugar Free Energy Drink 8.4 oz",
+    "category": "Grocery",
+    "originalPrice": 73.44,
+    "dealPrice": 38.98,
+    "discount": 47,
+    "image": "https://m.media-amazon.com/images/I/416jBRUm4OL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0D14XFH5M?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-11",
+    "hot": false,
+    "posted_at": "2026-07-12T06:10:31.871Z"
+  },
+  {
+    "id": "sd_29081",
+    "asin": "1422644278",
+    "title": "Micro Peas Mini Bundt Cakes Kosher Cookbook",
+    "category": "General",
+    "originalPrice": 13.99,
+    "dealPrice": 8.81,
+    "discount": 37,
+    "image": "https://m.media-amazon.com/images/I/6160AaW2rWL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/1422644278?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-14",
+    "hot": false,
+    "posted_at": "2026-07-12T06:10:31.870Z"
   },
   {
     "id": "sd_34986",
@@ -101,21 +131,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B008HZUI34?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-14",
-    "hot": false,
-    "posted_at": "2026-07-12T06:09:23.093Z"
-  },
-  {
-    "id": "sd_34992",
-    "asin": "B0D14XFH5M",
-    "title": "48  Pack Red Bull Sugar Free Energy Drink 8.4 oz",
-    "category": "Grocery",
-    "originalPrice": 73.44,
-    "dealPrice": 38.98,
-    "discount": 47,
-    "image": "https://m.media-amazon.com/images/I/416jBRUm4OL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0D14XFH5M?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-11",
     "hot": false,
     "posted_at": "2026-07-12T06:09:23.093Z"
   },
