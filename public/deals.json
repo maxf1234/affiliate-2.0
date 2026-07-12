@@ -1,20 +1,5 @@
 [
   {
-    "id": "sd_34981",
-    "asin": "B0BXV5HXT5",
-    "title": "Greenworks 40V Trimmer & Blower Combo",
-    "category": "General",
-    "originalPrice": 349.99,
-    "dealPrice": 196,
-    "discount": 44,
-    "image": "https://m.media-amazon.com/images/I/41GjDNhTpsL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0BXV5HXT5?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-11",
-    "hot": false,
-    "posted_at": "2026-07-12T10:00:40.480Z"
-  },
-  {
     "id": "sd_34976",
     "asin": "B094VL5VHZ",
     "title": "VASAGLE Bar Cart",
@@ -27,7 +12,7 @@
     "store": "Amazon",
     "expires": "2026-07-11",
     "hot": false,
-    "posted_at": "2026-07-12T10:00:40.480Z"
+    "posted_at": "2026-07-12T10:28:08.393Z"
   },
   {
     "id": "sd_34992",
@@ -42,7 +27,22 @@
     "store": "Amazon",
     "expires": "2026-07-11",
     "hot": false,
-    "posted_at": "2026-07-12T10:00:40.479Z"
+    "posted_at": "2026-07-12T10:28:08.392Z"
+  },
+  {
+    "id": "sd_34981",
+    "asin": "B0BXV5HXT5",
+    "title": "Greenworks 40V Trimmer & Blower Combo",
+    "category": "General",
+    "originalPrice": 349.99,
+    "dealPrice": 196,
+    "discount": 44,
+    "image": "https://m.media-amazon.com/images/I/41GjDNhTpsL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0BXV5HXT5?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-11",
+    "hot": false,
+    "posted_at": "2026-07-12T10:28:08.392Z"
   },
   {
     "id": "sd_34974",
