@@ -1,5 +1,35 @@
 [
   {
+    "id": "sd_35045",
+    "asin": "B0FFMG41LV",
+    "title": "Cole Haan Men's Driving Loafers 9",
+    "category": "General",
+    "originalPrice": 140,
+    "dealPrice": 82.91,
+    "discount": 41,
+    "image": "https://m.media-amazon.com/images/I/31h++QLIiWL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FFMG41LV?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-16",
+    "hot": false,
+    "posted_at": "2026-07-12T22:48:51.970Z"
+  },
+  {
+    "id": "sd_35046",
+    "asin": "B0BX69CFWJ",
+    "title": "Skechers Kids Ultra Flex Sneakers",
+    "category": "Fashion",
+    "originalPrice": 55,
+    "dealPrice": 38.99,
+    "discount": 29,
+    "image": "https://m.media-amazon.com/images/I/41A6pZ62ryL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0BX69CFWJ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-14",
+    "hot": false,
+    "posted_at": "2026-07-12T22:48:51.967Z"
+  },
+  {
     "id": "sd_27648",
     "asin": "B00GMN7IJK",
     "title": "Red Devil Foam Window & Door Sealant Spray",
