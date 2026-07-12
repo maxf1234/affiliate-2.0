@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_35035",
+    "asin": "B0CY7WX24P",
+    "title": "GermGuardian Air Purifier 22*",
+    "category": "Home & Kitchen",
+    "originalPrice": 129.99,
+    "dealPrice": 66.99,
+    "discount": 48,
+    "image": "https://m.media-amazon.com/images/I/31uZrnyRfoL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CY7WX24P?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-14",
+    "hot": false,
+    "posted_at": "2026-07-12T17:57:41.515Z"
+  },
+  {
     "id": "sd_35013",
     "asin": "B0C4VSWBHJ",
     "title": "Casio Digital Watch",
