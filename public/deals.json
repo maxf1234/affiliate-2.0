@@ -12,7 +12,7 @@
     "store": "Amazon",
     "expires": "2026-07-11",
     "hot": false,
-    "posted_at": "2026-07-12T06:11:31.829Z"
+    "posted_at": "2026-07-12T08:29:06.551Z"
   },
   {
     "id": "sd_34976",
@@ -27,7 +27,37 @@
     "store": "Amazon",
     "expires": "2026-07-11",
     "hot": false,
-    "posted_at": "2026-07-12T06:11:31.829Z"
+    "posted_at": "2026-07-12T08:29:06.551Z"
+  },
+  {
+    "id": "sd_34974",
+    "asin": "B08R6GZ2KP",
+    "title": "Gourmia Air Fryer 7 Qt",
+    "category": "Home & Kitchen",
+    "originalPrice": 79.99,
+    "dealPrice": 59.99,
+    "discount": 25,
+    "image": "https://m.media-amazon.com/images/I/41RJtZJci4L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B08R6GZ2KP?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-14",
+    "hot": false,
+    "posted_at": "2026-07-12T08:29:06.551Z"
+  },
+  {
+    "id": "sd_34971",
+    "asin": "B0H793R65B",
+    "title": "12 Pack Shoe Storage Boxes",
+    "category": "Home & Kitchen",
+    "originalPrice": 34.99,
+    "dealPrice": 23.99,
+    "discount": 31,
+    "image": "https://m.media-amazon.com/images/I/51oMPhWreZL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0H793R65B?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-14",
+    "hot": false,
+    "posted_at": "2026-07-12T08:29:06.551Z"
   },
   {
     "id": "sd_34992",
@@ -42,7 +72,7 @@
     "store": "Amazon",
     "expires": "2026-07-11",
     "hot": false,
-    "posted_at": "2026-07-12T06:11:31.828Z"
+    "posted_at": "2026-07-12T08:29:06.550Z"
   },
   {
     "id": "sd_29081",
