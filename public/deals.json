@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_35036",
+    "asin": "B00004Z4D2",
+    "title": "Scotch Masking Tape 1.88\" x 60.1 yd",
+    "category": "General",
+    "originalPrice": 4.98,
+    "dealPrice": 2.98,
+    "discount": 40,
+    "image": "https://m.media-amazon.com/images/I/41JS4WKngyL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B00004Z4D2?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-14",
+    "hot": false,
+    "posted_at": "2026-07-12T19:15:12.638Z"
+  },
+  {
     "id": "sd_35035",
     "asin": "B0CY7WX24P",
     "title": "GermGuardian Air Purifier 22*",
