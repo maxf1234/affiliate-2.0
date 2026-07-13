@@ -1,8 +1,8 @@
 name: DealsPulse Bot
+# Scheduling is handled by an external cron job calling workflow_dispatch —
+# GitHub's built-in schedule is intentionally removed so runs aren't doubled.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 * * * *'   # once an hour, on the hour
 jobs:
   run-bot:
     runs-on: ubuntu-latest
