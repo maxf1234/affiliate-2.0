@@ -5,7 +5,9 @@ const WHATSAPP_LINK = "https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx";
 const SITE_NAME = "DealsPulse";
 
 // Site buttons link straight to Amazon with the affiliate tag.
-// Click tracking (/api/go) is only used for links sent to WhatsApp.
+// Click tracking (/api/go) is only used for links sent to WhatsApp,
+// plus the Prime Student referral (tracked under id "prime").
+const PRIME_GO = (src) => `/api/go?id=prime&src=${src}`;
 
 const FALLBACK_DEALS = [
   {
@@ -233,6 +235,17 @@ const CSS = `
   }
   .dp-cta:hover { background: var(--orange-dark); }
   .dp-cta-sub { text-align: center; font-size: 11.5px; color: var(--muted); margin: 0 0 16px; }
+  .dp-prime-cta {
+    display: block; background: #2662d9; color: #fff; text-decoration: none;
+    border-radius: 12px; padding: 13px 14px; font-weight: 700; font-size: 14px;
+    text-align: center; margin-bottom: 16px; transition: background 0.15s;
+    line-height: 1.4;
+  }
+  .dp-prime-cta:hover { background: #1e51b8; }
+  .dp-prime-cta .sub { display: block; font-size: 11.5px; font-weight: 500; opacity: 0.85; }
+  .dp-perk-list { list-style: none; margin: 0 0 16px; padding: 0; }
+  .dp-perk-list li { padding: 5px 0; font-size: 14px; color: var(--text); }
+  .dp-perk-list li::before { content: "✅ "; }
   .dp-share-row { display: flex; gap: 10px; }
   .dp-share-btn {
     flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
@@ -428,6 +441,16 @@ function DealPage({ deals, id, src, onBack, onView }) {
             </a>
             <p className="dp-cta-sub">Price checked recently — may change on Amazon at any time.</p>
 
+            <a
+              className="dp-prime-cta"
+              href={PRIME_GO("deal")}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+            >
+              🎓 18–24? Get 6 months of Amazon Prime FREE →
+              <span className="sub">Free shipping on this deal + 5% cash back</span>
+            </a>
+
             <div className="dp-share-row">
               <a
                 className="dp-share-btn wa"
@@ -457,6 +480,84 @@ function DealPage({ deals, id, src, onBack, onView }) {
   );
 }
 
+// ── PRIME REFERRAL PAGE (/prime) ─────────────────────────────────────────────
+function PrimePage({ onBack }) {
+  const [copied, setCopied] = useState(false);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  const shareUrl = window.location.origin + "/prime";
+  const shareText = "🚨 JUST IN TIME! 6 months of Amazon Prime — completely FREE if you're 18–24 🎓 Free fast shipping, Prime Video + 5% cash back. Claim it here: " + shareUrl;
+
+  const handleCopy = () => {
+    copyText(shareUrl).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    });
+  };
+
+  return (
+    <main className="dp-deal-main">
+      <button className="dp-back" onClick={onBack}>← All deals</button>
+
+      <div className="dp-deal-card">
+        <div className="dp-deal-grid">
+          <div className="dp-deal-image" style={{ background: "#3272e0", padding: 24 }}>
+            <img src="/prime-student.webp" alt="Amazon Prime — 6-month free trial for 18-24 year-olds and students" />
+          </div>
+          <div className="dp-deal-info">
+            <div style={{ display: "flex", gap: 7, marginBottom: 12, flexWrap: "wrap" }}>
+              <Badge cls="hot">🚨 Just In</Badge>
+              <Badge cls="pct">100% FREE</Badge>
+              <span className="dp-card-cat" style={{ alignSelf: "center" }}>Ages 18–24 & Students</span>
+            </div>
+
+            <h1>6 Months of Amazon Prime — Totally FREE 🎉</h1>
+
+            <div className="dp-deal-pricebox">
+              <div className="dp-price-row">
+                <span className="dp-deal-price">$0.00</span>
+                <span className="dp-price-was" style={{ fontSize: 16 }}>$7.49/mo</span>
+              </div>
+              <p className="dp-save" style={{ fontSize: 14, margin: "6px 0 0" }}>Half a year of Prime, on the house — cancel anytime.</p>
+            </div>
+
+            <ul className="dp-perk-list">
+              <li>FREE fast delivery on millions of items</li>
+              <li>Prime Video — movies, shows & live sports</li>
+              <li>5% cash back on eligible categories</li>
+              <li>Prime-exclusive deals before everyone else</li>
+            </ul>
+
+            <a
+              className="dp-cta"
+              href={PRIME_GO("share")}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+            >
+              🎓 Claim Your Free 6 Months →
+            </a>
+            <p className="dp-cta-sub">For 18–24 year-olds & students. No payment needed today — Amazon terms apply.</p>
+
+            <div className="dp-share-row">
+              <a
+                className="dp-share-btn wa"
+                href={"https://wa.me/?text=" + encodeURIComponent(shareText)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                💬 Share
+              </a>
+              <button className="dp-share-btn copy" onClick={handleCopy}>
+                {copied ? "✓ Copied!" : "📋 Copy link"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+
 // ── MAIN APP ──────────────────────────────────────────────────────────────────
 export default function App() {
   const [deals, setDeals] = useState([]);
@@ -474,9 +575,11 @@ export default function App() {
       if (hash.startsWith("#/deal/")) {
         const [idPart, query] = hash.replace("#/deal/", "").split("?");
         const params = new URLSearchParams(query || "");
-        setRoute({ dealId: decodeURIComponent(idPart), src: params.get("src") });
+        setRoute({ dealId: decodeURIComponent(idPart), src: params.get("src"), prime: false });
+      } else if (hash.startsWith("#/prime")) {
+        setRoute({ dealId: null, src: null, prime: true });
       } else {
-        setRoute({ dealId: null, src: null });
+        setRoute({ dealId: null, src: null, prime: false });
       }
     };
     checkRoute();
@@ -542,7 +645,7 @@ export default function App() {
             <div className="dp-logo-tag">Best Amazon Deals</div>
           </div>
         </a>
-        {!route.dealId && (
+        {!route.dealId && !route.prime && (
           <>
             <input
               className="dp-search"
@@ -582,7 +685,9 @@ export default function App() {
 
       {header}
 
-      {route.dealId ? (
+      {route.prime ? (
+        <PrimePage onBack={navigateHome} />
+      ) : route.dealId ? (
         <DealPage deals={deals} id={route.dealId} src={route.src} onBack={navigateHome} onView={navigateToDeal} />
       ) : (
         <>
