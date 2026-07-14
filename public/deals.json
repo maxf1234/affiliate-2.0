@@ -12,7 +12,22 @@
     "store": "Amazon",
     "expires": "2026-07-13",
     "hot": false,
-    "posted_at": "2026-07-14T04:00:38.472Z"
+    "posted_at": "2026-07-14T10:00:41.304Z"
+  },
+  {
+    "id": "sd_35072",
+    "asin": "B0DL7ZJ8PF",
+    "title": "Melissa & Doug Grill Play Set",
+    "category": "Home & Kitchen",
+    "originalPrice": 37.99,
+    "dealPrice": 18.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/51w9bEHWE5L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DL7ZJ8PF?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-13",
+    "hot": false,
+    "posted_at": "2026-07-14T10:00:41.303Z"
   },
   {
     "id": "sd_35082",
@@ -57,21 +72,6 @@
     "store": "Amazon",
     "expires": "2026-07-16",
     "hot": true,
-    "posted_at": "2026-07-14T04:00:38.471Z"
-  },
-  {
-    "id": "sd_35072",
-    "asin": "B0DL7ZJ8PF",
-    "title": "Melissa & Doug Grill Play Set",
-    "category": "Home & Kitchen",
-    "originalPrice": 37.99,
-    "dealPrice": 18.99,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/51w9bEHWE5L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DL7ZJ8PF?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-13",
-    "hot": false,
     "posted_at": "2026-07-14T04:00:38.471Z"
   },
   {
