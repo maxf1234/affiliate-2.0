@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_35123",
+    "asin": "B07P97JJNZ",
+    "title": "Miele Classic C1 Vacuum + $30 Credit",
+    "category": "Home & Kitchen",
+    "originalPrice": 499,
+    "dealPrice": 354.99,
+    "discount": 29,
+    "image": "https://m.media-amazon.com/images/I/41H2W-jqPVL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B07P97JJNZ?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-17",
+    "hot": false,
+    "posted_at": "2026-07-15T10:00:40.800Z"
+  },
+  {
     "id": "sd_35121",
     "asin": "B0GWZSJ3Q4",
     "title": "Lefant M310 Robot Vacuum",
@@ -12,7 +27,7 @@
     "store": "Amazon",
     "expires": "2026-07-14",
     "hot": true,
-    "posted_at": "2026-07-15T04:00:45.470Z"
+    "posted_at": "2026-07-15T10:00:40.800Z"
   },
   {
     "id": "sd_35115",
@@ -27,7 +42,7 @@
     "store": "Amazon",
     "expires": "2026-07-14",
     "hot": true,
-    "posted_at": "2026-07-15T04:00:45.470Z"
+    "posted_at": "2026-07-15T10:00:40.800Z"
   },
   {
     "id": "sd_34948",
