@@ -1,0 +1,19 @@
+name: Source Probe
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL to probe'
+        required: false
+        default: 'https://savecrazydeals.com'
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node bot/probe_source.js
+        env:
+          PROBE_URL: ${{ inputs.url }}
