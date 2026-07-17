@@ -293,23 +293,147 @@ async function scrapeStundeals() {
   return valid;
 }
 
-module.exports = { parseDealObjects, guessCategory, unescapeValue, extractAsin, saveDeals, rebalanceHot };
+// ── SOURCE 2: savecrazydeals.com (Shopify store) ─────────────────────────────
+// Deals come from the standard Shopify /products.json API (title, prices,
+// image). The Amazon affiliate URL lives on each product's page, so pages
+// are fetched only for NEW products, capped per run.
+
+const SCD_BASE = "https://savecrazydeals.com";
+const SCD_PAGE_FETCH_LIMIT = parseInt(process.env.SCD_PAGE_FETCH_LIMIT || "15");
+const FALLBACK_IMG = "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80";
+
+const sleepMs = (ms) => new Promise(r => setTimeout(r, ms));
+
+// First real product link on the page (the site-wide Prime banner also
+// points at amazon.com — filter it out).
+function extractAmazonLink(html) {
+  const matches = [...html.matchAll(/https:\/\/(?:www\.)?amazon\.com\/dp\/([A-Z0-9]{10})[^"'\s<)\\]*/gi)];
+  for (const m of matches) {
+    const url = m[0].replace(/&amp;/g, "&");
+    if (/amazonprime|primeCampaignId/i.test(url)) continue;
+    return { url, asin: m[1].toUpperCase() };
+  }
+  return null;
+}
+
+function mapShopifyProduct(p) {
+  const v = (p.variants || [])[0];
+  if (!v || v.available === false) return null;
+  const dealPrice = parseFloat(v.price || "0");
+  const origPrice = parseFloat(v.compare_at_price || "0");
+  const discount = origPrice > 0 && dealPrice > 0 && origPrice > dealPrice
+    ? Math.round((1 - dealPrice / origPrice) * 100)
+    : 0;
+  const title = (p.title || "").trim().slice(0, 120);
+  if (!(dealPrice > 0) || looksLikeGarbageTitle(title)) return null;
+  return {
+    id: `sc_${p.id}`,
+    handle: p.handle,
+    title,
+    dealPrice,
+    originalPrice: origPrice,
+    discount,
+    image: (p.images && p.images[0] && p.images[0].src) || null,
+  };
+}
+
+async function scrapeSaveCrazyDeals() {
+  console.log("Fetching savecrazydeals.com/products.json...");
+  const raw = await fetchPage(`${SCD_BASE}/products.json?limit=100`);
+  let products;
+  try {
+    products = JSON.parse(raw).products || [];
+  } catch (e) {
+    throw new Error("savecrazydeals: products.json returned non-JSON — possibly blocked or changed.");
+  }
+  if (!products.length) {
+    throw new Error("savecrazydeals: products.json returned 0 products — store empty or API changed.");
+  }
+  console.log(`savecrazydeals: ${products.length} products listed`);
+
+  const existingIds = new Set(loadExisting().map(d => d.id));
+
+  const candidates = products
+    .map(mapShopifyProduct)
+    .filter(c => c && c.discount >= MIN_DISCOUNT_PCT && !existingIds.has(c.id));
+  console.log(`savecrazydeals: ${candidates.length} new candidates pass filters (>=${MIN_DISCOUNT_PCT}% off)`);
+
+  // Product pages are fetched only for new candidates, politely rate-limited.
+  const deals = [];
+  for (const c of candidates.slice(0, SCD_PAGE_FETCH_LIMIT)) {
+    try {
+      const html = await fetchPage(`${SCD_BASE}/products/${c.handle}`);
+      const link = extractAmazonLink(html);
+      if (!link) {
+        console.log(`  ${c.title.slice(0, 50)}: no Amazon link on product page — skipped`);
+        continue;
+      }
+      deals.push({
+        id: c.id,
+        asin: link.asin,
+        title: c.title,
+        category: guessCategory(c.title),
+        originalPrice: c.originalPrice,
+        dealPrice: c.dealPrice,
+        discount: c.discount,
+        image: c.image || FALLBACK_IMG,
+        affiliate_url: replaceAffiliateTag(link.url),
+        store: "Amazon",
+        // Shopify listings have no expiry; give them a few days, and the
+        // purge/re-check cycle keeps them fresh while they stay listed.
+        expires: new Date(Date.now() + 5 * 86400000).toISOString().split("T")[0],
+        hot: c.discount >= 40,
+        posted_at: new Date().toISOString(),
+      });
+      console.log(`  ${c.id} ${link.asin} | ${c.title.slice(0, 55)} | $${c.dealPrice} (was $${c.originalPrice}, -${c.discount}%) | ${guessCategory(c.title)}`);
+      await sleepMs(400);
+    } catch (e) {
+      console.warn(`  ${c.title.slice(0, 50)}: product page fetch failed (${e.message})`);
+    }
+  }
+  return deals;
+}
+
+// ── MAIN ──────────────────────────────────────────────────────────────────────
+const SOURCES = [
+  ["stundeals", scrapeStundeals],
+  ["savecrazydeals", scrapeSaveCrazyDeals],
+];
+
+module.exports = {
+  parseDealObjects, guessCategory, unescapeValue, extractAsin, saveDeals,
+  rebalanceHot, extractAmazonLink, mapShopifyProduct,
+};
 
 if (require.main === module) {
   (async () => {
     console.log("=".repeat(55));
     console.log(`DealsPulse Bot — ${new Date().toUTCString()}`);
-    try {
-      const deals = await scrapeStundeals();
-      const saved = saveDeals(deals);
-      console.log(`Done: ${saved} new deal(s) saved.`);
-    } catch (e) {
-      if (e.message.includes("0 deals parsed") || e.message.includes("suspiciously small")) {
-        console.error(`ALERT: ${e.message}`);
-        process.exit(1); // fail the workflow -> GitHub emails you
+
+    const collected = [];
+    const failures = [];
+    for (const [name, scrape] of SOURCES) {
+      try {
+        const deals = await scrape();
+        collected.push(...deals);
+        console.log(`${name}: ${deals.length} deal(s) collected`);
+      } catch (e) {
+        failures.push(`${name}: ${e.message}`);
+        // ::warning:: renders as an annotation on the workflow run
+        console.error(`::warning::${name} scrape failed: ${e.message}`);
       }
-      // Transient network problems shouldn't spam failure emails every hour
-      console.error(`Scrape failed (transient): ${e.message}`);
+    }
+
+    if (process.env.DRY_RUN) {
+      console.log(`DRY RUN — would pass ${collected.length} deal(s) to saveDeals; not writing deals.json.`);
+    } else {
+      const saved = saveDeals(collected);
+      console.log(`Done: ${saved} new deal(s) saved.`);
+    }
+
+    if (failures.length === SOURCES.length) {
+      console.error(`ALERT: every source failed — ${failures.join(" | ")}`);
+      process.exit(1); // fail the workflow -> GitHub emails you
     }
   })();
 }

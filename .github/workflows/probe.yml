@@ -6,6 +6,10 @@ on:
         description: 'URL to probe'
         required: false
         default: 'https://savecrazydeals.com'
+      mode:
+        description: 'probe = structural diagnostics | scraper-dry-run = run the full scraper without writing deals.json'
+        required: false
+        default: 'probe'
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -14,6 +18,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: node bot/probe_source.js
+      - name: Structural probe
+        if: ${{ inputs.mode == 'probe' }}
+        run: node bot/probe_source.js
         env:
           PROBE_URL: ${{ inputs.url }}
+      - name: Scraper dry run (no write, no commit)
+        if: ${{ inputs.mode == 'scraper-dry-run' }}
+        run: node bot/bot_actions.js
+        env:
+          DRY_RUN: '1'
+          AMAZON_AFFILIATE_TAG: maxdeals062-20
+          MIN_DISCOUNT_PCT: '25'
