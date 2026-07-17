@@ -49,6 +49,38 @@ function count(haystack, needle) {
   return haystack.split(needle).length - 1;
 }
 
+async function analyzeShopifyProducts(baseUrl, body) {
+  const data = JSON.parse(body);
+  const products = data.products || [];
+  console.log(`--- SHOPIFY PRODUCTS.JSON: ${products.length} products ---`);
+  for (const p of products.slice(0, 3)) {
+    const v = (p.variants || [])[0] || {};
+    console.log(`* ${p.title}`);
+    console.log(`  handle=${p.handle} type=${p.product_type} tags=${JSON.stringify(p.tags)}`);
+    console.log(`  price=${v.price} compare_at=${v.compare_at_price} available=${v.available} updated=${p.updated_at}`);
+    console.log(`  image=${(p.images && p.images[0] && p.images[0].src || "none").slice(0, 110)}`);
+    const hrefs = [...(p.body_html || "").matchAll(/href="([^"]+)"/g)].map(m => m[1]);
+    console.log(`  body_html links: ${hrefs.length ? hrefs.join(" | ").slice(0, 300) : "none"}`);
+    console.log(`  body_html first 200: ${(p.body_html || "").replace(/\s+/g, " ").slice(0, 200)}`);
+  }
+
+  // Follow the first product's page to locate the outbound Amazon link
+  if (products.length) {
+    const pageUrl = new URL(`/products/${products[0].handle}`, baseUrl).toString();
+    console.log(`--- FOLLOWING PRODUCT PAGE: ${pageUrl} ---`);
+    const r = await fetchPage(pageUrl);
+    console.log(`status=${r.status} length=${r.body.length}`);
+    const amzn = [...r.body.matchAll(/https?:\/\/(?:www\.)?(?:amzn\.to|amazon\.com)[^"'\s<)\\]*/g)].map(m => m[0]);
+    console.log(`amazon links on page: ${amzn.length}`);
+    [...new Set(amzn)].slice(0, 5).forEach(u => console.log("  " + u.slice(0, 160)));
+    const idx = r.body.search(/amzn\.to|amazon\.com/);
+    if (idx > 0) {
+      console.log("context around first amazon link:");
+      console.log(r.body.slice(Math.max(0, idx - 700), idx + 300).replace(/\s+/g, " ").slice(0, 1000));
+    }
+  }
+}
+
 (async () => {
   console.log(`PROBING: ${URL_TO_PROBE}`);
   const { status, headers, body } = await fetchPage(URL_TO_PROBE);
@@ -60,6 +92,11 @@ function count(haystack, needle) {
     console.log("BODY (first 800):");
     console.log(body.slice(0, 800));
     process.exit(0);
+  }
+
+  if ((headers["content-type"] || "").includes("json") || body.trimStart().startsWith("{")) {
+    await analyzeShopifyProducts(URL_TO_PROBE, body);
+    return;
   }
 
   // Platform markers
