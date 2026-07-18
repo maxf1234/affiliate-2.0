@@ -1,5 +1,140 @@
 [
   {
+    "id": "sc_10352016720168",
+    "asin": "B07KGRJ6HY",
+    "title": "448 Count Pampers Aqua Pure Baby Wipes",
+    "category": "Baby & Kids",
+    "originalPrice": 27.96,
+    "dealPrice": 16.3,
+    "discount": 42,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/413ZqbE5CzL._SL500.jpg?v=1784287365",
+    "affiliate_url": "https://www.amazon.com/dp/B07KGRJ6HY?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": false,
+    "posted_at": "2026-07-18T10:00:32.651Z"
+  },
+  {
+    "id": "sc_10352042148136",
+    "asin": "B0F8NM1LFR",
+    "title": "4K Dual Dash Cam with GPS and WiFi",
+    "category": "Electronics",
+    "originalPrice": 79.99,
+    "dealPrice": 39.99,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41S9Z4znIZL._SL500.jpg?v=1784288538",
+    "affiliate_url": "https://www.amazon.com/dp/B0F8NM1LFR?tag=maxdeals062-20&m=AOCTPV39Z5G3N",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": false,
+    "posted_at": "2026-07-18T10:00:32.017Z"
+  },
+  {
+    "id": "sc_10352073998632",
+    "asin": "B0GSX9MC1K",
+    "title": "Kids Play Food Tea Party Kitchen Toy Set",
+    "category": "Toys & Games",
+    "originalPrice": 27.99,
+    "dealPrice": 13.99,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51WIwV9IxFL._SL500.jpg?v=1784290001",
+    "affiliate_url": "https://www.amazon.com/dp/B0GSX9MC1K?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": false,
+    "posted_at": "2026-07-18T10:00:30.258Z"
+  },
+  {
+    "id": "sc_10352075014440",
+    "asin": "B0GTYRDJR6",
+    "title": "15 Pack Assorted Wall and Tabletop Picture Frames",
+    "category": "General",
+    "originalPrice": 29.99,
+    "dealPrice": 13.49,
+    "discount": 55,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51W-lzbxePL._SL500.jpg?v=1784290407",
+    "affiliate_url": "https://www.amazon.com/dp/B0GTYRDJR6?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": false,
+    "posted_at": "2026-07-18T10:00:29.673Z"
+  },
+  {
+    "id": "sc_10352076620072",
+    "asin": "B0FR9DDGM1",
+    "title": "2 Pack Stackable Small Storage Bins with Lids",
+    "category": "Home & Kitchen",
+    "originalPrice": 17.99,
+    "dealPrice": 10.79,
+    "discount": 40,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31zQ72YNfkL._SL500.jpg?v=1784290721",
+    "affiliate_url": "https://www.amazon.com/dp/B0FR9DDGM1?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": false,
+    "posted_at": "2026-07-18T10:00:28.992Z"
+  },
+  {
+    "id": "sc_10352077340968",
+    "asin": "B0H45BY2VJ",
+    "title": "Sunrise Alarm Clock with White Noise and Bluetooth",
+    "category": "Electronics",
+    "originalPrice": 39.99,
+    "dealPrice": 19.99,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31ty80pnmUL._SL500.jpg?v=1784290966",
+    "affiliate_url": "https://www.amazon.com/dp/B0H45BY2VJ?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": false,
+    "posted_at": "2026-07-18T10:00:28.388Z"
+  },
+  {
+    "id": "sc_10352078749992",
+    "asin": "B0DSZPCL7B",
+    "title": "King Size Ultrasoft Waffle Throw Blanket",
+    "category": "Home & Kitchen",
+    "originalPrice": 32.99,
+    "dealPrice": 16.49,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51wOS2X_-PL._SL500_8a864990-7c62-4dd0-a61e-cba7adeab8c7.jpg?v=1784291089",
+    "affiliate_url": "https://www.amazon.com/dp/B0DSZPCL7B?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": false,
+    "posted_at": "2026-07-18T10:00:27.682Z"
+  },
+  {
+    "id": "sc_10352092512552",
+    "asin": "B0CRDMD1Z4",
+    "title": "1000X Portable Digital Kids Microscope",
+    "category": "General",
+    "originalPrice": 35.99,
+    "dealPrice": 12.47,
+    "discount": 65,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41BF_4rbIDL._SL500.jpg?v=1784291473",
+    "affiliate_url": "https://www.amazon.com/dp/B0CRDMD1Z4?tag=maxdeals062-20&m=AJ1W7RFXY4V32",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": true,
+    "posted_at": "2026-07-18T10:00:27.100Z"
+  },
+  {
+    "id": "sd_30472",
+    "asin": "B09D44P9HK",
+    "title": "Monopoly Junior Super Mario Edition",
+    "category": "Toys & Games",
+    "originalPrice": 16.99,
+    "dealPrice": 11.99,
+    "discount": 29,
+    "image": "https://m.media-amazon.com/images/I/51WR7Ri7APL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B09D44P9HK?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-07-20",
+    "hot": false,
+    "posted_at": "2026-07-18T10:00:23.305Z"
+  },
+  {
     "id": "sc_10352095068456",
     "asin": "B0BXDC5N44",
     "title": "48 Can Insulated Leakproof Soft Cooler Bag",
@@ -41,7 +176,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0DRW7ZSL9?tag=maxdeals062-20",
     "store": "Amazon",
     "expires": "2026-07-23",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-18T04:00:35.622Z"
   },
   {
@@ -148,21 +283,6 @@
     "expires": "2026-07-23",
     "hot": false,
     "posted_at": "2026-07-18T04:00:29.206Z"
-  },
-  {
-    "id": "sd_35190",
-    "asin": "B09QH5JJXB",
-    "title": "Thames & Kosmos Kids First Aircraft Engineer",
-    "category": "General",
-    "originalPrice": 39.95,
-    "dealPrice": 23.97,
-    "discount": 40,
-    "image": "https://m.media-amazon.com/images/I/51p-MXxeVlL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09QH5JJXB?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-16",
-    "hot": false,
-    "posted_at": "2026-07-18T04:00:26.415Z"
   },
   {
     "id": "sd_35213",
@@ -371,7 +491,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B01B1UTIEG?tag=maxdeals062-20",
     "store": "Amazon",
     "expires": "2026-07-22",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-17T22:00:31.248Z"
   },
   {
@@ -1481,7 +1601,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B09V1PY8Z8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-18",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-16T22:00:30.898Z"
   },
   {
@@ -1571,7 +1691,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0CWW18SQB?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-18",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-16T22:00:30.897Z"
   },
   {
@@ -1601,7 +1721,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0H716VZ1W?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-20",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-16T22:00:30.897Z"
   },
   {
