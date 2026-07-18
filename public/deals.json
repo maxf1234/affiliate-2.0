@@ -1,5 +1,35 @@
 [
   {
+    "id": "sc_10351568060712",
+    "asin": "B0DLXLQ5NR",
+    "title": "Little Tikes Peppa Pig Playhouse with Tunnel",
+    "category": "General",
+    "originalPrice": 149.99,
+    "dealPrice": 50,
+    "discount": 67,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41PLtgFUJTL._SL500_925bcd33-0715-486d-af73-6457ab4574d2.jpg?v=1784250558",
+    "affiliate_url": "https://www.amazon.com/dp/B0DLXLQ5NR?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": true,
+    "posted_at": "2026-07-18T16:00:30.182Z"
+  },
+  {
+    "id": "sc_10351998730536",
+    "asin": "B0CCJYXL35",
+    "title": "TOTAL Chef 0.7 Cu Ft 700W Countertop Microwave",
+    "category": "General",
+    "originalPrice": 167.27,
+    "dealPrice": 68.38,
+    "discount": 59,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41Y8_vUzAcL._SL500.jpg?v=1784285608",
+    "affiliate_url": "https://www.amazon.com/dp/B0CCJYXL35?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-23",
+    "hot": false,
+    "posted_at": "2026-07-18T16:00:28.370Z"
+  },
+  {
     "id": "sc_10352016720168",
     "asin": "B07KGRJ6HY",
     "title": "448 Count Pampers Aqua Pure Baby Wipes",
@@ -176,7 +206,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0DRW7ZSL9?tag=maxdeals062-20",
     "store": "Amazon",
     "expires": "2026-07-23",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-07-18T04:00:35.622Z"
   },
   {
@@ -491,7 +521,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B01B1UTIEG?tag=maxdeals062-20",
     "store": "Amazon",
     "expires": "2026-07-22",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-07-17T22:00:31.248Z"
   },
   {
@@ -1601,7 +1631,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B09V1PY8Z8?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-18",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-07-16T22:00:30.898Z"
   },
   {
@@ -1691,7 +1721,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0CWW18SQB?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-18",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-07-16T22:00:30.897Z"
   },
   {
@@ -1721,7 +1751,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0H716VZ1W?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-20",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-07-16T22:00:30.897Z"
   },
   {
