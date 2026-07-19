@@ -111,7 +111,14 @@ const whatsapp = new Client({
   authStrategy: new LocalAuth({ dataPath: SESSION_PATH }),
   puppeteer: {
     executablePath: IS_MAC ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" : undefined,
-    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
+    args: [
+      "--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu", "--disable-dev-shm-usage",
+      // Memory/CPU trims for small containers
+      "--single-process", "--no-zygote", "--disable-extensions",
+      "--disable-background-networking", "--disable-sync", "--disable-translate",
+      "--metrics-recording-only", "--mute-audio", "--no-first-run",
+      "--js-flags=--max-old-space-size=256",
+    ],
   },
 });
 
