@@ -85,7 +85,27 @@ const whatsapp = new Client({
 
 let whatsappReady = false;
 
-whatsapp.on("qr", (qr) => {
+// Set WHATSAPP_PHONE (digits only, with country code, e.g. 15551234567) to
+// link by typing an 8-character code on your phone instead of scanning a QR:
+// WhatsApp -> Linked Devices -> Link a Device -> "Link with phone number instead"
+const WHATSAPP_PHONE = (process.env.WHATSAPP_PHONE || "").replace(/[^\d]/g, "");
+let pairingRequested = false;
+
+whatsapp.on("qr", async (qr) => {
+  if (WHATSAPP_PHONE && !pairingRequested) {
+    pairingRequested = true;
+    try {
+      const code = await whatsapp.requestPairingCode(WHATSAPP_PHONE);
+      console.log("\n==============================================");
+      console.log(`  PAIRING CODE: ${code}`);
+      console.log("  On your phone: WhatsApp -> Linked Devices ->");
+      console.log("  Link a Device -> 'Link with phone number instead'");
+      console.log("==============================================\n");
+      return;
+    } catch (e) {
+      console.error(`Pairing code request failed (${e.message}) — falling back to QR.`);
+    }
+  }
   // Terminal QR for local use
   console.log("\nScan this QR code with your WhatsApp:\n");
   qrcode.generate(qr, { small: true });
@@ -110,6 +130,29 @@ whatsapp.on("disconnected", () => {
   console.warn("WhatsApp disconnected. Reconnecting...");
   whatsapp.initialize();
 });
+
+// Proactive zombie-session detection: WhatsApp sometimes drops the link
+// while the client still believes it's connected, so sends hang until the
+// 2-minute watchdog fires. This pings the real connection state every
+// HEALTH_CHECK_MIN minutes and exits for a Railway restart the moment the
+// session is dead — minutes of downtime instead of a silent day.
+const HEALTH_CHECK_MIN = parseInt(process.env.HEALTH_CHECK_MIN || "10");
+
+function startHealthMonitor() {
+  setInterval(async () => {
+    try {
+      const state = await Promise.race([
+        whatsapp.getState(),
+        new Promise((_, rej) => setTimeout(() => rej(new Error("getState timed out")), 30000)),
+      ]);
+      if (state !== "CONNECTED") throw new Error(`state=${state}`);
+    } catch (e) {
+      console.error(`Health check failed (${e.message}) — exiting so Railway restarts with a fresh session.`);
+      process.exit(1);
+    }
+  }, HEALTH_CHECK_MIN * 60 * 1000);
+  console.log(`Session health check every ${HEALTH_CHECK_MIN} min.`);
+}
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
 function sleep(ms) {
@@ -333,6 +376,7 @@ whatsapp.initialize();
 
 whatsapp.once("ready", async () => {
   await seedIfFirstRun();
+  startHealthMonitor();
   // No startup post — messages go out only at the scheduled times, so
   // redeploys/restarts never trigger an extra message.
   if (AUDIENCES.hourly.groups.length) {
