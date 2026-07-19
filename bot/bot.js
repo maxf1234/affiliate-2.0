@@ -50,6 +50,7 @@ const AUDIENCES = {
   hourly: {
     label: "hourly",
     groups: WHATSAPP_GROUPS,
+    memory: new Set(),                             // in-process backup of announced ids
     seenFile: dataFile("announced.json"),          // existing file — history carries over
     lastPostFile: dataFile("last_post.json"),
     // steady drip: oldest un-announced deal first
@@ -62,6 +63,7 @@ const AUDIENCES = {
     label: "thrice-daily",
     groups: THRICE_DAILY_GROUPS,
     categories: THRICE_DAILY_CATEGORIES, // only deals from these categories
+    memory: new Set(),                   // in-process backup of announced ids
     seenFile: dataFile("announced_thrice.json"),
     lastPostFile: dataFile("last_post_thrice.json"),
     // best-first by discount; skip holds the top deal(s) back for 9 PM
@@ -348,7 +350,11 @@ async function runBot(audience, skip = 0) {
     return;
   }
 
+  // Union of the on-disk history and the in-process memory: if the volume
+  // is missing/read-only, the memory still prevents re-posting the same
+  // deal every run for as long as the process lives.
   const announced = loadAnnounced(audience.seenFile);
+  audience.memory.forEach(id => announced.add(id));
   let unannounced = deals.filter(d => !announced.has(d.id));
   if (audience.categories && audience.categories.length) {
     const wanted = audience.categories.map(c => c.toLowerCase());
@@ -389,8 +395,9 @@ async function runBot(audience, skip = 0) {
   }
 
   if (sent) {
-    // Mark these as announced so we never repost them (per tier)
-    newDeals.forEach(d => announced.add(d.id));
+    // Mark these as announced so we never repost them (per tier) — both
+    // in the persistent file and in process memory as a fallback.
+    newDeals.forEach(d => { announced.add(d.id); audience.memory.add(d.id); });
     saveAnnounced(audience.seenFile, announced);
     saveLastPost(audience.lastPostFile);
     console.log(`[${audience.label}] Done: announced ${newDeals.length} deal(s).`);
@@ -410,7 +417,27 @@ async function seedIfFirstRun() {
 }
 
 // ── START ─────────────────────────────────────────────────────────────────────
+// The announced-history and login session live on the persistent volume.
+// If it's missing or read-only, say so LOUDLY at startup instead of
+// silently re-posting the same deal every run.
+function checkVolumeWritable() {
+  const probe = dataFile(".volume_probe");
+  try {
+    fs.writeFileSync(probe, String(Date.now()));
+    fs.unlinkSync(probe);
+    console.log(`Persistent storage OK (${path.dirname(probe)}).`);
+  } catch (e) {
+    console.error("!".repeat(60));
+    console.error(`PERSISTENT VOLUME NOT WRITABLE: ${e.message}`);
+    console.error("Announced-deal history will NOT survive restarts, and the");
+    console.error("same deal may be re-posted after every redeploy.");
+    console.error("Fix: Railway -> service -> Settings -> attach a Volume mounted at /data");
+    console.error("!".repeat(60));
+  }
+}
+
 console.log("DealsPulse WhatsApp Bot starting...");
+checkVolumeWritable();
 pruneChromiumCaches();
 whatsapp.initialize();
 
