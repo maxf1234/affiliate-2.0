@@ -75,6 +75,38 @@ const AUDIENCES = {
 // ── WHATSAPP CLIENT ───────────────────────────────────────────────────────────
 const SESSION_PATH = process.env.SESSION_PATH || (IS_MAC ? undefined : "/data/wwebjs_auth");
 
+// ── VOLUME CLEANUP ────────────────────────────────────────────────────────────
+// The Chromium instance inside whatsapp-web.js hoards cache on the persistent
+// volume until it fills up. On every startup (before Chromium launches) this
+// prunes cache directories while KEEPING the WhatsApp login and the
+// announced-deals history — so no relinking and no re-posted backlog.
+const CHROMIUM_CACHE_DIRS = new Set([
+  "Cache", "Code Cache", "GPUCache", "ShaderCache", "GrShaderCache",
+  "DawnGraphiteCache", "DawnWebGPUCache", "Crashpad", "Crash Reports",
+  "component_crx_cache", "Service Worker", "OptimizationGuidePredictionModels",
+]);
+
+function pruneChromiumCaches() {
+  if (!SESSION_PATH) return;
+  let removed = 0;
+  const stack = [SESSION_PATH];
+  while (stack.length) {
+    const dir = stack.pop();
+    let entries;
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch (e) { continue; }
+    for (const ent of entries) {
+      if (!ent.isDirectory()) continue;
+      const full = path.join(dir, ent.name);
+      if (CHROMIUM_CACHE_DIRS.has(ent.name)) {
+        try { fs.rmSync(full, { recursive: true, force: true }); removed++; } catch (e) {}
+      } else {
+        stack.push(full);
+      }
+    }
+  }
+  if (removed) console.log(`Volume cleanup: pruned ${removed} Chromium cache dir(s) (session + history kept).`);
+}
+
 const whatsapp = new Client({
   authStrategy: new LocalAuth({ dataPath: SESSION_PATH }),
   puppeteer: {
@@ -372,6 +404,7 @@ async function seedIfFirstRun() {
 
 // ── START ─────────────────────────────────────────────────────────────────────
 console.log("DealsPulse WhatsApp Bot starting...");
+pruneChromiumCaches();
 whatsapp.initialize();
 
 whatsapp.once("ready", async () => {
