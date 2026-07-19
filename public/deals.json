@@ -1,5 +1,50 @@
 [
   {
+    "id": "sc_10351600369960",
+    "asin": "B004JLNUZI",
+    "title": "Melissa & Doug Magnetic Wooden Ice Cream Playset",
+    "category": "General",
+    "originalPrice": 39.99,
+    "dealPrice": 11.99,
+    "discount": 70,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41aC0kDjr6L._SL500.jpg?v=1784252151",
+    "affiliate_url": "https://www.amazon.com/dp/B004JLNUZI?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-24",
+    "hot": true,
+    "posted_at": "2026-07-19T10:00:31.785Z"
+  },
+  {
+    "id": "sc_10354228855080",
+    "asin": "B0BVPS2ZYN",
+    "title": "Metabo HPT 18V Cordless Drill and Impact Driver Combo",
+    "category": "General",
+    "originalPrice": 149,
+    "dealPrice": 89.4,
+    "discount": 40,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41hMK3-xXWL._SL500.jpg?v=1784434566",
+    "affiliate_url": "https://www.amazon.com/dp/B0BVPS2ZYN?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-24",
+    "hot": false,
+    "posted_at": "2026-07-19T10:00:25.454Z"
+  },
+  {
+    "id": "sc_10354241798440",
+    "asin": "B08Z6X4NK3",
+    "title": "Logitech G Mechanical Backlit Anti-Ghosting Gaming Keyboard",
+    "category": "Electronics",
+    "originalPrice": 89.99,
+    "dealPrice": 34.18,
+    "discount": 62,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31rtIUUw7bL._SL500.jpg?v=1784435899",
+    "affiliate_url": "https://www.amazon.com/dp/B08Z6X4NK3?tag=maxdeals062-20",
+    "store": "Amazon",
+    "expires": "2026-07-24",
+    "hot": true,
+    "posted_at": "2026-07-19T10:00:24.853Z"
+  },
+  {
     "id": "sc_10354204737832",
     "asin": "B081JL5RF3",
     "title": "8 lb ZELUS Adjustable Weighted Workout Vest",
@@ -208,21 +253,6 @@
     "expires": "2026-07-24",
     "hot": false,
     "posted_at": "2026-07-19T04:00:26.088Z"
-  },
-  {
-    "id": "sd_35198",
-    "asin": "B075SBMTQL",
-    "title": "Thermacell Mosquito Repeller 12 hr",
-    "category": "General",
-    "originalPrice": 26.99,
-    "dealPrice": 6.72,
-    "discount": 75,
-    "image": "https://m.media-amazon.com/images/I/41GyMeiwL3L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B075SBMTQL?tag=maxdeals062-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-17",
-    "hot": true,
-    "posted_at": "2026-07-19T04:00:25.634Z"
   },
   {
     "id": "sd_35225",
