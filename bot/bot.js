@@ -116,7 +116,9 @@ const whatsapp = new Client({
     args: [
       "--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu", "--disable-dev-shm-usage",
       // Memory/CPU trims for small containers
-      "--single-process", "--no-zygote", "--disable-extensions",
+      // NOTE: --single-process/--no-zygote were removed — they broke
+      // message sending in whatsapp-web.js (connected but nothing sent).
+      "--disable-extensions",
       "--disable-background-networking", "--disable-sync", "--disable-translate",
       "--metrics-recording-only", "--mute-audio", "--no-first-run",
       "--js-flags=--max-old-space-size=256",
@@ -390,6 +392,10 @@ async function runBot(audience, skip = 0) {
   let sent = false;
   try {
     sent = await sendToWhatsApp(newDeals, audience.groups);
+  } catch (e) {
+    // Without this catch a send failure becomes an unhandled rejection:
+    // the process dies (or the error vanishes) with nothing in the logs.
+    console.error(`[${audience.label}] Send failed: ${e.message}`);
   } finally {
     clearTimeout(watchdog);
   }
