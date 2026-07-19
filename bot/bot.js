@@ -75,6 +75,38 @@ const AUDIENCES = {
 // ── WHATSAPP CLIENT ───────────────────────────────────────────────────────────
 const SESSION_PATH = process.env.SESSION_PATH || (IS_MAC ? undefined : "/data/wwebjs_auth");
 
+// ── VOLUME CLEANUP ────────────────────────────────────────────────────────────
+// The Chromium instance inside whatsapp-web.js hoards cache on the persistent
+// volume until it fills up. On every startup (before Chromium launches) this
+// prunes cache directories while KEEPING the WhatsApp login and the
+// announced-deals history — so no relinking and no re-posted backlog.
+const CHROMIUM_CACHE_DIRS = new Set([
+  "Cache", "Code Cache", "GPUCache", "ShaderCache", "GrShaderCache",
+  "DawnGraphiteCache", "DawnWebGPUCache", "Crashpad", "Crash Reports",
+  "component_crx_cache", "Service Worker", "OptimizationGuidePredictionModels",
+]);
+
+function pruneChromiumCaches() {
+  if (!SESSION_PATH) return;
+  let removed = 0;
+  const stack = [SESSION_PATH];
+  while (stack.length) {
+    const dir = stack.pop();
+    let entries;
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch (e) { continue; }
+    for (const ent of entries) {
+      if (!ent.isDirectory()) continue;
+      const full = path.join(dir, ent.name);
+      if (CHROMIUM_CACHE_DIRS.has(ent.name)) {
+        try { fs.rmSync(full, { recursive: true, force: true }); removed++; } catch (e) {}
+      } else {
+        stack.push(full);
+      }
+    }
+  }
+  if (removed) console.log(`Volume cleanup: pruned ${removed} Chromium cache dir(s) (session + history kept).`);
+}
+
 const whatsapp = new Client({
   authStrategy: new LocalAuth({ dataPath: SESSION_PATH }),
   puppeteer: {
@@ -85,7 +117,27 @@ const whatsapp = new Client({
 
 let whatsappReady = false;
 
-whatsapp.on("qr", (qr) => {
+// Set WHATSAPP_PHONE (digits only, with country code, e.g. 15551234567) to
+// link by typing an 8-character code on your phone instead of scanning a QR:
+// WhatsApp -> Linked Devices -> Link a Device -> "Link with phone number instead"
+const WHATSAPP_PHONE = (process.env.WHATSAPP_PHONE || "").replace(/[^\d]/g, "");
+let pairingRequested = false;
+
+whatsapp.on("qr", async (qr) => {
+  if (WHATSAPP_PHONE && !pairingRequested) {
+    pairingRequested = true;
+    try {
+      const code = await whatsapp.requestPairingCode(WHATSAPP_PHONE);
+      console.log("\n==============================================");
+      console.log(`  PAIRING CODE: ${code}`);
+      console.log("  On your phone: WhatsApp -> Linked Devices ->");
+      console.log("  Link a Device -> 'Link with phone number instead'");
+      console.log("==============================================\n");
+      return;
+    } catch (e) {
+      console.error(`Pairing code request failed (${e.message}) — falling back to QR.`);
+    }
+  }
   // Terminal QR for local use
   console.log("\nScan this QR code with your WhatsApp:\n");
   qrcode.generate(qr, { small: true });
@@ -110,6 +162,29 @@ whatsapp.on("disconnected", () => {
   console.warn("WhatsApp disconnected. Reconnecting...");
   whatsapp.initialize();
 });
+
+// Proactive zombie-session detection: WhatsApp sometimes drops the link
+// while the client still believes it's connected, so sends hang until the
+// 2-minute watchdog fires. This pings the real connection state every
+// HEALTH_CHECK_MIN minutes and exits for a Railway restart the moment the
+// session is dead — minutes of downtime instead of a silent day.
+const HEALTH_CHECK_MIN = parseInt(process.env.HEALTH_CHECK_MIN || "10");
+
+function startHealthMonitor() {
+  setInterval(async () => {
+    try {
+      const state = await Promise.race([
+        whatsapp.getState(),
+        new Promise((_, rej) => setTimeout(() => rej(new Error("getState timed out")), 30000)),
+      ]);
+      if (state !== "CONNECTED") throw new Error(`state=${state}`);
+    } catch (e) {
+      console.error(`Health check failed (${e.message}) — exiting so Railway restarts with a fresh session.`);
+      process.exit(1);
+    }
+  }, HEALTH_CHECK_MIN * 60 * 1000);
+  console.log(`Session health check every ${HEALTH_CHECK_MIN} min.`);
+}
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
 function sleep(ms) {
@@ -329,10 +404,12 @@ async function seedIfFirstRun() {
 
 // ── START ─────────────────────────────────────────────────────────────────────
 console.log("DealsPulse WhatsApp Bot starting...");
+pruneChromiumCaches();
 whatsapp.initialize();
 
 whatsapp.once("ready", async () => {
   await seedIfFirstRun();
+  startHealthMonitor();
   // No startup post — messages go out only at the scheduled times, so
   // redeploys/restarts never trigger an extra message.
   if (AUDIENCES.hourly.groups.length) {
