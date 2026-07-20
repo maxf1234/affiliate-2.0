@@ -15,7 +15,10 @@ jobs:
           node-version: '20'
       - run: cd bot && node bot_actions.js
         env:
-          AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
+          # Affiliate tags are public (they appear in every product URL), so
+          # this lives here in plain sight, not in a GitHub secret. To change
+          # it, edit this one line — no secret to hunt down.
+          AMAZON_AFFILIATE_TAG: 'dealspulse02-20'
           MAX_DEALS_PER_RUN: '25'
           MIN_DISCOUNT_PCT: '25'
       - run: |

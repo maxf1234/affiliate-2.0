@@ -19,7 +19,7 @@ const path = require("path");
 const https = require("https");
 const http = require("http");
 
-const AFFILIATE_TAG    = process.env.AMAZON_AFFILIATE_TAG || "youraffid-20";
+const AFFILIATE_TAG    = process.env.AMAZON_AFFILIATE_TAG || "dealspulse02-20";
 const DEALS_JSON_PATH  = path.join(__dirname, "..", "public", "deals.json");
 const MAX_STORED       = 200;
 const MIN_DISCOUNT_PCT = parseInt(process.env.MIN_DISCOUNT_PCT || "25");
