@@ -180,6 +180,8 @@ whatsapp.on("disconnected", () => {
 // HEALTH_CHECK_MIN minutes and exits for a Railway restart the moment the
 // session is dead — minutes of downtime instead of a silent day.
 const HEALTH_CHECK_MIN = parseInt(process.env.HEALTH_CHECK_MIN || "10");
+const HEALTH_MAX_STRIKES = 3;
+let healthStrikes = 0;
 
 function startHealthMonitor() {
   setInterval(async () => {
@@ -188,13 +190,26 @@ function startHealthMonitor() {
         whatsapp.getState(),
         new Promise((_, rej) => setTimeout(() => rej(new Error("getState timed out")), 30000)),
       ]);
-      if (state !== "CONNECTED") throw new Error(`state=${state}`);
+      // getState() can return null/undefined on a perfectly working session
+      // (page lazily loaded, mid-refresh, etc.) — a single bad reading must
+      // NOT restart the bot, or it never survives to the posting ticks.
+      if (state === "CONNECTED") {
+        if (healthStrikes) console.log("Health check: recovered (CONNECTED).");
+        healthStrikes = 0;
+      } else {
+        healthStrikes++;
+        console.warn(`Health check: state=${state} (strike ${healthStrikes}/${HEALTH_MAX_STRIKES})`);
+      }
     } catch (e) {
-      console.error(`Health check failed (${e.message}) — exiting so Railway restarts with a fresh session.`);
+      healthStrikes++;
+      console.warn(`Health check: ${e.message} (strike ${healthStrikes}/${HEALTH_MAX_STRIKES})`);
+    }
+    if (healthStrikes >= HEALTH_MAX_STRIKES) {
+      console.error("Health check: session dead for 3 consecutive checks — exiting for a fresh restart.");
       process.exit(1);
     }
   }, HEALTH_CHECK_MIN * 60 * 1000);
-  console.log(`Session health check every ${HEALTH_CHECK_MIN} min.`);
+  console.log(`Session health check every ${HEALTH_CHECK_MIN} min (restart after ${HEALTH_MAX_STRIKES} consecutive failures).`);
 }
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
