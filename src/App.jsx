@@ -18,7 +18,7 @@ const FALLBACK_DEALS = [
     dealPrice: 249.99,
     discount: 38,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80",
-    affiliate_url: "https://amazon.com/?tag=youraffid-20",
+    affiliate_url: "https://amazon.com/?tag=dealspulse02-20",
     store: "Amazon",
     expires: null,
     hot: true,

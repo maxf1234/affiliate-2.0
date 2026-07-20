@@ -71,9 +71,12 @@ Secrets (repo → Settings → Secrets → Actions):
 | Secret | Purpose |
 |---|---|
 | `GH_TOKEN` | push access for the bot commit |
-| `AMAZON_AFFILIATE_TAG` | your Associates tag, e.g. `maxdeals062-20` |
 
 Tuning (in `.github/workflows/bot.yml`):
+
+The Amazon Associates tag lives in plain sight in `bot.yml`
+(`AMAZON_AFFILIATE_TAG: 'dealspulse02-20'`) — affiliate tags are public,
+so to change it, edit that one line. No GitHub secret involved.
 
 | Env | Default | Meaning |
 |---|---|---|

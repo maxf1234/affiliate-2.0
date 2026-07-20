@@ -28,5 +28,5 @@ jobs:
         run: node bot/bot_actions.js
         env:
           DRY_RUN: '1'
-          AMAZON_AFFILIATE_TAG: maxdeals062-20
+          AMAZON_AFFILIATE_TAG: dealspulse02-20
           MIN_DISCOUNT_PCT: '25'
