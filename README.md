@@ -96,7 +96,13 @@ node bot.js       # scan the QR code on first run
 ```
 
 `.env` options: `DEALS_URL`, `SITE_BASE`, `SCAN_INTERVAL_MIN`, `MAX_DEALS_PER_RUN`,
-`WHATSAPP_GROUPS` (comma-separated group-name substrings), `GROUP_LINK` (invite link).
+`WHATSAPP_GROUPS` (comma-separated), `GROUP_LINK` (invite link).
+
+Each `WHATSAPP_GROUPS` / `THRICE_DAILY_GROUPS` entry can be a **group-name
+substring** or a raw **group id** (`…@g.us`). Ids are break-proof — they keep
+working even when a WhatsApp web-app update breaks name lookup. The bot prints
+every group's id at startup (`"<name>" -> <id>@g.us`); paste those ids into the
+variables for a config that survives WhatsApp changes.
 
 The bot links to your site's share pages tagged `?src=wa`, so WhatsApp-driven clicks
 show up separately in `/api/stats`.
