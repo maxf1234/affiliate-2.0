@@ -285,20 +285,70 @@ function saveAnnounced(file, set) {
 }
 
 // ── WHATSAPP SENDER ───────────────────────────────────────────────────────────
+// A configured group can be given as a name substring OR a raw group id
+// (…@g.us). Ids need no lookup at all — the most robust path when WhatsApp
+// breaks getChats().
+const isGroupId = (s) => /@g\.us$/.test(s.trim());
+
+// Lightweight group listing that reads ONLY id + name straight from the
+// WhatsApp Store. The normal client.getChats() serializes every chat
+// (last message, contacts, …) and is the call that throws "Evaluation
+// failed: r" when WhatsApp updates its web app. This touches far less.
+async function listGroupsLite() {
+  return whatsapp.pupPage.evaluate(() => {
+    const chat = window.Store && window.Store.Chat;
+    const models = chat ? (chat.getModelsArray ? chat.getModelsArray() : (chat.models || [])) : [];
+    return models
+      .filter(c => c && c.isGroup)
+      .map(c => ({ id: (c.id && c.id._serialized) || "", name: c.name || c.formattedTitle || "" }))
+      .filter(g => g.id);
+  });
+}
+
+// Resolve configured names/ids to concrete @g.us ids, cached across runs.
+const resolvedGroupCache = new Map();
+
+async function resolveGroupIds(groupNames) {
+  const out = new Set();
+  const needLookup = [];
+  for (const raw of groupNames) {
+    const g = raw.trim();
+    if (isGroupId(g)) out.add(g);
+    else if (resolvedGroupCache.has(g.toLowerCase())) out.add(resolvedGroupCache.get(g.toLowerCase()));
+    else needLookup.push(g);
+  }
+
+  if (needLookup.length) {
+    let groups;
+    try {
+      groups = await listGroupsLite();
+    } catch (e) {
+      console.warn(`Lite group lookup failed (${e.message}); falling back to getChats().`);
+      const chats = await whatsapp.getChats();
+      groups = chats.filter(c => c.isGroup).map(c => ({ id: c.id._serialized, name: c.name || "" }));
+    }
+    for (const name of needLookup) {
+      const match = groups.find(g => g.name.toLowerCase().includes(name.toLowerCase()));
+      if (match) {
+        resolvedGroupCache.set(name.toLowerCase(), match.id);
+        out.add(match.id);
+      } else {
+        console.warn(`No group matched "${name}". Available: ${groups.map(g => g.name).join(", ")}`);
+      }
+    }
+  }
+  return [...out];
+}
+
 async function sendToWhatsApp(deals, groupNames) {
   if (!whatsappReady) {
     console.warn("WhatsApp not ready - skipping.");
     return false;
   }
 
-  const chats = await whatsapp.getChats();
-  const groupChats = chats.filter(
-    c => c.isGroup && groupNames.some(name => c.name.toLowerCase().includes(name.toLowerCase()))
-  );
-
-  if (!groupChats.length) {
-    console.warn(`No WhatsApp groups matched [${groupNames.join(", ")}]. Check the group variables in .env / Railway.`);
-    console.log("Available groups:", chats.filter(c => c.isGroup).map(c => c.name).join(", "));
+  const groupIds = await resolveGroupIds(groupNames);
+  if (!groupIds.length) {
+    console.warn(`No WhatsApp groups resolved from [${groupNames.join(", ")}]. Set names or @g.us ids in the group variables.`);
     return false;
   }
 
@@ -331,15 +381,15 @@ async function sendToWhatsApp(deals, groupNames) {
       caption += `📲 *Join DealsPulse for more daily deals:*\n${GROUP_LINK}`;
     }
 
-    for (const group of groupChats) {
+    for (const groupId of groupIds) {
       try {
-        // Try to send as image with caption (guaranteed visible image)
+        // Send by chat id directly — no getChats()/group object needed.
         let sent = false;
         if (deal.image && deal.image.startsWith("http")) {
           try {
             const { MessageMedia } = require("whatsapp-web.js");
             const media = await MessageMedia.fromUrl(deal.image, { unsafeMime: true });
-            await group.sendMessage(media, { caption });
+            await whatsapp.sendMessage(groupId, media, { caption });
             sent = true;
           } catch (imgErr) {
             console.warn(`Image send failed, falling back to text: ${imgErr.message}`);
@@ -348,13 +398,13 @@ async function sendToWhatsApp(deals, groupNames) {
 
         // Fallback: send as plain text if image failed
         if (!sent) {
-          await group.sendMessage(caption);
+          await whatsapp.sendMessage(groupId, caption);
         }
 
-        console.log(`Sent: ${deal.title.slice(0, 45)} -> ${group.name}`);
+        console.log(`Sent: ${deal.title.slice(0, 45)} -> ${groupId}`);
         await sleep(3000);
       } catch (err) {
-        console.error(`Failed to send to ${group.name}: ${err.message}`);
+        console.error(`Failed to send to ${groupId}: ${err.message}`);
       }
     }
   }
@@ -478,6 +528,18 @@ whatsapp.initialize();
 whatsapp.once("ready", async () => {
   await seedIfFirstRun();
   startHealthMonitor();
+
+  // One-time diagnostic: list every group with its @g.us id, so you can
+  // paste ids into WHATSAPP_GROUPS / THRICE_DAILY_GROUPS. Ids never break
+  // even when WhatsApp's web app changes and name lookup fails.
+  try {
+    const groups = await listGroupsLite();
+    console.log(`Your WhatsApp groups (${groups.length}) — use the id for a break-proof config:`);
+    groups.forEach(g => console.log(`   "${g.name}"  ->  ${g.id}`));
+  } catch (e) {
+    console.warn(`Could not list groups at startup: ${e.message}`);
+  }
+
   // No startup post — messages go out only at the scheduled times, so
   // redeploys/restarts never trigger an extra message.
   if (AUDIENCES.hourly.groups.length) {
