@@ -89,14 +89,24 @@ If stundeals.com changes its markup, the workflow **fails loudly** and GitHub em
 
 ## WhatsApp Bot
 
+Built on [Baileys](https://github.com/WhiskeySockets/Baileys) — a protocol-level
+WhatsApp client (no browser), so it doesn't break when WhatsApp updates its web app.
+
 ```bash
 cd bot
 npm install
-node bot.js       # scan the QR code on first run
+node bot.js
 ```
 
-`.env` options: `DEALS_URL`, `SITE_BASE`, `SCAN_INTERVAL_MIN`, `MAX_DEALS_PER_RUN`,
-`WHATSAPP_GROUPS` (comma-separated), `GROUP_LINK` (invite link).
+Link once: set `WHATSAPP_PHONE` (digits + country code, e.g. `15551234567`) and the
+bot prints an 8-character **pairing code** — enter it on your phone under
+WhatsApp → Linked Devices → Link a Device → "Link with phone number instead".
+Leave `WHATSAPP_PHONE` unset to scan a QR instead. Auth persists on the `/data`
+volume, so relinking is only needed if WhatsApp logs the session out.
+
+`.env` options: `DEALS_URL`, `SITE_BASE`, `SCAN_INTERVAL_MIN`, `BOT_TIMEZONE`,
+`WHATSAPP_PHONE`, `WHATSAPP_GROUPS`, `THRICE_DAILY_GROUPS`,
+`THRICE_DAILY_CATEGORIES`, `GROUP_LINK` (invite link).
 
 Each `WHATSAPP_GROUPS` / `THRICE_DAILY_GROUPS` entry can be a **group-name
 substring** or a raw **group id** (`…@g.us`). Ids are break-proof — they keep

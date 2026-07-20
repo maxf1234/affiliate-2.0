@@ -1,13 +1,17 @@
 /**
- * DealsPulse WhatsApp Bot — Local
- * ================================
+ * DealsPulse WhatsApp Bot — Baileys
+ * =================================
  * Reads deals from your LIVE site's deals.json (the single source of truth,
  * maintained by GitHub Actions), tracks which deals it has already announced,
  * and posts any NEW deals to your WhatsApp group(s) from YOUR number.
  *
+ * Uses Baileys (@whiskeysockets/baileys): a protocol-level WhatsApp client —
+ * NO browser/puppeteer — so it doesn't break every time WhatsApp updates the
+ * web app (which is what killed the old whatsapp-web.js version).
+ *
  * RUN:
  *   node bot.js
- *   Scan the QR code on first run.
+ *   First run: set WHATSAPP_PHONE to link by pairing code, or scan the QR.
  */
 
 require("dotenv").config();
@@ -16,8 +20,14 @@ const path = require("path");
 const https = require("https");
 const http = require("http");
 const cron = require("node-cron");
-const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
+const {
+  default: makeWASocket,
+  useMultiFileAuthState,
+  DisconnectReason,
+  fetchLatestBaileysVersion,
+  Browsers,
+} = require("@whiskeysockets/baileys");
 
 // ── CONFIG ────────────────────────────────────────────────────────────────────
 const IS_MAC            = process.platform === "darwin";
@@ -74,154 +84,94 @@ const AUDIENCES = {
   },
 };
 
-// ── WHATSAPP CLIENT ───────────────────────────────────────────────────────────
-const SESSION_PATH = process.env.SESSION_PATH || (IS_MAC ? undefined : "/data/wwebjs_auth");
-
-// ── VOLUME CLEANUP ────────────────────────────────────────────────────────────
-// The Chromium instance inside whatsapp-web.js hoards cache on the persistent
-// volume until it fills up. On every startup (before Chromium launches) this
-// prunes cache directories while KEEPING the WhatsApp login and the
-// announced-deals history — so no relinking and no re-posted backlog.
-const CHROMIUM_CACHE_DIRS = new Set([
-  "Cache", "Code Cache", "GPUCache", "ShaderCache", "GrShaderCache",
-  "DawnGraphiteCache", "DawnWebGPUCache", "Crashpad", "Crash Reports",
-  "component_crx_cache", "Service Worker", "OptimizationGuidePredictionModels",
-]);
-
-function pruneChromiumCaches() {
-  if (!SESSION_PATH) return;
-  let removed = 0;
-  const stack = [SESSION_PATH];
-  while (stack.length) {
-    const dir = stack.pop();
-    let entries;
-    try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch (e) { continue; }
-    for (const ent of entries) {
-      if (!ent.isDirectory()) continue;
-      const full = path.join(dir, ent.name);
-      if (CHROMIUM_CACHE_DIRS.has(ent.name)) {
-        try { fs.rmSync(full, { recursive: true, force: true }); removed++; } catch (e) {}
-      } else {
-        stack.push(full);
-      }
-    }
-  }
-  if (removed) console.log(`Volume cleanup: pruned ${removed} Chromium cache dir(s) (session + history kept).`);
-}
-
-// Pin a known-good WhatsApp Web build. When WhatsApp pushes an update that
-// the library can't drive yet, sends fail with cryptic minified errors
-// (e.g. "Send failed: r") even though the client connects fine. Pinning
-// loads a compatible build instead. Override with WWEB_VERSION in Railway
-// if this ever needs bumping without a code change.
-const WWEB_VERSION = process.env.WWEB_VERSION || "2.3000.1043451071-alpha";
-
-const whatsapp = new Client({
-  authStrategy: new LocalAuth({ dataPath: SESSION_PATH }),
-  webVersion: WWEB_VERSION,
-  webVersionCache: {
-    type: "remote",
-    remotePath: "https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/{version}.html",
-  },
-  puppeteer: {
-    executablePath: IS_MAC ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" : undefined,
-    args: [
-      "--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu", "--disable-dev-shm-usage",
-      // Memory/CPU trims for small containers
-      // NOTE: --single-process/--no-zygote were removed — they broke
-      // message sending in whatsapp-web.js (connected but nothing sent).
-      "--disable-extensions",
-      "--disable-background-networking", "--disable-sync", "--disable-translate",
-      "--metrics-recording-only", "--mute-audio", "--no-first-run",
-      "--js-flags=--max-old-space-size=256",
-    ],
-  },
-});
-
-let whatsappReady = false;
+// ── WHATSAPP (Baileys) ─────────────────────────────────────────────────────────
+// Auth (creds + signal keys) live on the persistent volume so relinking is
+// only needed when WhatsApp itself logs the session out.
+const AUTH_DIR = process.env.AUTH_DIR || (IS_MAC ? path.join(__dirname, "baileys_auth") : "/data/baileys_auth");
 
 // Set WHATSAPP_PHONE (digits only, with country code, e.g. 15551234567) to
 // link by typing an 8-character code on your phone instead of scanning a QR:
 // WhatsApp -> Linked Devices -> Link a Device -> "Link with phone number instead"
 const WHATSAPP_PHONE = (process.env.WHATSAPP_PHONE || "").replace(/[^\d]/g, "");
+
+// Baileys wants a pino-like logger; a silent no-op keeps logs clean.
+const logger = {
+  level: "silent",
+  child: () => logger,
+  trace() {}, debug() {}, info() {}, warn() {}, error() {}, fatal() {},
+};
+
+let sock = null;
+let whatsappReady = false;
+let onReadyDone = false;
 let pairingRequested = false;
 
-whatsapp.on("qr", async (qr) => {
-  if (WHATSAPP_PHONE && !pairingRequested) {
-    pairingRequested = true;
-    try {
-      const code = await whatsapp.requestPairingCode(WHATSAPP_PHONE);
-      console.log("\n==============================================");
-      console.log(`  PAIRING CODE: ${code}`);
-      console.log("  On your phone: WhatsApp -> Linked Devices ->");
-      console.log("  Link a Device -> 'Link with phone number instead'");
-      console.log("==============================================\n");
-      return;
-    } catch (e) {
-      console.error(`Pairing code request failed (${e.message}) — falling back to QR.`);
-    }
+async function connectWhatsApp() {
+  const { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
+  let version;
+  try {
+    ({ version } = await fetchLatestBaileysVersion());
+  } catch (e) {
+    console.warn(`Could not fetch latest WA version (${e.message}); using bundled default.`);
   }
-  // Terminal QR for local use
-  console.log("\nScan this QR code with your WhatsApp:\n");
-  qrcode.generate(qr, { small: true });
-  // Also print a URL you can open in a browser to scan (for cloud deploys)
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`;
-  console.log("\nOR open this URL in your browser to scan:\n");
-  console.log(qrUrl);
-  console.log("\nOpen WhatsApp -> Linked Devices -> Link a Device\n");
-});
 
-whatsapp.on("ready", () => {
-  whatsappReady = true;
-  console.log("WhatsApp connected - messages will send from your number!");
-});
+  sock = makeWASocket({
+    auth: state,
+    version,
+    logger,
+    browser: Browsers.ubuntu("Chrome"),
+    printQRInTerminal: false,
+    syncFullHistory: false,
+    markOnlineOnConnect: false,
+  });
 
-whatsapp.on("auth_failure", () => {
-  console.error("WhatsApp auth failed - delete .wwebjs_auth folder and restart.");
-});
+  sock.ev.on("creds.update", saveCreds);
 
-whatsapp.on("disconnected", () => {
-  whatsappReady = false;
-  console.warn("WhatsApp disconnected. Reconnecting...");
-  whatsapp.initialize();
-});
-
-// Proactive zombie-session detection: WhatsApp sometimes drops the link
-// while the client still believes it's connected, so sends hang until the
-// 2-minute watchdog fires. This pings the real connection state every
-// HEALTH_CHECK_MIN minutes and exits for a Railway restart the moment the
-// session is dead — minutes of downtime instead of a silent day.
-const HEALTH_CHECK_MIN = parseInt(process.env.HEALTH_CHECK_MIN || "10");
-const HEALTH_MAX_STRIKES = 3;
-let healthStrikes = 0;
-
-function startHealthMonitor() {
-  setInterval(async () => {
-    try {
-      const state = await Promise.race([
-        whatsapp.getState(),
-        new Promise((_, rej) => setTimeout(() => rej(new Error("getState timed out")), 30000)),
-      ]);
-      // getState() can return null/undefined on a perfectly working session
-      // (page lazily loaded, mid-refresh, etc.) — a single bad reading must
-      // NOT restart the bot, or it never survives to the posting ticks.
-      if (state === "CONNECTED") {
-        if (healthStrikes) console.log("Health check: recovered (CONNECTED).");
-        healthStrikes = 0;
-      } else {
-        healthStrikes++;
-        console.warn(`Health check: state=${state} (strike ${healthStrikes}/${HEALTH_MAX_STRIKES})`);
+  // Pairing-code login (no QR) when this device isn't linked yet.
+  if (WHATSAPP_PHONE && !sock.authState.creds.registered && !pairingRequested) {
+    pairingRequested = true;
+    setTimeout(async () => {
+      try {
+        const code = await sock.requestPairingCode(WHATSAPP_PHONE);
+        console.log("\n==============================================");
+        console.log(`  PAIRING CODE: ${code}`);
+        console.log("  On your phone: WhatsApp -> Linked Devices ->");
+        console.log("  Link a Device -> 'Link with phone number instead'");
+        console.log("==============================================\n");
+      } catch (e) {
+        console.error(`Pairing code request failed (${e.message}) — a QR will be printed instead.`);
       }
-    } catch (e) {
-      healthStrikes++;
-      console.warn(`Health check: ${e.message} (strike ${healthStrikes}/${HEALTH_MAX_STRIKES})`);
+    }, 3000);
+  }
+
+  sock.ev.on("connection.update", async (update) => {
+    const { connection, lastDisconnect, qr } = update;
+
+    if (qr && !WHATSAPP_PHONE) {
+      console.log("\nScan this QR code with your WhatsApp:\n");
+      qrcode.generate(qr, { small: true });
+      console.log("\nWhatsApp -> Linked Devices -> Link a Device\n");
     }
-    if (healthStrikes >= HEALTH_MAX_STRIKES) {
-      console.error("Health check: session dead for 3 consecutive checks — exiting for a fresh restart.");
-      process.exit(1);
+
+    if (connection === "open") {
+      whatsappReady = true;
+      console.log("WhatsApp connected - messages will send from your number!");
+      if (!onReadyDone) {
+        onReadyDone = true;
+        await onReady();
+      }
+    } else if (connection === "close") {
+      whatsappReady = false;
+      const code = lastDisconnect && lastDisconnect.error && lastDisconnect.error.output
+        ? lastDisconnect.error.output.statusCode : undefined;
+      if (code === DisconnectReason.loggedOut) {
+        console.error("Logged out by WhatsApp. Delete the auth volume (/data/baileys_auth) and relink.");
+        process.exit(1);
+      }
+      console.warn(`Connection closed (code ${code}). Reconnecting in 5s...`);
+      setTimeout(() => { connectWhatsApp().catch(e => console.error("Reconnect failed:", e.message)); }, 5000);
     }
-  }, HEALTH_CHECK_MIN * 60 * 1000);
-  console.log(`Session health check every ${HEALTH_CHECK_MIN} min (restart after ${HEALTH_MAX_STRIKES} consecutive failures).`);
+  });
 }
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
@@ -286,23 +236,14 @@ function saveAnnounced(file, set) {
 
 // ── WHATSAPP SENDER ───────────────────────────────────────────────────────────
 // A configured group can be given as a name substring OR a raw group id
-// (…@g.us). Ids need no lookup at all — the most robust path when WhatsApp
-// breaks getChats().
+// (…@g.us). Ids need no lookup at all.
 const isGroupId = (s) => /@g\.us$/.test(s.trim());
 
-// Lightweight group listing that reads ONLY id + name straight from the
-// WhatsApp Store. The normal client.getChats() serializes every chat
-// (last message, contacts, …) and is the call that throws "Evaluation
-// failed: r" when WhatsApp updates its web app. This touches far less.
-async function listGroupsLite() {
-  return whatsapp.pupPage.evaluate(() => {
-    const chat = window.Store && window.Store.Chat;
-    const models = chat ? (chat.getModelsArray ? chat.getModelsArray() : (chat.models || [])) : [];
-    return models
-      .filter(c => c && c.isGroup)
-      .map(c => ({ id: (c.id && c.id._serialized) || "", name: c.name || c.formattedTitle || "" }))
-      .filter(g => g.id);
-  });
+// List all groups this account participates in — a protocol call, not a
+// browser scrape, so it's reliable across WhatsApp web-app changes.
+async function fetchGroups() {
+  const meta = await sock.groupFetchAllParticipating();
+  return Object.values(meta).map(g => ({ id: g.id, name: g.subject || "" }));
 }
 
 // Resolve configured names/ids to concrete @g.us ids, cached across runs.
@@ -319,13 +260,11 @@ async function resolveGroupIds(groupNames) {
   }
 
   if (needLookup.length) {
-    let groups;
+    let groups = [];
     try {
-      groups = await listGroupsLite();
+      groups = await fetchGroups();
     } catch (e) {
-      console.warn(`Lite group lookup failed (${e.message}); falling back to getChats().`);
-      const chats = await whatsapp.getChats();
-      groups = chats.filter(c => c.isGroup).map(c => ({ id: c.id._serialized, name: c.name || "" }));
+      console.warn(`Group lookup failed (${e.message}).`);
     }
     for (const name of needLookup) {
       const match = groups.find(g => g.name.toLowerCase().includes(name.toLowerCase()));
@@ -341,7 +280,7 @@ async function resolveGroupIds(groupNames) {
 }
 
 async function sendToWhatsApp(deals, groupNames) {
-  if (!whatsappReady) {
+  if (!whatsappReady || !sock) {
     console.warn("WhatsApp not ready - skipping.");
     return false;
   }
@@ -383,22 +322,19 @@ async function sendToWhatsApp(deals, groupNames) {
 
     for (const groupId of groupIds) {
       try {
-        // Send by chat id directly — no getChats()/group object needed.
+        // Try to send as image with caption; fall back to plain text.
         let sent = false;
         if (deal.image && deal.image.startsWith("http")) {
           try {
-            const { MessageMedia } = require("whatsapp-web.js");
-            const media = await MessageMedia.fromUrl(deal.image, { unsafeMime: true });
-            await whatsapp.sendMessage(groupId, media, { caption });
+            await sock.sendMessage(groupId, { image: { url: deal.image }, caption });
             sent = true;
           } catch (imgErr) {
             console.warn(`Image send failed, falling back to text: ${imgErr.message}`);
           }
         }
 
-        // Fallback: send as plain text if image failed
         if (!sent) {
-          await whatsapp.sendMessage(groupId, caption);
+          await sock.sendMessage(groupId, { text: caption });
         }
 
         console.log(`Sent: ${deal.title.slice(0, 45)} -> ${groupId}`);
@@ -459,10 +395,10 @@ async function runBot(audience, skip = 0) {
 
   console.log(`[${audience.label}] Announcing: ${newDeals[0].title.slice(0, 50)} (-${newDeals[0].discount}%)`);
 
-  // Watchdog: if sending hangs (zombie WhatsApp session), exit so Railway
-  // restarts us with a fresh connection instead of stalling silently forever.
+  // Watchdog: if sending hangs, exit so Railway restarts us with a fresh
+  // connection instead of stalling silently forever.
   const watchdog = setTimeout(() => {
-    console.error("Send timed out after 2 minutes - session likely dead. Exiting for restart.");
+    console.error("Send timed out after 2 minutes - exiting for restart.");
     process.exit(1);
   }, 2 * 60 * 1000);
 
@@ -500,52 +436,18 @@ async function seedIfFirstRun() {
   }
 }
 
-// ── START ─────────────────────────────────────────────────────────────────────
-// The announced-history and login session live on the persistent volume.
-// If it's missing or read-only, say so LOUDLY at startup instead of
-// silently re-posting the same deal every run.
-function checkVolumeWritable() {
-  const probe = dataFile(".volume_probe");
-  try {
-    fs.writeFileSync(probe, String(Date.now()));
-    fs.unlinkSync(probe);
-    console.log(`Persistent storage OK (${path.dirname(probe)}).`);
-  } catch (e) {
-    console.error("!".repeat(60));
-    console.error(`PERSISTENT VOLUME NOT WRITABLE: ${e.message}`);
-    console.error("Announced-deal history will NOT survive restarts, and the");
-    console.error("same deal may be re-posted after every redeploy.");
-    console.error("Fix: Railway -> service -> Settings -> attach a Volume mounted at /data");
-    console.error("!".repeat(60));
-  }
-}
-
-console.log("DealsPulse WhatsApp Bot starting...");
-checkVolumeWritable();
-pruneChromiumCaches();
-whatsapp.initialize();
-
-whatsapp.once("ready", async () => {
+// ── ON READY (runs once, first time the socket connects) ───────────────────────
+async function onReady() {
   await seedIfFirstRun();
-  startHealthMonitor();
 
   // One-time diagnostic: list every group with its @g.us id, so you can
-  // paste ids into WHATSAPP_GROUPS / THRICE_DAILY_GROUPS. Ids never break
-  // even when WhatsApp's web app changes and name lookup fails.
-  // Prefer getChats() (reliable name+id); fall back to the lite Store read
-  // if getChats() throws (it's the fragile call that can break on updates).
+  // paste ids into WHATSAPP_GROUPS / THRICE_DAILY_GROUPS.
   console.log("=== AVAILABLE GROUPS ===");
   try {
-    const chats = await whatsapp.getChats();
-    chats.filter(c => c.isGroup).forEach(g => console.log(`GROUP: "${g.name}" => ${g.id._serialized}`));
+    const groups = await fetchGroups();
+    groups.forEach(g => console.log(`GROUP: "${g.name}" => ${g.id}`));
   } catch (e) {
-    console.warn(`getChats() failed (${e.message}); trying lite lookup...`);
-    try {
-      const groups = await listGroupsLite();
-      groups.forEach(g => console.log(`GROUP: "${g.name}" => ${g.id}`));
-    } catch (e2) {
-      console.warn(`Could not list groups at startup: ${e2.message}`);
-    }
+    console.warn(`Could not list groups at startup: ${e.message}`);
   }
   console.log("=== END GROUPS ===");
 
@@ -564,4 +466,30 @@ whatsapp.once("ready", async () => {
   if (!AUDIENCES.hourly.groups.length && !AUDIENCES.thrice.groups.length) {
     console.warn("No groups configured — set WHATSAPP_GROUPS and/or THRICE_DAILY_GROUPS.");
   }
+}
+
+// ── START ─────────────────────────────────────────────────────────────────────
+// The announced-history and login session live on the persistent volume.
+// If it's missing or read-only, say so LOUDLY at startup instead of
+// silently re-posting the same deal every run.
+function checkVolumeWritable() {
+  const probe = dataFile(".volume_probe");
+  try {
+    fs.writeFileSync(probe, String(Date.now()));
+    fs.unlinkSync(probe);
+    console.log(`Persistent storage OK (${path.dirname(probe)}).`);
+  } catch (e) {
+    console.error("!".repeat(60));
+    console.error(`PERSISTENT VOLUME NOT WRITABLE: ${e.message}`);
+    console.error("Announced-deal history / login will NOT survive restarts.");
+    console.error("Fix: Railway -> service -> Settings -> attach a Volume mounted at /data");
+    console.error("!".repeat(60));
+  }
+}
+
+console.log("DealsPulse WhatsApp Bot starting...");
+checkVolumeWritable();
+connectWhatsApp().catch(e => {
+  console.error("Fatal: could not start WhatsApp connection:", e.message);
+  process.exit(1);
 });
