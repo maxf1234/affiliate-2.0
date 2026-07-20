@@ -17,7 +17,7 @@ const DEALS_URL = "https://raw.githubusercontent.com/maxf1234/affiliate-2.0/main
 const VALID_SRC = new Set(["site", "deal", "share", "wa"]);
 
 // Prime Student referral — not a deals.json entry, tracked under id "prime"
-const PRIME_REFERRAL_URL = "https://amzn.to/4wxsB2q";
+const PRIME_REFERRAL_URL = "https://amzn.to/4vIChX1";
 const PRIME_PSEUDO_DEAL = { id: "prime", title: "Amazon Prime 6-month free trial (18-24)" };
 
 // Cache deals across warm invocations so redirects stay fast
