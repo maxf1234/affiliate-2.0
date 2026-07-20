@@ -7,9 +7,9 @@
     "start": "node bot.js"
   },
   "dependencies": {
+    "@whiskeysockets/baileys": "6.7.23",
     "dotenv": "^16.4.5",
     "node-cron": "^3.0.3",
-    "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.34.7"
+    "qrcode-terminal": "^0.12.0"
   }
 }
