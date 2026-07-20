@@ -532,13 +532,22 @@ whatsapp.once("ready", async () => {
   // One-time diagnostic: list every group with its @g.us id, so you can
   // paste ids into WHATSAPP_GROUPS / THRICE_DAILY_GROUPS. Ids never break
   // even when WhatsApp's web app changes and name lookup fails.
+  // Prefer getChats() (reliable name+id); fall back to the lite Store read
+  // if getChats() throws (it's the fragile call that can break on updates).
+  console.log("=== AVAILABLE GROUPS ===");
   try {
-    const groups = await listGroupsLite();
-    console.log(`Your WhatsApp groups (${groups.length}) — use the id for a break-proof config:`);
-    groups.forEach(g => console.log(`   "${g.name}"  ->  ${g.id}`));
+    const chats = await whatsapp.getChats();
+    chats.filter(c => c.isGroup).forEach(g => console.log(`GROUP: "${g.name}" => ${g.id._serialized}`));
   } catch (e) {
-    console.warn(`Could not list groups at startup: ${e.message}`);
+    console.warn(`getChats() failed (${e.message}); trying lite lookup...`);
+    try {
+      const groups = await listGroupsLite();
+      groups.forEach(g => console.log(`GROUP: "${g.name}" => ${g.id}`));
+    } catch (e2) {
+      console.warn(`Could not list groups at startup: ${e2.message}`);
+    }
   }
+  console.log("=== END GROUPS ===");
 
   // No startup post — messages go out only at the scheduled times, so
   // redeploys/restarts never trigger an extra message.
