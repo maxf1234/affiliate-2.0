@@ -109,8 +109,20 @@ function pruneChromiumCaches() {
   if (removed) console.log(`Volume cleanup: pruned ${removed} Chromium cache dir(s) (session + history kept).`);
 }
 
+// Pin a known-good WhatsApp Web build. When WhatsApp pushes an update that
+// the library can't drive yet, sends fail with cryptic minified errors
+// (e.g. "Send failed: r") even though the client connects fine. Pinning
+// loads a compatible build instead. Override with WWEB_VERSION in Railway
+// if this ever needs bumping without a code change.
+const WWEB_VERSION = process.env.WWEB_VERSION || "2.3000.1043451071-alpha";
+
 const whatsapp = new Client({
   authStrategy: new LocalAuth({ dataPath: SESSION_PATH }),
+  webVersion: WWEB_VERSION,
+  webVersionCache: {
+    type: "remote",
+    remotePath: "https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/{version}.html",
+  },
   puppeteer: {
     executablePath: IS_MAC ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" : undefined,
     args: [
@@ -410,7 +422,8 @@ async function runBot(audience, skip = 0) {
   } catch (e) {
     // Without this catch a send failure becomes an unhandled rejection:
     // the process dies (or the error vanishes) with nothing in the logs.
-    console.error(`[${audience.label}] Send failed: ${e.message}`);
+    const detail = String((e && (e.stack || e.message)) || e).split("\n").slice(0, 3).join(" | ").slice(0, 400);
+    console.error(`[${audience.label}] Send failed: ${detail}`);
   } finally {
     clearTimeout(watchdog);
   }
