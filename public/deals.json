@@ -1,5 +1,21 @@
 [
   {
+    "id": "man_B0FL1RJQNN",
+    "asin": "B0FL1RJQNN",
+    "title": "Carbon Fiber Pickleball Paddle",
+    "category": "Sports",
+    "originalPrice": 120,
+    "dealPrice": 69.99,
+    "discount": 42,
+    "image": "https://m.media-amazon.com/images/I/71HTv6LQZZL._AC_UF1000,1000_QL80_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FL1RJQNN?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-29",
+    "hot": true,
+    "posted_at": "2026-07-22T16:07:14.155Z",
+    "manual": true
+  },
+  {
     "id": "sc_10357305803048",
     "asin": "B0F2DRSKWG",
     "title": "Cook's Aid Nonstick Silicone Pastry Rolling Mat",
@@ -2984,20 +3000,5 @@
     "expires": "2026-07-25",
     "hot": false,
     "posted_at": "2026-07-20T04:00:29.723Z"
-  },
-  {
-    "id": "sc_10355133808936",
-    "asin": "B0837DVMQN",
-    "title": "24 Pack Kids Blunt Tip School Scissors",
-    "category": "General",
-    "originalPrice": 22.99,
-    "dealPrice": 9.99,
-    "discount": 57,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/511VQ6HJJTL._SL500.jpg?v=1784516798",
-    "affiliate_url": "https://www.amazon.com/dp/B0837DVMQN?tag=dealspulse02-20",
-    "store": "Amazon",
-    "expires": "2026-07-25",
-    "hot": false,
-    "posted_at": "2026-07-20T04:00:29.083Z"
   }
 ]
