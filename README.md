@@ -87,6 +87,18 @@ If stundeals.com changes its markup, the workflow **fails loudly** and GitHub em
 
 -----
 
+## Add a Deal Manually
+
+GitHub → **Actions** → **Add Deal** → **Run workflow**. Fill in the form
+(Amazon link + title + price are required; original price, category, image,
+and expiry are optional) and run it. The deal is added to `public/deals.json`
+(newest-first, your affiliate tag applied, category auto-guessed if left on
+Auto), committed, and the site redeploys — after which the WhatsApp bot can
+post it like any other deal. Works from your phone. Manually added deals get a
+`man_` id and a `"manual": true` flag.
+
+-----
+
 ## WhatsApp Bot
 
 Built on [Baileys](https://github.com/WhiskeySockets/Baileys) — a protocol-level

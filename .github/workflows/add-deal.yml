@@ -1,0 +1,71 @@
+name: Add Deal
+# Manually add a single deal from a simple form:
+# GitHub → Actions → "Add Deal" → Run workflow → fill in the fields.
+on:
+  workflow_dispatch:
+    inputs:
+      amazon_url:
+        description: 'Amazon product link (amazon.com/dp/... or amzn.to/...)'
+        required: true
+      title:
+        description: 'Product title'
+        required: true
+      deal_price:
+        description: 'Deal price, e.g. 24.99'
+        required: true
+      original_price:
+        description: 'Original price (optional, enables the % off badge)'
+        required: false
+      category:
+        description: 'Category'
+        required: false
+        default: 'Auto (guess from title)'
+        type: choice
+        options:
+          - 'Auto (guess from title)'
+          - Electronics
+          - 'Home & Kitchen'
+          - Fashion
+          - Beauty
+          - 'Baby & Kids'
+          - 'Toys & Games'
+          - Grocery
+          - Sports
+          - Furniture
+          - Books
+          - General
+      image_url:
+        description: 'Image URL (optional)'
+        required: false
+      expires_days:
+        description: 'Days until it expires off the site (default 7)'
+        required: false
+        default: '7'
+jobs:
+  add-deal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node bot/add_deal.js
+        env:
+          AMAZON_AFFILIATE_TAG: 'dealspulse02-20'
+          DEAL_URL: ${{ inputs.amazon_url }}
+          DEAL_TITLE: ${{ inputs.title }}
+          DEAL_PRICE: ${{ inputs.deal_price }}
+          DEAL_ORIGINAL: ${{ inputs.original_price }}
+          DEAL_CATEGORY: ${{ inputs.category == 'Auto (guess from title)' && 'Auto' || inputs.category }}
+          DEAL_IMAGE: ${{ inputs.image_url }}
+          DEAL_EXPIRES_DAYS: ${{ inputs.expires_days }}
+      - run: |
+          git config user.name "DealsPulse Bot"
+          git config user.email "bot@dealspulse.com"
+          git add public/deals.json
+          git diff --staged --quiet || git commit -m "manual: add deal"
+          git push
+      - name: Trigger Vercel redeploy
+        run: curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_ORo4O4shiKWVNnQGO8butlHKugDy/JJwu21OuCu"
