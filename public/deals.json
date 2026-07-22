@@ -1,5 +1,200 @@
 [
   {
+    "id": "sc_10356883783976",
+    "asin": "B0GJG2HQ4S",
+    "title": "Armani Beauty Acqua di Gioia Eau de Parfum Set",
+    "category": "Beauty",
+    "originalPrice": 85,
+    "dealPrice": 42.5,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31o0mAafOML._SL500.jpg?v=1784680933",
+    "affiliate_url": "https://www.amazon.com/dp/B0GJG2HQ4S?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:33.719Z"
+  },
+  {
+    "id": "sc_10356885553448",
+    "asin": "B0CGRRGY6S",
+    "title": "IROO Kids Karaoke Machine with 2 Wireless Microphones",
+    "category": "Electronics",
+    "originalPrice": 24.99,
+    "dealPrice": 9.85,
+    "discount": 61,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51YaSLlbCPL._SL500.jpg?v=1784681467",
+    "affiliate_url": "https://www.amazon.com/dp/B0CGRRGY6S?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:32.976Z"
+  },
+  {
+    "id": "sc_10356886176040",
+    "asin": "B0G4DQTR4R",
+    "title": "Little Seeds Aster 4-in-1 Convertible Crib",
+    "category": "Baby & Kids",
+    "originalPrice": 329.99,
+    "dealPrice": 116.08,
+    "discount": 65,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31djL5lQNiL._SL500.jpg?v=1784681785",
+    "affiliate_url": "https://www.amazon.com/dp/B0G4DQTR4R?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": true,
+    "posted_at": "2026-07-22T10:00:32.322Z"
+  },
+  {
+    "id": "sc_10356887290152",
+    "asin": "B0FKB289VY",
+    "title": "Electric Toothbrush with Gentle Ultra-Clean Technology",
+    "category": "Beauty",
+    "originalPrice": 12.99,
+    "dealPrice": 5.99,
+    "discount": 54,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41tkqKNtybL._SL500_76582286-daf6-4e56-9da5-28c6ddad5294.jpg?v=1784682120",
+    "affiliate_url": "https://www.amazon.com/dp/B0FKB289VY?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:31.712Z"
+  },
+  {
+    "id": "sc_10356888207656",
+    "asin": "B009JTW84Y",
+    "title": "Master Lock Resettable Word Combination Padlock",
+    "category": "General",
+    "originalPrice": 13.99,
+    "dealPrice": 6.99,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41huE7b5LFL._SL500_eb8c51fc-d285-4166-9ab5-99d74dc74303.jpg?v=1784682468",
+    "affiliate_url": "https://www.amazon.com/dp/B009JTW84Y?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:31.079Z"
+  },
+  {
+    "id": "sc_10356892631336",
+    "asin": "B074HVKHNQ",
+    "title": "3 Pack Zebra Z-Grip Plus 0.7mm Mechanical Pencils",
+    "category": "General",
+    "originalPrice": 6.99,
+    "dealPrice": 3.81,
+    "discount": 45,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41x2K5IE-kL._SL500.jpg?v=1784682559",
+    "affiliate_url": "https://www.amazon.com/dp/B074HVKHNQ?tag=dealspulse02-20&m=ATVPDKIKX0DER",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:30.406Z"
+  },
+  {
+    "id": "sc_10356908097832",
+    "asin": "B0G5P7LVMR",
+    "title": "Aegend Anti-Fog UV Protection Kids Swim Goggles",
+    "category": "General",
+    "originalPrice": 15.99,
+    "dealPrice": 6.99,
+    "discount": 56,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41dLuHPaEGL._SL500.jpg?v=1784682904",
+    "affiliate_url": "https://www.amazon.com/dp/B0G5P7LVMR?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:29.782Z"
+  },
+  {
+    "id": "sc_10356919042344",
+    "asin": "B0DZCMVQM8",
+    "title": "10 Spray High Pressure Shower Head Combo with Hose",
+    "category": "General",
+    "originalPrice": 39.99,
+    "dealPrice": 19.99,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41FsxTZMNVL._SL500.jpg?v=1784683158",
+    "affiliate_url": "https://www.amazon.com/dp/B0DZCMVQM8?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:29.111Z"
+  },
+  {
+    "id": "sc_10356931854632",
+    "asin": "B01M1NG2BM",
+    "title": "12 Pack Fig Newtons Soft Baked Fig Bars (OU-D)",
+    "category": "General",
+    "originalPrice": 22.77,
+    "dealPrice": 10.91,
+    "discount": 52,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51wA7yjsY6L._SL500.jpg?v=1784683782",
+    "affiliate_url": "https://www.amazon.com/dp/B01M1NG2BM?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:28.357Z"
+  },
+  {
+    "id": "sc_10356932477224",
+    "asin": "B0GT5JKP2Z",
+    "title": "2 Pack Ring 2K Battery Video Doorbell",
+    "category": "General",
+    "originalPrice": 119.53,
+    "dealPrice": 89.99,
+    "discount": 25,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/21URsO-VwwL._SL500.jpg?v=1784684099",
+    "affiliate_url": "https://www.amazon.com/dp/B0GT5JKP2Z?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:27.740Z"
+  },
+  {
+    "id": "sc_10356932641064",
+    "asin": "B0GJTP46P8",
+    "title": "Armani Beauty Acqua di Giò Cologne Gift Set",
+    "category": "Beauty",
+    "originalPrice": 140,
+    "dealPrice": 70,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/412_gZ2heGL._SL500.jpg?v=1784684193",
+    "affiliate_url": "https://www.amazon.com/dp/B0GJTP46P8?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:27.148Z"
+  },
+  {
+    "id": "sc_10356933165352",
+    "asin": "B0FMLMGPN9",
+    "title": "Sony USB-C Wired In-Ear Headphones with Mic",
+    "category": "Electronics",
+    "originalPrice": 28,
+    "dealPrice": 13,
+    "discount": 54,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/21chigFf6zL._SL500.jpg?v=1784684556",
+    "affiliate_url": "https://www.amazon.com/dp/B0FMLMGPN9?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:26.498Z"
+  },
+  {
+    "id": "sc_10356933296424",
+    "asin": "B0H11PP5N6",
+    "title": "Women’s Long Sleeve Tunic Sweatshirt Sweater (12 Colors)",
+    "category": "General",
+    "originalPrice": 19.99,
+    "dealPrice": 7.99,
+    "discount": 60,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41rTyjvr4LL._SL500.jpg?v=1784684645",
+    "affiliate_url": "https://www.amazon.com/dp/B0H11PP5N6?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-27",
+    "hot": false,
+    "posted_at": "2026-07-22T10:00:25.864Z"
+  },
+  {
     "id": "sc_10356933460264",
     "asin": "B0D1HBW6CP",
     "title": "2 Pack Method Sea Surf Bar Soap",
@@ -281,7 +476,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B00006JNNH?tag=dealspulse02-20",
     "store": "Amazon",
     "expires": "2026-07-26",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-21T22:00:29.810Z"
   },
   {
@@ -431,7 +626,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B078J56V3X?tag=dealspulse02-20",
     "store": "Amazon",
     "expires": "2026-07-26",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-21T22:00:22.640Z"
   },
   {
@@ -596,7 +791,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B000X6OY8K?tag=dealspulse02-20",
     "store": "Amazon",
     "expires": "2026-07-26",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-21T16:00:31.686Z"
   },
   {
@@ -761,7 +956,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B001CEEL3K?tag=dealspulse02-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-23",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-21T16:00:25.200Z"
   },
   {
@@ -896,7 +1091,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B000X6OY8K?tag=dealspulse02-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-23",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-21T16:00:25.199Z"
   },
   {
@@ -986,7 +1181,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0FRGJ8Z9S?tag=dealspulse02-20",
     "store": "Amazon",
     "expires": "2026-07-26",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-21T10:00:30.219Z"
   },
   {
@@ -1406,7 +1601,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0BS3GFHM8?tag=dealspulse02-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-23",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-21T04:00:26.957Z"
   },
   {
@@ -1526,7 +1721,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0FPKQYZ49?tag=dealspulse02-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-22",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-20T22:00:29.903Z"
   },
   {
@@ -1541,7 +1736,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0DQ22M2KS?tag=dealspulse02-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-22",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-20T22:00:29.903Z"
   },
   {
@@ -1766,7 +1961,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0FDSV599G?tag=dealspulse02-20",
     "store": "Amazon",
     "expires": "2026-07-25",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-20T16:00:33.638Z"
   },
   {
@@ -1991,7 +2186,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0016P4ARW?tag=dealspulse02-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-22",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-20T16:00:27.444Z"
   },
   {
@@ -2306,7 +2501,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B007TUQF9O?tag=dealspulse02-20",
     "store": "Amazon",
     "expires": "2026-07-25",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-20T04:00:35.425Z"
   },
   {
@@ -2456,7 +2651,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0D364F5WL?tag=dealspulse02-20",
     "store": "Amazon",
     "expires": "2026-07-25",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-20T04:00:28.485Z"
   },
   {
@@ -2591,7 +2786,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B005CN5JEM?tag=dealspulse02-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-22",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-07-20T04:00:25.806Z"
   },
   {
