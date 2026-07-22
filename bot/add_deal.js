@@ -63,6 +63,32 @@ function fetchText(url, redirects = 0) {
   });
 }
 
+// Follow redirects and return the FINAL url (for short links like a.co /
+// amzn.to, which hide the ASIN and carry someone else's tag). Best-effort:
+// resolves to the original url on any failure.
+function resolveFinalUrl(url, redirects = 0) {
+  return new Promise((resolve) => {
+    if (redirects > 6) return resolve(url);
+    let lib;
+    try { lib = url.startsWith("https") ? https : http; } catch (e) { return resolve(url); }
+    const req = lib.get(url, {
+      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" },
+    }, res => {
+      if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location) {
+        const next = res.headers.location.startsWith("http")
+          ? res.headers.location
+          : new URL(res.headers.location, url).toString();
+        res.resume();
+        return resolveFinalUrl(next, redirects + 1).then(resolve);
+      }
+      res.resume();
+      resolve(url); // this url did not redirect — it's the final one
+    });
+    req.on("error", () => resolve(url));
+    req.setTimeout(15000, () => { req.destroy(); resolve(url); });
+  });
+}
+
 // Best-effort scrape of an Amazon product image from the page.
 async function findAmazonImage(url) {
   const html = await fetchText(url);
@@ -109,7 +135,7 @@ function buildAffiliateUrl(rawUrl, asin) {
 
   // ── Validate ──
   if (!url) fail("DEAL_URL is required (the Amazon product link).");
-  if (!/amazon\.com|amzn\.to/i.test(url)) fail("DEAL_URL must be an amazon.com or amzn.to link.");
+  if (!/amazon\.com|amzn\.to|a\.co/i.test(url)) fail("DEAL_URL must be an amazon.com, amzn.to, or a.co link.");
   if (!title || title.length < 3) fail("DEAL_TITLE is required (at least 3 characters).");
 
   const dealPrice = parseFloat(priceStr);
@@ -127,13 +153,23 @@ function buildAffiliateUrl(rawUrl, asin) {
     console.warn(`Unknown category "${category}" — using it as-is.`);
   }
 
-  const asin = extractAsin(url);
+  // Short links (a.co, amzn.to) hide the ASIN and carry someone else's tag —
+  // follow the redirect to the real amazon.com URL so we can read the ASIN and
+  // build a clean link with OUR tag.
+  let resolvedUrl = url;
+  if (/a\.co|amzn\.to/i.test(url)) {
+    process.stdout.write("Resolving short link... ");
+    resolvedUrl = await resolveFinalUrl(url);
+    console.log(resolvedUrl === url ? "could not resolve (using as-is)." : "done.");
+  }
+
+  const asin = extractAsin(resolvedUrl) || extractAsin(url);
 
   // Auto-find the product image if none was given (best-effort; Amazon is
   // reachable from GitHub Actions runners). Falls back to a generic image.
   if (!image) {
     process.stdout.write("No image given — trying to fetch from Amazon... ");
-    const found = await findAmazonImage(url);
+    const found = await findAmazonImage(resolvedUrl);
     if (found) { image = found; console.log("found."); }
     else { console.log("none found, using placeholder."); }
   }
@@ -155,7 +191,7 @@ function buildAffiliateUrl(rawUrl, asin) {
     dealPrice,
     discount,
     image: image || FALLBACK_IMG,
-    affiliate_url: buildAffiliateUrl(url, asin),
+    affiliate_url: buildAffiliateUrl(asin ? resolvedUrl : url, asin),
     store: "Amazon",
     expires,
     hot: discount >= 40,

@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       amazon_url:
-        description: 'Amazon product link (amazon.com/dp/... or amzn.to/...)'
+        description: 'Amazon product link (amazon.com/dp/…, amzn.to/…, or a.co/…)'
         required: true
       title:
         description: 'Product title'
