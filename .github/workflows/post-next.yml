@@ -1,0 +1,39 @@
+name: Post Deal Next
+# Choose which existing deal the WhatsApp bot posts next:
+# GitHub → Actions → "Post Deal Next" → Run workflow → enter an id or title.
+on:
+  workflow_dispatch:
+    inputs:
+      find:
+        description: 'Deal id (man_… / sd_… / sc_…) or part of the title'
+        required: true
+      keep_others:
+        description: 'Keep other queued (priority) deals too?'
+        required: false
+        default: 'no'
+        type: choice
+        options:
+          - 'no'
+          - 'yes'
+jobs:
+  post-next:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node bot/post_next.js
+        env:
+          FIND: ${{ inputs.find }}
+          KEEP_OTHERS: ${{ inputs.keep_others }}
+      - run: |
+          git config user.name "DealsPulse Bot"
+          git config user.email "bot@dealspulse.com"
+          git add public/deals.json
+          git diff --staged --quiet || git commit -m "manual: queue deal next"
+          git push
+      - name: Trigger Vercel redeploy
+        run: curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_ORo4O4shiKWVNnQGO8butlHKugDy/JJwu21OuCu"
