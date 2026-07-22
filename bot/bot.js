@@ -375,8 +375,17 @@ async function runBot(audience, skip = 0) {
     const wanted = audience.categories.map(c => c.toLowerCase());
     unannounced = unannounced.filter(d => wanted.includes((d.category || "").toLowerCase()));
   }
-  const picked = unannounced.length ? audience.pick(unannounced, skip) : null;
+  // Priority override: any un-posted deal flagged `priority` jumps the queue
+  // (newest-flagged first), so you can choose what goes out next. Falls back
+  // to the tier's normal pick (oldest / best-discount) when none are flagged.
+  const prioritized = unannounced
+    .filter(d => d.priority)
+    .sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at));
+  const picked = prioritized.length
+    ? prioritized[0]
+    : (unannounced.length ? audience.pick(unannounced, skip) : null);
   const newDeals = picked ? [picked] : [];
+  if (picked && picked.priority) console.log(`[${audience.label}] Priority deal selected.`);
 
   if (!newDeals.length) {
     console.log(`[${audience.label}] No new deals to announce.`);

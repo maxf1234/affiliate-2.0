@@ -97,6 +97,21 @@ Auto), committed, and the site redeploys — after which the WhatsApp bot can
 post it like any other deal. Works from your phone. Manually added deals get a
 `man_` id and a `"manual": true` flag.
 
+**Image:** leave it blank and the workflow tries to fetch the product image
+from the Amazon page; if Amazon blocks the fetch it falls back to a
+placeholder, so pasting an image URL is the reliable option.
+
+**Post it next:** set "Post this deal to WhatsApp next?" to `yes` and the deal
+is flagged `priority` so the bot posts it ahead of its normal pick.
+
+## Choose the Next WhatsApp Deal
+
+GitHub → **Actions** → **Post Deal Next** → **Run workflow**. Enter a deal id
+(`man_…` / `sd_…` / `sc_…`) or part of a title; that deal is flagged `priority`
+(and priority is cleared from others unless you keep them), so the bot posts it
+on its next scheduled run, ahead of the usual oldest / best-discount pick.
+Requires the bot to be running the current code (redeploy on Railway once).
+
 -----
 
 ## WhatsApp Bot

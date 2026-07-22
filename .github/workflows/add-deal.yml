@@ -41,6 +41,14 @@ on:
         description: 'Days until it expires off the site (default 7)'
         required: false
         default: '7'
+      post_next:
+        description: 'Post this deal to WhatsApp next?'
+        required: false
+        default: 'no'
+        type: choice
+        options:
+          - 'no'
+          - 'yes'
 jobs:
   add-deal:
     runs-on: ubuntu-latest
@@ -61,6 +69,7 @@ jobs:
           DEAL_CATEGORY: ${{ inputs.category == 'Auto (guess from title)' && 'Auto' || inputs.category }}
           DEAL_IMAGE: ${{ inputs.image_url }}
           DEAL_EXPIRES_DAYS: ${{ inputs.expires_days }}
+          DEAL_PRIORITY: ${{ inputs.post_next }}
       - run: |
           git config user.name "DealsPulse Bot"
           git config user.email "bot@dealspulse.com"
