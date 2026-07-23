@@ -1,5 +1,21 @@
 [
   {
+    "id": "man_B0GVGBW1PG",
+    "asin": "B0GVGBW1PG",
+    "title": "5-Piece Silicone Cooking Utensils Set",
+    "category": "Home & Kitchen",
+    "originalPrice": 25,
+    "dealPrice": 12.59,
+    "discount": 50,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://www.amazon.com/dp/B0GVGBW1PG?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-07-30",
+    "hot": true,
+    "posted_at": "2026-07-23T13:52:37.457Z",
+    "manual": true
+  },
+  {
     "id": "sc_10356878606632",
     "asin": "B0GGQD88RS",
     "title": "Memory Foam Ergonomic Wedge Pillow",
