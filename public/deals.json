@@ -1,5 +1,22 @@
 [
   {
+    "id": "man_B0FCMPCW83",
+    "asin": "B0FCMPCW83",
+    "title": "Plastic Clothes Hangers",
+    "category": "Home & Kitchen",
+    "originalPrice": 30,
+    "dealPrice": 14.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/61TAqLyBh9L._AC_SL1500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FCMPCW83?tag=dealspulse02-20",
+    "store": "Amazon",
+    "expires": "2026-10-31",
+    "hot": true,
+    "posted_at": "2026-07-23T20:25:34.754Z",
+    "manual": true,
+    "priority": true
+  },
+  {
     "id": "sc_10356872544552",
     "asin": "B0FB3DM2TK",
     "title": "Low Profile Non-Slip Absorbent Front Door Mat",
@@ -2985,21 +3002,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B08XXGB5NK?tag=dealspulse02-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-07-24",
-    "hot": false,
-    "posted_at": "2026-07-20T16:00:27.444Z"
-  },
-  {
-    "id": "sd_35318",
-    "asin": "B093JG8F7K",
-    "title": "Scotch-Brite Dishwand Kit 8 Count",
-    "category": "General",
-    "originalPrice": 10.86,
-    "dealPrice": 5.43,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/413nrIBsAzL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B093JG8F7K?tag=dealspulse02-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-07-23",
     "hot": false,
     "posted_at": "2026-07-20T16:00:27.444Z"
   }
