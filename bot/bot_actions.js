@@ -564,6 +564,13 @@ async function scrapeBensBargains() {
     throw new Error("bensbargains: 0 dealboxes parsed — markup may have changed.");
   }
 
+  // Diagnostic: are there Amazon product links on the page at all, and do the
+  // dealbox chunks actually contain them? Distinguishes "site hides links"
+  // from "our chunking is wrong".
+  const pageLinks = (html.match(/amazon\.com\/(?:dp|gp\/product)\//g) || []).length;
+  const inBoxes = boxes.reduce((n, c) => n + (c.match(/amazon\.com\/(?:dp|gp\/product)\//g) || []).length, 0);
+  console.log(`bensbargains: ${pageLinks} Amazon product link(s) on page, ${inBoxes} inside dealbox chunks`);
+
   const deals = [];
   const seen = new Set();
   let noLink = 0;
