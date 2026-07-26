@@ -1,4 +1,4 @@
-/** Diagnostic: what exactly is inside the slickdeals RSS feed? */
+/** Find an Amazon-filtered slickdeals RSS feed with better yield. */
 const https = require("https"); const zlib = require("zlib");
 function fetchPage(url, r = 0) {
   return new Promise((resolve, reject) => {
@@ -18,18 +18,26 @@ function fetchPage(url, r = 0) {
     req.on("error", reject); req.setTimeout(20000, () => { req.destroy(); reject(new Error("timeout")); });
   });
 }
+const B = "https://slickdeals.net/newsearch.php";
+const candidates = [
+  `${B}?mode=frontpage&searcharea=deals&searchin=first&rss=1`,
+  `${B}?searcharea=deals&searchin=first&rss=1&store=1`,
+  `${B}?mode=frontpage&searcharea=deals&searchin=first&rss=1&store=1`,
+  `${B}?searcharea=deals&searchin=first&rss=1&store=1&sort=newest`,
+  `${B}?searcharea=deals&searchin=first&rss=1&q=amazon`,
+  `${B}?searcharea=deals&searchin=first&rss=1&store=1&forumchoice[]=9`,
+  "https://slickdeals.net/deals/amazon/?rss=1",
+];
 (async () => {
-  const { status, body } = await fetchPage("https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1");
-  console.log(`RSS status=${status} len=${body.length}`);
-  const items = [...body.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m => m[1]);
-  console.log(`items: ${items.length}`);
-  console.log("\n=== FIRST 2 ITEMS (raw) ===");
-  items.slice(0, 2).forEach((it, i) => console.log(`--- item ${i} ---\n` + it.slice(0, 1500)));
-  console.log("\n=== AMAZON URLS FOUND IN FEED ===");
-  const urls = [...new Set([...body.matchAll(/https?:\/\/(?:www\.)?(?:amazon\.com|amzn\.to)[^"'\s<>&\]]*/g)].map(m => m[0]))];
-  console.log(`unique: ${urls.length}`);
-  urls.slice(0, 8).forEach(u => console.log("  " + u.slice(0, 160)));
-  const dp = urls.filter(u => /\/dp\/|\/gp\/product\//.test(u));
-  console.log(`with /dp/ ASIN: ${dp.length}`);
-  dp.slice(0, 5).forEach(u => console.log("  ASIN " + u));
-})().catch(e => { console.error("FAILED:", e.message); process.exit(1); });
+  for (const url of candidates) {
+    try {
+      const { status, body } = await fetchPage(url);
+      const items = (body.match(/<item>/g) || []).length;
+      const amazonItems = [...body.matchAll(/<item>([\s\S]*?)<\/item>/g)]
+        .filter(m => /data-store-slug="amazon"|trd=Amazon/i.test(m[1])).length;
+      const withAsin = [...body.matchAll(/<item>([\s\S]*?)<\/item>/g)]
+        .filter(m => /data-aps-asin="[A-Z0-9]{10}"/i.test(m[1])).length;
+      console.log(`${status} | items=${String(items).padStart(3)} | amazon=${String(amazonItems).padStart(3)} | withASIN=${String(withAsin).padStart(3)} | ${url.replace(B,'…')}`);
+    } catch (e) { console.log(`ERR ${e.message} | ${url.replace(B,'…')}`); }
+  }
+})();
