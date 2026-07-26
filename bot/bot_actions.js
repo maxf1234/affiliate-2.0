@@ -94,7 +94,7 @@ const CATEGORY_RULES = [
   ["Grocery",        /\b(spring water|sparkling water|cereal|coffee pods?|k-cups?|snacks?|chips|candy|chocolate|protein bars?|energy drinks?|soda|juice|pasta|sauce|oatmeal|granola|nuts|cookies?|crackers?)\b/],
   ["Beauty",         /\b(beauty|skincare|makeup|shampoo|conditioner|perfumes?|cologne|toothpaste|toothbrush(es)?|deodorants?|lotions?|serums?|moisturizers?|hair dryers?|straighteners?|razors?|nail|body wash|soap|sunscreen|hand sanitizer)\b/],
   ["Home & Kitchen", /\b(kitchen|cookware|instant pot|air fryers?|blenders?|coffee|espresso|vacuums?|dyson|bedding|sheets|pillows?|towels?|pans?|pots?|grills?|cookers?|ovens?|juicers?|toasters?|stockpots?|tumblers?|water bottles?|mugs?|knife|knives|cutting boards?|storage|organizers?|cleaners?|detergents?|toilet paper|trash bags?|humidifiers?|purifiers?|lamps?|curtains?|rugs?|mattress(es)?|kettles?|choppers?|dinnerware|steel wool|tissues?|blankets?|hooks?|ice machine|shave ice|mops?|brooms?|dish|sponges?|foil|containers?|canisters?|thermos)\b/],
-  ["Fashion",        /\b(shirts?|t-shirts?|shoes?|pants|dress(es)?|jackets?|sneakers?|clothing|jeans|hoodies?|boots|socks|sunglasses|watch(es)?|handbags?|backpacks?|wallets?|leggings|bras?|underwear|boxer briefs?|boxers?|briefs?|coats?|hats?|caps?|scarf|scarves|gloves)\b/],
+  ["Fashion",        /\b(shirts?|t-shirts?|shoes?|pants|dress(es)?|jackets?|sneakers?|clothing|jeans|hoodies?|boots|socks|sunglasses|watch(es)?|handbags?|backpacks?|wallets?|leggings|bras?|underwear|boxer briefs?|boxers?|briefs?|coats?|hats?|caps?|scarf|scarves|gloves|slip-ons?|sandals?|loafers?|slippers?|flip[- ]flops?|apparel|footwear|skechers|crocs|adidas|reebok|puma|new balance|under armour|levis?|hanes|champion)\b/],
   ["Sports",         /\b(sports?|fitness|gym|bikes?|bicycles?|yoga|running|golf|pool|camping|tents?|hiking|dumbbells?|treadmills?|basketball|soccer|tennis|fishing|kayaks?|scooters?|coolers?|wagons?|beach|outdoor)\b/],
   ["Furniture",      /\b(chairs?|desks?|furniture|whiteboards?|sofas?|couch(es)?|tables?|bookshelf|bookshelves|shelf|shelves|shelving|cabinets?|dressers?|nightstands?|ottomans?|bench(es)?|stools?|patio)\b/],
   ["Books",          /\b(books?|audible|novels?|paperback|hardcover)\b/],
@@ -394,15 +394,294 @@ async function scrapeSaveCrazyDeals() {
   return deals;
 }
 
+// ── SOURCE 3: bensbargains.com ────────────────────────────────────────────────
+// Deals come from JSON-LD Product blocks on the homepage (name, image, price,
+// category, seller, deal-page url). We keep only offers whose seller is Amazon,
+// then open the deal page to read the retail price and the direct Amazon
+// product link. NOTE: Ben's routes most outbound clicks through a POST
+// click-tracker rather than a plain link — those deals have no readable Amazon
+// URL and are skipped (we don't try to defeat their redirector). Only deals
+// that publish a real amazon.com/dp/<ASIN> link are used.
+
+const BB_BASE = "https://bensbargains.com";
+const BB_PAGE_FETCH_LIMIT = parseInt(process.env.BB_PAGE_FETCH_LIMIT || "12");
+// Roundup dealboxes can list a dozen near-identical products (e.g. 12 Skechers
+// styles). Cap how many we take from one box so the feed keeps some variety.
+const BB_MAX_PER_BOX = parseInt(process.env.BB_MAX_PER_BOX || "3");
+
+// Extract the numeric offer id from a deal url (…-1068066/ -> 1068066).
+function extractBensDealId(url) {
+  const m = (url || "").match(/-(\d{5,9})\/?$/);
+  return m ? m[1] : null;
+}
+
+// JSON-LD Product blocks -> candidates sold by Amazon.
+function parseBensJsonLd(html) {
+  const out = [];
+  const blocks = [...html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const b of blocks) {
+    let obj;
+    try { obj = JSON.parse(b[1].trim()); } catch (e) { continue; }
+    if (!obj || obj["@type"] !== "Product") continue;
+    const offer = Array.isArray(obj.offers) ? obj.offers[0] : obj.offers;
+    if (!offer) continue;
+    const seller = (offer.seller && offer.seller.name) || "";
+    if (!/amazon/i.test(seller)) continue;              // Amazon-sold deals only
+    const price = parseFloat(offer.price);
+    const dealUrl = offer.url || "";
+    const id = extractBensDealId(dealUrl);
+    if (!(price > 0) || !dealUrl || !id) continue;
+    const image = (obj.image && (obj.image.url || obj.image)) || null;
+    out.push({
+      id: `bb_${id}`,
+      title: (obj.name || "").trim().slice(0, 120),
+      dealPrice: price,
+      dealUrl,
+      image: typeof image === "string" ? image : null,
+      categoryHint: (offer.category && offer.category.name) || "",
+    });
+  }
+  return out.filter(c => !looksLikeGarbageTitle(c.title));
+}
+
+// Ben's publishes its own taxonomy ("Computers / Tablets", "Home, Garden &
+// Tools / Lighting"). Map it to our categories first — it's more reliable than
+// title keywords — and fall back to guessing from the title.
+const BENS_CATEGORY_MAP = [
+  [/baby|kids|toddler|infant|nursery/i,                       "Baby & Kids"],
+  [/toy|video game|board game|puzzle/i,                       "Toys & Games"],
+  [/grocery|food|beverage|snack|coffee|drink/i,               "Grocery"],
+  [/health|beauty|personal care|grooming|fragrance/i,         "Beauty"],
+  [/clothing|apparel|shoe|footwear|jewelry|watch|handbag|accessor/i, "Fashion"],
+  [/furniture|mattress|desk|chair|patio/i,                    "Furniture"],
+  [/sport|outdoor|fitness|exercise|camping|bike|golf/i,       "Sports"],
+  [/book|media|movie|music|magazine/i,                        "Books"],
+  [/computer|tablet|laptop|electronic|tv|audio|headphone|phone|camera|gaming|monitor|storage|networking/i, "Electronics"],
+  [/home|garden|tool|kitchen|lighting|appliance|bed|bath|cleaning|pet/i, "Home & Kitchen"],
+];
+
+function mapBensCategory(hint, title) {
+  for (const [re, cat] of BENS_CATEGORY_MAP) {
+    if (re.test(hint || "")) return cat;
+  }
+  return guessCategory(title);
+}
+
+// Retail ("was") price from the deal page: <span class="…price--retail…">$30</span>
+function parseBensRetailPrice(html) {
+  const m = html.match(/class="[^"]*price--retail[^"]*"[^>]*>[^$<]*\$\s*([\d,]+(?:\.\d{1,2})?)/i);
+  return m ? parseFloat(m[1].replace(/,/g, "")) : 0;
+}
+
+// Fallback when no retail price is shown: "50% off" in the copy.
+function parseBensPercentOff(html) {
+  const m = html.match(/(\d{1,2})%\s*off/i);
+  return m ? parseInt(m[1], 10) : 0;
+}
+
+// Split the listing HTML into individual <article class="dealbox …"> chunks.
+function splitBensDealboxes(html) {
+  const chunks = [];
+  const re = /<article[^>]+class="[^"]*\bdealbox\b[^"]*"[\s\S]*?(?=<article[^>]+class="[^"]*\bdealbox\b|<\/main|$)/g;
+  let m;
+  while ((m = re.exec(html)) !== null) chunks.push(m[0]);
+  return chunks;
+}
+
+// Ben's "roundup" deals list several products inside the description, each as
+//   <a href="https://www.amazon.com/dp/ASIN?…tag=bensb407-20">Title</a> for <b>$52</b>
+// The dealbox's own price element is empty for these, so parse the items
+// individually — each linked product becomes its own deal.
+function parseBensLinkItems(chunk) {
+  const items = [];
+  // The trailing price context is a LOOKAHEAD so it isn't consumed — otherwise
+  // the scan would skip past the next product link in the same list.
+  const re = /<a[^>]+href="(https?:\/\/(?:www\.)?amazon\.com\/(?:dp|gp\/product)\/[A-Z0-9]{10}[^"]*)"[^>]*>([\s\S]{2,160}?)<\/a>(?=([\s\S]{0,220}))/gi;
+  let m;
+  while ((m = re.exec(chunk)) !== null) {
+    const url = m[1].replace(/&amp;/g, "&");
+    if (/amazonprime|primeCampaignId/i.test(url)) continue;
+    const asin = extractAsin(url);
+    if (!asin) continue;
+    const title = m[2].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    // Price stated right after the link ("… for <b>$52</b>")
+    const after = m[3].replace(/<[^>]+>/g, " ");
+    const p = after.match(/\$\s*([\d,]+(?:\.\d{1,2})?)/);
+    items.push({ url, asin, title, dealPrice: p ? parseFloat(p[1].replace(/,/g, "")) : 0 });
+  }
+  return items;
+}
+
+// Build a deal from one dealbox chunk — but only when it publishes a real
+// amazon.com/dp link (many deals only expose Ben's POST click-tracker).
+function parseBensDealbox(chunk, jsonLdById) {
+  const link = extractAmazonLink(chunk);
+  if (!link) return null;
+
+  const idMatch = chunk.match(/value="(\d{5,9})"\s+id="deal-id"/);
+  const id = idMatch ? `bb_${idMatch[1]}` : `bb_${link.asin}`;
+  const meta = (idMatch && jsonLdById[`bb_${idMatch[1]}`]) || null;
+
+  // Title: JSON-LD is cleanest; else the dealbox link text.
+  let title = meta ? meta.title : "";
+  if (!title) {
+    const t = chunk.match(/<a[^>]+class="[^"]*dealbox-link[^"]*"[^>]*>([\s\S]{3,160}?)<\/a>/);
+    title = t ? t[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim() : "";
+  }
+  if (looksLikeGarbageTitle(title)) return null;
+
+  // Prices: JSON-LD price is authoritative; else the dealbox price element.
+  let dealPrice = meta ? meta.dealPrice : 0;
+  if (!dealPrice) {
+    const p = chunk.match(/class="[^"]*dealbox__price(?![^"]*retail)[^"]*"[^>]*>[^$<]*\$\s*([\d,]+(?:\.\d{1,2})?)/i);
+    dealPrice = p ? parseFloat(p[1].replace(/,/g, "")) : 0;
+  }
+  if (!(dealPrice > 0)) return null;
+
+  const retail = parseBensRetailPrice(chunk);
+  let originalPrice = retail > dealPrice ? retail : 0;
+  let discount = originalPrice
+    ? Math.round((1 - dealPrice / originalPrice) * 100)
+    : parseBensPercentOff(chunk);
+  // Derive a "was" price when only a percentage is published, so the site can
+  // still show the strikethrough.
+  if (!originalPrice && discount > 0 && discount < 95) {
+    originalPrice = Math.round((dealPrice / (1 - discount / 100)) * 100) / 100;
+  }
+
+  // Image: JSON-LD, else the lazyload data-src (protocol-relative).
+  let image = meta && meta.image;
+  if (!image) {
+    const im = chunk.match(/data-src="(\/\/cdn\.bensimages\.com[^"]+)"/) || chunk.match(/src="(https?:\/\/cdn\.bensimages\.com[^"]+)"/);
+    image = im ? (im[1].startsWith("//") ? "https:" + im[1] : im[1]) : null;
+  }
+
+  return {
+    id,
+    asin: link.asin,
+    title: title.slice(0, 120),
+    category: mapBensCategory(meta ? meta.categoryHint : "", title),
+    originalPrice: originalPrice || 0,
+    dealPrice,
+    discount: discount || 0,
+    image: image || FALLBACK_IMG,
+    affiliate_url: replaceAffiliateTag(link.url),
+    store: "Amazon",
+    expires: new Date(Date.now() + 3 * 86400000).toISOString().split("T")[0],
+    hot: (discount || 0) >= 40,
+    posted_at: new Date().toISOString(),
+  };
+}
+
+async function scrapeBensBargains() {
+  console.log("Fetching bensbargains.com...");
+  const html = await fetchPage(BB_BASE);
+  console.log(`Got ${html.length} bytes`);
+  if (html.length < 20000) {
+    throw new Error(`bensbargains page suspiciously small (${html.length} bytes) — possibly blocked.`);
+  }
+
+  // JSON-LD gives clean titles/prices/categories for the deals it covers;
+  // index it so dealboxes can borrow that metadata.
+  const jsonLdById = {};
+  for (const c of parseBensJsonLd(html)) jsonLdById[c.id] = c;
+
+  const boxes = splitBensDealboxes(html);
+  if (!boxes.length) {
+    throw new Error("bensbargains: 0 dealboxes parsed — markup may have changed.");
+  }
+
+  // Diagnostic: are there Amazon product links on the page at all, and do the
+  // dealbox chunks actually contain them? Distinguishes "site hides links"
+  // from "our chunking is wrong".
+  const pageLinks = (html.match(/amazon\.com\/(?:dp|gp\/product)\//g) || []).length;
+  const inBoxes = boxes.reduce((n, c) => n + (c.match(/amazon\.com\/(?:dp|gp\/product)\//g) || []).length, 0);
+  console.log(`bensbargains: ${pageLinks} Amazon product link(s) on page, ${inBoxes} inside dealbox chunks`);
+
+  const deals = [];
+  const seen = new Set();
+  let noLink = 0, noPrice = 0;
+
+  for (const chunk of boxes) {
+    const idMatch = chunk.match(/value="(\d{5,9})"\s+id="deal-id"/);
+    const boxId = idMatch ? `bb_${idMatch[1]}` : null;
+    const meta = (boxId && jsonLdById[boxId]) || null;
+
+    // Chunk-level discount context (retail price or "up to N% off" copy),
+    // shared by every product listed in this dealbox.
+    const retail = parseBensRetailPrice(chunk);
+    const pctOff = parseBensPercentOff(chunk);
+
+    const items = parseBensLinkItems(chunk);
+    if (!items.length) { noLink++; continue; }
+
+    let usedInBox = 0;
+    for (const item of items) {
+      if (usedInBox >= BB_MAX_PER_BOX) break;
+      if (seen.has(item.asin)) continue;
+
+      const dealPrice = item.dealPrice || (meta ? meta.dealPrice : 0);
+      if (!(dealPrice > 0)) { noPrice++; continue; }
+
+      // Prefer the product's own link text; fall back to the dealbox title.
+      let title = item.title;
+      if (looksLikeGarbageTitle(title) && meta) title = meta.title;
+      if (looksLikeGarbageTitle(title)) { noPrice++; continue; }
+
+      let originalPrice = retail > dealPrice ? retail : 0;
+      let discount = originalPrice
+        ? Math.round((1 - dealPrice / originalPrice) * 100)
+        : pctOff;
+      if (!originalPrice && discount > 0 && discount < 95) {
+        originalPrice = Math.round((dealPrice / (1 - discount / 100)) * 100) / 100;
+      }
+
+      let image = meta && meta.image;
+      if (!image) {
+        const im = chunk.match(/data-src="(\/\/cdn\.bensimages\.com[^"]+)"/) || chunk.match(/src="(https?:\/\/cdn\.bensimages\.com[^"]+)"/);
+        image = im ? (im[1].startsWith("//") ? "https:" + im[1] : im[1]) : null;
+      }
+
+      seen.add(item.asin);
+      usedInBox++;
+      const deal = {
+        // Several products can share one dealbox id, so key on the ASIN.
+        id: `bb_${item.asin}`,
+        asin: item.asin,
+        title: title.slice(0, 120),
+        category: mapBensCategory(meta ? meta.categoryHint : "", title),
+        originalPrice: originalPrice || 0,
+        dealPrice,
+        discount: discount || 0,
+        image: image || FALLBACK_IMG,
+        affiliate_url: replaceAffiliateTag(item.url),
+        store: "Amazon",
+        expires: new Date(Date.now() + 3 * 86400000).toISOString().split("T")[0],
+        hot: (discount || 0) >= 40,
+        posted_at: new Date().toISOString(),
+      };
+      deals.push(deal);
+      console.log(`  ${deal.id} | ${deal.title.slice(0, 55)} | $${deal.dealPrice} (was $${deal.originalPrice || "?"}, -${deal.discount}%) | ${deal.category}`);
+    }
+    if (!usedInBox) noPrice++;
+  }
+
+  console.log(`bensbargains: ${boxes.length} dealbox(es) -> ${deals.length} deal(s); ${noLink} click-tracker only, ${noPrice} unusable (no price/title).`);
+  return deals;
+}
+
 // ── MAIN ──────────────────────────────────────────────────────────────────────
 const SOURCES = [
   ["stundeals", scrapeStundeals],
   ["savecrazydeals", scrapeSaveCrazyDeals],
+  ["bensbargains", scrapeBensBargains],
 ];
 
 module.exports = {
   parseDealObjects, guessCategory, unescapeValue, extractAsin, saveDeals,
   rebalanceHot, extractAmazonLink, mapShopifyProduct,
+  parseBensJsonLd, parseBensRetailPrice, parseBensPercentOff, extractBensDealId,
+  mapBensCategory, splitBensDealboxes, parseBensDealbox, parseBensLinkItems,
 };
 
 if (require.main === module) {

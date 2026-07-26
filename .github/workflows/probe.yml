@@ -7,7 +7,7 @@ on:
         required: false
         default: 'https://savecrazydeals.com'
       mode:
-        description: 'probe = structural diagnostics | scraper-dry-run = run the full scraper without writing deals.json'
+        description: 'probe | scraper-dry-run'
         required: false
         default: 'probe'
 jobs:

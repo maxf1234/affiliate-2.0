@@ -9,7 +9,8 @@ Automatically finds Amazon deals, publishes them to your website, and drips them
 ```
 GitHub Action (hourly)
   │
-  ├─ bot/bot_actions.js scrapes stundeals.com
+  ├─ bot/bot_actions.js scrapes 3 sources:
+  │      stundeals · savecrazydeals · bensbargains
   │    · swaps in your affiliate tag
   │    · keeps only deals ≥ MIN_DISCOUNT_PCT off
   │    · fixes titles/categories, dedupes by ASIN
@@ -82,8 +83,17 @@ so to change it, edit that one line. No GitHub secret involved.
 |---|---|---|
 | `MAX_DEALS_PER_RUN` | 25 | max new deals saved per run |
 | `MIN_DISCOUNT_PCT` | 25 | discard deals below this discount |
+| `SCD_PAGE_FETCH_LIMIT` | 15 | savecrazydeals product pages fetched per run |
+| `BB_MAX_PER_BOX` | 3 | max products taken from one bensbargains roundup |
 
-If stundeals.com changes its markup, the workflow **fails loudly** and GitHub emails you — no more silent pipeline death.
+**bensbargains note:** most of its deals route outbound clicks through a POST
+click-tracker, so no Amazon URL is readable and those are skipped by design.
+Usable deals come from posts that publish real `amazon.com/dp/…` links
+(typically brand roundups), so expect a handful per run — sometimes none.
+
+Each source runs independently: if one breaks, the others still save deals and
+the run logs a warning. The workflow only **fails loudly** (and emails you) when
+*every* source fails.
 
 -----
 
