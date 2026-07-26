@@ -760,8 +760,18 @@ function parseSlickItem(itemXml) {
   }
   if (!(dealPrice > 0)) return null;
 
-  // Title: RSS titles end with the price ("… Planter $11") — trim that off.
-  let title = rawTitle.replace(/\s*[-–]?\s*\$\s*[\d,]+(?:\.\d{1,2})?\s*$/, "").trim();
+  // Slickdeals titles carry noise on both ends:
+  //   "[SnS, AC] $6.26* | 120-Count Mighty Paw…"   "… Planter $11"
+  // Strip leading bracket tags and a leading price prefix, plus the trailing
+  // price, so the site and WhatsApp show a clean product name.
+  let title = rawTitle;
+  for (let i = 0; i < 3; i++) {
+    title = title
+      .replace(/^\s*(?:\[[^\]]{1,40}\]\s*)+/, "")                              // [SnS, AC] [NEW]
+      .replace(/^\s*\$\s*[\d,]+(?:\.\d{1,2})?\s*\*?\s*(?:[|:]|[-–])\s*/, "")     // "$6.26* | "
+      .trim();
+  }
+  title = title.replace(/\s*[-–]?\s*\$\s*[\d,]+(?:\.\d{1,2})?\s*$/, "").trim();  // trailing "$11"
   if (looksLikeGarbageTitle(title)) {
     const b = plain.match(/\bhas\s+(.+?)\s+for\s*\$/i);
     title = b ? b[1].trim() : title;
