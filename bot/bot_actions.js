@@ -680,8 +680,16 @@ async function scrapeBensBargains() {
 // We read the ASIN and build a clean Amazon URL with OUR tag — no redirector
 // following. Items without an Amazon ASIN or a computable discount are skipped.
 
-const SD_RSS_URL = process.env.SD_RSS_URL ||
-  "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1";
+// Several public feeds, merged and de-duplicated by ASIN. The frontpage feed
+// carries the hottest deals (all stores); the Amazon-targeted feeds return far
+// more Amazon items (22/25 vs 11/25 when measured), so together they give much
+// better coverage than any one feed.
+const SD_RSS_BASE = "https://slickdeals.net/newsearch.php";
+const SD_RSS_URLS = (process.env.SD_RSS_URLS || [
+  `${SD_RSS_BASE}?searcharea=deals&searchin=first&rss=1&q=amazon`,
+  `${SD_RSS_BASE}?searcharea=deals&searchin=first&rss=1&store=1`,
+  `${SD_RSS_BASE}?mode=frontpage&searcharea=deals&searchin=first&rss=1`,
+].join(",")).split(",").map(u => u.trim()).filter(Boolean);
 
 function decodeEntities(s) {
   return String(s || "")
@@ -778,13 +786,20 @@ function parseSlickItem(itemXml) {
 }
 
 async function scrapeSlickdeals() {
-  console.log("Fetching slickdeals.net RSS...");
-  const xml = await fetchPage(SD_RSS_URL);
-  console.log(`Got ${xml.length} bytes`);
-
-  const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m => m[1]);
+  const items = [];
+  for (const url of SD_RSS_URLS) {
+    try {
+      const xml = await fetchPage(url);
+      const found = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m => m[1]);
+      console.log(`slickdeals feed (${found.length} items): ${url.replace(SD_RSS_BASE, "…")}`);
+      items.push(...found);
+      await sleepMs(400);
+    } catch (e) {
+      console.warn(`slickdeals feed failed (${e.message}): ${url.replace(SD_RSS_BASE, "…")}`);
+    }
+  }
   if (!items.length) {
-    throw new Error("slickdeals: 0 RSS items parsed — feed format may have changed.");
+    throw new Error("slickdeals: 0 RSS items parsed — feeds unreachable or format changed.");
   }
 
   const deals = [];
@@ -802,7 +817,7 @@ async function scrapeSlickdeals() {
     console.log(`  ${d.id} | ${d.title.slice(0, 55)} | $${d.dealPrice} (was $${d.originalPrice}, -${d.discount}%) | ${d.category}`);
   }
 
-  console.log(`slickdeals: ${items.length} RSS item(s) -> ${deals.length} deal(s); ${notAmazon} non-Amazon/unparseable, ${noDiscount} below ${MIN_DISCOUNT_PCT}% or no stated list price.`);
+  console.log(`slickdeals: ${items.length} RSS item(s) across ${SD_RSS_URLS.length} feed(s) -> ${deals.length} deal(s); ${notAmazon} non-Amazon/unparseable, ${noDiscount} below ${MIN_DISCOUNT_PCT}% or no stated list price.`);
   return deals;
 }
 
