@@ -485,6 +485,30 @@ function splitBensDealboxes(html) {
   return chunks;
 }
 
+// Ben's "roundup" deals list several products inside the description, each as
+//   <a href="https://www.amazon.com/dp/ASIN?…tag=bensb407-20">Title</a> for <b>$52</b>
+// The dealbox's own price element is empty for these, so parse the items
+// individually — each linked product becomes its own deal.
+function parseBensLinkItems(chunk) {
+  const items = [];
+  // The trailing price context is a LOOKAHEAD so it isn't consumed — otherwise
+  // the scan would skip past the next product link in the same list.
+  const re = /<a[^>]+href="(https?:\/\/(?:www\.)?amazon\.com\/(?:dp|gp\/product)\/[A-Z0-9]{10}[^"]*)"[^>]*>([\s\S]{2,160}?)<\/a>(?=([\s\S]{0,220}))/gi;
+  let m;
+  while ((m = re.exec(chunk)) !== null) {
+    const url = m[1].replace(/&amp;/g, "&");
+    if (/amazonprime|primeCampaignId/i.test(url)) continue;
+    const asin = extractAsin(url);
+    if (!asin) continue;
+    const title = m[2].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    // Price stated right after the link ("… for <b>$52</b>")
+    const after = m[3].replace(/<[^>]+>/g, " ");
+    const p = after.match(/\$\s*([\d,]+(?:\.\d{1,2})?)/);
+    items.push({ url, asin, title, dealPrice: p ? parseFloat(p[1].replace(/,/g, "")) : 0 });
+  }
+  return items;
+}
+
 // Build a deal from one dealbox chunk — but only when it publishes a real
 // amazon.com/dp link (many deals only expose Ben's POST click-tracker).
 function parseBensDealbox(chunk, jsonLdById) {
@@ -573,16 +597,72 @@ async function scrapeBensBargains() {
 
   const deals = [];
   const seen = new Set();
-  let noLink = 0;
+  let noLink = 0, noPrice = 0;
+
   for (const chunk of boxes) {
-    const deal = parseBensDealbox(chunk, jsonLdById);
-    if (!deal) { noLink++; continue; }
-    if (seen.has(deal.id) || seen.has(deal.asin)) continue;
-    seen.add(deal.id); seen.add(deal.asin);
-    deals.push(deal);
-    console.log(`  ${deal.id} ${deal.asin} | ${deal.title.slice(0, 55)} | $${deal.dealPrice} (was $${deal.originalPrice || "?"}, -${deal.discount}%) | ${deal.category}`);
+    const idMatch = chunk.match(/value="(\d{5,9})"\s+id="deal-id"/);
+    const boxId = idMatch ? `bb_${idMatch[1]}` : null;
+    const meta = (boxId && jsonLdById[boxId]) || null;
+
+    // Chunk-level discount context (retail price or "up to N% off" copy),
+    // shared by every product listed in this dealbox.
+    const retail = parseBensRetailPrice(chunk);
+    const pctOff = parseBensPercentOff(chunk);
+
+    const items = parseBensLinkItems(chunk);
+    if (!items.length) { noLink++; continue; }
+
+    let usedInBox = 0;
+    for (const item of items) {
+      if (seen.has(item.asin)) continue;
+
+      const dealPrice = item.dealPrice || (meta ? meta.dealPrice : 0);
+      if (!(dealPrice > 0)) { noPrice++; continue; }
+
+      // Prefer the product's own link text; fall back to the dealbox title.
+      let title = item.title;
+      if (looksLikeGarbageTitle(title) && meta) title = meta.title;
+      if (looksLikeGarbageTitle(title)) { noPrice++; continue; }
+
+      let originalPrice = retail > dealPrice ? retail : 0;
+      let discount = originalPrice
+        ? Math.round((1 - dealPrice / originalPrice) * 100)
+        : pctOff;
+      if (!originalPrice && discount > 0 && discount < 95) {
+        originalPrice = Math.round((dealPrice / (1 - discount / 100)) * 100) / 100;
+      }
+
+      let image = meta && meta.image;
+      if (!image) {
+        const im = chunk.match(/data-src="(\/\/cdn\.bensimages\.com[^"]+)"/) || chunk.match(/src="(https?:\/\/cdn\.bensimages\.com[^"]+)"/);
+        image = im ? (im[1].startsWith("//") ? "https:" + im[1] : im[1]) : null;
+      }
+
+      seen.add(item.asin);
+      usedInBox++;
+      const deal = {
+        // Several products can share one dealbox id, so key on the ASIN.
+        id: `bb_${item.asin}`,
+        asin: item.asin,
+        title: title.slice(0, 120),
+        category: mapBensCategory(meta ? meta.categoryHint : "", title),
+        originalPrice: originalPrice || 0,
+        dealPrice,
+        discount: discount || 0,
+        image: image || FALLBACK_IMG,
+        affiliate_url: replaceAffiliateTag(item.url),
+        store: "Amazon",
+        expires: new Date(Date.now() + 3 * 86400000).toISOString().split("T")[0],
+        hot: (discount || 0) >= 40,
+        posted_at: new Date().toISOString(),
+      };
+      deals.push(deal);
+      console.log(`  ${deal.id} | ${deal.title.slice(0, 55)} | $${deal.dealPrice} (was $${deal.originalPrice || "?"}, -${deal.discount}%) | ${deal.category}`);
+    }
+    if (!usedInBox) noPrice++;
   }
-  console.log(`bensbargains: ${boxes.length} dealbox(es); ${deals.length} with a usable Amazon link, ${noLink} skipped (click-tracker only / no price).`);
+
+  console.log(`bensbargains: ${boxes.length} dealbox(es) -> ${deals.length} deal(s); ${noLink} click-tracker only, ${noPrice} unusable (no price/title).`);
   return deals;
 }
 
@@ -597,7 +677,7 @@ module.exports = {
   parseDealObjects, guessCategory, unescapeValue, extractAsin, saveDeals,
   rebalanceHot, extractAmazonLink, mapShopifyProduct,
   parseBensJsonLd, parseBensRetailPrice, parseBensPercentOff, extractBensDealId,
-  mapBensCategory, splitBensDealboxes, parseBensDealbox,
+  mapBensCategory, splitBensDealboxes, parseBensDealbox, parseBensLinkItems,
 };
 
 if (require.main === module) {
