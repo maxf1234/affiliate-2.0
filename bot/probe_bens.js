@@ -58,6 +58,38 @@ function fetchPage(url, redirects = 0) {
   const dbIdx = body.indexOf('class="dealbox');
   if (dbIdx > 0) console.log(body.slice(dbIdx - 200, dbIdx + 2600).replace(/\s+/g, " "));
 
+  // 2b) Follow ONE Amazon deal page: where do the Amazon link + retail price live?
+  console.log("\n=== AMAZON DEAL PAGE ===");
+  const ldObjs = [];
+  for (const m of blocks) {
+    try { ldObjs.push(JSON.parse(m[1].trim())); } catch (e) {}
+  }
+  const amazonProduct = ldObjs.find(o => {
+    const offer = Array.isArray(o.offers) ? o.offers[0] : o.offers;
+    return o["@type"] === "Product" && offer && offer.seller && /amazon/i.test(offer.seller.name || "");
+  });
+  if (!amazonProduct) {
+    console.log("no Amazon-seller product found in JSON-LD");
+  } else {
+    const offer = Array.isArray(amazonProduct.offers) ? amazonProduct.offers[0] : amazonProduct.offers;
+    console.log(`title=${amazonProduct.name}`);
+    console.log(`price=${offer.price} | category=${offer.category && offer.category.name} | url=${offer.url}`);
+    const dp = await fetchPage(offer.url);
+    console.log(`deal page status=${dp.status} len=${dp.body.length}`);
+    const amz = [...dp.body.matchAll(/https?:\/\/(?:www\.)?(?:amazon\.com|amzn\.to)[^"'\s<)\\]*/g)].map(x => x[0]);
+    console.log(`amazon links: ${amz.length}`);
+    [...new Set(amz)].slice(0, 4).forEach(u => console.log("  " + u.slice(0, 150)));
+    for (const cls of ["dealbox__price--retail", "dealbox__price", "price--retail", "retail"]) {
+      const re = new RegExp(`class="[^"]*${cls}[^"]*"[^>]*>([\\s\\S]{0,120}?)<`, "g");
+      const hits = [...dp.body.matchAll(re)].slice(0, 3).map(x => x[1].replace(/\s+/g, " ").trim());
+      if (hits.length) console.log(`  .${cls}: ${JSON.stringify(hits)}`);
+    }
+    const pctOff = dp.body.match(/(\d{1,2})%\s*off/i);
+    console.log(`  "% off" in page: ${pctOff ? pctOff[0] : "none"}`);
+    const listPrice = dp.body.match(/(?:list price|reg(?:ular)?\.?|was|retail)[^$]{0,20}\$(\d+(?:\.\d{2})?)/i);
+    console.log(`  list/reg price: ${listPrice ? listPrice[0].slice(0, 60) : "none"}`);
+  }
+
   // 3) Candidate feeds / Amazon sections
   const candidates = [
     "/feed/", "/rss", "/rss.xml", "/feeds/frontpage.rss", "/feed/frontpage",
