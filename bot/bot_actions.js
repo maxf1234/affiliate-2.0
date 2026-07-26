@@ -94,7 +94,7 @@ const CATEGORY_RULES = [
   ["Grocery",        /\b(spring water|sparkling water|cereal|coffee pods?|k-cups?|snacks?|chips|candy|chocolate|protein bars?|energy drinks?|soda|juice|pasta|sauce|oatmeal|granola|nuts|cookies?|crackers?)\b/],
   ["Beauty",         /\b(beauty|skincare|makeup|shampoo|conditioner|perfumes?|cologne|toothpaste|toothbrush(es)?|deodorants?|lotions?|serums?|moisturizers?|hair dryers?|straighteners?|razors?|nail|body wash|soap|sunscreen|hand sanitizer)\b/],
   ["Home & Kitchen", /\b(kitchen|cookware|instant pot|air fryers?|blenders?|coffee|espresso|vacuums?|dyson|bedding|sheets|pillows?|towels?|pans?|pots?|grills?|cookers?|ovens?|juicers?|toasters?|stockpots?|tumblers?|water bottles?|mugs?|knife|knives|cutting boards?|storage|organizers?|cleaners?|detergents?|toilet paper|trash bags?|humidifiers?|purifiers?|lamps?|curtains?|rugs?|mattress(es)?|kettles?|choppers?|dinnerware|steel wool|tissues?|blankets?|hooks?|ice machine|shave ice|mops?|brooms?|dish|sponges?|foil|containers?|canisters?|thermos)\b/],
-  ["Fashion",        /\b(shirts?|t-shirts?|shoes?|pants|dress(es)?|jackets?|sneakers?|clothing|jeans|hoodies?|boots|socks|sunglasses|watch(es)?|handbags?|backpacks?|wallets?|leggings|bras?|underwear|boxer briefs?|boxers?|briefs?|coats?|hats?|caps?|scarf|scarves|gloves)\b/],
+  ["Fashion",        /\b(shirts?|t-shirts?|shoes?|pants|dress(es)?|jackets?|sneakers?|clothing|jeans|hoodies?|boots|socks|sunglasses|watch(es)?|handbags?|backpacks?|wallets?|leggings|bras?|underwear|boxer briefs?|boxers?|briefs?|coats?|hats?|caps?|scarf|scarves|gloves|slip-ons?|sandals?|loafers?|slippers?|flip[- ]flops?|apparel|footwear|skechers|crocs|adidas|reebok|puma|new balance|under armour|levis?|hanes|champion)\b/],
   ["Sports",         /\b(sports?|fitness|gym|bikes?|bicycles?|yoga|running|golf|pool|camping|tents?|hiking|dumbbells?|treadmills?|basketball|soccer|tennis|fishing|kayaks?|scooters?|coolers?|wagons?|beach|outdoor)\b/],
   ["Furniture",      /\b(chairs?|desks?|furniture|whiteboards?|sofas?|couch(es)?|tables?|bookshelf|bookshelves|shelf|shelves|shelving|cabinets?|dressers?|nightstands?|ottomans?|bench(es)?|stools?|patio)\b/],
   ["Books",          /\b(books?|audible|novels?|paperback|hardcover)\b/],
@@ -405,6 +405,9 @@ async function scrapeSaveCrazyDeals() {
 
 const BB_BASE = "https://bensbargains.com";
 const BB_PAGE_FETCH_LIMIT = parseInt(process.env.BB_PAGE_FETCH_LIMIT || "12");
+// Roundup dealboxes can list a dozen near-identical products (e.g. 12 Skechers
+// styles). Cap how many we take from one box so the feed keeps some variety.
+const BB_MAX_PER_BOX = parseInt(process.env.BB_MAX_PER_BOX || "3");
 
 // Extract the numeric offer id from a deal url (…-1068066/ -> 1068066).
 function extractBensDealId(url) {
@@ -614,6 +617,7 @@ async function scrapeBensBargains() {
 
     let usedInBox = 0;
     for (const item of items) {
+      if (usedInBox >= BB_MAX_PER_BOX) break;
       if (seen.has(item.asin)) continue;
 
       const dealPrice = item.dealPrice || (meta ? meta.dealPrice : 0);
