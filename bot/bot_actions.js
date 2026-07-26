@@ -394,15 +394,162 @@ async function scrapeSaveCrazyDeals() {
   return deals;
 }
 
+// ── SOURCE 3: bensbargains.com ────────────────────────────────────────────────
+// Deals come from JSON-LD Product blocks on the homepage (name, image, price,
+// category, seller, deal-page url). We keep only offers whose seller is Amazon,
+// then open the deal page to read the retail price and the direct Amazon
+// product link. NOTE: Ben's routes most outbound clicks through a POST
+// click-tracker rather than a plain link — those deals have no readable Amazon
+// URL and are skipped (we don't try to defeat their redirector). Only deals
+// that publish a real amazon.com/dp/<ASIN> link are used.
+
+const BB_BASE = "https://bensbargains.com";
+const BB_PAGE_FETCH_LIMIT = parseInt(process.env.BB_PAGE_FETCH_LIMIT || "12");
+
+// Extract the numeric offer id from a deal url (…-1068066/ -> 1068066).
+function extractBensDealId(url) {
+  const m = (url || "").match(/-(\d{5,9})\/?$/);
+  return m ? m[1] : null;
+}
+
+// JSON-LD Product blocks -> candidates sold by Amazon.
+function parseBensJsonLd(html) {
+  const out = [];
+  const blocks = [...html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const b of blocks) {
+    let obj;
+    try { obj = JSON.parse(b[1].trim()); } catch (e) { continue; }
+    if (!obj || obj["@type"] !== "Product") continue;
+    const offer = Array.isArray(obj.offers) ? obj.offers[0] : obj.offers;
+    if (!offer) continue;
+    const seller = (offer.seller && offer.seller.name) || "";
+    if (!/amazon/i.test(seller)) continue;              // Amazon-sold deals only
+    const price = parseFloat(offer.price);
+    const dealUrl = offer.url || "";
+    const id = extractBensDealId(dealUrl);
+    if (!(price > 0) || !dealUrl || !id) continue;
+    const image = (obj.image && (obj.image.url || obj.image)) || null;
+    out.push({
+      id: `bb_${id}`,
+      title: (obj.name || "").trim().slice(0, 120),
+      dealPrice: price,
+      dealUrl,
+      image: typeof image === "string" ? image : null,
+      categoryHint: (offer.category && offer.category.name) || "",
+    });
+  }
+  return out.filter(c => !looksLikeGarbageTitle(c.title));
+}
+
+// Ben's publishes its own taxonomy ("Computers / Tablets", "Home, Garden &
+// Tools / Lighting"). Map it to our categories first — it's more reliable than
+// title keywords — and fall back to guessing from the title.
+const BENS_CATEGORY_MAP = [
+  [/baby|kids|toddler|infant|nursery/i,                       "Baby & Kids"],
+  [/toy|video game|board game|puzzle/i,                       "Toys & Games"],
+  [/grocery|food|beverage|snack|coffee|drink/i,               "Grocery"],
+  [/health|beauty|personal care|grooming|fragrance/i,         "Beauty"],
+  [/clothing|apparel|shoe|footwear|jewelry|watch|handbag|accessor/i, "Fashion"],
+  [/furniture|mattress|desk|chair|patio/i,                    "Furniture"],
+  [/sport|outdoor|fitness|exercise|camping|bike|golf/i,       "Sports"],
+  [/book|media|movie|music|magazine/i,                        "Books"],
+  [/computer|tablet|laptop|electronic|tv|audio|headphone|phone|camera|gaming|monitor|storage|networking/i, "Electronics"],
+  [/home|garden|tool|kitchen|lighting|appliance|bed|bath|cleaning|pet/i, "Home & Kitchen"],
+];
+
+function mapBensCategory(hint, title) {
+  for (const [re, cat] of BENS_CATEGORY_MAP) {
+    if (re.test(hint || "")) return cat;
+  }
+  return guessCategory(title);
+}
+
+// Retail ("was") price from the deal page: <span class="…price--retail…">$30</span>
+function parseBensRetailPrice(html) {
+  const m = html.match(/class="[^"]*price--retail[^"]*"[^>]*>[^$<]*\$\s*([\d,]+(?:\.\d{1,2})?)/i);
+  return m ? parseFloat(m[1].replace(/,/g, "")) : 0;
+}
+
+// Fallback when no retail price is shown: "50% off" in the copy.
+function parseBensPercentOff(html) {
+  const m = html.match(/(\d{1,2})%\s*off/i);
+  return m ? parseInt(m[1], 10) : 0;
+}
+
+async function scrapeBensBargains() {
+  console.log("Fetching bensbargains.com...");
+  const html = await fetchPage(BB_BASE);
+  console.log(`Got ${html.length} bytes`);
+  if (html.length < 20000) {
+    throw new Error(`bensbargains page suspiciously small (${html.length} bytes) — possibly blocked.`);
+  }
+
+  const candidates = parseBensJsonLd(html);
+  if (!candidates.length) {
+    throw new Error("bensbargains: 0 Amazon products parsed from JSON-LD — markup may have changed.");
+  }
+  console.log(`bensbargains: ${candidates.length} Amazon-sold deal(s) in JSON-LD`);
+
+  const existingIds = new Set(loadExisting().map(d => d.id));
+  const fresh = candidates.filter(c => !existingIds.has(c.id));
+  console.log(`bensbargains: ${fresh.length} not already stored`);
+
+  const deals = [];
+  let noLink = 0;
+  for (const c of fresh.slice(0, BB_PAGE_FETCH_LIMIT)) {
+    try {
+      const page = await fetchPage(c.dealUrl);
+      const link = extractAmazonLink(page);
+      if (!link) { noLink++; continue; }   // click-tracker only — skip
+
+      const retail = parseBensRetailPrice(page);
+      let originalPrice = retail > c.dealPrice ? retail : 0;
+      let discount = originalPrice
+        ? Math.round((1 - c.dealPrice / originalPrice) * 100)
+        : parseBensPercentOff(page);
+      // Derive a "was" price when only a percentage is published, so the site
+      // can still show the strikethrough.
+      if (!originalPrice && discount > 0 && discount < 95) {
+        originalPrice = Math.round((c.dealPrice / (1 - discount / 100)) * 100) / 100;
+      }
+
+      deals.push({
+        id: c.id,
+        asin: link.asin,
+        title: c.title,
+        category: mapBensCategory(c.categoryHint, c.title),
+        originalPrice: originalPrice || 0,
+        dealPrice: c.dealPrice,
+        discount: discount || 0,
+        image: c.image || FALLBACK_IMG,
+        affiliate_url: replaceAffiliateTag(link.url),
+        store: "Amazon",
+        expires: new Date(Date.now() + 3 * 86400000).toISOString().split("T")[0],
+        hot: (discount || 0) >= 40,
+        posted_at: new Date().toISOString(),
+      });
+      console.log(`  ${c.id} ${link.asin} | ${c.title.slice(0, 55)} | $${c.dealPrice} (was $${originalPrice || "?"}, -${discount || 0}%)`);
+      await sleepMs(400);
+    } catch (e) {
+      console.warn(`  ${c.title.slice(0, 50)}: deal page failed (${e.message})`);
+    }
+  }
+  if (noLink) console.log(`bensbargains: skipped ${noLink} deal(s) with no readable Amazon link (click-tracker only).`);
+  return deals;
+}
+
 // ── MAIN ──────────────────────────────────────────────────────────────────────
 const SOURCES = [
   ["stundeals", scrapeStundeals],
   ["savecrazydeals", scrapeSaveCrazyDeals],
+  ["bensbargains", scrapeBensBargains],
 ];
 
 module.exports = {
   parseDealObjects, guessCategory, unescapeValue, extractAsin, saveDeals,
   rebalanceHot, extractAmazonLink, mapShopifyProduct,
+  parseBensJsonLd, parseBensRetailPrice, parseBensPercentOff, extractBensDealId,
+  mapBensCategory,
 };
 
 if (require.main === module) {
