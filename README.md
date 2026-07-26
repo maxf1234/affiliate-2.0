@@ -9,8 +9,8 @@ Automatically finds Amazon deals, publishes them to your website, and drips them
 ```
 GitHub Action (hourly)
   │
-  ├─ bot/bot_actions.js scrapes 3 sources:
-  │      stundeals · savecrazydeals · bensbargains
+  ├─ bot/bot_actions.js scrapes 4 sources:
+  │      stundeals · savecrazydeals · bensbargains · slickdeals
   │    · swaps in your affiliate tag
   │    · keeps only deals ≥ MIN_DISCOUNT_PCT off
   │    · fixes titles/categories, dedupes by ASIN
@@ -85,6 +85,14 @@ so to change it, edit that one line. No GitHub secret involved.
 | `MIN_DISCOUNT_PCT` | 25 | discard deals below this discount |
 | `SCD_PAGE_FETCH_LIMIT` | 15 | savecrazydeals product pages fetched per run |
 | `BB_MAX_PER_BOX` | 3 | max products taken from one bensbargains roundup |
+| `SD_MIN_DISCOUNT_PCT` | `0` in bot.yml | slickdeals-only discount floor. `0` accepts its deals that state no list price (they show no "% off" badge). Other sources are unaffected. |
+
+**slickdeals note:** its pages expose no merchant URLs, so deals come from the
+public RSS feeds, which publish the Amazon ASIN per item (`data-aps-asin`). Most
+posts state only the sale price, so few clear the 25% discount gate — expect
+~1-3 deals per run under a 25% gate, so `bot.yml` sets `SD_MIN_DISCOUNT_PCT: '0'`
+to accept them all. Those deals show a price with no "% off" badge; every other
+source still honours the 25% `MIN_DISCOUNT_PCT` gate.
 
 **bensbargains note:** most of its deals route outbound clicks through a POST
 click-tracker, so no Amazon URL is readable and those are skipped by design.

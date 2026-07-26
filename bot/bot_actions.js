@@ -671,10 +671,177 @@ async function scrapeBensBargains() {
 }
 
 // ── MAIN ──────────────────────────────────────────────────────────────────────
+// ── SOURCE 4: slickdeals.net (RSS) ────────────────────────────────────────────
+// Slickdeals' pages expose no merchant URLs (every outbound click goes through
+// their redirector), but their public RSS feed publishes what we need per item:
+//   data-store-slug="amazon"  data-aps-asin="B071SB82V3"
+//   description: 'Amazon [amazon.com] has *Product* for *$10.99*'
+//   content:encoded: <img src="https://static.slickdealscdn.com/…">
+// We read the ASIN and build a clean Amazon URL with OUR tag — no redirector
+// following. Items without an Amazon ASIN or a computable discount are skipped.
+
+// Several public feeds, merged and de-duplicated by ASIN. The frontpage feed
+// carries the hottest deals (all stores); the Amazon-targeted feeds return far
+// more Amazon items (22/25 vs 11/25 when measured), so together they give much
+// better coverage than any one feed.
+// Slickdeals posts often state only the sale price ("Amazon has X for $Y"),
+// with no regular price to compute a discount from — those fall below the
+// normal gate. Set SD_MIN_DISCOUNT_PCT=0 to accept them anyway (more volume,
+// but the site/WhatsApp show no "% off" badge for them).
+const SD_MIN_DISCOUNT_PCT = parseInt(process.env.SD_MIN_DISCOUNT_PCT || String(MIN_DISCOUNT_PCT));
+
+const SD_RSS_BASE = "https://slickdeals.net/newsearch.php";
+const SD_RSS_URLS = (process.env.SD_RSS_URLS || [
+  `${SD_RSS_BASE}?searcharea=deals&searchin=first&rss=1&q=amazon`,
+  `${SD_RSS_BASE}?searcharea=deals&searchin=first&rss=1&store=1`,
+  `${SD_RSS_BASE}?mode=frontpage&searcharea=deals&searchin=first&rss=1`,
+].join(",")).split(",").map(u => u.trim()).filter(Boolean);
+
+function decodeEntities(s) {
+  return String(s || "")
+    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, " ")
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n));
+}
+
+const money = (s) => parseFloat(String(s).replace(/,/g, ""));
+
+// Pull an original ("was") price out of the deal copy. Handles the common
+// Slickdeals phrasings; returns 0 when the post doesn't state one.
+function parseSlickOriginalPrice(text, dealPrice) {
+  const t = decodeEntities(text).replace(/\*/g, "");
+  let m = t.match(/(?:reg(?:ular)?\.?|list(?:\s+price)?|orig(?:inally)?\.?|retail|was|normally|MSRP)\s*:?\s*\$\s*([\d,]+(?:\.\d{1,2})?)/i);
+  if (m && money(m[1]) > dealPrice) return money(m[1]);
+  // "$25 off" -> original = deal + 25
+  m = t.match(/\$\s*([\d,]+(?:\.\d{1,2})?)\s*off\b/i);
+  if (m && money(m[1]) > 0) return Math.round((dealPrice + money(m[1])) * 100) / 100;
+  // "50% off" -> derive
+  m = t.match(/(\d{1,2})%\s*off\b/i);
+  if (m) {
+    const pct = parseInt(m[1], 10);
+    if (pct > 0 && pct < 95) return Math.round((dealPrice / (1 - pct / 100)) * 100) / 100;
+  }
+  return 0;
+}
+
+// Parse one <item> block into a deal candidate (or null).
+function parseSlickItem(itemXml) {
+  const grab = (tag) => {
+    const m = itemXml.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, "i"));
+    if (!m) return "";
+    return m[1].replace(/^\s*<!\[CDATA\[/, "").replace(/\]\]>\s*$/, "").trim();
+  };
+
+  const rawTitle = decodeEntities(grab("title"));
+  const description = grab("description");
+  const content = grab("content:encoded");
+  const blob = `${description}\n${content}`;
+
+  // Amazon only: the store slug/marker must say Amazon.
+  const isAmazon = /data-store-slug="amazon"/i.test(content) ||
+                   /\btrd=Amazon\b/i.test(content) ||
+                   /^amazon\b/i.test(decodeEntities(description).trim());
+  if (!isAmazon) return null;
+
+  // ASIN: the feed's own data attribute, else a bare amazon.com/dp/… mention.
+  const asinMatch = content.match(/data-aps-asin="([A-Z0-9]{10})"/i) ||
+                    blob.match(/amazon\.com\/(?:dp|gp\/product)\/([A-Z0-9]{10})/i);
+  if (!asinMatch) return null;
+  const asin = asinMatch[1].toUpperCase();
+
+  // Price: "for *$10.99*" in the copy, else the trailing "$11" in the title.
+  const plain = decodeEntities(description).replace(/\*/g, "");
+  let dealPrice = 0;
+  let pm = plain.match(/\bfor\s*\$\s*([\d,]+(?:\.\d{1,2})?)/i);
+  if (pm) dealPrice = money(pm[1]);
+  if (!dealPrice) {
+    pm = rawTitle.match(/\$\s*([\d,]+(?:\.\d{1,2})?)\s*$/);
+    if (pm) dealPrice = money(pm[1]);
+  }
+  if (!(dealPrice > 0)) return null;
+
+  // Slickdeals titles carry noise on both ends:
+  //   "[SnS, AC] $6.26* | 120-Count Mighty Paw…"   "… Planter $11"
+  // Strip leading bracket tags and a leading price prefix, plus the trailing
+  // price, so the site and WhatsApp show a clean product name.
+  let title = rawTitle;
+  for (let i = 0; i < 3; i++) {
+    title = title
+      .replace(/^\s*(?:\[[^\]]{1,40}\]\s*)+/, "")                              // [SnS, AC] [NEW]
+      .replace(/^\s*\$\s*[\d,]+(?:\.\d{1,2})?\s*\*?\s*(?:[|:]|[-–])\s*/, "")     // "$6.26* | "
+      .trim();
+  }
+  title = title.replace(/\s*[-–]?\s*\$\s*[\d,]+(?:\.\d{1,2})?\s*$/, "").trim();  // trailing "$11"
+  if (looksLikeGarbageTitle(title)) {
+    const b = plain.match(/\bhas\s+(.+?)\s+for\s*\$/i);
+    title = b ? b[1].trim() : title;
+  }
+  if (looksLikeGarbageTitle(title)) return null;
+
+  const originalPrice = parseSlickOriginalPrice(blob, dealPrice);
+  const discount = originalPrice > dealPrice
+    ? Math.round((1 - dealPrice / originalPrice) * 100) : 0;
+
+  const img = content.match(/<img[^>]+src="(https:\/\/static\.slickdealscdn\.com[^"]+)"/i);
+
+  return {
+    id: `sl_${asin}`,
+    asin,
+    title: title.slice(0, 120),
+    category: guessCategory(title),
+    originalPrice: originalPrice || 0,
+    dealPrice,
+    discount,
+    image: img ? decodeEntities(img[1]) : FALLBACK_IMG,
+    affiliate_url: `https://www.amazon.com/dp/${asin}?tag=${AFFILIATE_TAG}`,
+    store: "Amazon",
+    expires: new Date(Date.now() + 3 * 86400000).toISOString().split("T")[0],
+    hot: discount >= 40,
+    posted_at: new Date().toISOString(),
+  };
+}
+
+async function scrapeSlickdeals() {
+  const items = [];
+  for (const url of SD_RSS_URLS) {
+    try {
+      const xml = await fetchPage(url);
+      const found = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m => m[1]);
+      console.log(`slickdeals feed (${found.length} items): ${url.replace(SD_RSS_BASE, "…")}`);
+      items.push(...found);
+      await sleepMs(400);
+    } catch (e) {
+      console.warn(`slickdeals feed failed (${e.message}): ${url.replace(SD_RSS_BASE, "…")}`);
+    }
+  }
+  if (!items.length) {
+    throw new Error("slickdeals: 0 RSS items parsed — feeds unreachable or format changed.");
+  }
+
+  const deals = [];
+  const seen = new Set();
+  let notAmazon = 0, noAsin = 0, noDiscount = 0;
+
+  for (const item of items) {
+    const d = parseSlickItem(item);
+    if (!d) { notAmazon++; continue; }
+    if (!d.asin) { noAsin++; continue; }
+    if (d.discount < SD_MIN_DISCOUNT_PCT) { noDiscount++; continue; }
+    if (seen.has(d.asin)) continue;
+    seen.add(d.asin);
+    deals.push(d);
+    console.log(`  ${d.id} | ${d.title.slice(0, 55)} | $${d.dealPrice} (was $${d.originalPrice}, -${d.discount}%) | ${d.category}`);
+  }
+
+  console.log(`slickdeals: ${items.length} RSS item(s) across ${SD_RSS_URLS.length} feed(s) -> ${deals.length} deal(s); ${notAmazon} non-Amazon/unparseable, ${noDiscount} below ${SD_MIN_DISCOUNT_PCT}% or no stated list price.`);
+  return deals;
+}
+
 const SOURCES = [
   ["stundeals", scrapeStundeals],
   ["savecrazydeals", scrapeSaveCrazyDeals],
   ["bensbargains", scrapeBensBargains],
+  ["slickdeals", scrapeSlickdeals],
 ];
 
 module.exports = {
@@ -682,6 +849,7 @@ module.exports = {
   rebalanceHot, extractAmazonLink, mapShopifyProduct,
   parseBensJsonLd, parseBensRetailPrice, parseBensPercentOff, extractBensDealId,
   mapBensCategory, splitBensDealboxes, parseBensDealbox, parseBensLinkItems,
+  parseSlickItem, parseSlickOriginalPrice, decodeEntities,
 };
 
 if (require.main === module) {
