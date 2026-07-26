@@ -684,6 +684,12 @@ async function scrapeBensBargains() {
 // carries the hottest deals (all stores); the Amazon-targeted feeds return far
 // more Amazon items (22/25 vs 11/25 when measured), so together they give much
 // better coverage than any one feed.
+// Slickdeals posts often state only the sale price ("Amazon has X for $Y"),
+// with no regular price to compute a discount from — those fall below the
+// normal gate. Set SD_MIN_DISCOUNT_PCT=0 to accept them anyway (more volume,
+// but the site/WhatsApp show no "% off" badge for them).
+const SD_MIN_DISCOUNT_PCT = parseInt(process.env.SD_MIN_DISCOUNT_PCT || String(MIN_DISCOUNT_PCT));
+
 const SD_RSS_BASE = "https://slickdeals.net/newsearch.php";
 const SD_RSS_URLS = (process.env.SD_RSS_URLS || [
   `${SD_RSS_BASE}?searcharea=deals&searchin=first&rss=1&q=amazon`,
@@ -810,14 +816,14 @@ async function scrapeSlickdeals() {
     const d = parseSlickItem(item);
     if (!d) { notAmazon++; continue; }
     if (!d.asin) { noAsin++; continue; }
-    if (d.discount < MIN_DISCOUNT_PCT) { noDiscount++; continue; }
+    if (d.discount < SD_MIN_DISCOUNT_PCT) { noDiscount++; continue; }
     if (seen.has(d.asin)) continue;
     seen.add(d.asin);
     deals.push(d);
     console.log(`  ${d.id} | ${d.title.slice(0, 55)} | $${d.dealPrice} (was $${d.originalPrice}, -${d.discount}%) | ${d.category}`);
   }
 
-  console.log(`slickdeals: ${items.length} RSS item(s) across ${SD_RSS_URLS.length} feed(s) -> ${deals.length} deal(s); ${notAmazon} non-Amazon/unparseable, ${noDiscount} below ${MIN_DISCOUNT_PCT}% or no stated list price.`);
+  console.log(`slickdeals: ${items.length} RSS item(s) across ${SD_RSS_URLS.length} feed(s) -> ${deals.length} deal(s); ${notAmazon} non-Amazon/unparseable, ${noDiscount} below ${SD_MIN_DISCOUNT_PCT}% or no stated list price.`);
   return deals;
 }
 
