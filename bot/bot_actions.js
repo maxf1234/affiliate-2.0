@@ -671,10 +671,146 @@ async function scrapeBensBargains() {
 }
 
 // ── MAIN ──────────────────────────────────────────────────────────────────────
+// ── SOURCE 4: slickdeals.net (RSS) ────────────────────────────────────────────
+// Slickdeals' pages expose no merchant URLs (every outbound click goes through
+// their redirector), but their public RSS feed publishes what we need per item:
+//   data-store-slug="amazon"  data-aps-asin="B071SB82V3"
+//   description: 'Amazon [amazon.com] has *Product* for *$10.99*'
+//   content:encoded: <img src="https://static.slickdealscdn.com/…">
+// We read the ASIN and build a clean Amazon URL with OUR tag — no redirector
+// following. Items without an Amazon ASIN or a computable discount are skipped.
+
+const SD_RSS_URL = process.env.SD_RSS_URL ||
+  "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1";
+
+function decodeEntities(s) {
+  return String(s || "")
+    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, " ")
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n));
+}
+
+const money = (s) => parseFloat(String(s).replace(/,/g, ""));
+
+// Pull an original ("was") price out of the deal copy. Handles the common
+// Slickdeals phrasings; returns 0 when the post doesn't state one.
+function parseSlickOriginalPrice(text, dealPrice) {
+  const t = decodeEntities(text).replace(/\*/g, "");
+  let m = t.match(/(?:reg(?:ular)?\.?|list(?:\s+price)?|orig(?:inally)?\.?|retail|was|normally|MSRP)\s*:?\s*\$\s*([\d,]+(?:\.\d{1,2})?)/i);
+  if (m && money(m[1]) > dealPrice) return money(m[1]);
+  // "$25 off" -> original = deal + 25
+  m = t.match(/\$\s*([\d,]+(?:\.\d{1,2})?)\s*off\b/i);
+  if (m && money(m[1]) > 0) return Math.round((dealPrice + money(m[1])) * 100) / 100;
+  // "50% off" -> derive
+  m = t.match(/(\d{1,2})%\s*off\b/i);
+  if (m) {
+    const pct = parseInt(m[1], 10);
+    if (pct > 0 && pct < 95) return Math.round((dealPrice / (1 - pct / 100)) * 100) / 100;
+  }
+  return 0;
+}
+
+// Parse one <item> block into a deal candidate (or null).
+function parseSlickItem(itemXml) {
+  const grab = (tag) => {
+    const m = itemXml.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, "i"));
+    if (!m) return "";
+    return m[1].replace(/^\s*<!\[CDATA\[/, "").replace(/\]\]>\s*$/, "").trim();
+  };
+
+  const rawTitle = decodeEntities(grab("title"));
+  const description = grab("description");
+  const content = grab("content:encoded");
+  const blob = `${description}\n${content}`;
+
+  // Amazon only: the store slug/marker must say Amazon.
+  const isAmazon = /data-store-slug="amazon"/i.test(content) ||
+                   /\btrd=Amazon\b/i.test(content) ||
+                   /^amazon\b/i.test(decodeEntities(description).trim());
+  if (!isAmazon) return null;
+
+  // ASIN: the feed's own data attribute, else a bare amazon.com/dp/… mention.
+  const asinMatch = content.match(/data-aps-asin="([A-Z0-9]{10})"/i) ||
+                    blob.match(/amazon\.com\/(?:dp|gp\/product)\/([A-Z0-9]{10})/i);
+  if (!asinMatch) return null;
+  const asin = asinMatch[1].toUpperCase();
+
+  // Price: "for *$10.99*" in the copy, else the trailing "$11" in the title.
+  const plain = decodeEntities(description).replace(/\*/g, "");
+  let dealPrice = 0;
+  let pm = plain.match(/\bfor\s*\$\s*([\d,]+(?:\.\d{1,2})?)/i);
+  if (pm) dealPrice = money(pm[1]);
+  if (!dealPrice) {
+    pm = rawTitle.match(/\$\s*([\d,]+(?:\.\d{1,2})?)\s*$/);
+    if (pm) dealPrice = money(pm[1]);
+  }
+  if (!(dealPrice > 0)) return null;
+
+  // Title: RSS titles end with the price ("… Planter $11") — trim that off.
+  let title = rawTitle.replace(/\s*[-–]?\s*\$\s*[\d,]+(?:\.\d{1,2})?\s*$/, "").trim();
+  if (looksLikeGarbageTitle(title)) {
+    const b = plain.match(/\bhas\s+(.+?)\s+for\s*\$/i);
+    title = b ? b[1].trim() : title;
+  }
+  if (looksLikeGarbageTitle(title)) return null;
+
+  const originalPrice = parseSlickOriginalPrice(blob, dealPrice);
+  const discount = originalPrice > dealPrice
+    ? Math.round((1 - dealPrice / originalPrice) * 100) : 0;
+
+  const img = content.match(/<img[^>]+src="(https:\/\/static\.slickdealscdn\.com[^"]+)"/i);
+
+  return {
+    id: `sl_${asin}`,
+    asin,
+    title: title.slice(0, 120),
+    category: guessCategory(title),
+    originalPrice: originalPrice || 0,
+    dealPrice,
+    discount,
+    image: img ? decodeEntities(img[1]) : FALLBACK_IMG,
+    affiliate_url: `https://www.amazon.com/dp/${asin}?tag=${AFFILIATE_TAG}`,
+    store: "Amazon",
+    expires: new Date(Date.now() + 3 * 86400000).toISOString().split("T")[0],
+    hot: discount >= 40,
+    posted_at: new Date().toISOString(),
+  };
+}
+
+async function scrapeSlickdeals() {
+  console.log("Fetching slickdeals.net RSS...");
+  const xml = await fetchPage(SD_RSS_URL);
+  console.log(`Got ${xml.length} bytes`);
+
+  const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m => m[1]);
+  if (!items.length) {
+    throw new Error("slickdeals: 0 RSS items parsed — feed format may have changed.");
+  }
+
+  const deals = [];
+  const seen = new Set();
+  let notAmazon = 0, noAsin = 0, noDiscount = 0;
+
+  for (const item of items) {
+    const d = parseSlickItem(item);
+    if (!d) { notAmazon++; continue; }
+    if (!d.asin) { noAsin++; continue; }
+    if (d.discount < MIN_DISCOUNT_PCT) { noDiscount++; continue; }
+    if (seen.has(d.asin)) continue;
+    seen.add(d.asin);
+    deals.push(d);
+    console.log(`  ${d.id} | ${d.title.slice(0, 55)} | $${d.dealPrice} (was $${d.originalPrice}, -${d.discount}%) | ${d.category}`);
+  }
+
+  console.log(`slickdeals: ${items.length} RSS item(s) -> ${deals.length} deal(s); ${notAmazon} non-Amazon/unparseable, ${noDiscount} below ${MIN_DISCOUNT_PCT}% or no stated list price.`);
+  return deals;
+}
+
 const SOURCES = [
   ["stundeals", scrapeStundeals],
   ["savecrazydeals", scrapeSaveCrazyDeals],
   ["bensbargains", scrapeBensBargains],
+  ["slickdeals", scrapeSlickdeals],
 ];
 
 module.exports = {
@@ -682,6 +818,7 @@ module.exports = {
   rebalanceHot, extractAmazonLink, mapShopifyProduct,
   parseBensJsonLd, parseBensRetailPrice, parseBensPercentOff, extractBensDealId,
   mapBensCategory, splitBensDealboxes, parseBensDealbox, parseBensLinkItems,
+  parseSlickItem, parseSlickOriginalPrice, decodeEntities,
 };
 
 if (require.main === module) {
