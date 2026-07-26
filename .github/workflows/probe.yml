@@ -7,7 +7,7 @@ on:
         required: false
         default: 'https://savecrazydeals.com'
       mode:
-        description: 'probe | scraper-dry-run'
+        description: 'probe | slick | scraper-dry-run'
         required: false
         default: 'probe'
 jobs:
@@ -23,6 +23,9 @@ jobs:
         run: node bot/probe_source.js
         env:
           PROBE_URL: ${{ inputs.url }}
+      - name: Slickdeals probe
+        if: ${{ inputs.mode == 'slick' }}
+        run: node bot/probe_slick.js
       - name: Scraper dry run (no write, no commit)
         if: ${{ inputs.mode == 'scraper-dry-run' }}
         run: node bot/bot_actions.js
