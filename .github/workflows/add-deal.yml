@@ -61,7 +61,7 @@ jobs:
           node-version: '20'
       - run: node bot/add_deal.js
         env:
-          AMAZON_AFFILIATE_TAG: 'dealspulse02-20'
+          AMAZON_AFFILIATE_TAG: 'dealspulse06-20'
           DEAL_URL: ${{ inputs.amazon_url }}
           DEAL_TITLE: ${{ inputs.title }}
           DEAL_PRICE: ${{ inputs.deal_price }}

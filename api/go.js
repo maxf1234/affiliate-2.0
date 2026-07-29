@@ -16,6 +16,17 @@ const https = require("https");
 const DEALS_URL = "https://raw.githubusercontent.com/maxf1234/affiliate-2.0/main/public/deals.json";
 const VALID_SRC = new Set(["site", "deal", "share", "wa"]);
 
+// The discounted-membership referral isn't a scraped deal, so it never appears
+// in deals.json. Treat it as a pseudo-deal so it gets counted by the same
+// pipeline as everything else and shows up in /api/stats.
+const REFERRAL_LINKS = {
+  "student-trial": {
+    id: "student-trial",
+    title: "Prime trial referral (student / 18-24)",
+    affiliate_url: "https://amzn.to/44XBmXJ",
+  },
+};
+
 // Cache deals across warm invocations so redirects stay fast
 let dealsCache = { data: null, at: 0 };
 
@@ -87,6 +98,14 @@ module.exports = async (req, res) => {
   const toSite = req.query.to === "site";
 
   res.setHeader("Cache-Control", "no-store");
+
+  if (REFERRAL_LINKS[id]) {
+    const link = REFERRAL_LINKS[id];
+    if (!isPreviewBot(req)) await trackClick(link, src);
+    res.writeHead(302, { Location: link.affiliate_url });
+    res.end();
+    return;
+  }
 
   const deals = await fetchDeals();
   const deal = deals.find(d => d.id === id);

@@ -216,6 +216,25 @@ const CSS = `
   .dp-explainer-grid h3 { margin: 0 0 6px; font-size: 14.5px; font-weight: 800; }
   .dp-explainer-grid p { margin: 0; font-size: 14px; line-height: 1.65; color: var(--muted); }
   .dp-explainer a { color: var(--orange-dark); font-weight: 600; }
+
+  /* Editorial page call-to-action */
+  .dp-article-cta { margin: 0 0 30px; }
+  .dp-article-cta a {
+    display: block; background: var(--orange); color: #ffffff; text-decoration: none;
+    border-radius: 12px; padding: 16px; font-weight: 800; font-size: 16.5px;
+    text-align: center; transition: background 0.15s;
+  }
+  .dp-article-cta a:hover { background: var(--orange-dark); }
+  .dp-article-cta p {
+    text-align: center; font-size: 11.5px; color: var(--muted); margin: 9px 0 0; line-height: 1.6;
+  }
+  .dp-article-checklist { list-style: none; margin: 10px 0 0; padding: 0; }
+  .dp-article-checklist li {
+    padding: 5px 0 5px 22px; position: relative; font-size: 15px; line-height: 1.6; color: #313a52;
+  }
+  .dp-article-checklist li::before {
+    content: "•"; position: absolute; left: 6px; color: var(--orange-dark); font-weight: 800;
+  }
   .dp-footer-nav {
     display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; margin-bottom: 14px;
   }
@@ -256,6 +275,13 @@ const CSS = `
   }
   .dp-cta:hover { background: var(--orange-dark); }
   .dp-cta-sub { text-align: center; font-size: 11.5px; color: var(--muted); margin: 0 0 16px; }
+  .dp-cta-secondary {
+    display: block; background: #fff; color: var(--orange-dark); text-decoration: none;
+    border: 1.5px solid var(--line); border-radius: 12px; padding: 13px;
+    font-weight: 700; font-size: 13.5px; text-align: center; margin-bottom: 16px;
+    transition: border-color 0.15s;
+  }
+  .dp-cta-secondary:hover { border-color: var(--orange); }
   .dp-perk-list { list-style: none; margin: 0 0 16px; padding: 0; }
   .dp-perk-list li { padding: 5px 0; font-size: 14px; color: var(--text); }
   .dp-perk-list li::before { content: "✅ "; }
@@ -454,6 +480,11 @@ function DealPage({ deals, id, src, onBack, onView }) {
             </a>
             <p className="dp-cta-sub">Price and availability checked when this deal was posted (see date below) and can change at any time — always confirm on the retailer's page before buying.</p>
 
+            {/* Points at our own explainer, not straight at the referral link,
+                so nobody reaches the sign-up without reading the terms first. */}
+            <a className="dp-cta-secondary" href="#/p/student-trial">
+              Aged 18–24 or a student? There's a cheaper way to get Prime →
+            </a>
 
             <div className="dp-share-row">
               <a
@@ -493,6 +524,9 @@ const UPDATED = "July 2026";
 // Shown on the Contact page. Amazon requires a working way to reach the site
 // owner — swap this for a dedicated address any time.
 const CONTACT_EMAIL = "frager.max@gmail.com";
+// Amazon referral link for the discounted-membership sign-up flow. Routed
+// through /api/go so taps are counted the same way deal clicks are.
+const PRIME_REFERRAL_URL = "/api/go?id=student-trial&src=deal";
 
 const PAGES = {
   about: {
@@ -539,6 +573,34 @@ const PAGES = {
        "A price is not a price until it includes delivery. Check the total at checkout, confirm the return window, and look at who is actually selling and shipping the item — on marketplaces, a listing under a familiar brand may come from a third party with a different returns policy. For anything expensive or perishable, that distinction matters."],
       ["Decide before the countdown does",
        "Urgency is the oldest tool in retail, and we use it here too: our deals show an expiry because they genuinely do end. But a deadline is only a reason to buy something you already wanted. If you would not have bought the item this month at that price, a timer should not change your mind. The best saving is on the thing you do not buy."],
+    ],
+  },
+  "student-trial": {
+    title: "The Prime Free Trial for Students and 18–24s",
+    intro: "What the offer is, who qualifies, what it costs once the trial ends, and how to cancel.",
+    cta: {
+      href: PRIME_REFERRAL_URL,
+      label: "Check your eligibility on Amazon →",
+      // Deliberately does not promise a price or a term length. Amazon sets
+      // both, changes them without notice, and misstating them would breach
+      // the Associates agreement.
+      sub: "Referral link — we may earn a commission if you sign up, at no extra cost to you. Eligibility, trial length and price are set by Amazon and can change at any time; confirm the current offer on their page before signing up.",
+    },
+    body: [
+      ["What the offer actually is",
+       "Amazon runs two reduced-price routes into a Prime membership, and both open with a free trial period that is considerably longer than the standard one. One is aimed at people aged 18 to 24; the other, Prime Student, is aimed at people enrolled at a college or university. They are separate programs with separate sign-up flows, but they work the same way: a free trial first, then a discounted monthly or annual rate for as long as you stay eligible. The trial length and the discounted rate are set by Amazon and have changed more than once, so treat any figure you read on a deal site — including this one — as a starting point and check the live terms on the sign-up page."],
+      ["Who qualifies",
+       "Eligibility is verified by Amazon, not by us, and it is worth knowing which route you are applying under before you start:",
+       ["The 18–24 route asks you to confirm your age. It does not require you to be studying.",
+        "The student route asks for proof of enrollment — usually a valid school email address, or documentation if your school does not issue one.",
+        "Both are generally limited to people who have not already used the same trial before, and are country-specific.",
+        "If you are a student under 25 you can often qualify either way. It is worth comparing both, because the discounted rate after the trial is not always identical."]],
+      ["What happens when the trial ends",
+       "This is the part most write-ups skip, so read it twice: the trial converts to a paid membership automatically unless you cancel. That is not a trick — it is stated at sign-up — but it does mean a free trial you forget about becomes a charge. The saving grace is that the post-trial rate under both routes is a genuine discount on standard Prime, and it usually continues for several years or until you age out or graduate. If you plan to keep it, the discounted years are the real value here, not the free months."],
+      ["How to cancel, in case you want to",
+       "Cancelling takes about a minute from Prime membership settings in your Amazon account, and you can do it the day you sign up while keeping the benefits until the trial period runs out. If you are the sort of person who signs up for trials and forgets, the practical advice is to cancel immediately and set a reminder for the end date — you lose nothing by doing so, and you get the whole trial either way."],
+      ["Why this page exists",
+       SITE_NAME + " is an independent deal site. We are not affiliated with, endorsed by, or sponsored by Amazon, and we cannot approve, deny, or look up anyone's eligibility. The link above is a referral link: if you sign up through it, we may be paid a commission, and you pay exactly what you would have paid otherwise. We have written the terms here as neutrally as we can, including the parts that do not help us, because a membership you cancel in annoyance next month is worth nothing to anybody."],
     ],
   },
   privacy: {
@@ -592,13 +654,34 @@ function ContentPage({ slug, onBack }) {
       <button className="dp-back" onClick={onBack}>← Back to deals</button>
       <h1>{page.title}</h1>
       <p className="dp-article-intro">{page.intro}</p>
-      {page.body.map(([heading, text]) => (
+      {page.cta && <ArticleCta cta={page.cta} />}
+      {page.body.map(([heading, text, items]) => (
         <section key={heading}>
           <h2>{heading}</h2>
           <p>{text}</p>
+          {items && (
+            <ul className="dp-article-checklist">
+              {items.map(item => <li key={item}>{item}</li>)}
+            </ul>
+          )}
         </section>
       ))}
+      {page.cta && <ArticleCta cta={page.cta} />}
     </main>
+  );
+}
+
+// Call-to-action block for editorial pages that link out to an offer.
+// The fine print is part of the component, not optional, so a CTA can never
+// ship without its affiliate disclosure and terms caveat.
+function ArticleCta({ cta }) {
+  return (
+    <div className="dp-article-cta">
+      <a href={cta.href} target="_blank" rel="noopener noreferrer sponsored nofollow">
+        {cta.label}
+      </a>
+      <p>{cta.sub}</p>
+    </div>
   );
 }
 
@@ -725,6 +808,7 @@ export default function App() {
         <a href="#/p/about">About</a>
         <a href="#/p/how-we-pick">How We Pick Deals</a>
         <a href="#/p/deal-guide">Deal Guide</a>
+        <a href="#/p/student-trial">Student &amp; 18–24 Prime Trial</a>
         <a href="#/p/disclosure">Affiliate Disclosure</a>
         <a href="#/p/privacy">Privacy</a>
         <a href="#/p/contact">Contact</a>

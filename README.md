@@ -33,7 +33,7 @@ Website "Get Deal" buttons link straight to Amazon (plain affiliate link)
 
 ```
 ├── index.html            ← SEO meta + favicon
-├── vercel.json           ← rewrites (/share/deal/:id → /api/deal)
+├── vercel.json           ← rewrites (/share/deal/:id → /api/deal, /student-trial)
 ├── public/
 │   └── deals.json        ← bot writes here; website reads this
 ├── src/
@@ -42,6 +42,7 @@ Website "Get Deal" buttons link straight to Amazon (plain affiliate link)
 │   ├── go.js             ← affiliate click redirect + tracking
 │   ├── stats.js          ← private click-stats JSON
 │   ├── deal.js           ← OG meta tags for shared links
+│   ├── student-trial.js  ← OG meta tags for the membership explainer
 │   └── img.js            ← image proxy for link previews
 ├── bot/
 │   ├── bot_actions.js    ← hourly scraper (runs in GitHub Actions)
@@ -65,6 +66,30 @@ Until Redis is set up, redirects still work and clicks are visible in Vercel fun
 
 -----
 
+## Referral Page (Prime student / 18–24 trial)
+
+Shareable URL: **`https://YOUR-SITE/student-trial`** (in-app route: `#/p/student-trial`).
+
+The referral link itself lives in **`api/go.js`**, in the `REFERRAL_LINKS` map —
+change it there and nowhere else. Taps are counted under the deal id
+`student-trial`, so they show up in `/api/stats` alongside normal deal clicks.
+
+Compliance notes, so a future edit does not undo them:
+
+- **No Amazon artwork.** Amazon's own creative (logos, the smile, Prime
+  wordmark art, screenshots) is licensed to Amazon, not to us. The page is
+  text-only and the share preview has no `og:image` on purpose.
+- **No stated price or trial length.** Amazon sets both and changes them
+  without notice; publishing a specific figure risks misstating their terms.
+  The copy describes how the offer works and sends the reader to Amazon for
+  the live terms.
+- **The disclosure is not optional.** It is rendered by the `ArticleCta`
+  component itself, so a CTA cannot ship without it.
+- Deal pages link to *this page*, never straight to the referral link, so
+  nobody reaches the sign-up without seeing the terms first.
+
+-----
+
 ## Scraper Configuration (GitHub Actions)
 
 Secrets (repo → Settings → Secrets → Actions):
@@ -76,7 +101,7 @@ Secrets (repo → Settings → Secrets → Actions):
 Tuning (in `.github/workflows/bot.yml`):
 
 The Amazon Associates tag lives in plain sight in `bot.yml`
-(`AMAZON_AFFILIATE_TAG: 'dealspulse02-20'`) — affiliate tags are public,
+(`AMAZON_AFFILIATE_TAG: 'dealspulse06-20'`) — affiliate tags are public,
 so to change it, edit that one line. No GitHub secret involved.
 
 | Env | Default | Meaning |
