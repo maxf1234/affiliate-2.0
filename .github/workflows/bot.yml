@@ -21,11 +21,6 @@ jobs:
           AMAZON_AFFILIATE_TAG: 'dealspulse02-20'
           MAX_DEALS_PER_RUN: '25'
           MIN_DISCOUNT_PCT: '25'
-          # slickdeals-only: its posts usually state just the sale price, so
-          # most Amazon deals there have no computable "% off". 0 accepts them
-          # (they simply show no discount badge). Other sources keep the 25%
-          # gate above.
-          SD_MIN_DISCOUNT_PCT: '0'
       - run: |
           git config user.name "DealsPulse Bot"
           git config user.email "bot@dealspulse.com"
