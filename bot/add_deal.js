@@ -17,7 +17,7 @@ const https = require("https");
 const http = require("http");
 const { guessCategory, extractAsin } = require("./bot_actions.js");
 
-const AFFILIATE_TAG   = process.env.AMAZON_AFFILIATE_TAG || "dealspulse02-20";
+const AFFILIATE_TAG   = process.env.AMAZON_AFFILIATE_TAG || "dealspulse06-20";
 const DEALS_JSON_PATH = path.join(__dirname, "..", "public", "deals.json");
 const MAX_STORED      = 200;
 

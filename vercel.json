@@ -6,6 +6,10 @@
       "destination": "/api/deal?id=:id"
     },
     {
+      "source": "/student-trial",
+      "destination": "/api/student-trial"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
