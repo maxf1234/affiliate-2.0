@@ -4,10 +4,8 @@ import { useState, useEffect, useMemo } from "react";
 const WHATSAPP_LINK = "https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx";
 const SITE_NAME = "DealsPulse";
 
-// Site buttons link straight to Amazon with the affiliate tag.
-// Click tracking (/api/go) is only used for links sent to WhatsApp,
-// plus the Prime Student referral (tracked under id "prime").
-const PRIME_GO = (src) => `/api/go?id=prime&src=${src}`;
+// Site buttons link straight to the retailer with our affiliate tag.
+// Click tracking (/api/go) is only used for links sent to WhatsApp.
 
 const FALLBACK_DEALS = [
   {
@@ -18,8 +16,8 @@ const FALLBACK_DEALS = [
     dealPrice: 249.99,
     discount: 38,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80",
-    affiliate_url: "https://amazon.com/?tag=dealspulse02-20",
-    store: "Amazon",
+    affiliate_url: "https://www.example.com/",
+    store: "Retailer",
     expires: null,
     hot: true,
     posted_at: new Date().toISOString(),
@@ -31,8 +29,8 @@ const CSS = `
   :root {
     --navy: #141b34;
     --navy-2: #1e2947;
-    --orange: #ff9900;
-    --orange-dark: #e68a00;
+    --orange: #0e9f6e;
+    --orange-dark: #0b8259;
     --green: #1e9e50;
     --red: #e5484d;
     --bg: #f4f5f9;
@@ -62,7 +60,7 @@ const CSS = `
   .dp-logo-mark {
     width: 34px; height: 34px; background: var(--orange); border-radius: 9px;
     display: flex; align-items: center; justify-content: center; font-size: 19px;
-    box-shadow: 0 2px 8px rgba(255,153,0,0.4);
+    box-shadow: 0 2px 8px rgba(14,159,110,0.35);
   }
   .dp-logo-name { font-weight: 800; font-size: 18px; color: #fff; line-height: 1.1; }
   .dp-logo-tag { font-size: 9.5px; color: #8d97b8; letter-spacing: 0.09em; text-transform: uppercase; }
@@ -163,7 +161,7 @@ const CSS = `
   .dp-expiry.urgent { color: var(--red); font-weight: 700; }
   .dp-card-cta {
     margin-top: auto; padding-top: 10px; display: block;
-    background: var(--orange); color: #17181c; text-decoration: none;
+    background: var(--orange); color: #ffffff; text-decoration: none;
     border-radius: 10px; padding: 12px; font-weight: 800; font-size: 14px;
     text-align: center; transition: background 0.15s;
   }
@@ -201,6 +199,29 @@ const CSS = `
     box-shadow: 0 6px 20px rgba(0,0,0,0.28); text-decoration: none;
   }
 
+  /* Editorial */
+  .dp-article { max-width: 760px; margin: 0 auto; padding: 26px 20px 60px; }
+  .dp-article h1 { font-size: 30px; font-weight: 800; margin: 0 0 6px; line-height: 1.2; }
+  .dp-article-intro { color: var(--muted); font-size: 15.5px; margin: 0 0 28px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .dp-article section { margin-bottom: 24px; }
+  .dp-article h2 { font-size: 18.5px; font-weight: 800; margin: 0 0 8px; }
+  .dp-article p { margin: 0; font-size: 15.5px; line-height: 1.72; color: #313a52; }
+  .dp-explainer {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 28px; margin-top: 36px;
+  }
+  .dp-explainer > h2 { margin: 0 0 10px; font-size: 21px; font-weight: 800; }
+  .dp-explainer > p { margin: 0 0 20px; font-size: 15px; line-height: 1.7; color: #313a52; }
+  .dp-explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .dp-explainer-grid h3 { margin: 0 0 6px; font-size: 14.5px; font-weight: 800; }
+  .dp-explainer-grid p { margin: 0; font-size: 14px; line-height: 1.65; color: var(--muted); }
+  .dp-explainer a { color: var(--orange-dark); font-weight: 600; }
+  .dp-footer-nav {
+    display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; margin-bottom: 14px;
+  }
+  .dp-footer-nav a { color: #c3cbe4; text-decoration: none; font-size: 13px; font-weight: 600; }
+  .dp-footer-nav a:hover { color: #fff; text-decoration: underline; }
+
   /* Footer */
   .dp-footer { background: var(--navy); color: #8d97b8; padding: 30px 20px 26px; text-align: center; font-size: 12.5px; line-height: 1.7; }
   .dp-footer a { color: #b9c2dd; }
@@ -229,20 +250,12 @@ const CSS = `
   .dp-deal-pricebox { background: #f7f8fb; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 16px; }
   .dp-deal-price { font-size: 34px; font-weight: 800; }
   .dp-cta {
-    display: block; background: var(--orange); color: #17181c; text-decoration: none;
+    display: block; background: var(--orange); color: #ffffff; text-decoration: none;
     border-radius: 12px; padding: 16px; font-weight: 800; font-size: 16.5px;
     text-align: center; transition: background 0.15s; margin-bottom: 10px;
   }
   .dp-cta:hover { background: var(--orange-dark); }
   .dp-cta-sub { text-align: center; font-size: 11.5px; color: var(--muted); margin: 0 0 16px; }
-  .dp-prime-cta {
-    display: block; background: #2662d9; color: #fff; text-decoration: none;
-    border-radius: 12px; padding: 13px 14px; font-weight: 700; font-size: 14px;
-    text-align: center; margin-bottom: 16px; transition: background 0.15s;
-    line-height: 1.4;
-  }
-  .dp-prime-cta:hover { background: #1e51b8; }
-  .dp-prime-cta .sub { display: block; font-size: 11.5px; font-weight: 500; opacity: 0.85; }
   .dp-perk-list { list-style: none; margin: 0 0 16px; padding: 0; }
   .dp-perk-list li { padding: 5px 0; font-size: 14px; color: var(--text); }
   .dp-perk-list li::before { content: "✅ "; }
@@ -437,19 +450,10 @@ function DealPage({ deals, id, src, onBack, onView }) {
               target="_blank"
               rel="noopener noreferrer sponsored"
             >
-              Get Deal on Amazon →
+              Get This Deal →
             </a>
-            <p className="dp-cta-sub">Price checked recently — may change on Amazon at any time.</p>
+            <p className="dp-cta-sub">Price and availability checked when this deal was posted (see date below) and can change at any time — always confirm on the retailer's page before buying.</p>
 
-            <a
-              className="dp-prime-cta"
-              href={PRIME_GO("deal")}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-            >
-              🎓 18–24? Get 6 months of Amazon Prime FREE →
-              <span className="sub">Free shipping on this deal + 5% cash back</span>
-            </a>
 
             <div className="dp-share-row">
               <a
@@ -480,80 +484,120 @@ function DealPage({ deals, id, src, onBack, onView }) {
   );
 }
 
-// ── PRIME REFERRAL PAGE (/prime) ─────────────────────────────────────────────
-function PrimePage({ onBack }) {
-  const [copied, setCopied] = useState(false);
-  useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  const shareUrl = window.location.origin + "/prime";
-  const shareText = "🚨 JUST IN TIME! 6 months of Amazon Prime — completely FREE if you're 18–24 🎓 Free fast shipping, Prime Video + 5% cash back. Claim it here: " + shareUrl;
+// ── EDITORIAL CONTENT PAGES ───────────────────────────────────────────────────
+// Static, original content. Amazon's Associates review requires a site to offer
+// real value beyond a bare list of links, and to disclose who runs it and how
+// it makes money.
+const UPDATED = "July 2026";
+// Shown on the Contact page. Amazon requires a working way to reach the site
+// owner — swap this for a dedicated address any time.
+const CONTACT_EMAIL = "frager.max@gmail.com";
 
-  const handleCopy = () => {
-    copyText(shareUrl).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    });
-  };
+const PAGES = {
+  about: {
+    title: "About " + SITE_NAME,
+    intro: "Who runs this site, what it does, and how it stays useful.",
+    body: [
+      ["What this site is",
+       SITE_NAME + " is an independently run price-tracking site. We watch a handful of public deal feeds around the clock, filter out the noise, and publish only the discounts we think are actually worth someone's money. Everything here is chosen by the same rules, applied the same way, every hour of every day — no sponsored placements, no paid inclusion."],
+      ["Why we built it",
+       "Deal sites tend to fail in one of two directions. Some publish everything, so you scroll past fifty mediocre offers to find one good one. Others publish so little that you stop checking. We wanted the opposite: a short, honest list where the default assumption is that anything on the page cleared a real bar. That is why we set a minimum discount of 25% and drop deals the moment they expire, even when it leaves the page thinner."],
+      ["How we make money",
+       "When you use one of our links to buy something, the retailer may pay us a small commission. It costs you nothing extra and never changes the price you pay. Crucially, it does not change what we publish either — our selection rules are applied automatically before anyone sees which products would earn more. As an Amazon Associate we earn from qualifying purchases."],
+      ["What we are not",
+       SITE_NAME + " is an independent site. We are not affiliated with, endorsed by, or sponsored by any retailer or brand we link to. We do not sell anything ourselves, we do not process payments, and we never handle your order — every purchase happens on the retailer's own site under their terms, returns policy, and customer service."],
+    ],
+  },
+  "how-we-pick": {
+    title: "How We Pick Deals",
+    intro: "Our full selection method, written out so you can judge it for yourself.",
+    body: [
+      ["The 25% floor",
+       "A product only reaches the site if it is discounted at least 25% off its stated regular price. Retailers love advertising 10% off; in our experience that rarely represents a genuinely good moment to buy. Setting the floor at 25% cuts the volume dramatically, and that is the point. If a deal does not clear the bar, we simply don't publish it, even on slow days when the page ends up short."],
+      ["Where deals come from",
+       "We monitor several public deal feeds and community sites hourly. Each source is parsed independently, so if one goes down or changes its format the others keep running. When the same product shows up on two sources, we keep one entry — we match on the product's unique retailer ID rather than its title, because the same item is often listed under slightly different names."],
+      ["Verifying the discount",
+       "We only show a \"was\" price when the source actually states one. If a listing claims a saving we cannot tie to a stated regular price, we publish the current price with no discount badge rather than inventing a comparison. A struck-through price on this site always corresponds to a regular price someone published, not a number we made up to look impressive."],
+      ["Expiry and freshness",
+       "Every deal carries a date. On each run we remove anything past its expiry, so you should not land on a page advertising a discount that ended last week. Prices still move faster than any site can track, which is why every deal page tells you when we checked and asks you to confirm the live price before buying. If a price has changed by the time you click, believe the retailer, not us."],
+      ["What we deliberately leave out",
+       "We do not republish retailer product reviews, star ratings, or screenshots. If you want to know what buyers think, read them at the source where they are complete and current. We also do not write \"lowest price ever\" claims unless the source documents it — price history is genuinely hard to verify, and a confident-sounding claim we cannot back up is worse than no claim."],
+    ],
+  },
+  "deal-guide": {
+    title: "How to Tell a Real Deal From a Fake One",
+    intro: "Five habits that will save you more money than any deal site, including this one.",
+    body: [
+      ["Check the price history, not the percentage",
+       "The single most useful habit in online shopping: before buying, look at what the item has actually sold for over the past few months. Free browser tools and price-history sites plot this for most major retailers. A \"40% off\" badge means very little if the regular price was quietly raised the week before. A modest 20% off an item that has never been discounted is often the better buy."],
+      ["Treat inflated list prices with suspicion",
+       "Some sellers set an artificially high \"list price\" that the product never actually sold for, so every day looks like a sale. A quick sanity check: search the exact product name and compare across two or three retailers. If nobody else is anywhere near that list price, the discount is decoration."],
+      ["Watch the per-unit price on multipacks",
+       "Bulk packs are where good deals and bad deals look identical. A 24-pack at 30% off can still cost more per unit than a 6-pack at full price. Divide the price by the count before you decide — it takes five seconds and it is the mistake we see most often."],
+      ["Factor in shipping, returns, and the seller",
+       "A price is not a price until it includes delivery. Check the total at checkout, confirm the return window, and look at who is actually selling and shipping the item — on marketplaces, a listing under a familiar brand may come from a third party with a different returns policy. For anything expensive or perishable, that distinction matters."],
+      ["Decide before the countdown does",
+       "Urgency is the oldest tool in retail, and we use it here too: our deals show an expiry because they genuinely do end. But a deadline is only a reason to buy something you already wanted. If you would not have bought the item this month at that price, a timer should not change your mind. The best saving is on the thing you do not buy."],
+    ],
+  },
+  privacy: {
+    title: "Privacy Policy",
+    intro: "Last updated " + UPDATED + ".",
+    body: [
+      ["What we collect",
+       "We do not ask you to create an account, and we do not collect names, email addresses, or payment details — we have no way to take payment, since every purchase happens on the retailer's own site. When you click a deal link, we record that a click happened, which deal it was for, and whether it came from our site or our WhatsApp group. That record is a counter; it is not tied to your identity."],
+      ["Cookies and tracking",
+       "This site sets no advertising or profiling cookies of its own. Retailers you click through to will set their own cookies, including the affiliate cookie that credits us for a referral — their privacy policies govern that, and we would encourage you to read them. Our fonts are loaded from Google Fonts, which receives your IP address as part of serving the file."],
+      ["Why we count clicks",
+       "So we know which categories are worth covering. If nobody clicks kitchen deals, we should spend less time on them. That is the entire purpose; the data is aggregate and we do not sell, share, or publish it."],
+      ["Your choices and contact",
+       "Because we hold no personal data about you, there is nothing for us to delete on request. If you block our links in your browser or ad blocker, the site still works — you simply reach the retailer without the referral. Questions about any of this can go to the contact address on our contact page."],
+    ],
+  },
+  contact: {
+    title: "Contact Us",
+    intro: "Corrections, questions, and deal tips are all welcome.",
+    body: [
+      ["Get in touch",
+       "Email us at " + CONTACT_EMAIL + " and we will reply. We read everything, including the messages telling us a deal is wrong."],
+      ["Reporting a price error",
+       "If a price or discount on this site does not match what you see at the retailer, please tell us which deal and what you saw. Prices move constantly and our data is only as fresh as its last check, so these reports are genuinely useful — we would rather pull a deal early than leave a stale one up."],
+      ["Suggesting a deal",
+       "Found something good? Send the product link and what makes it a good price. We apply the same 25% rule to reader suggestions as to everything else, and we do not accept payment for placement — if someone offers us money to feature a product, the answer is no."],
+    ],
+  },
+  disclosure: {
+    title: "Affiliate Disclosure",
+    intro: "How this site earns money, in plain language.",
+    body: [
+      ["The short version",
+       "As an Amazon Associate we earn from qualifying purchases. Some links on this site are affiliate links: if you click one and buy something, the retailer may pay us a commission. You pay exactly the same price you would have paid otherwise."],
+      ["What that does and does not influence",
+       "It does not influence which deals we publish. The 25% discount rule and the duplicate and expiry checks run automatically before any human looks at the list, and we do not sort or promote products by how much they would earn us. It does mean we have a commercial interest in you clicking, which is precisely why we publish our selection rules in full and encourage you to check prices yourself."],
+      ["Independence",
+       SITE_NAME + " is an independent site with no affiliation to, endorsement by, or sponsorship from any retailer or brand mentioned. Product names and trademarks belong to their respective owners and are used here only to identify the products being discussed."],
+      ["Accuracy",
+       "Prices and availability are captured when a deal is published and shown with that date. They change without notice and we cannot guarantee any price you see here is still current. Always confirm on the retailer's page before you buy — the price at checkout is the only one that counts."],
+    ],
+  },
+};
 
+function ContentPage({ slug, onBack }) {
+  const page = PAGES[slug];
+  useEffect(() => { window.scrollTo(0, 0); }, [slug]);
+  if (!page) return null;
   return (
-    <main className="dp-deal-main">
-      <button className="dp-back" onClick={onBack}>← All deals</button>
-
-      <div className="dp-deal-card">
-        <div className="dp-deal-grid">
-          <div className="dp-deal-image" style={{ background: "#3272e0", padding: 24 }}>
-            <img src="/prime-student.webp" alt="Amazon Prime — 6-month free trial for 18-24 year-olds and students" />
-          </div>
-          <div className="dp-deal-info">
-            <div style={{ display: "flex", gap: 7, marginBottom: 12, flexWrap: "wrap" }}>
-              <Badge cls="hot">🚨 Just In</Badge>
-              <Badge cls="pct">100% FREE</Badge>
-              <span className="dp-card-cat" style={{ alignSelf: "center" }}>Ages 18–24 & Students</span>
-            </div>
-
-            <h1>6 Months of Amazon Prime — Totally FREE 🎉</h1>
-
-            <div className="dp-deal-pricebox">
-              <div className="dp-price-row">
-                <span className="dp-deal-price">$0.00</span>
-                <span className="dp-price-was" style={{ fontSize: 16 }}>$7.49/mo</span>
-              </div>
-              <p className="dp-save" style={{ fontSize: 14, margin: "6px 0 0" }}>Half a year of Prime, on the house — cancel anytime.</p>
-            </div>
-
-            <ul className="dp-perk-list">
-              <li>FREE fast delivery on millions of items</li>
-              <li>Prime Video — movies, shows & live sports</li>
-              <li>5% cash back on eligible categories</li>
-              <li>Prime-exclusive deals before everyone else</li>
-            </ul>
-
-            <a
-              className="dp-cta"
-              href={PRIME_GO("share")}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-            >
-              🎓 Claim Your Free 6 Months →
-            </a>
-            <p className="dp-cta-sub">For 18–24 year-olds & students. No payment needed today — Amazon terms apply.</p>
-
-            <div className="dp-share-row">
-              <a
-                className="dp-share-btn wa"
-                href={"https://wa.me/?text=" + encodeURIComponent(shareText)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                💬 Share
-              </a>
-              <button className="dp-share-btn copy" onClick={handleCopy}>
-                {copied ? "✓ Copied!" : "📋 Copy link"}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <main className="dp-article">
+      <button className="dp-back" onClick={onBack}>← Back to deals</button>
+      <h1>{page.title}</h1>
+      <p className="dp-article-intro">{page.intro}</p>
+      {page.body.map(([heading, text]) => (
+        <section key={heading}>
+          <h2>{heading}</h2>
+          <p>{text}</p>
+        </section>
+      ))}
     </main>
   );
 }
@@ -575,11 +619,11 @@ export default function App() {
       if (hash.startsWith("#/deal/")) {
         const [idPart, query] = hash.replace("#/deal/", "").split("?");
         const params = new URLSearchParams(query || "");
-        setRoute({ dealId: decodeURIComponent(idPart), src: params.get("src"), prime: false });
-      } else if (hash.startsWith("#/prime")) {
-        setRoute({ dealId: null, src: null, prime: true });
+        setRoute({ dealId: decodeURIComponent(idPart), src: params.get("src") });
+      } else if (hash.startsWith("#/p/")) {
+        setRoute({ dealId: null, src: null, page: hash.replace("#/p/", "").split("?")[0] });
       } else {
-        setRoute({ dealId: null, src: null, prime: false });
+        setRoute({ dealId: null, src: null });
       }
     };
     checkRoute();
@@ -589,6 +633,7 @@ export default function App() {
 
   const navigateToDeal = (id) => { window.location.hash = "/deal/" + encodeURIComponent(id); };
   const navigateHome = () => { window.location.hash = ""; };
+  const navigateToPage = (slug) => { window.location.hash = "/p/" + slug; };
 
   useEffect(() => {
     fetch("/deals.json?t=" + Date.now())
@@ -642,10 +687,10 @@ export default function App() {
           <div className="dp-logo-mark">⚡</div>
           <div>
             <div className="dp-logo-name">{SITE_NAME}</div>
-            <div className="dp-logo-tag">Best Amazon Deals</div>
+            <div className="dp-logo-tag">Daily Deals &amp; Discounts</div>
           </div>
         </a>
-        {!route.dealId && !route.prime && (
+        {!route.dealId && !route.page && (
           <>
             <input
               className="dp-search"
@@ -670,11 +715,23 @@ export default function App() {
   const footer = (
     <footer className="dp-footer">
       <p className="dp-disclosure">
-        <strong>Affiliate disclosure:</strong> As an Amazon Associate, {SITE_NAME} earns from
-        qualifying purchases. Prices and availability were accurate at posting time but can
-        change at any moment — always confirm the final price on Amazon.
+        <strong>Affiliate disclosure:</strong> As an Amazon Associate we earn from qualifying
+        purchases. {SITE_NAME} is an independent deal site and is not affiliated with,
+        endorsed by, or sponsored by any retailer we link to. Prices and availability were
+        accurate at the time each deal was posted and can change at any time — always
+        confirm the current price on the retailer's page before buying.
       </p>
-      <p>© {new Date().getFullYear()} {SITE_NAME} · <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">Get deals on WhatsApp</a></p>
+      <nav className="dp-footer-nav">
+        <a href="#/p/about">About</a>
+        <a href="#/p/how-we-pick">How We Pick Deals</a>
+        <a href="#/p/deal-guide">Deal Guide</a>
+        <a href="#/p/disclosure">Affiliate Disclosure</a>
+        <a href="#/p/privacy">Privacy</a>
+        <a href="#/p/contact">Contact</a>
+      </nav>
+      <p>© {new Date().getFullYear()} {SITE_NAME} — an independent deal site. Product names and
+        trademarks are the property of their respective owners. ·{" "}
+        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">Deal alerts on WhatsApp</a></p>
     </footer>
   );
 
@@ -685,15 +742,15 @@ export default function App() {
 
       {header}
 
-      {route.prime ? (
-        <PrimePage onBack={navigateHome} />
+      {route.page ? (
+        <ContentPage slug={route.page} onBack={navigateHome} />
       ) : route.dealId ? (
         <DealPage deals={deals} id={route.dealId} src={route.src} onBack={navigateHome} onView={navigateToDeal} />
       ) : (
         <>
           <div className="dp-hero">
             <div className="dp-hero-kicker"><span className="dp-live-dot" /> Live · auto-updated hourly</div>
-            <h1>Today's Best Amazon Deals</h1>
+            <h1>Today's Best Deals, Updated Hourly</h1>
             <p>Hand-checked discounts of 25% or more, refreshed every hour. Deals expire fast — grab them while they last.</p>
             <div className="dp-hero-stats">
               <span className="dp-stat-chip"><strong>{deals.length}</strong> live deals</span>
@@ -738,6 +795,50 @@ export default function App() {
                 </div>
               </>
             )}
+
+            <section className="dp-explainer">
+              <h2>How {SITE_NAME} works</h2>
+              <p>
+                We track public deal feeds every hour and publish only what clears a fixed bar:
+                at least <strong>25% off a stated regular price</strong>. Duplicates are merged on the
+                retailer's product ID, and expired deals are removed automatically — so a short page
+                means a slow day, not a hidden backlog. Every deal shows the date we checked it.
+              </p>
+              <div className="dp-explainer-grid">
+                <div>
+                  <h3>Why the "was" price is sometimes missing</h3>
+                  <p>
+                    We only show a struck-through price when the source states a real regular price.
+                    If we can't verify one, you get the current price with no discount badge rather
+                    than a comparison we invented.
+                  </p>
+                </div>
+                <div>
+                  <h3>Why prices can differ when you click</h3>
+                  <p>
+                    Retail prices change constantly and no tracker is instant. Treat our price as a
+                    snapshot with a timestamp, and trust the retailer's page — that's the price you
+                    actually pay.
+                  </p>
+                </div>
+                <div>
+                  <h3>How we're paid</h3>
+                  <p>
+                    Affiliate commission on some links, at no extra cost to you. It never affects
+                    which deals appear: the rules run before anyone sees what would earn most.{" "}
+                    <a href="#/p/disclosure">Full disclosure</a>.
+                  </p>
+                </div>
+                <div>
+                  <h3>Buying well, not just cheaply</h3>
+                  <p>
+                    Check the per-unit price on multipacks, and look up price history before big buys.
+                    Our <a href="#/p/deal-guide">deal guide</a> covers the five checks that catch most
+                    fake discounts.
+                  </p>
+                </div>
+              </div>
+            </section>
 
             <div className="dp-wa-banner">
               <div style={{ fontSize: 34, marginBottom: 8 }}>💬</div>

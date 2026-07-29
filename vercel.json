@@ -6,10 +6,6 @@
       "destination": "/api/deal?id=:id"
     },
     {
-      "source": "/prime",
-      "destination": "/api/prime"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
