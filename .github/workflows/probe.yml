@@ -30,4 +30,3 @@ jobs:
           DRY_RUN: '1'
           AMAZON_AFFILIATE_TAG: dealspulse02-20
           MIN_DISCOUNT_PCT: '25'
-          SD_MIN_DISCOUNT_PCT: '0'
