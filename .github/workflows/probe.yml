@@ -7,7 +7,7 @@ on:
         required: false
         default: 'https://savecrazydeals.com'
       mode:
-        description: 'probe | peers | scraper-dry-run'
+        description: 'probe | scraper-dry-run'
         required: false
         default: 'probe'
 jobs:
@@ -23,9 +23,6 @@ jobs:
         run: node bot/probe_source.js
         env:
           PROBE_URL: ${{ inputs.url }}
-      - name: Peer compliance probe
-        if: ${{ inputs.mode == 'peers' }}
-        run: node bot/probe_peers.js
       - name: Scraper dry run (no write, no commit)
         if: ${{ inputs.mode == 'scraper-dry-run' }}
         run: node bot/bot_actions.js
