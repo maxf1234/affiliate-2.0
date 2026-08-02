@@ -1,5 +1,35 @@
 [
   {
+    "id": "sc_10370539258152",
+    "asin": "B0FLK1LGXV",
+    "title": "1080p HD Mini Camera Drone for Kids and Adults",
+    "category": "Electronics",
+    "originalPrice": 69.99,
+    "dealPrice": 24.99,
+    "discount": 64,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41FZ01Fx6eL._SL500_34979743-a7e9-455c-98ee-59c2ce2a873a.jpg?v=1785645081",
+    "affiliate_url": "https://www.amazon.com/dp/B0FLK1LGXV?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-08-07",
+    "hot": true,
+    "posted_at": "2026-08-02T07:15:30.304Z"
+  },
+  {
+    "id": "sd_35575",
+    "asin": "B09D4TWNM3",
+    "title": "Globe Electric 3-Light Track Lighting",
+    "category": "General",
+    "originalPrice": 71.83,
+    "dealPrice": 28.12,
+    "discount": 61,
+    "image": "https://m.media-amazon.com/images/I/41xQDRcx0cL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B09D4TWNM3?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-08-01",
+    "hot": false,
+    "posted_at": "2026-08-02T07:15:28.795Z"
+  },
+  {
     "id": "bb_B07WJR8Z59",
     "asin": "B07WJR8Z59",
     "title": "M in White",
@@ -146,21 +176,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B0DN2JBZS2?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-08-04",
-    "hot": false,
-    "posted_at": "2026-08-02T04:00:18.530Z"
-  },
-  {
-    "id": "sd_35575",
-    "asin": "B09D4TWNM3",
-    "title": "Globe Electric 3-Light Track Lighting",
-    "category": "General",
-    "originalPrice": 71.83,
-    "dealPrice": 28.12,
-    "discount": 61,
-    "image": "https://m.media-amazon.com/images/I/41xQDRcx0cL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09D4TWNM3?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-08-01",
     "hot": false,
     "posted_at": "2026-08-02T04:00:18.530Z"
   },
@@ -2983,20 +2998,5 @@
     "expires": "2026-08-04",
     "hot": false,
     "posted_at": "2026-07-30T04:00:24.945Z"
-  },
-  {
-    "id": "sc_10365740384552",
-    "asin": "B0H6MMWQKR",
-    "title": "Portable 12Kpa Upholstery and Carpet Spot Cleaner",
-    "category": "Home & Kitchen",
-    "originalPrice": 429.99,
-    "dealPrice": 71.99,
-    "discount": 83,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41iN7Gr0zgL._SL500.jpg?v=1785375068",
-    "affiliate_url": "https://www.amazon.com/dp/B0H6MMWQKR?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-08-04",
-    "hot": true,
-    "posted_at": "2026-07-30T04:00:24.353Z"
   }
 ]
