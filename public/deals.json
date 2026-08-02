@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_35575",
+    "asin": "B09D4TWNM3",
+    "title": "Globe Electric 3-Light Track Lighting",
+    "category": "General",
+    "originalPrice": 71.83,
+    "dealPrice": 28.12,
+    "discount": 61,
+    "image": "https://m.media-amazon.com/images/I/41xQDRcx0cL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B09D4TWNM3?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-08-01",
+    "hot": false,
+    "posted_at": "2026-08-02T07:16:06.765Z"
+  },
+  {
     "id": "sc_10370539258152",
     "asin": "B0FLK1LGXV",
     "title": "1080p HD Mini Camera Drone for Kids and Adults",
@@ -13,21 +28,6 @@
     "expires": "2026-08-07",
     "hot": true,
     "posted_at": "2026-08-02T07:15:30.304Z"
-  },
-  {
-    "id": "sd_35575",
-    "asin": "B09D4TWNM3",
-    "title": "Globe Electric 3-Light Track Lighting",
-    "category": "General",
-    "originalPrice": 71.83,
-    "dealPrice": 28.12,
-    "discount": 61,
-    "image": "https://m.media-amazon.com/images/I/41xQDRcx0cL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09D4TWNM3?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-08-01",
-    "hot": false,
-    "posted_at": "2026-08-02T07:15:28.795Z"
   },
   {
     "id": "bb_B07WJR8Z59",
