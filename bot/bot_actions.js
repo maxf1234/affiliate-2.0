@@ -21,6 +21,7 @@ const http = require("http");
 
 const AFFILIATE_TAG    = process.env.AMAZON_AFFILIATE_TAG || "dealspulse06-20";
 const DEALS_JSON_PATH  = path.join(__dirname, "..", "public", "deals.json");
+const BLOCKLIST_PATH   = path.join(__dirname, "removed.json");
 const MAX_STORED       = 200;
 const MIN_DISCOUNT_PCT = parseInt(process.env.MIN_DISCOUNT_PCT || "25");
 const MAX_PER_RUN      = parseInt(process.env.MAX_DEALS_PER_RUN || "25");
@@ -226,6 +227,22 @@ function loadExisting() {
   }
 }
 
+// Products removed by hand (bot/remove_deal.js). Dedupe below only looks at
+// what's currently stored, so without this list anything deleted manually
+// looks brand new to the scraper and returns on the next run.
+function loadBlocklist() {
+  try {
+    const list = JSON.parse(fs.readFileSync(BLOCKLIST_PATH, "utf8"));
+    if (!Array.isArray(list)) return { ids: new Set(), asins: new Set() };
+    return {
+      ids: new Set(list.map(e => e && e.id).filter(Boolean)),
+      asins: new Set(list.map(e => e && e.asin).filter(Boolean)),
+    };
+  } catch (e) {
+    return { ids: new Set(), asins: new Set() };
+  }
+}
+
 function saveDeals(newDeals) {
   const todayStr = new Date().toISOString().split("T")[0];
   const existing = loadExisting();
@@ -237,15 +254,17 @@ function saveDeals(newDeals) {
 
   const existingIds = new Set(fresh.map(d => d.id));
   const existingAsins = new Set(fresh.map(d => d.asin || extractAsin(d.affiliate_url || "")).filter(Boolean));
+  const blocked = loadBlocklist();
 
-  let skippedId = 0, skippedAsin = 0;
+  let skippedId = 0, skippedAsin = 0, skippedBlocked = 0;
   const additions = newDeals.filter(d => {
     if (existingIds.has(d.id)) { skippedId++; return false; }
     if (d.asin && existingAsins.has(d.asin)) { skippedAsin++; return false; } // same product, new deal id
+    if (blocked.ids.has(d.id) || (d.asin && blocked.asins.has(d.asin))) { skippedBlocked++; return false; }
     return true;
   }).slice(0, MAX_PER_RUN); // cap NEW deals per run — here, not at parse time,
                             // so deals low on the page still get saved eventually
-  console.log(`Dedupe: ${skippedId} already stored, ${skippedAsin} duplicate products, ${additions.length} genuinely new.`);
+  console.log(`Dedupe: ${skippedId} already stored, ${skippedAsin} duplicate products, ${skippedBlocked} removed by hand, ${additions.length} genuinely new.`);
 
   const allDeals = rebalanceHot(
     [...additions, ...fresh]
