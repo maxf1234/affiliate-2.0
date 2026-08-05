@@ -147,6 +147,28 @@ GitHub → **Actions** → **Post Deal Next** → **Run workflow**. Enter a deal
 on its next scheduled run, ahead of the usual oldest / best-discount pick.
 Requires the bot to be running the current code (redeploy on Railway once).
 
+## Remove a Deal Manually
+
+GitHub → **Actions** → **Remove Deal** → **Run workflow**. Enter a deal id, an
+ASIN, or part of a title. It matches on id first, then ASIN, then title, and
+**refuses to run unless exactly one deal matches** — an ambiguous search lists
+the candidates and stops rather than guessing. Set "Only show what would be
+removed" to `yes` to see the match without changing anything.
+
+The deal (and any other entry for the same product) is dropped from
+`public/deals.json`, committed, and the site redeploys.
+
+**Why it doesn't come back:** the scraper de-dupes against what's currently in
+`deals.json`, so a product you delete looks brand new to it and returns on the
+next run. Removals are therefore also recorded in `bot/removed.json`, which
+`saveDeals()` checks before saving. To remove a deal *without* blocking it —
+e.g. it's genuinely expired and you'd take it again later at a better price —
+set "Also stop the scraper re-adding this product?" to `no`. To un-block
+something, delete its entry from `bot/removed.json`.
+
+Already-sent WhatsApp messages can't be recalled; removal only affects the site
+and future posts.
+
 -----
 
 ## WhatsApp Bot
