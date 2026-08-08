@@ -27,7 +27,8 @@
     "store": "Amazon",
     "expires": "2026-08-13",
     "hot": false,
-    "posted_at": "2026-08-08T16:00:29.228Z"
+    "posted_at": "2026-08-08T19:56:51.687Z",
+    "priority": true
   },
   {
     "id": "sc_10381847658792",
@@ -1752,8 +1753,7 @@
     "store": "Amazon",
     "expires": "2026-08-09",
     "hot": false,
-    "posted_at": "2026-08-06T14:40:57.414Z",
-    "priority": true
+    "posted_at": "2026-08-06T14:40:57.414Z"
   },
   {
     "id": "bb_B0DQ59R1LB",
