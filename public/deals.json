@@ -1,5 +1,20 @@
 [
   {
+    "id": "bb_B0F9XZD976",
+    "asin": "B0F9XZD976",
+    "title": "256GB Nothing Phone (3) 5G Unlocked Cell Phone",
+    "category": "Electronics",
+    "originalPrice": 3327.78,
+    "dealPrice": 599,
+    "discount": 82,
+    "image": "https://cdn.bensimages.com/media/img/115/283174.webp",
+    "affiliate_url": "https://www.amazon.com/dp/B0F9XZD976?ie=UTF8&_encoding=UTF8&tag=dealspulse06-20&linkCode=ur2&camp=1789&creative=9325",
+    "store": "Amazon",
+    "expires": "2026-08-18",
+    "hot": true,
+    "posted_at": "2026-08-15T22:00:26.962Z"
+  },
+  {
     "id": "sc_10399394464040",
     "asin": "B0GJ5N58J5",
     "title": "Dripex Portable Baby Playpen Pop Up Tent with Canopy",
@@ -2981,21 +2996,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B0CY746D3Z?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-08-17",
-    "hot": false,
-    "posted_at": "2026-08-12T22:00:18.896Z"
-  },
-  {
-    "id": "sd_35871",
-    "asin": "B0CCK41736",
-    "title": "150 Load Downy Fabric Softener 111 oz",
-    "category": "General",
-    "originalPrice": 10.99,
-    "dealPrice": 7.76,
-    "discount": 29,
-    "image": "https://m.media-amazon.com/images/I/41dMrBZdNlL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0CCK41736?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-08-16",
     "hot": false,
     "posted_at": "2026-08-12T22:00:18.896Z"
   }
