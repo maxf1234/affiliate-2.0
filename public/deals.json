@@ -1,5 +1,80 @@
 [
   {
+    "id": "sc_10407600718120",
+    "asin": "B0G8HF9RDN",
+    "title": "6-Light Modern Farmhouse Glass Shade Chandelier",
+    "category": "General",
+    "originalPrice": 229.99,
+    "dealPrice": 137.99,
+    "discount": 40,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41JFizX0fUL._SL500.jpg?v=1787264762",
+    "affiliate_url": "https://www.amazon.com/dp/B0G8HF9RDN?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-08-27",
+    "hot": false,
+    "posted_at": "2026-08-22T16:00:25.752Z"
+  },
+  {
+    "id": "sc_10407606092072",
+    "asin": "B0HDC9D6QG",
+    "title": "4K Short Throw Portable Mini Projector",
+    "category": "Electronics",
+    "originalPrice": 59.99,
+    "dealPrice": 22.99,
+    "discount": 62,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51benQHO2zL._SL500.jpg?v=1787265578",
+    "affiliate_url": "https://www.amazon.com/dp/B0HDC9D6QG?tag=dealspulse06-20&m=A35P8YV2I260CM",
+    "store": "Amazon",
+    "expires": "2026-08-27",
+    "hot": true,
+    "posted_at": "2026-08-22T16:00:25.132Z"
+  },
+  {
+    "id": "sc_10407606452520",
+    "asin": "B0G2L1NBDW",
+    "title": "2 Pack Oil Sprayer Dispenser Bottles 16oz",
+    "category": "General",
+    "originalPrice": 19.99,
+    "dealPrice": 9.99,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/412RWK6vuwL._SL500.jpg?v=1787265721",
+    "affiliate_url": "https://www.amazon.com/dp/B0G2L1NBDW?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-08-27",
+    "hot": false,
+    "posted_at": "2026-08-22T16:00:24.548Z"
+  },
+  {
+    "id": "sc_10407609237800",
+    "asin": "B0F38CPX9K",
+    "title": "10 Pack Acrylic Buffet Risers Food Display Stands",
+    "category": "General",
+    "originalPrice": 49.99,
+    "dealPrice": 22.99,
+    "discount": 54,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51pi2ylY8cL._SL500.jpg?v=1787266932",
+    "affiliate_url": "https://www.amazon.com/dp/B0F38CPX9K?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-08-27",
+    "hot": false,
+    "posted_at": "2026-08-22T16:00:23.978Z"
+  },
+  {
+    "id": "sc_10407609696552",
+    "asin": "B0G2TQ6WX7",
+    "title": "300 Count Flushable Adult Wipes Travel Packs",
+    "category": "General",
+    "originalPrice": 12.99,
+    "dealPrice": 3.49,
+    "discount": 73,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51Ak0VTdM2L._SL500.jpg?v=1787267240",
+    "affiliate_url": "https://www.amazon.com/dp/B0G2TQ6WX7?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-08-27",
+    "hot": true,
+    "posted_at": "2026-08-22T16:00:23.412Z"
+  },
+  {
     "id": "bb_B0DHT25P2B",
     "asin": "B0DHT25P2B",
     "title": "adidas Alliance Sackpack",
@@ -161,7 +236,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0H1KZ32HG?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-08-27",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-08-22T10:00:22.615Z"
   },
   {
@@ -506,7 +581,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GTPY165V?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-08-26",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-08-21T22:00:29.536Z"
   },
   {
@@ -836,7 +911,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0F4926VXQ?tag=dealspulse06-20&m=ATVPDKIKX0DER",
     "store": "Amazon",
     "expires": "2026-08-26",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-08-21T16:00:23.623Z"
   },
   {
@@ -1346,7 +1421,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0BKQPM7BT?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-08-26",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-08-21T04:00:26.888Z"
   },
   {
@@ -1781,7 +1856,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B00GMN7IJK?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-08-22",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-08-20T22:00:19.543Z"
   },
   {
@@ -1946,7 +2021,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0722JC9PJ?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-08-25",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-08-20T16:00:26.604Z"
   },
   {
@@ -2426,7 +2501,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0CGJCD3DB?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-08-25",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-08-20T10:00:19.705Z"
   },
   {
@@ -2531,7 +2606,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0HB99H8WD?tag=dealspulse06-20&m=A3X961JPHHEMR",
     "store": "Amazon",
     "expires": "2026-08-25",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-08-20T04:00:25.570Z"
   },
   {
@@ -2741,7 +2816,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GGZ5G5MN?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-08-24",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-08-19T22:00:29.331Z"
   },
   {
@@ -2923,80 +2998,5 @@
     "expires": "2026-08-23",
     "hot": false,
     "posted_at": "2026-08-19T22:00:22.257Z"
-  },
-  {
-    "id": "sd_36015",
-    "asin": "B0FLGHHZFG",
-    "title": "JanSport 26L All Around Backpack",
-    "category": "Fashion",
-    "originalPrice": 74.99,
-    "dealPrice": 42.7,
-    "discount": 43,
-    "image": "https://m.media-amazon.com/images/I/418fPdzqoIL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FLGHHZFG?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-08-22",
-    "hot": false,
-    "posted_at": "2026-08-19T22:00:22.257Z"
-  },
-  {
-    "id": "sd_36011",
-    "asin": "B0DDTKVNDT",
-    "title": "3 in 1 Wireless Charger",
-    "category": "Electronics",
-    "originalPrice": 19.99,
-    "dealPrice": 9.99,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/412rNqhPZOL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DDTKVNDT?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-08-23",
-    "hot": false,
-    "posted_at": "2026-08-19T22:00:22.257Z"
-  },
-  {
-    "id": "sc_10406574522664",
-    "asin": "B0GY1QH4KD",
-    "title": "24 Piece Glass Food Storage Containers with Lids",
-    "category": "Home & Kitchen",
-    "originalPrice": 30,
-    "dealPrice": 18,
-    "discount": 40,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/512CabgXgTL._SL500.jpg?v=1787135896",
-    "affiliate_url": "https://www.amazon.com/dp/B0GY1QH4KD?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-08-24",
-    "hot": false,
-    "posted_at": "2026-08-19T16:00:29.357Z"
-  },
-  {
-    "id": "sc_10406575538472",
-    "asin": "B0015QV5S4",
-    "title": "3 Piece Glass Liquid Measuring Cup Set",
-    "category": "General",
-    "originalPrice": 19.93,
-    "dealPrice": 13.49,
-    "discount": 32,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41WNKFhRygL._SL500_eee7edf8-73ac-4b43-bd3b-142a0b7e1cfa.jpg?v=1787136189",
-    "affiliate_url": "https://www.amazon.com/dp/B0015QV5S4?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-08-24",
-    "hot": false,
-    "posted_at": "2026-08-19T16:00:28.701Z"
-  },
-  {
-    "id": "sc_10406575735080",
-    "asin": "B0FBXZKMVH",
-    "title": "10 Count Amazon Basics Steel Wool Soap Pads",
-    "category": "Beauty",
-    "originalPrice": 4.58,
-    "dealPrice": 1.7,
-    "discount": 63,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41JEAhYLScL._SL500.jpg?v=1787136251",
-    "affiliate_url": "https://www.amazon.com/dp/B0FBXZKMVH?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-08-24",
-    "hot": true,
-    "posted_at": "2026-08-19T16:00:28.088Z"
   }
 ]
