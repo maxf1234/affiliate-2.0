@@ -1,5 +1,50 @@
 [
   {
+    "id": "sc_10409687023912",
+    "asin": "B0H8N51GD2",
+    "title": "100W GaN 3-Port USB Fast Wall Charger",
+    "category": "Electronics",
+    "originalPrice": 49.99,
+    "dealPrice": 19.99,
+    "discount": 60,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31EJnepb-dL._SL500.jpg?v=1787458405",
+    "affiliate_url": "https://www.amazon.com/dp/B0H8N51GD2?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-08-28",
+    "hot": false,
+    "posted_at": "2026-08-23T10:00:20.497Z"
+  },
+  {
+    "id": "sd_36045",
+    "asin": "B0977P829R",
+    "title": "Honeywell ThermaWave 6 Heater",
+    "category": "General",
+    "originalPrice": 120.95,
+    "dealPrice": 77.41,
+    "discount": 36,
+    "image": "https://m.media-amazon.com/images/I/31YZAvIjPkL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0977P829R?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-08-22",
+    "hot": false,
+    "posted_at": "2026-08-23T10:00:19.726Z"
+  },
+  {
+    "id": "sd_36042",
+    "asin": "B0GQT4T2Q2",
+    "title": "Slow Masticating Juicer",
+    "category": "Home & Kitchen",
+    "originalPrice": 59.99,
+    "dealPrice": 39.99,
+    "discount": 33,
+    "image": "https://m.media-amazon.com/images/I/41itrgcEhxL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0GQT4T2Q2?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-08-22",
+    "hot": false,
+    "posted_at": "2026-08-23T10:00:19.726Z"
+  },
+  {
     "id": "sc_10409658843432",
     "asin": "B07HK9SJXY",
     "title": "Amazon Essentials Straight-Fit Bootcut Jeans",
@@ -150,21 +195,6 @@
     "posted_at": "2026-08-23T04:00:19.614Z"
   },
   {
-    "id": "sd_36045",
-    "asin": "B0977P829R",
-    "title": "Honeywell ThermaWave 6 Heater",
-    "category": "General",
-    "originalPrice": 120.95,
-    "dealPrice": 77.41,
-    "discount": 36,
-    "image": "https://m.media-amazon.com/images/I/31YZAvIjPkL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0977P829R?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-08-22",
-    "hot": false,
-    "posted_at": "2026-08-23T04:00:19.614Z"
-  },
-  {
     "id": "sd_36043",
     "asin": "B0FJV7RY7T",
     "title": "2 Pack Arlo Pro Security Camera",
@@ -176,21 +206,6 @@
     "affiliate_url": "https://www.amazon.com/dp/B0FJV7RY7T?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-08-25",
-    "hot": false,
-    "posted_at": "2026-08-23T04:00:19.614Z"
-  },
-  {
-    "id": "sd_36042",
-    "asin": "B0GQT4T2Q2",
-    "title": "Slow Masticating Juicer",
-    "category": "Home & Kitchen",
-    "originalPrice": 59.99,
-    "dealPrice": 39.99,
-    "discount": 33,
-    "image": "https://m.media-amazon.com/images/I/41itrgcEhxL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0GQT4T2Q2?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-08-22",
     "hot": false,
     "posted_at": "2026-08-23T04:00:19.614Z"
   },
@@ -2983,20 +2998,5 @@
     "expires": "2026-08-24",
     "hot": false,
     "posted_at": "2026-08-19T22:00:28.082Z"
-  },
-  {
-    "id": "sc_10406870090024",
-    "asin": "B0FFMPLLWF",
-    "title": "Cole Haan Waterproof Grandpro Topspin Women’s Golf Sneakers",
-    "category": "Fashion",
-    "originalPrice": 180,
-    "dealPrice": 69.95,
-    "discount": 61,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41obyid1OtL._SL500.jpg?v=1787172086",
-    "affiliate_url": "https://www.amazon.com/dp/B0FFMPLLWF?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-08-24",
-    "hot": true,
-    "posted_at": "2026-08-19T22:00:27.428Z"
   }
 ]
