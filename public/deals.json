@@ -1,5 +1,35 @@
 [
   {
+    "id": "sc_10424551538984",
+    "asin": "B08TRCP69R",
+    "title": "VEVOR Hoverboard Go Kart Seat Attachment with Lights",
+    "category": "General",
+    "originalPrice": 39.9,
+    "dealPrice": 27.42,
+    "discount": 31,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41XQzTymP1L._SL500.jpg?v=1788452878",
+    "affiliate_url": "https://www.amazon.com/dp/B08TRCP69R?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-10",
+    "hot": false,
+    "posted_at": "2026-09-05T16:00:28.313Z"
+  },
+  {
+    "id": "sc_10424552784168",
+    "asin": "B01N0OAHY9",
+    "title": "Modway Tufted Upholstered Fabric Dining Chair",
+    "category": "Furniture",
+    "originalPrice": 60.28,
+    "dealPrice": 38.3,
+    "discount": 36,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41Yct6dW9_L._SL500.jpg?v=1788453150",
+    "affiliate_url": "https://www.amazon.com/dp/B01N0OAHY9?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-10",
+    "hot": false,
+    "posted_at": "2026-09-05T16:00:27.734Z"
+  },
+  {
     "id": "sc_10424635326760",
     "asin": "B009VBWDUO",
     "title": "6 Pack Kettle Brand Sea Salt Potato Chips 2oz",
@@ -2968,35 +2998,5 @@
     "expires": "2026-09-07",
     "hot": false,
     "posted_at": "2026-09-02T10:00:33.453Z"
-  },
-  {
-    "id": "sc_10423568138536",
-    "asin": "B0DHK5J32G",
-    "title": "Intex QuickFill USB Electric Air Pump",
-    "category": "Electronics",
-    "originalPrice": 13.49,
-    "dealPrice": 10.11,
-    "discount": 25,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/215_R5P-rsL._SL500.jpg?v=1788311441",
-    "affiliate_url": "https://www.amazon.com/dp/B0DHK5J32G?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-09-07",
-    "hot": false,
-    "posted_at": "2026-09-02T10:00:32.724Z"
-  },
-  {
-    "id": "sc_10423569285416",
-    "asin": "B01CKI02RU",
-    "title": "Dr. Eureka Speed Logic Puzzle Dexterity Game",
-    "category": "Toys & Games",
-    "originalPrice": 21.99,
-    "dealPrice": 16.5,
-    "discount": 25,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/515nBvw1gIL._SL500.jpg?v=1788311831",
-    "affiliate_url": "https://www.amazon.com/dp/B01CKI02RU?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-09-07",
-    "hot": false,
-    "posted_at": "2026-09-02T10:00:30.823Z"
   }
 ]
