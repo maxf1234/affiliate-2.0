@@ -1,5 +1,20 @@
 [
   {
+    "id": "sd_16606",
+    "asin": null,
+    "title": "Amazon Has Announced the Dates for This Year's Prime Day",
+    "category": "General",
+    "originalPrice": 152.29,
+    "dealPrice": 95.03,
+    "discount": 38,
+    "image": "https://m.media-amazon.com/images/I/31geEFOh0BL._SL500_.jpg",
+    "affiliate_url": "amzn.to/3HMQJdk",
+    "store": "Amazon",
+    "expires": "2026-09-07",
+    "hot": false,
+    "posted_at": "2026-09-05T22:00:22.583Z"
+  },
+  {
     "id": "sc_10424551538984",
     "asin": "B08TRCP69R",
     "title": "VEVOR Hoverboard Go Kart Seat Attachment with Lights",
@@ -2983,20 +2998,5 @@
     "expires": "2026-09-07",
     "hot": false,
     "posted_at": "2026-09-02T10:00:34.243Z"
-  },
-  {
-    "id": "sc_10423566401832",
-    "asin": "B01EAFC44A",
-    "title": "2 Pack TSA Approved Luggage Padlocks",
-    "category": "General",
-    "originalPrice": 10,
-    "dealPrice": 6.8,
-    "discount": 32,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/417ipjKkBCL._SL500.jpg?v=1788311168",
-    "affiliate_url": "https://www.amazon.com/dp/B01EAFC44A?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-09-07",
-    "hot": false,
-    "posted_at": "2026-09-02T10:00:33.453Z"
   }
 ]
