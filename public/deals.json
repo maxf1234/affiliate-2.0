@@ -1,5 +1,35 @@
 [
   {
+    "id": "sd_36449",
+    "asin": "B0B8PJDC63",
+    "title": "Ninja Woodfire Pro Outdoor Grill",
+    "category": "Home & Kitchen",
+    "originalPrice": 549.99,
+    "dealPrice": 299.99,
+    "discount": 45,
+    "image": "https://m.media-amazon.com/images/I/51WOi9-0FBL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0B8PJDC63?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-09-12",
+    "hot": false,
+    "posted_at": "2026-09-12T10:00:20.920Z"
+  },
+  {
+    "id": "sd_36448",
+    "asin": "B01D8F5JEU",
+    "title": "3 Pack Post-it Super Sticky Notes",
+    "category": "General",
+    "originalPrice": 5.29,
+    "dealPrice": 1.89,
+    "discount": 64,
+    "image": "https://m.media-amazon.com/images/I/31slIThdbEL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B01D8F5JEU?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-09-14",
+    "hot": true,
+    "posted_at": "2026-09-12T10:00:20.920Z"
+  },
+  {
     "id": "sc_10436985454888",
     "asin": "B079Z6XH36",
     "title": "3 Pack OdoBan Disinfectant and Odor Eliminator Spray",
