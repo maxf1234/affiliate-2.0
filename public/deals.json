@@ -1,20 +1,5 @@
 [
   {
-    "id": "sd_36457",
-    "asin": "B09LD8VXLX",
-    "title": "Philips Sonicare Rechargeable Toothbrush",
-    "category": "Beauty",
-    "originalPrice": 19.96,
-    "dealPrice": 15,
-    "discount": 25,
-    "image": "https://m.media-amazon.com/images/I/418F5Apc7JL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09LD8VXLX?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-12",
-    "hot": false,
-    "posted_at": "2026-09-13T10:00:29.748Z"
-  },
-  {
     "id": "sd_36449",
     "asin": "B0B8PJDC63",
     "title": "Ninja Woodfire Pro Outdoor Grill",
@@ -27,7 +12,7 @@
     "store": "Amazon",
     "expires": "2026-09-12",
     "hot": false,
-    "posted_at": "2026-09-13T10:00:29.748Z"
+    "posted_at": "2026-09-13T16:00:23.399Z"
   },
   {
     "id": "sd_36469",
@@ -42,7 +27,22 @@
     "store": "Amazon",
     "expires": "2026-09-12",
     "hot": false,
-    "posted_at": "2026-09-13T10:00:29.747Z"
+    "posted_at": "2026-09-13T16:00:23.398Z"
+  },
+  {
+    "id": "sd_36457",
+    "asin": "B09LD8VXLX",
+    "title": "Philips Sonicare Rechargeable Toothbrush",
+    "category": "Beauty",
+    "originalPrice": 19.96,
+    "dealPrice": 15,
+    "discount": 25,
+    "image": "https://m.media-amazon.com/images/I/418F5Apc7JL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B09LD8VXLX?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-09-12",
+    "hot": false,
+    "posted_at": "2026-09-13T16:00:23.398Z"
   },
   {
     "id": "sd_36470",
