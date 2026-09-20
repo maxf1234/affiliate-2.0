@@ -1,5 +1,20 @@
 [
   {
+    "id": "sc_10450725994792",
+    "asin": "B009SZFJ0O",
+    "title": "12 Pack AriZona Sweet Southern Style Iced Tea (OU)",
+    "category": "General",
+    "originalPrice": 12.49,
+    "dealPrice": 6.99,
+    "discount": 44,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51rj2oRFNTL._SL500_a051badc-e417-43a4-af84-76808da07198.jpg?v=1789877332",
+    "affiliate_url": "https://www.amazon.com/dp/B009SZFJ0O?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-25",
+    "hot": false,
+    "posted_at": "2026-09-20T10:00:25.053Z"
+  },
+  {
     "id": "sc_10450618351912",
     "asin": "B0FW995ZYR",
     "title": "100 Count Freshware 16 oz Plastic Cups with Lids",
@@ -147,21 +162,6 @@
     "store": "Amazon",
     "expires": "2026-09-22",
     "hot": false,
-    "posted_at": "2026-09-20T04:00:22.386Z"
-  },
-  {
-    "id": "sd_36612",
-    "asin": "B0F8222N8W",
-    "title": "Hydro Flask Lunch Box",
-    "category": "General",
-    "originalPrice": 39.95,
-    "dealPrice": 14.99,
-    "discount": 62,
-    "image": "https://m.media-amazon.com/images/I/31qkwDI+ftL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0F8222N8W?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-18",
-    "hot": true,
     "posted_at": "2026-09-20T04:00:22.386Z"
   },
   {
