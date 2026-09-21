@@ -1,5 +1,50 @@
 [
   {
+    "id": "sd_30291",
+    "asin": "B0CMH2JVMM",
+    "title": "Anker MagGo Qi2 15W Wireless Charger",
+    "category": "Electronics",
+    "originalPrice": 29.99,
+    "dealPrice": 14.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/31yedxRDRrL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CMH2JVMM?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-09-23",
+    "hot": false,
+    "posted_at": "2026-09-21T04:00:22.982Z"
+  },
+  {
+    "id": "sd_29081",
+    "asin": "1422644278",
+    "title": "Micro Peas Mini Bundt Cakes Kosher Cookbook",
+    "category": "General",
+    "originalPrice": 13.99,
+    "dealPrice": 8.81,
+    "discount": 37,
+    "image": "https://m.media-amazon.com/images/I/6160AaW2rWL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/1422644278?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-09-23",
+    "hot": false,
+    "posted_at": "2026-09-21T04:00:22.982Z"
+  },
+  {
+    "id": "sd_36367",
+    "asin": "B00091S3K4",
+    "title": "24 Pack Pure Life Water 8 oz",
+    "category": "General",
+    "originalPrice": 4.99,
+    "dealPrice": 3.49,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/41RpOKFO8wL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B00091S3K4?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-09-23",
+    "hot": false,
+    "posted_at": "2026-09-21T04:00:22.981Z"
+  },
+  {
     "id": "sc_10447800959272",
     "asin": "B0H5CMKGDH",
     "title": "Mini Digital Keychain Camera with 4GB Memory Card",
@@ -900,21 +945,6 @@
     "posted_at": "2026-09-18T16:01:32.665Z"
   },
   {
-    "id": "sd_36626",
-    "asin": "B00MH8ZRQ0",
-    "title": "3 Pack Mrs. Meyer's Hand Soap 12.5 oz",
-    "category": "Beauty",
-    "originalPrice": 16.47,
-    "dealPrice": 8.65,
-    "discount": 47,
-    "image": "https://m.media-amazon.com/images/I/51-Whg54OaL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B00MH8ZRQ0?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-20",
-    "hot": false,
-    "posted_at": "2026-09-18T16:01:32.665Z"
-  },
-  {
     "id": "sd_36624",
     "asin": "B07HHQYV45",
     "title": "Franklin Sports Kids Soccer Goal",
@@ -1333,21 +1363,6 @@
     "expires": "2026-09-23",
     "hot": false,
     "posted_at": "2026-09-18T04:00:22.022Z"
-  },
-  {
-    "id": "sd_36367",
-    "asin": "B00091S3K4",
-    "title": "24 Pack Pure Life Water 8 oz",
-    "category": "General",
-    "originalPrice": 4.99,
-    "dealPrice": 3.49,
-    "discount": 30,
-    "image": "https://m.media-amazon.com/images/I/41RpOKFO8wL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B00091S3K4?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-20",
-    "hot": false,
-    "posted_at": "2026-09-18T04:00:21.425Z"
   },
   {
     "id": "sd_36622",
@@ -2040,21 +2055,6 @@
     "posted_at": "2026-09-17T10:00:21.844Z"
   },
   {
-    "id": "sd_29081",
-    "asin": "1422644278",
-    "title": "Micro Peas Mini Bundt Cakes Kosher Cookbook",
-    "category": "General",
-    "originalPrice": 13.99,
-    "dealPrice": 8.81,
-    "discount": 37,
-    "image": "https://m.media-amazon.com/images/I/6160AaW2rWL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/1422644278?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-20",
-    "hot": false,
-    "posted_at": "2026-09-17T10:00:21.305Z"
-  },
-  {
     "id": "sc_10445053362472",
     "asin": "B0FWTXM52L",
     "title": "3.8 oz Dove Men+Care Dry Spray Antiperspirant",
@@ -2250,51 +2250,6 @@
     "posted_at": "2026-09-17T04:00:22.141Z"
   },
   {
-    "id": "sd_30291",
-    "asin": "B0CMH2JVMM",
-    "title": "Anker MagGo Qi2 15W Wireless Charger",
-    "category": "Electronics",
-    "originalPrice": 29.99,
-    "dealPrice": 14.99,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/31yedxRDRrL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0CMH2JVMM?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-20",
-    "hot": false,
-    "posted_at": "2026-09-17T04:00:21.337Z"
-  },
-  {
-    "id": "sd_36598",
-    "asin": "B06WGXDZSJ",
-    "title": "Hanes Pique Polos",
-    "category": "Fashion",
-    "originalPrice": 9.75,
-    "dealPrice": 5.75,
-    "discount": 41,
-    "image": "https://m.media-amazon.com/images/I/31-WO4mhwKL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B06WGXDZSJ?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-20",
-    "hot": false,
-    "posted_at": "2026-09-16T22:00:23.700Z"
-  },
-  {
-    "id": "sd_36587",
-    "asin": "B09B1CL8MJ",
-    "title": "2 Pack Philips Sonicare Brush Heads",
-    "category": "General",
-    "originalPrice": 9.96,
-    "dealPrice": 4.39,
-    "discount": 56,
-    "image": "https://m.media-amazon.com/images/I/31gg6EPGHGL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09B1CL8MJ?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-20",
-    "hot": false,
-    "posted_at": "2026-09-16T22:00:23.700Z"
-  },
-  {
     "id": "sc_10443396612392",
     "asin": "B0G4TPDYW8",
     "title": "4 Pack Boys Cotton Short Sleeve T-Shirts",
@@ -2488,21 +2443,6 @@
     "expires": "2026-09-21",
     "hot": false,
     "posted_at": "2026-09-16T16:00:22.054Z"
-  },
-  {
-    "id": "sd_36538",
-    "asin": "B00B0DWB8U",
-    "title": "Little Tikes Picnic Table",
-    "category": "Furniture",
-    "originalPrice": 76.99,
-    "dealPrice": 33.59,
-    "discount": 56,
-    "image": "https://m.media-amazon.com/images/I/319OrDEmF3L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B00B0DWB8U?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-20",
-    "hot": false,
-    "posted_at": "2026-09-16T16:00:21.560Z"
   },
   {
     "id": "sc_10442648813864",
