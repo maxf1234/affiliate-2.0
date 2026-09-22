@@ -1,5 +1,140 @@
 [
   {
+    "id": "sc_10454155231528",
+    "asin": "B0FFMTD7MS",
+    "title": "Tempered Glass Cutting Board with Hanging Hole",
+    "category": "Home & Kitchen",
+    "originalPrice": 11.99,
+    "dealPrice": 5.59,
+    "discount": 53,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41OvGDWvnXL._SL500.jpg?v=1790035065",
+    "affiliate_url": "https://www.amazon.com/dp/B0FFMTD7MS?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-27",
+    "hot": false,
+    "posted_at": "2026-09-22T10:00:32.595Z"
+  },
+  {
+    "id": "sc_10454568698152",
+    "asin": "B0GLNFS3TT",
+    "title": "600ML Foldable Travel Electric Kettle",
+    "category": "Home & Kitchen",
+    "originalPrice": 31.99,
+    "dealPrice": 15.99,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51mY-Z104tL._SL500_033f377b-9496-417d-a7ed-619ddb508e3d.jpg?v=1790037589",
+    "affiliate_url": "https://www.amazon.com/dp/B0GLNFS3TT?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-27",
+    "hot": false,
+    "posted_at": "2026-09-22T10:00:31.196Z"
+  },
+  {
+    "id": "sc_10454596124968",
+    "asin": "B0002E2GQU",
+    "title": "Lavazza Crema E Aroma Medium Roast Whole Bean Coffee (OU)",
+    "category": "Home & Kitchen",
+    "originalPrice": 22.53,
+    "dealPrice": 11.55,
+    "discount": 49,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41r0YrtddhL._SL500.jpg?v=1790037765",
+    "affiliate_url": "https://www.amazon.com/dp/B0002E2GQU?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-27",
+    "hot": false,
+    "posted_at": "2026-09-22T10:00:30.505Z"
+  },
+  {
+    "id": "sc_10454748332328",
+    "asin": "B0GF17KL9H",
+    "title": "Silicone Heat Resistant Oven Mitts and Pot Holders Set",
+    "category": "Home & Kitchen",
+    "originalPrice": 23.99,
+    "dealPrice": 9.71,
+    "discount": 60,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41ept2w67HL._SL500.jpg?v=1790038710",
+    "affiliate_url": "https://www.amazon.com/dp/B0GF17KL9H?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-27",
+    "hot": true,
+    "posted_at": "2026-09-22T10:00:29.341Z"
+  },
+  {
+    "id": "sc_10454793912616",
+    "asin": "B005IHF3O8",
+    "title": "Aveeno Positively Radiant Clear Complexion Foaming Cleanser 6oz",
+    "category": "General",
+    "originalPrice": 6.97,
+    "dealPrice": 3.64,
+    "discount": 48,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31svPCA2RiL._SL500.jpg?v=1790039012",
+    "affiliate_url": "https://www.amazon.com/dp/B005IHF3O8?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-27",
+    "hot": false,
+    "posted_at": "2026-09-22T10:00:28.704Z"
+  },
+  {
+    "id": "sc_10454830547240",
+    "asin": "B0DQ2C24JL",
+    "title": "4 Pack Igloo Maxcold Reusable Ice Blocks",
+    "category": "General",
+    "originalPrice": 9.65,
+    "dealPrice": 3.92,
+    "discount": 59,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41nMANO-8eL._SL500_a0ade178-63c7-4a5e-a48a-aafe03d8a537.jpg?v=1790039250",
+    "affiliate_url": "https://www.amazon.com/dp/B0DQ2C24JL?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-27",
+    "hot": false,
+    "posted_at": "2026-09-22T10:00:28.077Z"
+  },
+  {
+    "id": "sc_10454863216936",
+    "asin": "B0F7SRB2KW",
+    "title": "Wüsthof 3-Piece Gourmet Kitchen Knife Set",
+    "category": "Home & Kitchen",
+    "originalPrice": 140,
+    "dealPrice": 79,
+    "discount": 44,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31XPMjRLmRL._SL500.jpg?v=1790039461",
+    "affiliate_url": "https://www.amazon.com/dp/B0F7SRB2KW?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-27",
+    "hot": false,
+    "posted_at": "2026-09-22T10:00:27.460Z"
+  },
+  {
+    "id": "sc_10456714838312",
+    "asin": "B007TQG23C",
+    "title": "10 Count Fruit Roll-Ups Tropical Fruit Snacks (OU)",
+    "category": "Grocery",
+    "originalPrice": 3.19,
+    "dealPrice": 2.03,
+    "discount": 36,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51MIHkmgOsL._SL500.jpg?v=1790070752",
+    "affiliate_url": "https://www.amazon.com/dp/B007TQG23C?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-27",
+    "hot": false,
+    "posted_at": "2026-09-22T10:00:26.217Z"
+  },
+  {
+    "id": "sc_10456716640552",
+    "asin": "B003Y1NWKC",
+    "title": "60 Pack Oreo Chocolate Sandwich Cookie Snack Packs (OU-D)",
+    "category": "Grocery",
+    "originalPrice": 21.99,
+    "dealPrice": 13.06,
+    "discount": 41,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/4145LF1qCrL._SL500.jpg?v=1790071007",
+    "affiliate_url": "https://www.amazon.com/dp/B003Y1NWKC?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-09-27",
+    "hot": false,
+    "posted_at": "2026-09-22T10:00:25.572Z"
+  },
+  {
     "id": "sc_10454964076840",
     "asin": "B00EGPMHEW",
     "title": "Designers Fountain 15-Inch 3-Light Flush Mount Ceiling Light",
@@ -41,7 +176,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0F84LQRYZ?tag=dealspulse06-20&m=ATVPDKIKX0DER",
     "store": "Amazon",
     "expires": "2026-09-27",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-09-22T04:00:30.753Z"
   },
   {
@@ -281,7 +416,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B00GMN7IJK?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-09-24",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-09-22T04:00:22.309Z"
   },
   {
@@ -431,7 +566,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0H5CMKGDH?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-09-25",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-09-20T16:00:26.868Z"
   },
   {
@@ -1376,7 +1511,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0CBCV4TRF?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-09-23",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-09-18T10:00:30.280Z"
   },
   {
@@ -1436,7 +1571,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0DSCJWDHQ?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-09-23",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-09-18T10:00:27.903Z"
   },
   {
@@ -2141,7 +2276,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GMFC74R8?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-09-22",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-09-17T10:00:30.157Z"
   },
   {
