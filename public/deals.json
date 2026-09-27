@@ -1,5 +1,50 @@
 [
   {
+    "id": "sd_36677",
+    "asin": "B07NHDP74X",
+    "title": "Citizen Quartz Watch",
+    "category": "Fashion",
+    "originalPrice": 169.98,
+    "dealPrice": 102,
+    "discount": 40,
+    "image": "https://m.media-amazon.com/images/I/41JJRUXRT-L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B07NHDP74X?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-09-29",
+    "hot": false,
+    "posted_at": "2026-09-27T10:00:22.786Z"
+  },
+  {
+    "id": "sd_36676",
+    "asin": "B0DS4GHZKY",
+    "title": "Gaming Chair",
+    "category": "Furniture",
+    "originalPrice": 139.99,
+    "dealPrice": 69.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41EF+FWcpXL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DS4GHZKY?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-09-29",
+    "hot": false,
+    "posted_at": "2026-09-27T10:00:22.786Z"
+  },
+  {
+    "id": "sd_36704",
+    "asin": "B08PP1H7QK",
+    "title": "KRUPS Coffee Maker",
+    "category": "Home & Kitchen",
+    "originalPrice": 59.99,
+    "dealPrice": 39.99,
+    "discount": 33,
+    "image": "https://m.media-amazon.com/images/I/31SbNxvTcWL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B08PP1H7QK?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-09-29",
+    "hot": false,
+    "posted_at": "2026-09-27T10:00:22.785Z"
+  },
+  {
     "id": "sc_10461141008680",
     "asin": "B0B12FZBY1",
     "title": "12 Piece LocknLock Twist Food Storage Container Set",
@@ -297,36 +342,6 @@
     "store": "Amazon",
     "expires": "2026-09-29",
     "hot": false,
-    "posted_at": "2026-09-27T04:00:22.631Z"
-  },
-  {
-    "id": "sd_36704",
-    "asin": "B08PP1H7QK",
-    "title": "KRUPS Coffee Maker",
-    "category": "Home & Kitchen",
-    "originalPrice": 59.99,
-    "dealPrice": 39.99,
-    "discount": 33,
-    "image": "https://m.media-amazon.com/images/I/31SbNxvTcWL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B08PP1H7QK?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-25",
-    "hot": false,
-    "posted_at": "2026-09-27T04:00:22.631Z"
-  },
-  {
-    "id": "sd_36702",
-    "asin": "B0GD27YY7H",
-    "title": "Michael Kors Nolita Crossbody Bag",
-    "category": "General",
-    "originalPrice": 179.5,
-    "dealPrice": 59.25,
-    "discount": 67,
-    "image": "https://m.media-amazon.com/images/I/41XWP6SAD5L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0GD27YY7H?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-09-25",
-    "hot": true,
     "posted_at": "2026-09-27T04:00:22.631Z"
   },
   {
@@ -791,7 +806,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B003G2JJRY?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-09-30",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-09-25T22:00:28.674Z"
   },
   {
@@ -2983,20 +2998,5 @@
     "expires": "2026-09-27",
     "hot": false,
     "posted_at": "2026-09-22T22:00:42.422Z"
-  },
-  {
-    "id": "sc_10457862111528",
-    "asin": "B0B1PK68BZ",
-    "title": "2 Pack Contigo Kids Spill-Proof Tumbler with Straw 14oz",
-    "category": "Home & Kitchen",
-    "originalPrice": 26.99,
-    "dealPrice": 13.99,
-    "discount": 48,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41uZkE5DbcL._SL500.jpg?v=1790111463",
-    "affiliate_url": "https://www.amazon.com/dp/B0B1PK68BZ?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-09-27",
-    "hot": false,
-    "posted_at": "2026-09-22T22:00:36.059Z"
   }
 ]
