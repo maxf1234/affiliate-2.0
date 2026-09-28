@@ -1,5 +1,50 @@
 [
   {
+    "id": "sc_15397703352616",
+    "asin": "B0FN84ZTGB",
+    "title": "Cordless 550W Stick Vacuum Cleaner with LED Display",
+    "category": "Home & Kitchen",
+    "originalPrice": 129.99,
+    "dealPrice": 64.99,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41HOK7YEdJL._SL500.jpg?v=1790569425",
+    "affiliate_url": "https://www.amazon.com/dp/B0FN84ZTGB?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-03",
+    "hot": false,
+    "posted_at": "2026-09-28T10:00:24.052Z"
+  },
+  {
+    "id": "sc_15397714526504",
+    "asin": "B0GX63F3RQ",
+    "title": "6 Piece Non Serrated Steak Knife Set",
+    "category": "Home & Kitchen",
+    "originalPrice": 160.99,
+    "dealPrice": 80.49,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51LeSsNWl9L._SL500.jpg?v=1790570151",
+    "affiliate_url": "https://www.amazon.com/dp/B0GX63F3RQ?tag=dealspulse06-20&m=A3U717OE9IRWKG",
+    "store": "Amazon",
+    "expires": "2026-10-03",
+    "hot": false,
+    "posted_at": "2026-09-28T10:00:23.498Z"
+  },
+  {
+    "id": "sc_15397717147944",
+    "asin": "B0F9WJD2DV",
+    "title": "10500mAh Fast Charging Portable Charger Power Bank",
+    "category": "Electronics",
+    "originalPrice": 34.99,
+    "dealPrice": 13.99,
+    "discount": 60,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/311YbI-N5oL._SL500.jpg?v=1790570310",
+    "affiliate_url": "https://www.amazon.com/dp/B0F9WJD2DV?tag=dealspulse06-20&m=A1T03ORV67OBAF",
+    "store": "Amazon",
+    "expires": "2026-10-03",
+    "hot": true,
+    "posted_at": "2026-09-28T10:00:22.927Z"
+  },
+  {
     "id": "sc_10463129043240",
     "asin": "B0G53ZBKJ4",
     "title": "2 Pack Clorox Fraganzia Dryer Sheets 105 Count",
@@ -1931,7 +1976,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B094NZ4WK1?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-09-29",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-09-24T22:00:26.066Z"
   },
   {
@@ -1946,7 +1991,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GTZBYZC7?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-09-28",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-09-24T22:00:26.066Z"
   },
   {
@@ -2441,7 +2486,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0HC5L599D?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-09-28",
-    "hot": true,
+    "hot": false,
     "posted_at": "2026-09-23T22:00:29.107Z"
   },
   {
@@ -2953,20 +2998,5 @@
     "expires": "2026-09-28",
     "hot": false,
     "posted_at": "2026-09-23T04:00:21.767Z"
-  },
-  {
-    "id": "sc_10458668597544",
-    "asin": "B0FMXST3J9",
-    "title": "20V Cordless Power Drill and 183 Piece Tool Kit",
-    "category": "General",
-    "originalPrice": 59.99,
-    "dealPrice": 35.63,
-    "discount": 41,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51xeD6Al2TL._SL500_fddc9fd4-5456-4404-9b1b-02eeb81e79c7.jpg?v=1790134914",
-    "affiliate_url": "https://www.amazon.com/dp/B0FMXST3J9?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-09-28",
-    "hot": false,
-    "posted_at": "2026-09-23T04:00:21.212Z"
   }
 ]
