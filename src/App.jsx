@@ -564,6 +564,9 @@ const CONTACT_EMAIL = "frager.max@gmail.com";
 // Amazon referral link for the discounted-membership sign-up flow. Routed
 // through /api/go so taps are counted the same way deal clicks are.
 const PRIME_REFERRAL_URL = "/api/go?id=student-trial&src=deal";
+// Same referral destination, separate tracking id, so taps that come from the
+// Big Deal Days push can be told apart from the evergreen student page.
+const PRIME_TRIAL_URL = "/api/go?id=prime-trial&src=deal";
 
 const PAGES = {
   about: {
@@ -610,6 +613,31 @@ const PAGES = {
        "A price is not a price until it includes delivery. Check the total at checkout, confirm the return window, and look at who is actually selling and shipping the item — on marketplaces, a listing under a familiar brand may come from a third party with a different returns policy. For anything expensive or perishable, that distinction matters."],
       ["Decide before the countdown does",
        "Urgency is the oldest tool in retail, and we use it here too: our deals show an expiry because they genuinely do end. But a deadline is only a reason to buy something you already wanted. If you would not have bought the item this month at that price, a timer should not change your mind. The best saving is on the thing you do not buy."],
+    ],
+  },
+  "free-trial": {
+    title: "Getting Prime Free Before October's Big Deal Days",
+    intro: "Three ways into a membership, what each costs once the free period ends, and how to cancel if you only wanted it for the sale.",
+    cta: {
+      href: PRIME_TRIAL_URL,
+      label: "Start a free trial on Amazon \u2192",
+      sub: "Referral link \u2014 we may earn a commission if you sign up, at no extra cost to you. Trial length, price and eligibility are set by Amazon and can change at any time; confirm the current offer on their page before signing up.",
+    },
+    body: [
+      ["Why people sign up this week",
+       "Amazon runs a large sale in October, and a meaningful share of it is open only to members \u2014 the lightning deals, the member-only prices, the early access windows. That is the real reason to sort a membership out beforehand rather than in the middle of the sale: not a countdown we invented, but the fact that a chunk of the discounts simply will not show up for you otherwise. If you are not planning to buy anything in October, none of this is urgent and you should ignore it."],
+      ["The standard route: a free trial",
+       "Anyone who has not used it recently can start Prime on a free trial \u2014 Amazon currently advertises 30 days. During it you get the same thing paying members get: fast delivery, the video and music catalogue, member-only pricing during sales. At the end it rolls into a paid membership unless you cancel, which is the part worth putting in your calendar."],
+      ["If you are 18 to 24, or a student",
+       "There is a much longer way in. Amazon offers young adults and enrolled students a free trial measured in months rather than days, and afterwards a reduced rate plus extra cash back in some categories. Eligibility is checked by Amazon \u2014 age for one route, proof of enrolment for the other \u2014 and the two have separate sign-up flows. We have written this one up in full on its own page, because the terms deserve more space than a paragraph."],
+      ["If you receive government assistance",
+       "Amazon also runs a reduced-price membership, Prime Access, for people on qualifying government assistance programs. Same delivery, same catalogue, substantially lower monthly price. Eligibility is verified by Amazon against your assistance program, re-checked periodically, and has nothing to do with us \u2014 we cannot approve, deny, or look anything up."],
+      ["What happens when the free period ends",
+       "Every one of these routes converts to a paid membership automatically unless you cancel. That is disclosed at sign-up and it is not a trick, but it does mean a trial you forget about becomes a charge. Decide now which of two people you are: the one keeping it, or the one who wanted it for the sale. The second should cancel on day one."],
+      ["How to cancel, in about a minute",
+       "Open your Amazon account, go to Prime membership settings, and end the membership. You can do this the day you sign up and still keep every benefit until the free period actually runs out \u2014 so cancelling immediately costs you nothing and removes the risk of forgetting. If you change your mind later, you can start paying whenever you like."],
+      ["Why this page exists",
+       SITE_NAME + " is an independent deal site. We are not affiliated with, endorsed by, or sponsored by Amazon. The button above is a referral link: if you sign up through it we may be paid a commission, and you pay exactly what you would have paid going to Amazon directly. We have set out the auto-renewal and the cancellation steps as plainly as we can, including the parts that cost us money, because a membership somebody cancels in irritation next month is worth nothing to anyone."],
     ],
   },
   "student-trial": {
@@ -864,6 +892,7 @@ export default function App() {
         <a href="#/p/about">About</a>
         <a href="#/p/how-we-pick">How We Pick Deals</a>
         <a href="#/p/deal-guide">Deal Guide</a>
+        <a href="#/p/free-trial">Free Prime Trial</a>
         <a href="#/p/student-trial">Student &amp; 18–24 Prime Trial</a>
         <a href="#/p/disclosure">Affiliate Disclosure</a>
         <a href="#/p/privacy">Privacy</a>

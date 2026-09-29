@@ -25,6 +25,13 @@ const REFERRAL_LINKS = {
     title: "Prime trial referral (student / 18-24)",
     affiliate_url: "https://amzn.to/44XBmXJ",
   },
+  // Same destination, its own counter, so the Big Deal Days campaign can be
+  // measured separately from the evergreen student page.
+  "prime-trial": {
+    id: "prime-trial",
+    title: "Prime trial referral (Big Deal Days)",
+    affiliate_url: "https://amzn.to/44XBmXJ",
+  },
 };
 
 // Cache deals across warm invocations so redirects stay fast
