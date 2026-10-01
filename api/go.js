@@ -20,10 +20,29 @@ const VALID_SRC = new Set(["site", "deal", "share", "wa"]);
 // in deals.json. Treat it as a pseudo-deal so it gets counted by the same
 // pipeline as everything else and shows up in /api/stats.
 const REFERRAL_LINKS = {
+  // Prime for Young Adults (18-24 and students). Also the evergreen
+  // /student-trial page's link.
   "student-trial": {
     id: "student-trial",
-    title: "Prime trial referral (student / 18-24)",
+    title: "Prime for Young Adults referral (student page)",
     affiliate_url: "https://amzn.to/44XBmXJ",
+  },
+  // The /free-trial page carries all three plans. Each gets its own id so
+  // /api/stats shows which route people actually took.
+  "prime-trial": {
+    id: "prime-trial",
+    title: "Prime standard trial referral (free-trial page)",
+    affiliate_url: "https://amzn.to/4hV1Ekx",
+  },
+  "prime-young-adults": {
+    id: "prime-young-adults",
+    title: "Prime for Young Adults referral (free-trial page)",
+    affiliate_url: "https://amzn.to/44XBmXJ",
+  },
+  "prime-access": {
+    id: "prime-access",
+    title: "Prime Access referral (free-trial page)",
+    affiliate_url: "https://amzn.to/4hW9hqX",
   },
 };
 

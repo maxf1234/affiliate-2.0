@@ -118,6 +118,11 @@ const CSS = `
   .dp-cat:hover { border-color: var(--navy); color: var(--navy); }
   .dp-cat.active { background: var(--navy); border-color: var(--navy); color: #fff; }
   .dp-cat .count { opacity: 0.65; font-weight: 500; margin-left: 4px; }
+  .dp-storebar { border-top: 1px solid var(--line); align-items: center; padding-top: 8px; }
+  .dp-storebar-label {
+    font-size: 10.5px; font-weight: 800; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-right: 4px; white-space: nowrap;
+  }
 
   /* Grid */
   .dp-main { max-width: 1200px; margin: 0 auto; padding: 26px 20px 40px; }
@@ -148,6 +153,7 @@ const CSS = `
   .dp-badge.soon { background: #f57c00; position: absolute; top: 10px; right: 10px; }
   .dp-card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
   .dp-card-cat { font-size: 10.5px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+  .dp-card-store { color: var(--orange-dark); }
   .dp-card-title {
     margin: 0; font-size: 14.5px; font-weight: 600; line-height: 1.4; color: var(--text);
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
@@ -340,6 +346,26 @@ function expiryLabel(deal) {
   return { text: `Ends in ${d} days`, urgent: false };
 }
 
+// Which retailer a deal actually sends you to. Now that the site carries more
+// than one, the shopper has to be able to see this before they click — the
+// price, the returns policy and the delivery terms all belong to that retailer,
+// not to us. Falls back to the link's own hostname if `store` is missing.
+function retailerName(deal) {
+  if (deal.store && deal.store !== "Retailer") return deal.store;
+  const host = retailerHost(deal);
+  if (!host) return null;
+  const base = host.replace(/^www\./, "").split(".")[0];
+  return base.charAt(0).toUpperCase() + base.slice(1);
+}
+
+function retailerHost(deal) {
+  try {
+    return new URL(deal.affiliate_url).hostname.replace(/^www\./, "");
+  } catch (e) {
+    return null;
+  }
+}
+
 function copyText(text) {
   if (navigator.clipboard && window.isSecureContext) {
     return navigator.clipboard.writeText(text);
@@ -374,7 +400,10 @@ function DealCard({ deal, onView }) {
         {exp && exp.urgent && <Badge cls="soon">{exp.text}</Badge>}
       </div>
       <div className="dp-card-body">
-        <span className="dp-card-cat">{deal.category}</span>
+        <span className="dp-card-cat">
+          {deal.category}
+          {retailerName(deal) && <> · <span className="dp-card-store">{retailerName(deal)}</span></>}
+        </span>
         <h3 className="dp-card-title">{deal.title}</h3>
         <div className="dp-price-row">
           <span className="dp-price">{deal.dealPrice > 0 ? `$${deal.dealPrice.toFixed(2)}` : "See Price"}</span>
@@ -452,7 +481,10 @@ function DealPage({ deals, id, src, onBack, onView }) {
             <div style={{ display: "flex", gap: 7, marginBottom: 12, flexWrap: "wrap" }}>
               {deal.hot && <Badge cls="hot">🔥 Hot Deal</Badge>}
               {deal.discount > 0 && <Badge cls="pct">-{deal.discount}% OFF</Badge>}
-              <span className="dp-card-cat" style={{ alignSelf: "center" }}>{deal.category}</span>
+              <span className="dp-card-cat" style={{ alignSelf: "center" }}>
+                {deal.category}
+                {retailerName(deal) && <> · <span className="dp-card-store">{retailerName(deal)}</span></>}
+              </span>
             </div>
 
             <h1>{deal.title}</h1>
@@ -478,7 +510,12 @@ function DealPage({ deals, id, src, onBack, onView }) {
             >
               Get This Deal →
             </a>
-            <p className="dp-cta-sub">Price and availability checked when this deal was posted (see date below) and can change at any time — always confirm on the retailer's page before buying.</p>
+            <p className="dp-cta-sub">
+              {retailerHost(deal)
+                ? <>Affiliate link — takes you to <strong>{retailerHost(deal)}</strong>, where {retailerName(deal)} sets the price, delivery and returns. We may earn a commission at no extra cost to you. </>
+                : <>Affiliate link — we may earn a commission at no extra cost to you. </>}
+              Price and availability checked when this deal was posted (see date below) and can change at any time — always confirm on the retailer's page before buying.
+            </p>
 
             {/* Points at our own explainer, not straight at the referral link,
                 so nobody reaches the sign-up without reading the terms first. */}
@@ -527,6 +564,12 @@ const CONTACT_EMAIL = "frager.max@gmail.com";
 // Amazon referral link for the discounted-membership sign-up flow. Routed
 // through /api/go so taps are counted the same way deal clicks are.
 const PRIME_REFERRAL_URL = "/api/go?id=student-trial&src=deal";
+// Same referral destination, separate tracking id, so taps that come from the
+// Big Deal Days push can be told apart from the evergreen student page.
+const PRIME_TRIAL_URL = "/api/go?id=prime-trial&src=deal";
+const PRIME_YOUNG_ADULTS_URL = "/api/go?id=prime-young-adults&src=deal";
+const PRIME_ACCESS_URL = "/api/go?id=prime-access&src=deal";
+const PRIME_CTA_SUB = "Referral link \u2014 we may earn a commission if you sign up, at no extra cost to you. Trial length, price and eligibility are set by Amazon and can change at any time; confirm the current offer on their page before signing up.";
 
 const PAGES = {
   about: {
@@ -573,6 +616,35 @@ const PAGES = {
        "A price is not a price until it includes delivery. Check the total at checkout, confirm the return window, and look at who is actually selling and shipping the item — on marketplaces, a listing under a familiar brand may come from a third party with a different returns policy. For anything expensive or perishable, that distinction matters."],
       ["Decide before the countdown does",
        "Urgency is the oldest tool in retail, and we use it here too: our deals show an expiry because they genuinely do end. But a deadline is only a reason to buy something you already wanted. If you would not have bought the item this month at that price, a timer should not change your mind. The best saving is on the thing you do not buy."],
+    ],
+  },
+  "free-trial": {
+    title: "Getting Prime Free Before October's Big Deal Days",
+    intro: "Three ways into a membership, what each costs once the free period ends, and how to cancel if you only wanted it for the sale.",
+    cta: {
+      href: PRIME_TRIAL_URL,
+      label: "Start a free Prime trial on Amazon \u2192",
+      sub: "Referral link \u2014 we may earn a commission if you sign up, at no extra cost to you. Trial length, price and eligibility are set by Amazon and can change at any time; confirm the current offer on their page before signing up.",
+    },
+    body: [
+      ["Why people sign up this week",
+       "Amazon runs a large sale in October, and a meaningful share of it is open only to members \u2014 the lightning deals, the member-only prices, the early access windows. That is the real reason to sort a membership out beforehand rather than in the middle of the sale: not a countdown we invented, but the fact that a chunk of the discounts simply will not show up for you otherwise. If you are not planning to buy anything in October, none of this is urgent and you should ignore it."],
+      ["The standard route: a free trial",
+       "Anyone who has not used it recently can start Prime on a free trial \u2014 Amazon currently advertises 30 days. During it you get the same thing paying members get: fast delivery, the video and music catalogue, member-only pricing during sales. At the end it rolls into a paid membership unless you cancel, which is the part worth putting in your calendar."],
+      ["If you are 18 to 24, or a student",
+       "There is a much longer way in. Amazon offers young adults and enrolled students a free trial measured in months rather than days, and afterwards a reduced rate plus extra cash back in some categories. Eligibility is checked by Amazon \u2014 age for one route, proof of enrolment for the other \u2014 and the two have separate sign-up flows. We have written this one up in full on its own page, because the terms deserve more space than a paragraph.",
+       null,
+       { href: PRIME_YOUNG_ADULTS_URL, label: "Check Prime for Young Adults on Amazon \u2192", sub: PRIME_CTA_SUB }],
+      ["If you receive government assistance",
+       "Amazon also runs a reduced-price membership, Prime Access, for people on qualifying government assistance programs. Same delivery, same catalogue, substantially lower monthly price. Eligibility is verified by Amazon against your assistance program, re-checked periodically, and has nothing to do with us \u2014 we cannot approve, deny, or look anything up.",
+       null,
+       { href: PRIME_ACCESS_URL, label: "Check Prime Access eligibility on Amazon \u2192", sub: PRIME_CTA_SUB }],
+      ["What happens when the free period ends",
+       "Every one of these routes converts to a paid membership automatically unless you cancel. That is disclosed at sign-up and it is not a trick, but it does mean a trial you forget about becomes a charge. Decide now which of two people you are: the one keeping it, or the one who wanted it for the sale. The second should cancel on day one."],
+      ["How to cancel, in about a minute",
+       "Open your Amazon account, go to Prime membership settings, and end the membership. You can do this the day you sign up and still keep every benefit until the free period actually runs out \u2014 so cancelling immediately costs you nothing and removes the risk of forgetting. If you change your mind later, you can start paying whenever you like."],
+      ["Why this page exists",
+       SITE_NAME + " is an independent deal site. We are not affiliated with, endorsed by, or sponsored by Amazon. The button above is a referral link: if you sign up through it we may be paid a commission, and you pay exactly what you would have paid going to Amazon directly. We have set out the auto-renewal and the cancellation steps as plainly as we can, including the parts that cost us money, because a membership somebody cancels in irritation next month is worth nothing to anyone."],
     ],
   },
   "student-trial": {
@@ -635,6 +707,10 @@ const PAGES = {
     body: [
       ["The short version",
        "As an Amazon Associate we earn from qualifying purchases. Some links on this site are affiliate links: if you click one and buy something, the retailer may pay us a commission. You pay exactly the same price you would have paid otherwise."],
+      ["Which retailers this covers",
+       "We link to more than one store, and we may hold an affiliate relationship with any of them. Assume that every outgoing product link on this site is an affiliate link unless it says otherwise — that is the safest reading and it is very nearly always the correct one. Each deal page names the retailer and the domain the button sends you to, before you click it, so you always know whose site you are about to buy from. Your order, payment, delivery, warranty and returns are handled entirely by that retailer under their terms, not ours."],
+      ["Brands and trademarks",
+       "Retailer and brand names appear on this site for one reason: to tell you accurately what a product is and where it is sold. They do not imply any partnership, endorsement, or sponsorship. Every trademark, brand name and logo mentioned belongs to its owner, and we do not use any retailer's logos or marketing artwork in our own branding."],
       ["What that does and does not influence",
        "It does not influence which deals we publish. The 25% discount rule and the duplicate and expiry checks run automatically before any human looks at the list, and we do not sort or promote products by how much they would earn us. It does mean we have a commercial interest in you clicking, which is precisely why we publish our selection rules in full and encourage you to check prices yourself."],
       ["Independence",
@@ -655,7 +731,7 @@ function ContentPage({ slug, onBack }) {
       <h1>{page.title}</h1>
       <p className="dp-article-intro">{page.intro}</p>
       {page.cta && <ArticleCta cta={page.cta} />}
-      {page.body.map(([heading, text, items]) => (
+      {page.body.map(([heading, text, items, sectionCta]) => (
         <section key={heading}>
           <h2>{heading}</h2>
           <p>{text}</p>
@@ -664,6 +740,7 @@ function ContentPage({ slug, onBack }) {
               {items.map(item => <li key={item}>{item}</li>)}
             </ul>
           )}
+          {sectionCta && <ArticleCta cta={sectionCta} />}
         </section>
       ))}
       {page.cta && <ArticleCta cta={page.cta} />}
@@ -691,6 +768,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
+  const [activeStore, setActiveStore] = useState("All stores");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [route, setRoute] = useState({ dealId: null, src: null });
@@ -746,10 +824,22 @@ export default function App() {
     return [["All", deals.length], ...sorted];
   }, [deals]);
 
+  // Same idea for retailers, so a shopper can stay with the store they want.
+  const stores = useMemo(() => {
+    const counts = {};
+    deals.forEach(d => {
+      const s = retailerName(d);
+      if (s) counts[s] = (counts[s] || 0) + 1;
+    });
+    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    return [["All stores", deals.length], ...sorted];
+  }, [deals]);
+
   const filtered = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     return deals
       .filter(d => activeCategory === "All" || d.category === activeCategory)
+      .filter(d => activeStore === "All stores" || retailerName(d) === activeStore)
       .filter(d => !q || d.title.toLowerCase().includes(q) || d.category.toLowerCase().includes(q))
       .sort((a, b) => {
         if (sortBy === "newest") return new Date(b.posted_at) - new Date(a.posted_at);
@@ -759,7 +849,7 @@ export default function App() {
         if (sortBy === "price_high") return b.dealPrice - a.dealPrice;
         return 0;
       });
-  }, [deals, activeCategory, searchQuery, sortBy]);
+  }, [deals, activeCategory, activeStore, searchQuery, sortBy]);
 
   const hotCount = deals.filter(d => d.hot).length;
 
@@ -799,15 +889,18 @@ export default function App() {
     <footer className="dp-footer">
       <p className="dp-disclosure">
         <strong>Affiliate disclosure:</strong> As an Amazon Associate we earn from qualifying
-        purchases. {SITE_NAME} is an independent deal site and is not affiliated with,
-        endorsed by, or sponsored by any retailer we link to. Prices and availability were
-        accurate at the time each deal was posted and can change at any time — always
-        confirm the current price on the retailer's page before buying.
+        purchases. Links to other retailers may also be affiliate links that earn us a
+        commission — you always pay the same price either way. {SITE_NAME} is an independent
+        deal site and is not affiliated with, endorsed by, or sponsored by any retailer or
+        brand we link to, and all product names and logos belong to their respective owners.
+        Prices and availability were accurate at the time each deal was posted and can change
+        at any time — always confirm the current price on the retailer's page before buying.
       </p>
       <nav className="dp-footer-nav">
         <a href="#/p/about">About</a>
         <a href="#/p/how-we-pick">How We Pick Deals</a>
         <a href="#/p/deal-guide">Deal Guide</a>
+        <a href="#/p/free-trial">Free Prime Trial</a>
         <a href="#/p/student-trial">Student &amp; 18–24 Prime Trial</a>
         <a href="#/p/disclosure">Affiliate Disclosure</a>
         <a href="#/p/privacy">Privacy</a>
@@ -855,6 +948,22 @@ export default function App() {
                 </button>
               ))}
             </div>
+            {/* Only worth showing once deals actually span more than one
+                retailer — with a single store it is a filter that does nothing. */}
+            {stores.length > 2 && (
+              <div className="dp-catbar-inner dp-storebar">
+                <span className="dp-storebar-label">Store</span>
+                {stores.map(([store, count]) => (
+                  <button
+                    key={store}
+                    className={`dp-cat ${activeStore === store ? "active" : ""}`}
+                    onClick={() => setActiveStore(store)}
+                  >
+                    {store}<span className="count">{count}</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <main className="dp-main">
@@ -866,7 +975,7 @@ export default function App() {
               <div className="dp-empty">
                 <div className="icon">🔍</div>
                 <p>No deals match your search.</p>
-                <button onClick={() => { setSearchQuery(""); setActiveCategory("All"); }}>Clear filters</button>
+                <button onClick={() => { setSearchQuery(""); setActiveCategory("All"); setActiveStore("All stores"); }}>Clear filters</button>
               </div>
             ) : (
               <>

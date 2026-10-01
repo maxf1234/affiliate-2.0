@@ -10,6 +10,10 @@
       "destination": "/api/student-trial"
     },
     {
+      "source": "/free-trial",
+      "destination": "/api/free-trial"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
