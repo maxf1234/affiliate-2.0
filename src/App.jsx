@@ -567,6 +567,9 @@ const PRIME_REFERRAL_URL = "/api/go?id=student-trial&src=deal";
 // Same referral destination, separate tracking id, so taps that come from the
 // Big Deal Days push can be told apart from the evergreen student page.
 const PRIME_TRIAL_URL = "/api/go?id=prime-trial&src=deal";
+const PRIME_YOUNG_ADULTS_URL = "/api/go?id=prime-young-adults&src=deal";
+const PRIME_ACCESS_URL = "/api/go?id=prime-access&src=deal";
+const PRIME_CTA_SUB = "Referral link \u2014 we may earn a commission if you sign up, at no extra cost to you. Trial length, price and eligibility are set by Amazon and can change at any time; confirm the current offer on their page before signing up.";
 
 const PAGES = {
   about: {
@@ -620,7 +623,7 @@ const PAGES = {
     intro: "Three ways into a membership, what each costs once the free period ends, and how to cancel if you only wanted it for the sale.",
     cta: {
       href: PRIME_TRIAL_URL,
-      label: "Start a free trial on Amazon \u2192",
+      label: "Start a free Prime trial on Amazon \u2192",
       sub: "Referral link \u2014 we may earn a commission if you sign up, at no extra cost to you. Trial length, price and eligibility are set by Amazon and can change at any time; confirm the current offer on their page before signing up.",
     },
     body: [
@@ -629,9 +632,13 @@ const PAGES = {
       ["The standard route: a free trial",
        "Anyone who has not used it recently can start Prime on a free trial \u2014 Amazon currently advertises 30 days. During it you get the same thing paying members get: fast delivery, the video and music catalogue, member-only pricing during sales. At the end it rolls into a paid membership unless you cancel, which is the part worth putting in your calendar."],
       ["If you are 18 to 24, or a student",
-       "There is a much longer way in. Amazon offers young adults and enrolled students a free trial measured in months rather than days, and afterwards a reduced rate plus extra cash back in some categories. Eligibility is checked by Amazon \u2014 age for one route, proof of enrolment for the other \u2014 and the two have separate sign-up flows. We have written this one up in full on its own page, because the terms deserve more space than a paragraph."],
+       "There is a much longer way in. Amazon offers young adults and enrolled students a free trial measured in months rather than days, and afterwards a reduced rate plus extra cash back in some categories. Eligibility is checked by Amazon \u2014 age for one route, proof of enrolment for the other \u2014 and the two have separate sign-up flows. We have written this one up in full on its own page, because the terms deserve more space than a paragraph.",
+       null,
+       { href: PRIME_YOUNG_ADULTS_URL, label: "Check Prime for Young Adults on Amazon \u2192", sub: PRIME_CTA_SUB }],
       ["If you receive government assistance",
-       "Amazon also runs a reduced-price membership, Prime Access, for people on qualifying government assistance programs. Same delivery, same catalogue, substantially lower monthly price. Eligibility is verified by Amazon against your assistance program, re-checked periodically, and has nothing to do with us \u2014 we cannot approve, deny, or look anything up."],
+       "Amazon also runs a reduced-price membership, Prime Access, for people on qualifying government assistance programs. Same delivery, same catalogue, substantially lower monthly price. Eligibility is verified by Amazon against your assistance program, re-checked periodically, and has nothing to do with us \u2014 we cannot approve, deny, or look anything up.",
+       null,
+       { href: PRIME_ACCESS_URL, label: "Check Prime Access eligibility on Amazon \u2192", sub: PRIME_CTA_SUB }],
       ["What happens when the free period ends",
        "Every one of these routes converts to a paid membership automatically unless you cancel. That is disclosed at sign-up and it is not a trick, but it does mean a trial you forget about becomes a charge. Decide now which of two people you are: the one keeping it, or the one who wanted it for the sale. The second should cancel on day one."],
       ["How to cancel, in about a minute",
@@ -724,7 +731,7 @@ function ContentPage({ slug, onBack }) {
       <h1>{page.title}</h1>
       <p className="dp-article-intro">{page.intro}</p>
       {page.cta && <ArticleCta cta={page.cta} />}
-      {page.body.map(([heading, text, items]) => (
+      {page.body.map(([heading, text, items, sectionCta]) => (
         <section key={heading}>
           <h2>{heading}</h2>
           <p>{text}</p>
@@ -733,6 +740,7 @@ function ContentPage({ slug, onBack }) {
               {items.map(item => <li key={item}>{item}</li>)}
             </ul>
           )}
+          {sectionCta && <ArticleCta cta={sectionCta} />}
         </section>
       ))}
       {page.cta && <ArticleCta cta={page.cta} />}
