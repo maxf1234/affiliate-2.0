@@ -197,7 +197,7 @@ volume, so relinking is only needed if WhatsApp logs the session out.
 | Tier | Groups variable | Posts | Filters (defaults) |
 |---|---|---|---|
 | Hourly | `WHATSAPP_GROUPS` | 1 deal every `SCAN_INTERVAL_MIN`, oldest first | none |
-| Thrice-daily | `THRICE_DAILY_GROUPS` | 9 AM 2nd best, 12 PM 3rd best, 9 PM best | `THRICE_DAILY_CATEGORIES=Fashion`, `THRICE_DAILY_GENDERS=Men` |
+| Thrice-daily | `THRICE_DAILY_GROUPS` | 9 AM 2nd best, 12 PM 3rd best, 9 PM best | `THRICE_DAILY_CATEGORIES=Fashion`, `THRICE_DAILY_GENDERS=Men,Unisex` |
 | Women's daily | `WOMENS_DAILY_GROUPS` | 1 deal/day at `WOMENS_DAILY_CRON` (default `0 19 * * *`, 7 PM), best discount | `WOMENS_DAILY_GENDERS=Women`, `WOMENS_DAILY_CATEGORIES` empty = any category |
 
 Each tier keeps its own posting history, so the same deal can go to more than
@@ -210,10 +210,11 @@ is inferred from the product type, so a "Floral Midi Dress" with no gender word
 is `Unisex`. Kids' items (boys / girls) are `Unisex` too, as are titles naming
 both or saying "unisex". The site does not display the tag.
 
-Most titles from the current sources name no gender, so the men's and women's
-tiers can run dry. To widen one, add `Unisex` to its genders variable — e.g.
-`THRICE_DAILY_GENDERS=Men,Unisex`. A tier with nothing new to send simply skips
-that slot and logs `No new deals to announce`.
+Most titles from the current sources name no gender. Measured over
+2026-09-14 → 10-10: ~43 new deals/day, of which 0.36% said "women's" — about one
+women's deal every 6–7 days. The women's tier skips any day with nothing new
+and logs `No new deals to announce`; it fills up only as women's-heavy sources
+are added. The thrice-daily tier takes `Men,Unisex` for the same reason.
 
 Each `WHATSAPP_GROUPS` / `THRICE_DAILY_GROUPS` / `WOMENS_DAILY_GROUPS` entry can be a **group-name
 substring** or a raw **group id** (`…@g.us`). Ids are break-proof — they keep

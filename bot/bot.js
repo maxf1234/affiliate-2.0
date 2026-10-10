@@ -41,16 +41,16 @@ const GROUP_LINK        = process.env.GROUP_LINK || "https://chat.whatsapp.com/L
 const parseGroups = (v) => (v || "").split(",").map(g => g.trim()).filter(Boolean);
 // Three tiers of groups, each with its own schedule and its own history:
 //   WHATSAPP_GROUPS      — one deal every hour (oldest un-posted first)
-//   THRICE_DAILY_GROUPS  — 3 men's deals/day: 9 AM 2nd best, 12 PM 3rd best, 9 PM best
+//   THRICE_DAILY_GROUPS  — 3 men's/unisex deals/day: 9 AM 2nd best, 12 PM 3rd best, 9 PM best
 //   WOMENS_DAILY_GROUPS  — 1 women's deal/day (best discount)
 const WHATSAPP_GROUPS     = parseGroups(process.env.WHATSAPP_GROUPS);
 const THRICE_DAILY_GROUPS = parseGroups(process.env.THRICE_DAILY_GROUPS);
 const WOMENS_DAILY_GROUPS = parseGroups(process.env.WOMENS_DAILY_GROUPS);
 // Which deal categories the thrice-daily tier may post (comma-separated).
 const THRICE_DAILY_CATEGORIES = parseGroups(process.env.THRICE_DAILY_CATEGORIES || "Fashion");
-// Which genders it may post: Men, Women, Unisex (see gender.js). Add Unisex
-// here if the men-only feed runs dry.
-const THRICE_DAILY_GENDERS = parseGroups(process.env.THRICE_DAILY_GENDERS || "Men");
+// Which genders it may post: Men, Women, Unisex (see gender.js). Unisex is
+// included because few titles say "men's" — men-only ran dry within a day.
+const THRICE_DAILY_GENDERS = parseGroups(process.env.THRICE_DAILY_GENDERS || "Men,Unisex");
 // Women's tier: any category by default — a title that says "women's" is a
 // women's deal whatever aisle it's in. Set a list to narrow it.
 const WOMENS_DAILY_CATEGORIES = parseGroups(process.env.WOMENS_DAILY_CATEGORIES);
