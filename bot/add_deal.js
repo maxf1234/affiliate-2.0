@@ -16,6 +16,7 @@ const path = require("path");
 const https = require("https");
 const http = require("http");
 const { guessCategory, extractAsin } = require("./bot_actions.js");
+const { guessGender } = require("./gender.js");
 
 const AFFILIATE_TAG   = process.env.AMAZON_AFFILIATE_TAG || "dealspulse06-20";
 const DEALS_JSON_PATH = path.join(__dirname, "..", "public", "deals.json");
@@ -187,6 +188,7 @@ function buildAffiliateUrl(rawUrl, asin) {
     asin: asin || null,
     title: title.slice(0, 120),
     category,
+    gender: guessGender(title),
     originalPrice: originalPrice || 0,
     dealPrice,
     discount,

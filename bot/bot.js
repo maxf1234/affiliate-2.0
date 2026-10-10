@@ -20,6 +20,7 @@ const path = require("path");
 const https = require("https");
 const http = require("http");
 const cron = require("node-cron");
+const { guessGender } = require("./gender.js");
 const qrcode = require("qrcode-terminal");
 const {
   default: makeWASocket,
@@ -38,13 +39,24 @@ const TIMEZONE          = process.env.BOT_TIMEZONE || "America/New_York";
 const GROUP_LINK        = process.env.GROUP_LINK || "https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx"; // WhatsApp group invite link
 
 const parseGroups = (v) => (v || "").split(",").map(g => g.trim()).filter(Boolean);
-// Two tiers of groups, each with its own schedule and its own history:
-//   WHATSAPP_GROUPS     — one deal every hour (oldest un-posted first)
-//   THRICE_DAILY_GROUPS — 3 deals/day: 9 AM 2nd best, 12 PM 3rd best, 9 PM best
+// Three tiers of groups, each with its own schedule and its own history:
+//   WHATSAPP_GROUPS      — one deal every hour (oldest un-posted first)
+//   THRICE_DAILY_GROUPS  — 3 men's deals/day: 9 AM 2nd best, 12 PM 3rd best, 9 PM best
+//   WOMENS_DAILY_GROUPS  — 1 women's deal/day (best discount)
 const WHATSAPP_GROUPS     = parseGroups(process.env.WHATSAPP_GROUPS);
 const THRICE_DAILY_GROUPS = parseGroups(process.env.THRICE_DAILY_GROUPS);
+const WOMENS_DAILY_GROUPS = parseGroups(process.env.WOMENS_DAILY_GROUPS);
 // Which deal categories the thrice-daily tier may post (comma-separated).
 const THRICE_DAILY_CATEGORIES = parseGroups(process.env.THRICE_DAILY_CATEGORIES || "Fashion");
+// Which genders it may post: Men, Women, Unisex (see gender.js). Add Unisex
+// here if the men-only feed runs dry.
+const THRICE_DAILY_GENDERS = parseGroups(process.env.THRICE_DAILY_GENDERS || "Men");
+// Women's tier: any category by default — a title that says "women's" is a
+// women's deal whatever aisle it's in. Set a list to narrow it.
+const WOMENS_DAILY_CATEGORIES = parseGroups(process.env.WOMENS_DAILY_CATEGORIES);
+const WOMENS_DAILY_GENDERS = parseGroups(process.env.WOMENS_DAILY_GENDERS || "Women");
+// When the women's deal goes out (cron, in BOT_TIMEZONE). Default 7:00 PM.
+const WOMENS_DAILY_CRON = process.env.WOMENS_DAILY_CRON || "0 19 * * *";
 
 // `skip` = how many top-ranked deals to hold back, so the best of the day
 // always goes out at 9 PM.
@@ -73,6 +85,7 @@ const AUDIENCES = {
     label: "thrice-daily",
     groups: THRICE_DAILY_GROUPS,
     categories: THRICE_DAILY_CATEGORIES, // only deals from these categories
+    genders: THRICE_DAILY_GENDERS,       // ...and these genders
     memory: new Set(),                   // in-process backup of announced ids
     seenFile: dataFile("announced_thrice.json"),
     lastPostFile: dataFile("last_post_thrice.json"),
@@ -80,6 +93,20 @@ const AUDIENCES = {
     pick(unannounced, skip = 0) {
       unannounced.sort((a, b) => (b.discount || 0) - (a.discount || 0));
       return unannounced[Math.min(skip, unannounced.length - 1)];
+    },
+  },
+  womens: {
+    label: "womens-daily",
+    groups: WOMENS_DAILY_GROUPS,
+    categories: WOMENS_DAILY_CATEGORIES,
+    genders: WOMENS_DAILY_GENDERS,
+    memory: new Set(),
+    seenFile: dataFile("announced_womens.json"),
+    lastPostFile: dataFile("last_post_womens.json"),
+    // one a day, so make it the best one available
+    pick(unannounced) {
+      unannounced.sort((a, b) => (b.discount || 0) - (a.discount || 0));
+      return unannounced[0];
     },
   },
 };
@@ -375,6 +402,12 @@ async function runBot(audience, skip = 0) {
     const wanted = audience.categories.map(c => c.toLowerCase());
     unannounced = unannounced.filter(d => wanted.includes((d.category || "").toLowerCase()));
   }
+  if (audience.genders && audience.genders.length) {
+    // `gender` is stored by the scraper; computing it here as a fallback
+    // covers deals saved before that field existed.
+    const wanted = audience.genders.map(g => g.toLowerCase());
+    unannounced = unannounced.filter(d => wanted.includes((d.gender || guessGender(d.title)).toLowerCase()));
+  }
   // Priority override: any un-posted deal flagged `priority` jumps the queue
   // (newest-flagged first), so you can choose what goes out next. Falls back
   // to the tier's normal pick (oldest / best-discount) when none are flagged.
@@ -450,7 +483,7 @@ async function onReady() {
   await seedIfFirstRun();
 
   // One-time diagnostic: list every group with its @g.us id, so you can
-  // paste ids into WHATSAPP_GROUPS / THRICE_DAILY_GROUPS.
+  // paste ids into WHATSAPP_GROUPS / THRICE_DAILY_GROUPS / WOMENS_DAILY_GROUPS.
   console.log("=== AVAILABLE GROUPS ===");
   try {
     const groups = await fetchGroups();
@@ -470,10 +503,14 @@ async function onReady() {
     POST_SLOTS.forEach(slot =>
       cron.schedule(slot.cron, () => runBot(AUDIENCES.thrice, slot.skip), { timezone: TIMEZONE })
     );
-    console.log(`[thrice-daily] ${POST_SLOTS.map(s => s.label).join(" | ")} (${TIMEZONE}) -> ${AUDIENCES.thrice.groups.join(", ")}`);
+    console.log(`[thrice-daily] ${POST_SLOTS.map(s => s.label).join(" | ")} (${TIMEZONE}) [${THRICE_DAILY_GENDERS.join("/")}] -> ${AUDIENCES.thrice.groups.join(", ")}`);
   }
-  if (!AUDIENCES.hourly.groups.length && !AUDIENCES.thrice.groups.length) {
-    console.warn("No groups configured — set WHATSAPP_GROUPS and/or THRICE_DAILY_GROUPS.");
+  if (AUDIENCES.womens.groups.length) {
+    cron.schedule(WOMENS_DAILY_CRON, () => runBot(AUDIENCES.womens), { timezone: TIMEZONE });
+    console.log(`[womens-daily] "${WOMENS_DAILY_CRON}" (${TIMEZONE}) [${WOMENS_DAILY_GENDERS.join("/")}] -> ${AUDIENCES.womens.groups.join(", ")}`);
+  }
+  if (!Object.values(AUDIENCES).some(a => a.groups.length)) {
+    console.warn("No groups configured — set WHATSAPP_GROUPS, THRICE_DAILY_GROUPS and/or WOMENS_DAILY_GROUPS.");
   }
 }
 
