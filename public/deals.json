@@ -1,5 +1,35 @@
 [
   {
+    "id": "sc_15416989450536",
+    "asin": "B0G43WNX6Q",
+    "title": "Hot Wheels Sprint Race Circuit Track Set with Cars",
+    "category": "Toys & Games",
+    "originalPrice": 43.19,
+    "dealPrice": 24.99,
+    "discount": 42,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/510Y_QcZJBL._SL500.jpg?v=1791491253",
+    "affiliate_url": "https://www.amazon.com/dp/B0G43WNX6Q?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-11T10:00:26.496Z"
+  },
+  {
+    "id": "sc_15419917795624",
+    "asin": "B0FBLZWG93",
+    "title": "60 Pack Disposable Plastic Party Plates",
+    "category": "General",
+    "originalPrice": 32.31,
+    "dealPrice": 16.15,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51iNRwTObcL._SL500.jpg?v=1791676934",
+    "affiliate_url": "https://www.amazon.com/dp/B0FBLZWG93?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-11T10:00:22.474Z"
+  },
+  {
     "id": "sc_15419933655336",
     "asin": "B0CYT4C4DC",
     "title": "210 Count Disposable Plastic Party Plates",
