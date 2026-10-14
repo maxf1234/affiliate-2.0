@@ -1,5 +1,405 @@
 [
   {
+    "id": "sc_15424888504616",
+    "asin": "B0CP2QBCCQ",
+    "title": "24 Count Glad Heavy Duty Plastic Spoons",
+    "category": "General",
+    "originalPrice": 3.99,
+    "dealPrice": 1.51,
+    "discount": 62,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41dlVzGcAcL._SL500.jpg?v=1792007549",
+    "affiliate_url": "https://www.amazon.com/dp/B0CP2QBCCQ?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-19",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:28.137Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sc_15424907641128",
+    "asin": "B0GS62BDQS",
+    "title": "20000mAh 190W Fast Charging Laptop Power Bank",
+    "category": "Electronics",
+    "originalPrice": 69.99,
+    "dealPrice": 29.99,
+    "discount": 57,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/312hFyO-zSL._SL500.jpg?v=1792008889",
+    "affiliate_url": "https://www.amazon.com/dp/B0GS62BDQS?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-19",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:27.466Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sc_15424917864744",
+    "asin": "B0H28VK5Z5",
+    "title": "Twin Deep Pocket Faux Fur Mattress Topper Cover",
+    "category": "Home & Kitchen",
+    "originalPrice": 20.99,
+    "dealPrice": 9.44,
+    "discount": 55,
+    "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80",
+    "affiliate_url": "https://www.amazon.com/dp/B0H28VK5Z5?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-19",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:26.592Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sc_15424933921064",
+    "asin": "B0H3FDRXCG",
+    "title": "STEM Transforming Robot Construction Toy Car",
+    "category": "Toys & Games",
+    "originalPrice": 16.99,
+    "dealPrice": 8.49,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/419LrVqpuDL._SL500.jpg?v=1792011996",
+    "affiliate_url": "https://www.amazon.com/dp/B0H3FDRXCG?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-19",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:25.904Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sc_15424934019368",
+    "asin": "B0DZF723GW",
+    "title": "126 Count Honest Company Hypoallergenic Flushable Wipes",
+    "category": "General",
+    "originalPrice": 10.97,
+    "dealPrice": 4.67,
+    "discount": 57,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41Lxnw_xhOL._SL500.jpg?v=1792012038",
+    "affiliate_url": "https://www.amazon.com/dp/B0DZF723GW?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-19",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:24.842Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sc_15424944603432",
+    "asin": "B0D9VZ44KT",
+    "title": "50-Piece Heavy Duty Stainless Steel Silverware Set",
+    "category": "General",
+    "originalPrice": 59.99,
+    "dealPrice": 32.99,
+    "discount": 45,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41qU4YfFrBL._SL500.jpg?v=1792015100",
+    "affiliate_url": "https://www.amazon.com/dp/B0D9VZ44KT?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-19",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:24.060Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37405",
+    "asin": "B0FK1KSZZ2",
+    "title": "Michael Kors Stainless Steel Watch",
+    "category": "Fashion",
+    "originalPrice": 245,
+    "dealPrice": 122.5,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41gHuYvM23L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FK1KSZZ2?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.773Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37402",
+    "asin": "B0FHM89R6V",
+    "title": "4 Pack Juicy Couture Eau de Parfum",
+    "category": "General",
+    "originalPrice": 50,
+    "dealPrice": 25,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41Rev13j9AL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FHM89R6V?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.773Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37401",
+    "asin": "B001NXC65K",
+    "title": "George Foreman Mini Grill",
+    "category": "Home & Kitchen",
+    "originalPrice": 27.99,
+    "dealPrice": 14.49,
+    "discount": 48,
+    "image": "https://m.media-amazon.com/images/I/41g76Lm+fmL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B001NXC65K?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.773Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37400",
+    "asin": "B0DYQDHP4V",
+    "title": "Skechers Slip-Ins Chelsea Boot",
+    "category": "Fashion",
+    "originalPrice": 91,
+    "dealPrice": 59.98,
+    "discount": 34,
+    "image": "https://m.media-amazon.com/images/I/41Pk-L8qCHL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DYQDHP4V?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-18",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.773Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37413",
+    "asin": "B0FMY556GK",
+    "title": "4 Pack Air Tracker Tags",
+    "category": "General",
+    "originalPrice": 27.99,
+    "dealPrice": 9.99,
+    "discount": 64,
+    "image": "https://m.media-amazon.com/images/I/31N3YS+IPrL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FMY556GK?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-17",
+    "hot": true,
+    "posted_at": "2026-10-14T22:00:22.772Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37411",
+    "asin": "B074V3N9VW",
+    "title": "Ajax Ultra Dish Soap 52 oz",
+    "category": "Beauty",
+    "originalPrice": 3.97,
+    "dealPrice": 2.99,
+    "discount": 25,
+    "image": "https://m.media-amazon.com/images/I/41VBgumlrHL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B074V3N9VW?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-18",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.772Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37410",
+    "asin": "B0FVNW7B27",
+    "title": "12 Piece Freshware Glass Storage Containers",
+    "category": "Home & Kitchen",
+    "originalPrice": 38.99,
+    "dealPrice": 25.1,
+    "discount": 36,
+    "image": "https://m.media-amazon.com/images/I/51adLGM9H2L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FVNW7B27?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-17",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.772Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37408",
+    "asin": "B0FY5YH44D",
+    "title": "Knife Block Set",
+    "category": "Home & Kitchen",
+    "originalPrice": 34.99,
+    "dealPrice": 17.49,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41nTCuKLV6L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FY5YH44D?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.772Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37407",
+    "asin": "B00D7OAOYI",
+    "title": "Hasbro Gaming Trouble Board Game",
+    "category": "Toys & Games",
+    "originalPrice": 9.99,
+    "dealPrice": 6.99,
+    "discount": 30,
+    "image": "https://m.media-amazon.com/images/I/51B2XoENFeL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B00D7OAOYI?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.772Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37406",
+    "asin": "B0F4DKZRGQ",
+    "title": "Dual Computer Speakers",
+    "category": "Electronics",
+    "originalPrice": 39.99,
+    "dealPrice": 9.99,
+    "discount": 75,
+    "image": "https://m.media-amazon.com/images/I/41HoXfkKp6L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0F4DKZRGQ?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-17",
+    "hot": true,
+    "posted_at": "2026-10-14T22:00:22.772Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37244",
+    "asin": "B09YKRZR22",
+    "title": "8 Pack Puffs Plus Lotion Tissues",
+    "category": "Beauty",
+    "originalPrice": 17.91,
+    "dealPrice": 9.59,
+    "discount": 46,
+    "image": "https://m.media-amazon.com/images/I/41eGX+IZO9L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B09YKRZR22?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-15",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.771Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37238",
+    "asin": "B01M8PJO3W",
+    "title": "Munchkin Sound Machine",
+    "category": "General",
+    "originalPrice": 20.99,
+    "dealPrice": 13.29,
+    "discount": 37,
+    "image": "https://m.media-amazon.com/images/I/31H4kMN9x-L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B01M8PJO3W?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-19",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.771Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37424",
+    "asin": "B09MGCFHDK",
+    "title": "Lacoste Bath Towel",
+    "category": "Home & Kitchen",
+    "originalPrice": 36,
+    "dealPrice": 12.99,
+    "discount": 64,
+    "image": "https://m.media-amazon.com/images/I/31MsxghdlcL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B09MGCFHDK?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": true,
+    "posted_at": "2026-10-14T22:00:22.771Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37423",
+    "asin": "B0DPLK18QY",
+    "title": "KEEN Utility Skokie Work Boots",
+    "category": "Fashion",
+    "originalPrice": 150,
+    "dealPrice": 90,
+    "discount": 40,
+    "image": "https://m.media-amazon.com/images/I/41UD31TctmL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DPLK18QY?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.771Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37422",
+    "asin": "B0D9MQ5916",
+    "title": "Calvin Klein Fleece Hoodie",
+    "category": "Fashion",
+    "originalPrice": 84.99,
+    "dealPrice": 24.82,
+    "discount": 71,
+    "image": "https://m.media-amazon.com/images/I/418jV7TOE5L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0D9MQ5916?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-18",
+    "hot": true,
+    "posted_at": "2026-10-14T22:00:22.771Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37421",
+    "asin": "B0DBV36LTZ",
+    "title": "Oneida 20 Piece Silverware Set",
+    "category": "General",
+    "originalPrice": 59.99,
+    "dealPrice": 30.59,
+    "discount": 49,
+    "image": "https://m.media-amazon.com/images/I/31mBwHduOOL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DBV36LTZ?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-18",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.771Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37419",
+    "asin": "B00002N5N4",
+    "title": "ESTWING Framing Hammer",
+    "category": "General",
+    "originalPrice": 35.98,
+    "dealPrice": 21.57,
+    "discount": 40,
+    "image": "https://m.media-amazon.com/images/I/31e38OeUN2L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B00002N5N4?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.771Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37418",
+    "asin": "B0B816VMG9",
+    "title": "Victoria Cast Iron Saucepan 2QT",
+    "category": "General",
+    "originalPrice": 19.99,
+    "dealPrice": 11.99,
+    "discount": 40,
+    "image": "https://m.media-amazon.com/images/I/31fDFfEGW6L._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0B816VMG9?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-16",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.771Z",
+    "gender": "Unisex"
+  },
+  {
+    "id": "sd_37412",
+    "asin": "B0FMNKXVT7",
+    "title": "2 Leather Ratchet Belts",
+    "category": "General",
+    "originalPrice": 32.99,
+    "dealPrice": 12.49,
+    "discount": 62,
+    "image": "https://m.media-amazon.com/images/I/51OeeTH63gL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FMNKXVT7?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-18",
+    "hot": false,
+    "posted_at": "2026-10-14T22:00:22.769Z",
+    "gender": "Unisex"
+  },
+  {
     "id": "sc_15424547356968",
     "asin": "B0GWZLDXYW",
     "title": "2 Quart Heart Shaped Enameled Cast Iron Dutch Oven",
@@ -12,7 +412,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": true,
-    "posted_at": "2026-10-14T16:00:30.490Z"
+    "posted_at": "2026-10-14T16:00:30.490Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424551616808",
@@ -27,7 +428,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:29.900Z"
+    "posted_at": "2026-10-14T16:00:29.900Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424553877800",
@@ -42,7 +444,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": true,
-    "posted_at": "2026-10-14T16:00:29.273Z"
+    "posted_at": "2026-10-14T16:00:29.273Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424556302632",
@@ -57,7 +460,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:28.629Z"
+    "posted_at": "2026-10-14T16:00:28.629Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424560431400",
@@ -72,7 +476,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": true,
-    "posted_at": "2026-10-14T16:00:27.874Z"
+    "posted_at": "2026-10-14T16:00:27.874Z",
+    "gender": "Women"
   },
   {
     "id": "sc_15424563872040",
@@ -87,7 +492,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": true,
-    "posted_at": "2026-10-14T16:00:26.269Z"
+    "posted_at": "2026-10-14T16:00:26.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424566559016",
@@ -102,7 +508,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:25.635Z"
+    "posted_at": "2026-10-14T16:00:25.635Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424567017768",
@@ -117,7 +524,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": true,
-    "posted_at": "2026-10-14T16:00:24.979Z"
+    "posted_at": "2026-10-14T16:00:24.979Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424599982376",
@@ -132,7 +540,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:24.359Z"
+    "posted_at": "2026-10-14T16:00:24.359Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424677904680",
@@ -147,7 +556,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:23.613Z"
+    "posted_at": "2026-10-14T16:00:23.613Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424732758312",
@@ -162,7 +572,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:22.945Z"
+    "posted_at": "2026-10-14T16:00:22.945Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424771785000",
@@ -177,22 +588,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:22.334Z"
-  },
-  {
-    "id": "sd_37367",
-    "asin": "B0FQG17FTN",
-    "title": "Apple Watch Ultra 3",
-    "category": "Fashion",
-    "originalPrice": 899,
-    "dealPrice": 599.97,
-    "discount": 33,
-    "image": "https://m.media-amazon.com/images/I/51x8F3QDUWL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FQG17FTN?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-13",
-    "hot": false,
-    "posted_at": "2026-10-14T16:00:21.662Z"
+    "posted_at": "2026-10-14T16:00:22.334Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37396",
@@ -207,7 +604,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37394",
@@ -222,7 +620,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37392",
@@ -237,7 +636,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": true,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37390",
@@ -252,7 +652,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37388",
@@ -267,7 +668,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37386",
@@ -282,7 +684,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37385",
@@ -297,7 +700,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37384",
@@ -312,7 +716,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37383",
@@ -327,7 +732,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37382",
@@ -342,7 +748,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37381",
@@ -357,7 +764,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.661Z"
+    "posted_at": "2026-10-14T16:00:21.661Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37387",
@@ -372,7 +780,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T16:00:21.659Z"
+    "posted_at": "2026-10-14T16:00:21.659Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423235031336",
@@ -387,7 +796,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": true,
-    "posted_at": "2026-10-14T10:00:36.675Z"
+    "posted_at": "2026-10-14T10:00:36.675Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423586861352",
@@ -402,7 +812,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:34.798Z"
+    "posted_at": "2026-10-14T10:00:34.798Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423592562984",
@@ -417,7 +828,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:34.182Z"
+    "posted_at": "2026-10-14T10:00:34.182Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423595905320",
@@ -432,7 +844,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:33.497Z"
+    "posted_at": "2026-10-14T10:00:33.497Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423598919976",
@@ -447,7 +860,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:32.866Z"
+    "posted_at": "2026-10-14T10:00:32.866Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423605539112",
@@ -462,7 +876,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:32.238Z"
+    "posted_at": "2026-10-14T10:00:32.238Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423611207976",
@@ -477,7 +892,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:31.611Z"
+    "posted_at": "2026-10-14T10:00:31.611Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423613403432",
@@ -492,7 +908,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:30.963Z"
+    "posted_at": "2026-10-14T10:00:30.963Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423646990632",
@@ -507,7 +924,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:29.760Z"
+    "posted_at": "2026-10-14T10:00:29.760Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423649120552",
@@ -522,7 +940,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:29.159Z"
+    "posted_at": "2026-10-14T10:00:29.159Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423661408552",
@@ -537,7 +956,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T10:00:28.543Z"
+    "posted_at": "2026-10-14T10:00:28.543Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423668191528",
@@ -552,7 +972,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:31.980Z"
+    "posted_at": "2026-10-14T04:00:31.980Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423723667752",
@@ -567,7 +988,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:31.239Z"
+    "posted_at": "2026-10-14T04:00:31.239Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423860408616",
@@ -582,7 +1004,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:30.505Z"
+    "posted_at": "2026-10-14T04:00:30.505Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423865618728",
@@ -597,7 +1020,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:29.796Z"
+    "posted_at": "2026-10-14T04:00:29.796Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423871189288",
@@ -612,7 +1036,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:29.124Z"
+    "posted_at": "2026-10-14T04:00:29.124Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423898026280",
@@ -627,7 +1052,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:28.447Z"
+    "posted_at": "2026-10-14T04:00:28.447Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423902056744",
@@ -642,7 +1068,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:27.492Z"
+    "posted_at": "2026-10-14T04:00:27.492Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423943147816",
@@ -657,7 +1084,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:26.806Z"
+    "posted_at": "2026-10-14T04:00:26.806Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424053674280",
@@ -672,7 +1100,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:26.175Z"
+    "posted_at": "2026-10-14T04:00:26.175Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424063897896",
@@ -687,7 +1116,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:25.507Z"
+    "posted_at": "2026-10-14T04:00:25.507Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424095945000",
@@ -702,7 +1132,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:24.793Z"
+    "posted_at": "2026-10-14T04:00:24.793Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424096174376",
@@ -717,7 +1148,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:24.114Z"
+    "posted_at": "2026-10-14T04:00:24.114Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424151028008",
@@ -732,7 +1164,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:23.442Z"
+    "posted_at": "2026-10-14T04:00:23.442Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424152928552",
@@ -747,7 +1180,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:22.699Z"
+    "posted_at": "2026-10-14T04:00:22.699Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15424160170280",
@@ -762,7 +1196,8 @@
     "store": "Amazon",
     "expires": "2026-10-19",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:22.025Z"
+    "posted_at": "2026-10-14T04:00:22.025Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_30291",
@@ -777,7 +1212,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:21.264Z"
+    "posted_at": "2026-10-14T04:00:21.264Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_29081",
@@ -792,7 +1228,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:21.264Z"
+    "posted_at": "2026-10-14T04:00:21.264Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_27648",
@@ -807,7 +1244,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:21.264Z"
+    "posted_at": "2026-10-14T04:00:21.264Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37376",
@@ -822,7 +1260,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:21.264Z"
+    "posted_at": "2026-10-14T04:00:21.264Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_36633",
@@ -837,7 +1276,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:21.263Z"
+    "posted_at": "2026-10-14T04:00:21.263Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_33542",
@@ -852,7 +1292,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:21.263Z"
+    "posted_at": "2026-10-14T04:00:21.263Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_30556",
@@ -867,7 +1308,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:21.263Z"
+    "posted_at": "2026-10-14T04:00:21.263Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_30472",
@@ -882,7 +1324,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-14T04:00:21.263Z"
+    "posted_at": "2026-10-14T04:00:21.263Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423364956456",
@@ -897,7 +1340,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:33.664Z"
+    "posted_at": "2026-10-13T22:00:33.664Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423370756392",
@@ -912,7 +1356,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:33.069Z"
+    "posted_at": "2026-10-13T22:00:33.069Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423377080616",
@@ -927,7 +1372,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:32.362Z"
+    "posted_at": "2026-10-13T22:00:32.362Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423392448808",
@@ -942,7 +1388,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:31.584Z"
+    "posted_at": "2026-10-13T22:00:31.584Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423417778472",
@@ -957,7 +1404,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:30.916Z"
+    "posted_at": "2026-10-13T22:00:30.916Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423420760360",
@@ -972,7 +1420,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:30.321Z"
+    "posted_at": "2026-10-13T22:00:30.321Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423435309352",
@@ -987,7 +1436,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:29.525Z"
+    "posted_at": "2026-10-13T22:00:29.525Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423447761192",
@@ -1002,7 +1452,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:28.905Z"
+    "posted_at": "2026-10-13T22:00:28.905Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423451627816",
@@ -1017,7 +1468,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:28.311Z"
+    "posted_at": "2026-10-13T22:00:28.311Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423466766632",
@@ -1032,7 +1484,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:27.680Z"
+    "posted_at": "2026-10-13T22:00:27.680Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423511167272",
@@ -1047,7 +1500,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:27.051Z"
+    "posted_at": "2026-10-13T22:00:27.051Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423546655016",
@@ -1062,7 +1516,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:26.400Z"
+    "posted_at": "2026-10-13T22:00:26.400Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15423562744104",
@@ -1077,7 +1532,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T22:00:25.789Z"
+    "posted_at": "2026-10-13T22:00:25.789Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37363",
@@ -1092,7 +1548,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.986Z"
+    "posted_at": "2026-10-13T22:00:24.986Z",
+    "gender": "Women"
   },
   {
     "id": "sd_37361",
@@ -1107,7 +1564,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.986Z"
+    "posted_at": "2026-10-13T22:00:24.986Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37360",
@@ -1122,7 +1580,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.986Z"
+    "posted_at": "2026-10-13T22:00:24.986Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37359",
@@ -1137,7 +1596,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.986Z"
+    "posted_at": "2026-10-13T22:00:24.986Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37375",
@@ -1152,7 +1612,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.985Z"
+    "posted_at": "2026-10-13T22:00:24.985Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37374",
@@ -1167,7 +1628,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.985Z"
+    "posted_at": "2026-10-13T22:00:24.985Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37372",
@@ -1182,7 +1644,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.985Z"
+    "posted_at": "2026-10-13T22:00:24.985Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37371",
@@ -1197,7 +1660,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.985Z"
+    "posted_at": "2026-10-13T22:00:24.985Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37369",
@@ -1212,7 +1676,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.985Z"
+    "posted_at": "2026-10-13T22:00:24.985Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37368",
@@ -1227,7 +1692,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.985Z"
+    "posted_at": "2026-10-13T22:00:24.985Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37356",
@@ -1242,7 +1708,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-13T22:00:24.983Z"
+    "posted_at": "2026-10-13T22:00:24.983Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422598283560",
@@ -1257,7 +1724,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:33.732Z"
+    "posted_at": "2026-10-13T16:00:33.732Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422599856424",
@@ -1272,7 +1740,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T16:00:33.062Z"
+    "posted_at": "2026-10-13T16:00:33.062Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422600905000",
@@ -1287,7 +1756,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:32.412Z"
+    "posted_at": "2026-10-13T16:00:32.412Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422603329832",
@@ -1302,7 +1772,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:31.699Z"
+    "posted_at": "2026-10-13T16:00:31.699Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422614044968",
@@ -1317,7 +1788,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T16:00:31.040Z"
+    "posted_at": "2026-10-13T16:00:31.040Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422616174888",
@@ -1332,7 +1804,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T16:00:30.414Z"
+    "posted_at": "2026-10-13T16:00:30.414Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422617092392",
@@ -1347,7 +1820,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T16:00:29.736Z"
+    "posted_at": "2026-10-13T16:00:29.736Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422619910440",
@@ -1362,7 +1836,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T16:00:29.093Z"
+    "posted_at": "2026-10-13T16:00:29.093Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422620369192",
@@ -1377,7 +1852,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T16:00:28.410Z"
+    "posted_at": "2026-10-13T16:00:28.410Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422623482152",
@@ -1392,7 +1868,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:27.730Z"
+    "posted_at": "2026-10-13T16:00:27.730Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422623777064",
@@ -1407,7 +1884,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:27.028Z"
+    "posted_at": "2026-10-13T16:00:27.028Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422624137512",
@@ -1422,7 +1900,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:26.355Z"
+    "posted_at": "2026-10-13T16:00:26.355Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422887625000",
@@ -1437,7 +1916,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T16:00:25.727Z"
+    "posted_at": "2026-10-13T16:00:25.727Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422916002088",
@@ -1452,7 +1932,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:24.785Z"
+    "posted_at": "2026-10-13T16:00:24.785Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15422926553384",
@@ -1467,7 +1948,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:23.976Z"
+    "posted_at": "2026-10-13T16:00:23.976Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37354",
@@ -1482,7 +1964,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:23.236Z"
+    "posted_at": "2026-10-13T16:00:23.236Z",
+    "gender": "Men"
   },
   {
     "id": "sd_37352",
@@ -1497,7 +1980,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:23.236Z"
+    "posted_at": "2026-10-13T16:00:23.236Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37350",
@@ -1512,7 +1996,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:23.236Z"
+    "posted_at": "2026-10-13T16:00:23.236Z",
+    "gender": "Men"
   },
   {
     "id": "sd_37347",
@@ -1527,7 +2012,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:23.236Z"
+    "posted_at": "2026-10-13T16:00:23.236Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37344",
@@ -1542,7 +2028,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": true,
-    "posted_at": "2026-10-13T16:00:23.236Z"
+    "posted_at": "2026-10-13T16:00:23.236Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37343",
@@ -1557,7 +2044,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:23.236Z"
+    "posted_at": "2026-10-13T16:00:23.236Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37342",
@@ -1572,7 +2060,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:23.236Z"
+    "posted_at": "2026-10-13T16:00:23.236Z",
+    "gender": "Women"
   },
   {
     "id": "sd_37346",
@@ -1587,7 +2076,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T16:00:23.235Z"
+    "posted_at": "2026-10-13T16:00:23.235Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421262496040",
@@ -1602,7 +2092,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T10:00:34.417Z"
+    "posted_at": "2026-10-13T10:00:34.417Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421270753576",
@@ -1617,7 +2108,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T10:00:33.705Z"
+    "posted_at": "2026-10-13T10:00:33.705Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421272523048",
@@ -1632,7 +2124,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T10:00:33.068Z"
+    "posted_at": "2026-10-13T10:00:33.068Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421276881192",
@@ -1647,7 +2140,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T10:00:31.136Z"
+    "posted_at": "2026-10-13T10:00:31.136Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421283696936",
@@ -1662,7 +2156,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T10:00:29.565Z"
+    "posted_at": "2026-10-13T10:00:29.565Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421283959080",
@@ -1677,7 +2172,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T10:00:28.619Z"
+    "posted_at": "2026-10-13T10:00:28.619Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421284188456",
@@ -1692,7 +2188,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T10:00:27.956Z"
+    "posted_at": "2026-10-13T10:00:27.956Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421287366952",
@@ -1707,7 +2204,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T10:00:26.751Z"
+    "posted_at": "2026-10-13T10:00:26.751Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421318758696",
@@ -1722,7 +2220,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": true,
-    "posted_at": "2026-10-13T10:00:25.588Z"
+    "posted_at": "2026-10-13T10:00:25.588Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421331669288",
@@ -1737,7 +2236,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:28.725Z"
+    "posted_at": "2026-10-13T04:00:28.725Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421333864744",
@@ -1752,7 +2252,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:28.124Z"
+    "posted_at": "2026-10-13T04:00:28.124Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421335634216",
@@ -1767,7 +2268,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:27.507Z"
+    "posted_at": "2026-10-13T04:00:27.507Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421337010472",
@@ -1782,7 +2284,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:26.955Z"
+    "posted_at": "2026-10-13T04:00:26.955Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421338583336",
@@ -1797,7 +2300,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:26.376Z"
+    "posted_at": "2026-10-13T04:00:26.376Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421364994344",
@@ -1811,8 +2315,9 @@
     "affiliate_url": "https://www.amazon.com/dp/B0GK8XWNZS?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-10-18",
-    "hot": true,
-    "posted_at": "2026-10-13T04:00:25.785Z"
+    "hot": false,
+    "posted_at": "2026-10-13T04:00:25.785Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421374923048",
@@ -1827,7 +2332,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:25.147Z"
+    "posted_at": "2026-10-13T04:00:25.147Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421376135464",
@@ -1842,7 +2348,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:24.570Z"
+    "posted_at": "2026-10-13T04:00:24.570Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421379215656",
@@ -1857,7 +2364,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:23.943Z"
+    "posted_at": "2026-10-13T04:00:23.943Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421382230312",
@@ -1872,7 +2380,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:23.340Z"
+    "posted_at": "2026-10-13T04:00:23.340Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421385113896",
@@ -1887,7 +2396,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:22.793Z"
+    "posted_at": "2026-10-13T04:00:22.793Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421386228008",
@@ -1902,7 +2412,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:22.205Z"
+    "posted_at": "2026-10-13T04:00:22.205Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421440524584",
@@ -1917,7 +2428,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:21.029Z"
+    "posted_at": "2026-10-13T04:00:21.029Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421500850472",
@@ -1932,7 +2444,8 @@
     "store": "Amazon",
     "expires": "2026-10-18",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:20.386Z"
+    "posted_at": "2026-10-13T04:00:20.386Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37307",
@@ -1947,7 +2460,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:19.677Z"
+    "posted_at": "2026-10-13T04:00:19.677Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37340",
@@ -1962,7 +2476,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:19.676Z"
+    "posted_at": "2026-10-13T04:00:19.676Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37339",
@@ -1977,7 +2492,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-13T04:00:19.676Z"
+    "posted_at": "2026-10-13T04:00:19.676Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37338",
@@ -1992,7 +2508,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": true,
-    "posted_at": "2026-10-13T04:00:19.676Z"
+    "posted_at": "2026-10-13T04:00:19.676Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37322",
@@ -2007,7 +2524,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.270Z"
+    "posted_at": "2026-10-12T22:00:21.270Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37321",
@@ -2022,7 +2540,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.270Z"
+    "posted_at": "2026-10-12T22:00:21.270Z",
+    "gender": "Men"
   },
   {
     "id": "sd_37320",
@@ -2037,7 +2556,8 @@
     "store": "Amazon",
     "expires": "2026-10-15",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.270Z"
+    "posted_at": "2026-10-12T22:00:21.270Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37318",
@@ -2052,7 +2572,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.270Z"
+    "posted_at": "2026-10-12T22:00:21.270Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37315",
@@ -2067,7 +2588,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.270Z"
+    "posted_at": "2026-10-12T22:00:21.270Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37313",
@@ -2082,7 +2604,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.270Z"
+    "posted_at": "2026-10-12T22:00:21.270Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37311",
@@ -2097,7 +2620,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.270Z"
+    "posted_at": "2026-10-12T22:00:21.270Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37337",
@@ -2112,7 +2636,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.269Z"
+    "posted_at": "2026-10-12T22:00:21.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37336",
@@ -2127,7 +2652,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.269Z"
+    "posted_at": "2026-10-12T22:00:21.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37335",
@@ -2142,7 +2668,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.269Z"
+    "posted_at": "2026-10-12T22:00:21.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37334",
@@ -2157,7 +2684,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.269Z"
+    "posted_at": "2026-10-12T22:00:21.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37333",
@@ -2172,7 +2700,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.269Z"
+    "posted_at": "2026-10-12T22:00:21.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37332",
@@ -2187,7 +2716,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.269Z"
+    "posted_at": "2026-10-12T22:00:21.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37331",
@@ -2202,7 +2732,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.269Z"
+    "posted_at": "2026-10-12T22:00:21.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37330",
@@ -2217,7 +2748,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.269Z"
+    "posted_at": "2026-10-12T22:00:21.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37323",
@@ -2232,7 +2764,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.269Z"
+    "posted_at": "2026-10-12T22:00:21.269Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37301",
@@ -2247,7 +2780,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.268Z"
+    "posted_at": "2026-10-12T22:00:21.268Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37319",
@@ -2262,7 +2796,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T22:00:21.267Z"
+    "posted_at": "2026-10-12T22:00:21.267Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420891824424",
@@ -2277,7 +2812,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:31.856Z"
+    "posted_at": "2026-10-12T16:00:31.856Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420895887656",
@@ -2292,7 +2828,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": true,
-    "posted_at": "2026-10-12T16:00:31.237Z"
+    "posted_at": "2026-10-12T16:00:31.237Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420900311336",
@@ -2307,7 +2844,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": true,
-    "posted_at": "2026-10-12T16:00:30.583Z"
+    "posted_at": "2026-10-12T16:00:30.583Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420902048040",
@@ -2322,7 +2860,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": true,
-    "posted_at": "2026-10-12T16:00:29.989Z"
+    "posted_at": "2026-10-12T16:00:29.989Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420903915816",
@@ -2337,7 +2876,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:29.391Z"
+    "posted_at": "2026-10-12T16:00:29.391Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420904636712",
@@ -2352,7 +2892,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:28.790Z"
+    "posted_at": "2026-10-12T16:00:28.790Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420905586984",
@@ -2367,7 +2908,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:28.201Z"
+    "posted_at": "2026-10-12T16:00:28.201Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420905849128",
@@ -2382,7 +2924,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": true,
-    "posted_at": "2026-10-12T16:00:27.611Z"
+    "posted_at": "2026-10-12T16:00:27.611Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420919841064",
@@ -2397,7 +2940,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:27.000Z"
+    "posted_at": "2026-10-12T16:00:27.000Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420955296040",
@@ -2412,7 +2956,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:26.384Z"
+    "posted_at": "2026-10-12T16:00:26.384Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421015785768",
@@ -2427,7 +2972,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:25.167Z"
+    "posted_at": "2026-10-12T16:00:25.167Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421039182120",
@@ -2442,7 +2988,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": true,
-    "posted_at": "2026-10-12T16:00:24.575Z"
+    "posted_at": "2026-10-12T16:00:24.575Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15421052191016",
@@ -2457,7 +3004,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:23.975Z"
+    "posted_at": "2026-10-12T16:00:23.975Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37297",
@@ -2472,7 +3020,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:23.350Z"
+    "posted_at": "2026-10-12T16:00:23.350Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37296",
@@ -2487,7 +3036,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:23.350Z"
+    "posted_at": "2026-10-12T16:00:23.350Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37295",
@@ -2502,7 +3052,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:23.350Z"
+    "posted_at": "2026-10-12T16:00:23.350Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37294",
@@ -2517,7 +3068,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": true,
-    "posted_at": "2026-10-12T16:00:23.350Z"
+    "posted_at": "2026-10-12T16:00:23.350Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37293",
@@ -2532,7 +3084,8 @@
     "store": "Amazon",
     "expires": "2026-10-14",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:23.350Z"
+    "posted_at": "2026-10-12T16:00:23.350Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37288",
@@ -2547,7 +3100,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:23.350Z"
+    "posted_at": "2026-10-12T16:00:23.350Z",
+    "gender": "Men"
   },
   {
     "id": "sd_37287",
@@ -2562,7 +3116,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:23.350Z"
+    "posted_at": "2026-10-12T16:00:23.350Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37286",
@@ -2577,7 +3132,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:23.350Z"
+    "posted_at": "2026-10-12T16:00:23.350Z",
+    "gender": "Unisex"
   },
   {
     "id": "sd_37291",
@@ -2592,7 +3148,8 @@
     "store": "Amazon",
     "expires": "2026-10-16",
     "hot": false,
-    "posted_at": "2026-10-12T16:00:23.347Z"
+    "posted_at": "2026-10-12T16:00:23.347Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420238397736",
@@ -2607,7 +3164,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T10:00:34.029Z"
+    "posted_at": "2026-10-12T10:00:34.029Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420244492584",
@@ -2622,7 +3180,8 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": true,
-    "posted_at": "2026-10-12T10:00:33.435Z"
+    "posted_at": "2026-10-12T10:00:33.435Z",
+    "gender": "Unisex"
   },
   {
     "id": "sc_15420245836072",
@@ -2637,366 +3196,7 @@
     "store": "Amazon",
     "expires": "2026-10-17",
     "hot": false,
-    "posted_at": "2026-10-12T10:00:32.847Z"
-  },
-  {
-    "id": "sc_15420246065448",
-    "asin": "B07DQ46CLX",
-    "title": "40 Count Lay's Salt & Vinegar Potato Chips (Triangle-K)",
-    "category": "Grocery",
-    "originalPrice": 22.43,
-    "dealPrice": 14.86,
-    "discount": 34,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51v0JfUSOHL._SL500_63a54cd8-c69e-49c4-afee-ccdf9f1c6fa4.jpg?v=1791759196",
-    "affiliate_url": "https://www.amazon.com/dp/B07DQ46CLX?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T10:00:32.231Z"
-  },
-  {
-    "id": "sc_15420248949032",
-    "asin": "B082V9BTWQ",
-    "title": "70 Count Finish Quantum Dishwasher Detergent Pods",
-    "category": "Home & Kitchen",
-    "originalPrice": 19.99,
-    "dealPrice": 10.99,
-    "discount": 45,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51iym68hIVL._SL500.jpg?v=1791759628",
-    "affiliate_url": "https://www.amazon.com/dp/B082V9BTWQ?tag=dealspulse06-20&m=ATVPDKIKX0DER",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T10:00:31.565Z"
-  },
-  {
-    "id": "sc_15420265431336",
-    "asin": "B0CJFJHM76",
-    "title": "MiroPure 1-Inch Titanium Ceramic Hair Straightener",
-    "category": "Beauty",
-    "originalPrice": 35.98,
-    "dealPrice": 17.97,
-    "discount": 50,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41oT6HqAl4L._SL500.jpg?v=1791762919",
-    "affiliate_url": "https://www.amazon.com/dp/B0CJFJHM76?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T10:00:30.968Z"
-  },
-  {
-    "id": "sc_15420296233256",
-    "asin": "B000T9UV1U",
-    "title": "12 Pack Diet Coke Caffeine-Free Soda Cans",
-    "category": "Grocery",
-    "originalPrice": 7.98,
-    "dealPrice": 4.45,
-    "discount": 44,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41ONlzppSjL._SL500_e6376386-4aec-4ce8-a238-076e21774e67.jpg?v=1791764484",
-    "affiliate_url": "https://www.amazon.com/dp/B000T9UV1U?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T10:00:29.741Z"
-  },
-  {
-    "id": "sc_15420309537064",
-    "asin": "B00JEZ20GO",
-    "title": "40 oz ThermoFlask Insulated Stainless Steel Water Bottle",
-    "category": "Home & Kitchen",
-    "originalPrice": 29.99,
-    "dealPrice": 15.99,
-    "discount": 47,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31vUAWxa0YL._SL500.jpg?v=1791765299",
-    "affiliate_url": "https://www.amazon.com/dp/B00JEZ20GO?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T10:00:29.103Z"
-  },
-  {
-    "id": "sc_15420318253352",
-    "asin": "B0GFXMLVWS",
-    "title": "Bluey Cruise Ship Playset with Figures and Accessories",
-    "category": "General",
-    "originalPrice": 64.99,
-    "dealPrice": 25,
-    "discount": 62,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41wTQwRH3rL._SL500.jpg?v=1791765638",
-    "affiliate_url": "https://www.amazon.com/dp/B0GFXMLVWS?tag=dealspulse06-20&m=ATVPDKIKX0DER",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": true,
-    "posted_at": "2026-10-12T10:00:28.513Z"
-  },
-  {
-    "id": "sc_15420327919912",
-    "asin": "B07HNSYZ26",
-    "title": "32 Pack Blue Diamond Low Sodium Almond Snack Packs (OK)",
-    "category": "Grocery",
-    "originalPrice": 22.99,
-    "dealPrice": 12.15,
-    "discount": 47,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41kZ1xqhnZL._SL500_bc39d4f3-2372-4944-a5a8-c51f461b706c.jpg?v=1791766980",
-    "affiliate_url": "https://www.amazon.com/dp/B07HNSYZ26?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T10:00:27.272Z"
-  },
-  {
-    "id": "sc_15420331524392",
-    "asin": "B0FQV3FD49",
-    "title": "16 Pack Wheat Straw 20 oz Drinking Cups",
-    "category": "General",
-    "originalPrice": 16.99,
-    "dealPrice": 8.49,
-    "discount": 50,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31n5ySHpHnL._SL500.jpg?v=1791768431",
-    "affiliate_url": "https://www.amazon.com/dp/B0FQV3FD49?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:30.511Z"
-  },
-  {
-    "id": "sc_15420332278056",
-    "asin": "B0GX5HKKMW",
-    "title": "Astercook Large Bamboo Kitchen Cutting Board",
-    "category": "Home & Kitchen",
-    "originalPrice": 14.99,
-    "dealPrice": 7.49,
-    "discount": 50,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41Oeb-ZxhJL._SL500_7fcc0132-d020-41d6-8791-c33cddd86a93.jpg?v=1791768743",
-    "affiliate_url": "https://www.amazon.com/dp/B0GX5HKKMW?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:29.838Z"
-  },
-  {
-    "id": "sc_15420332376360",
-    "asin": "B000LDF0UG",
-    "title": "12 Pack Akro-Mils Plastic Storage Bins",
-    "category": "Home & Kitchen",
-    "originalPrice": 47.88,
-    "dealPrice": 31.47,
-    "discount": 34,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41EQkL0Uk9L._SL500.jpg?v=1791768792",
-    "affiliate_url": "https://www.amazon.com/dp/B000LDF0UG?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:29.245Z"
-  },
-  {
-    "id": "sc_15420332572968",
-    "asin": "B0GYG2Y47G",
-    "title": "3 Pack Finish Jet-Dry Dishwasher Rinse Aid 23oz",
-    "category": "General",
-    "originalPrice": 30.41,
-    "dealPrice": 20.73,
-    "discount": 32,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/519lMUI9ZvL._SL500.jpg?v=1791769018",
-    "affiliate_url": "https://www.amazon.com/dp/B0GYG2Y47G?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:28.660Z"
-  },
-  {
-    "id": "sc_15420333457704",
-    "asin": "B0883TWZHG",
-    "title": "Wüsthof Gourmet 8-Inch Carving Knife",
-    "category": "Home & Kitchen",
-    "originalPrice": 75,
-    "dealPrice": 56,
-    "discount": 25,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/21BbSrklYFL._SL500.jpg?v=1791769149",
-    "affiliate_url": "https://www.amazon.com/dp/B0883TWZHG?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:28.067Z"
-  },
-  {
-    "id": "sc_15420336570664",
-    "asin": "B0FKBD63D4",
-    "title": "Digital Food Scale with Nutritional Calculator",
-    "category": "General",
-    "originalPrice": 36.99,
-    "dealPrice": 16.64,
-    "discount": 55,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41tAFeNZjkL._SL500.jpg?v=1791769342",
-    "affiliate_url": "https://www.amazon.com/dp/B0FKBD63D4?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:27.473Z"
-  },
-  {
-    "id": "sc_15420338209064",
-    "asin": "B0BSGQL41X",
-    "title": "Sony WH-CH520 Wireless Bluetooth On-Ear Headphones with Mic",
-    "category": "Electronics",
-    "originalPrice": 68,
-    "dealPrice": 33,
-    "discount": 51,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31TpzvxX6IL._SL500_ee73ae23-fbe1-4ce1-994e-62ede77f1a0a.jpg?v=1791769446",
-    "affiliate_url": "https://www.amazon.com/dp/B0BSGQL41X?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:26.878Z"
-  },
-  {
-    "id": "sc_15420339323176",
-    "asin": "B0DGZLGMX1",
-    "title": "adidas Insulated Excelerator Lunch Bag",
-    "category": "Fashion",
-    "originalPrice": 28.73,
-    "dealPrice": 10.58,
-    "discount": 63,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41PubBa8RGL._SL500.jpg?v=1791769572",
-    "affiliate_url": "https://www.amazon.com/dp/B0DGZLGMX1?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": true,
-    "posted_at": "2026-10-12T04:00:25.702Z"
-  },
-  {
-    "id": "sc_15420340011304",
-    "asin": "B0CZ7JD8CW",
-    "title": "Owala 24 oz FreeSip Stainless Steel Water Bottle",
-    "category": "Home & Kitchen",
-    "originalPrice": 29.99,
-    "dealPrice": 19.99,
-    "discount": 33,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/21WD3CsS2KL._SL500.jpg?v=1791769638",
-    "affiliate_url": "https://www.amazon.com/dp/B0CZ7JD8CW?tag=dealspulse06-20&m=ATVPDKIKX0DER",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:25.123Z"
-  },
-  {
-    "id": "sc_15420344533288",
-    "asin": "B09R27GR7Z",
-    "title": "4 Pack Folding Padded Backless Stools",
-    "category": "Furniture",
-    "originalPrice": 129.95,
-    "dealPrice": 49.7,
-    "discount": 62,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/8c6397b4b45e4b4cac96bf37688407a6.jpg?v=1791769773",
-    "affiliate_url": "https://www.amazon.com/dp/B09R27GR7Z?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": true,
-    "posted_at": "2026-10-12T04:00:23.951Z"
-  },
-  {
-    "id": "sc_15420388016424",
-    "asin": "B0GH8V1B24",
-    "title": "Hasbro Gaming Guess Who Bluey Edition Board Game",
-    "category": "Toys & Games",
-    "originalPrice": 24.97,
-    "dealPrice": 11.89,
-    "discount": 52,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51jA8GJ_6zL._SL500.jpg?v=1791774563",
-    "affiliate_url": "https://www.amazon.com/dp/B0GH8V1B24?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:23.364Z"
-  },
-  {
-    "id": "sc_15420402532648",
-    "asin": "B0GRGZ83SM",
-    "title": "24-Inch Artificial Potted Rose Flowers",
-    "category": "General",
-    "originalPrice": 69.99,
-    "dealPrice": 29.99,
-    "discount": 57,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/410i1P9vU2L._SL500.jpg?v=1791776039",
-    "affiliate_url": "https://www.amazon.com/dp/B0GRGZ83SM?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-17",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:22.161Z"
-  },
-  {
-    "id": "sd_37285",
-    "asin": "B0DLKD1CQL",
-    "title": "4 Pack Lenox Gold Dust Highballs",
-    "category": "General",
-    "originalPrice": 3.97,
-    "dealPrice": 1.54,
-    "discount": 61,
-    "image": "https://m.media-amazon.com/images/I/313O7EC6E3L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DLKD1CQL?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-15",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:21.515Z"
-  },
-  {
-    "id": "sd_37284",
-    "asin": "B08J91QSBZ",
-    "title": "230 Count Zero Calorie Sweetener Packets",
-    "category": "General",
-    "originalPrice": 3.97,
-    "dealPrice": 1.54,
-    "discount": 61,
-    "image": "https://m.media-amazon.com/images/I/41vV2gZQaLL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B08J91QSBZ?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-15",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:21.515Z"
-  },
-  {
-    "id": "sd_37283",
-    "asin": "B0DQTLGVG3",
-    "title": "26 Pack Mr. Clean Magic Erasers",
-    "category": "General",
-    "originalPrice": 50.77,
-    "dealPrice": 24.33,
-    "discount": 52,
-    "image": "https://m.media-amazon.com/images/I/419XdJCtmHL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DQTLGVG3?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-14",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:21.515Z"
-  },
-  {
-    "id": "sd_37282",
-    "asin": "B0DXKFGGGM",
-    "title": "3 Section VASAGLE Laundry Hamper",
-    "category": "General",
-    "originalPrice": 59.99,
-    "dealPrice": 43.99,
-    "discount": 27,
-    "image": "https://m.media-amazon.com/images/I/412Tpb5ATJL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0DXKFGGGM?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-14",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:21.515Z"
-  },
-  {
-    "id": "sd_37203",
-    "asin": "B08BPY986S",
-    "title": "6 Pack Amazon Basics Hand Soap 7.5 oz",
-    "category": "Beauty",
-    "originalPrice": 6.25,
-    "dealPrice": 4.69,
-    "discount": 25,
-    "image": "https://m.media-amazon.com/images/I/41niOX894-L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B08BPY986S?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-14",
-    "hot": false,
-    "posted_at": "2026-10-12T04:00:21.514Z"
+    "posted_at": "2026-10-12T10:00:32.847Z",
+    "gender": "Unisex"
   }
 ]
