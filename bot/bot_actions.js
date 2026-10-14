@@ -18,6 +18,7 @@ const fs = require("fs");
 const path = require("path");
 const https = require("https");
 const http = require("http");
+const { guessGender } = require("./gender.js");
 
 const AFFILIATE_TAG    = process.env.AMAZON_AFFILIATE_TAG || "dealspulse06-20";
 const DEALS_JSON_PATH  = path.join(__dirname, "..", "public", "deals.json");
@@ -266,13 +267,18 @@ function saveDeals(newDeals) {
                             // so deals low on the page still get saved eventually
   console.log(`Dedupe: ${skippedId} already stored, ${skippedAsin} duplicate products, ${skippedBlocked} removed by hand, ${additions.length} genuinely new.`);
 
+  // Men / Women / Unisex from explicit title words (bot/gender.js). Applied to
+  // every stored deal, so ones saved before the field existed get backfilled.
+  const untagged = fresh.filter(d => d.gender !== guessGender(d.title)).length;
   const allDeals = rebalanceHot(
     [...additions, ...fresh]
       .sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at))
       .slice(0, MAX_STORED)
+      .map(d => ({ ...d, gender: guessGender(d.title) }))
   );
 
-  const changed = additions.length > 0 || purged > 0;
+  const changed = additions.length > 0 || purged > 0 || untagged > 0;
+  if (untagged) console.log(`Gender-tagged ${untagged} stored deal(s).`);
   if (!changed) {
     console.log("No changes to save.");
     return 0;
