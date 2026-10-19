@@ -360,8 +360,9 @@ async function sendToWhatsApp(deals, groupNames) {
 
   for (const deal of deals) {
     // Tracked link: counts the tap as WhatsApp traffic in /api/stats,
-    // then redirects to the deal page on our site.
-    const shareLink = `${SITE_BASE}/api/go?id=${encodeURIComponent(deal.id)}&src=wa&to=site`;
+    // then redirects to the deal page on our site. /g/:id is a vercel.json
+    // rewrite to /api/go?id=:id&src=wa&to=site — same behaviour, shorter.
+    const shareLink = `${SITE_BASE}/g/${encodeURIComponent(deal.id)}`;
 
     // Compute savings
     const hasSavings = deal.originalPrice > 0 && deal.originalPrice > deal.dealPrice && deal.dealPrice > 0;
