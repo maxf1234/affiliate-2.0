@@ -265,6 +265,13 @@ function saveAnnounced(file, set) {
 // A configured group can be given as a name substring OR a raw group id
 // (…@g.us). Ids need no lookup at all.
 const isGroupId = (s) => /@g\.us$/.test(s.trim());
+// WhatsApp Channels: an "@newsletter" id, or the channel's invite link
+// (https://whatsapp.com/channel/<code>), which is resolved to the id once.
+const isChannelId = (s) => /@newsletter$/.test(s.trim());
+const channelInviteCode = (s) => {
+  const m = s.trim().match(/whatsapp\.com\/channel\/([A-Za-z0-9_-]+)/i);
+  return m ? m[1] : null;
+};
 
 // List all groups this account participates in — a protocol call, not a
 // browser scrape, so it's reliable across WhatsApp web-app changes.
@@ -281,8 +288,24 @@ async function resolveGroupIds(groupNames) {
   const needLookup = [];
   for (const raw of groupNames) {
     const g = raw.trim();
-    if (isGroupId(g)) out.add(g);
+    if (isGroupId(g) || isChannelId(g)) out.add(g);
     else if (resolvedGroupCache.has(g.toLowerCase())) out.add(resolvedGroupCache.get(g.toLowerCase()));
+    else if (channelInviteCode(g)) {
+      // Posting to a channel requires this WhatsApp account to be its owner
+      // or an admin; followers can't post.
+      try {
+        const meta = await sock.newsletterMetadata("invite", channelInviteCode(g));
+        if (meta && meta.id) {
+          resolvedGroupCache.set(g.toLowerCase(), meta.id);
+          out.add(meta.id);
+          console.log(`CHANNEL: ${g} => ${meta.id} (paste this id into the variable to skip the lookup)`);
+        } else {
+          console.warn(`Channel link ${g} did not resolve — check the link.`);
+        }
+      } catch (e) {
+        console.warn(`Channel lookup failed for ${g}: ${e.message}`);
+      }
+    }
     else needLookup.push(g);
   }
 
@@ -314,7 +337,7 @@ async function sendToWhatsApp(deals, groupNames) {
 
   const groupIds = await resolveGroupIds(groupNames);
   if (!groupIds.length) {
-    console.warn(`No WhatsApp groups resolved from [${groupNames.join(", ")}]. Set names or @g.us ids in the group variables.`);
+    console.warn(`No WhatsApp groups resolved from [${groupNames.join(", ")}]. Set group names, @g.us ids, channel links or @newsletter ids in the group variables.`);
     return false;
   }
 

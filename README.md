@@ -216,6 +216,13 @@ women's deal every 6–7 days. The women's tier skips any day with nothing new
 and logs `No new deals to announce`; it fills up only as women's-heavy sources
 are added. The thrice-daily tier takes `Men,Unisex` for the same reason.
 
+**WhatsApp Channels.** Any of the three variables can also hold a channel:
+paste its invite link (`https://whatsapp.com/channel/…`) or its `…@newsletter`
+id. The tier you put it in sets its schedule. A link is resolved to the id on
+first use and the bot logs `CHANNEL: <link> => <id>@newsletter`; paste that id
+in instead to skip the lookup. The linked WhatsApp number must be the channel's
+owner or an admin, because followers can't post.
+
 Each `WHATSAPP_GROUPS` / `THRICE_DAILY_GROUPS` / `WOMENS_DAILY_GROUPS` entry can be a **group-name
 substring** or a raw **group id** (`…@g.us`). Ids are break-proof — they keep
 working even when a WhatsApp web-app update breaks name lookup. The bot prints
