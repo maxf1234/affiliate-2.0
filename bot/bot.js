@@ -43,9 +43,14 @@ const parseGroups = (v) => (v || "").split(",").map(g => g.trim()).filter(Boolea
 //   WHATSAPP_GROUPS      — one deal every hour (oldest un-posted first)
 //   THRICE_DAILY_GROUPS  — 3 men's/unisex deals/day: 9 AM 2nd best, 12 PM 3rd best, 9 PM best
 //   WOMENS_DAILY_GROUPS  — 1 women's deal/day (best discount)
+//   WHATSAPP_CHANNELS    — WhatsApp Channels: one deal per CHANNEL_CRON
+//                          (default hourly), oldest un-posted first
 const WHATSAPP_GROUPS     = parseGroups(process.env.WHATSAPP_GROUPS);
 const THRICE_DAILY_GROUPS = parseGroups(process.env.THRICE_DAILY_GROUPS);
 const WOMENS_DAILY_GROUPS = parseGroups(process.env.WOMENS_DAILY_GROUPS);
+// Channel invite links (https://whatsapp.com/channel/...) or @newsletter ids.
+const WHATSAPP_CHANNELS   = parseGroups(process.env.WHATSAPP_CHANNELS);
+const CHANNEL_CRON        = process.env.CHANNEL_CRON || "0 * * * *";
 // Which deal categories the thrice-daily tier may post (comma-separated).
 const THRICE_DAILY_CATEGORIES = parseGroups(process.env.THRICE_DAILY_CATEGORIES || "Fashion");
 // Which genders it may post: Men, Women, Unisex (see gender.js). Unisex is
@@ -106,6 +111,18 @@ const AUDIENCES = {
     // one a day, so make it the best one available
     pick(unannounced) {
       unannounced.sort((a, b) => (b.discount || 0) - (a.discount || 0));
+      return unannounced[0];
+    },
+  },
+  channel: {
+    label: "channel",
+    groups: WHATSAPP_CHANNELS,
+    memory: new Set(),
+    seenFile: dataFile("announced_channel.json"),
+    lastPostFile: dataFile("last_post_channel.json"),
+    // same steady drip as the hourly groups: oldest un-announced first
+    pick(unannounced) {
+      unannounced.sort((a, b) => new Date(a.posted_at) - new Date(b.posted_at));
       return unannounced[0];
     },
   },
@@ -364,13 +381,19 @@ async function sendToWhatsApp(deals, groupNames) {
       }
       caption += `\n`;
     }
-    caption += `🛒 *Grab it here:*\n${shareLink}\n\n`;
-    caption += `━━━━━━━━━━━━━━\n\n`;
+    caption += `🛒 *Grab it here:*\n${shareLink}`;
+    // The divider + "join the group" footer is for groups only. Channel
+    // posts end at the link: WhatsApp attaches the channel's own link when
+    // a channel post is forwarded.
+    let footer = `\n\n━━━━━━━━━━━━━━\n\n`;
     if (GROUP_LINK) {
-      caption += `📲 *Join DealsPulse for more daily deals:*\n${GROUP_LINK}`;
+      footer += `📲 *Join DealsPulse for more daily deals:*\n${GROUP_LINK}`;
     }
+    const groupCaption = caption + footer;
+    const channelCaption = caption;
 
     for (const groupId of groupIds) {
+      const caption = isChannelId(groupId) ? channelCaption : groupCaption;
       try {
         // Try to send as image with caption; fall back to plain text.
         let sent = false;
@@ -528,12 +551,16 @@ async function onReady() {
     );
     console.log(`[thrice-daily] ${POST_SLOTS.map(s => s.label).join(" | ")} (${TIMEZONE}) [${THRICE_DAILY_GENDERS.join("/")}] -> ${AUDIENCES.thrice.groups.join(", ")}`);
   }
+  if (AUDIENCES.channel.groups.length) {
+    cron.schedule(CHANNEL_CRON, () => runBot(AUDIENCES.channel), { timezone: TIMEZONE });
+    console.log(`[channel] "${CHANNEL_CRON}" (${TIMEZONE}) -> ${AUDIENCES.channel.groups.join(", ")}`);
+  }
   if (AUDIENCES.womens.groups.length) {
     cron.schedule(WOMENS_DAILY_CRON, () => runBot(AUDIENCES.womens), { timezone: TIMEZONE });
     console.log(`[womens-daily] "${WOMENS_DAILY_CRON}" (${TIMEZONE}) [${WOMENS_DAILY_GENDERS.join("/")}] -> ${AUDIENCES.womens.groups.join(", ")}`);
   }
   if (!Object.values(AUDIENCES).some(a => a.groups.length)) {
-    console.warn("No groups configured — set WHATSAPP_GROUPS, THRICE_DAILY_GROUPS and/or WOMENS_DAILY_GROUPS.");
+    console.warn("No groups configured — set WHATSAPP_GROUPS, THRICE_DAILY_GROUPS, WOMENS_DAILY_GROUPS and/or WHATSAPP_CHANNELS.");
   }
 }
 
