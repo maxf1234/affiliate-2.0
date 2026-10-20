@@ -35,7 +35,7 @@ const IS_MAC            = process.platform === "darwin";
 // Data feed: www directly, skipping the apex -> www redirect (not user-visible).
 const DEALS_URL         = process.env.DEALS_URL || "https://www.dealspulse.co/deals.json";
 // Links in WhatsApp posts: the bare domain is the shortest text. Vercel
-// forwards it to www, keeping the /g/:id path.
+// forwards it to www, keeping the path.
 const SITE_BASE         = process.env.SITE_BASE || "https://dealspulse.co";
 const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || "60"); // hourly-tier cadence + min gap between posts
 const TIMEZONE          = process.env.BOT_TIMEZONE || "America/New_York";
@@ -362,10 +362,9 @@ async function sendToWhatsApp(deals, groupNames) {
   }
 
   for (const deal of deals) {
-    // Tracked link: counts the tap as WhatsApp traffic in /api/stats,
-    // then redirects to the deal page on our site. /g/:id is a vercel.json
-    // rewrite to /api/go?id=:id&src=wa&to=site — same behaviour, shorter.
-    const shareLink = `${SITE_BASE}/g/${encodeURIComponent(deal.id)}`;
+    // Plain short link straight to the deal page: dealspulse.co/<dealId>.
+    // No tracking hop — visits are measured with Vercel Analytics instead.
+    const shareLink = `${SITE_BASE}/${encodeURIComponent(deal.id)}`;
 
     // Compute savings
     const hasSavings = deal.originalPrice > 0 && deal.originalPrice > deal.dealPrice && deal.dealPrice > 0;
