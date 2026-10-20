@@ -32,8 +32,11 @@ const {
 
 // ── CONFIG ────────────────────────────────────────────────────────────────────
 const IS_MAC            = process.platform === "darwin";
-const DEALS_URL         = process.env.DEALS_URL || "https://affilate-2-0.vercel.app/deals.json";
-const SITE_BASE         = process.env.SITE_BASE || "https://affilate-2-0.vercel.app";
+// Data feed: www directly, skipping the apex -> www redirect (not user-visible).
+const DEALS_URL         = process.env.DEALS_URL || "https://www.dealspulse.co/deals.json";
+// Links in WhatsApp posts: the bare domain is the shortest text. Vercel
+// forwards it to www, keeping the /g/:id path.
+const SITE_BASE         = process.env.SITE_BASE || "https://dealspulse.co";
 const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || "60"); // hourly-tier cadence + min gap between posts
 const TIMEZONE          = process.env.BOT_TIMEZONE || "America/New_York";
 const GROUP_LINK        = process.env.GROUP_LINK || "https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx"; // WhatsApp group invite link
