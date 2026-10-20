@@ -32,8 +32,11 @@ const {
 
 // ── CONFIG ────────────────────────────────────────────────────────────────────
 const IS_MAC            = process.platform === "darwin";
-const DEALS_URL         = process.env.DEALS_URL || "https://affilate-2-0.vercel.app/deals.json";
-const SITE_BASE         = process.env.SITE_BASE || "https://affilate-2-0.vercel.app";
+// Data feed: www directly, skipping the apex -> www redirect (not user-visible).
+const DEALS_URL         = process.env.DEALS_URL || "https://www.dealspulse.co/deals.json";
+// Links in WhatsApp posts: the bare domain is the shortest text. Vercel
+// forwards it to www, keeping the /g/:id path.
+const SITE_BASE         = process.env.SITE_BASE || "https://dealspulse.co";
 const SCAN_INTERVAL_MIN = parseInt(process.env.SCAN_INTERVAL_MIN || "60"); // hourly-tier cadence + min gap between posts
 const TIMEZONE          = process.env.BOT_TIMEZONE || "America/New_York";
 const GROUP_LINK        = process.env.GROUP_LINK || "https://chat.whatsapp.com/LwxD0Pm4guRHt1n1YH8Wgx"; // WhatsApp group invite link
@@ -360,8 +363,9 @@ async function sendToWhatsApp(deals, groupNames) {
 
   for (const deal of deals) {
     // Tracked link: counts the tap as WhatsApp traffic in /api/stats,
-    // then redirects to the deal page on our site.
-    const shareLink = `${SITE_BASE}/api/go?id=${encodeURIComponent(deal.id)}&src=wa&to=site`;
+    // then redirects to the deal page on our site. /g/:id is a vercel.json
+    // rewrite to /api/go?id=:id&src=wa&to=site — same behaviour, shorter.
+    const shareLink = `${SITE_BASE}/g/${encodeURIComponent(deal.id)}`;
 
     // Compute savings
     const hasSavings = deal.originalPrice > 0 && deal.originalPrice > deal.dealPrice && deal.dealPrice > 0;
