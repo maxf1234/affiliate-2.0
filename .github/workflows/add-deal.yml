@@ -74,6 +74,7 @@ jobs:
           git config user.name "DealsPulse Bot"
           git config user.email "bot@dealspulse.com"
           git add public/deals.json
+          if [ -f bot/codes.json ]; then git add bot/codes.json; fi
           git diff --staged --quiet || git commit -m "manual: add deal"
           git push
       - name: Trigger Vercel redeploy

@@ -17,6 +17,7 @@ const https = require("https");
 const http = require("http");
 const { guessCategory, extractAsin } = require("./bot_actions.js");
 const { guessGender } = require("./gender.js");
+const { assignCodes } = require("./codes.js");
 
 const AFFILIATE_TAG   = process.env.AMAZON_AFFILIATE_TAG || "dealspulse06-20";
 const DEALS_JSON_PATH = path.join(__dirname, "..", "public", "deals.json");
@@ -220,6 +221,7 @@ function buildAffiliateUrl(rawUrl, asin) {
   const all = [deal, ...existing]
     .sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at))
     .slice(0, MAX_STORED);
+  assignCodes(all); // short-link code for the new deal (bot/codes.js)
 
   fs.mkdirSync(path.dirname(DEALS_JSON_PATH), { recursive: true });
   fs.writeFileSync(DEALS_JSON_PATH, JSON.stringify(all, null, 2));
@@ -229,6 +231,7 @@ function buildAffiliateUrl(rawUrl, asin) {
   console.log(`  $${deal.dealPrice}${originalPrice ? ` (was $${originalPrice}, -${discount}%)` : ""} | ${category}`);
   console.log(`  ${deal.affiliate_url}`);
   console.log(`  image: ${deal.image === FALLBACK_IMG ? "placeholder" : deal.image.slice(0, 80)}`);
+  console.log(`  short link code: ${deal.code}`);
   console.log(`  id=${deal.id}${priority ? " [PRIORITY — posts next on WhatsApp]" : ""}${replaced ? ` (replaced ${replaced} same-product entry)` : ""}`);
   console.log(`Total deals: ${all.length}`);
 })();

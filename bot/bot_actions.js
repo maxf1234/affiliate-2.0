@@ -19,6 +19,7 @@ const path = require("path");
 const https = require("https");
 const http = require("http");
 const { guessGender } = require("./gender.js");
+const { assignCodes } = require("./codes.js");
 
 const AFFILIATE_TAG    = process.env.AMAZON_AFFILIATE_TAG || "dealspulse06-20";
 const DEALS_JSON_PATH  = path.join(__dirname, "..", "public", "deals.json");
@@ -277,7 +278,11 @@ function saveDeals(newDeals) {
       .map(d => ({ ...d, gender: guessGender(d.title) }))
   );
 
-  const changed = additions.length > 0 || purged > 0 || untagged > 0;
+  // Permanent 5-digit short-link code (bot/codes.js); backfills older deals.
+  const coded = assignCodes(allDeals);
+  if (coded) console.log(`Assigned short-link codes to ${coded} deal(s).`);
+
+  const changed = additions.length > 0 || purged > 0 || untagged > 0 || coded > 0;
   if (untagged) console.log(`Gender-tagged ${untagged} stored deal(s).`);
   if (!changed) {
     console.log("No changes to save.");
