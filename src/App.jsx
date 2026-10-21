@@ -438,7 +438,8 @@ function SkeletonCard() {
 
 // ── SINGLE DEAL PAGE ──────────────────────────────────────────────────────────
 function DealPage({ deals, id, src, onBack, onView }) {
-  const deal = deals.find(d => d.id === id);
+  // `id` is a deal id, or a numeric short-link code from dealspulse.co/<code>.
+  const deal = deals.find(d => d.id === id || (d.code && String(d.code) === id));
   const [copied, setCopied] = useState(false);
 
   useEffect(() => { window.scrollTo(0, 0); }, [id]);
@@ -775,12 +776,12 @@ export default function App() {
 
   // Hash routing: #/deal/<id>?src=<channel>
   useEffect(() => {
-    // Short links: dealspulse.co/<dealId> (what the WhatsApp bot posts).
-    // Every unknown path is served index.html, so convert a deal-id-shaped
-    // path (prefix_ + id, e.g. sc_15433285730600) into the normal hash
-    // route. A deal that has since expired gets the "expired or removed"
-    // page; any other path just falls back to the homepage.
-    const shortLink = window.location.pathname.match(/^\/([a-z]+_[A-Za-z0-9-]+)\/?$/);
+    // Short links: dealspulse.co/<code> (what the WhatsApp bot posts, e.g.
+    // /10042) or dealspulse.co/<dealId> (sent before codes existed). Every
+    // unknown path is served index.html, so convert either into the normal
+    // hash route; DealPage resolves both. A deal that has since expired gets
+    // the "expired or removed" page; any other path falls back to the homepage.
+    const shortLink = window.location.pathname.match(/^\/(\d{5,}|[a-z]+_[A-Za-z0-9-]+)\/?$/);
     if (shortLink) {
       window.history.replaceState(null, "", "/#/deal/" + shortLink[1]);
     } else if (window.location.pathname !== "/" && !window.location.hash) {

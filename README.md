@@ -217,6 +217,13 @@ women's deal every 6–7 days. The women's tier skips any day with nothing new
 and logs `No new deals to announce`; it fills up only as women's-heavy sources
 are added. The thrice-daily tier takes `Men,Unisex` for the same reason.
 
+**Short links.** WhatsApp posts link to `https://dealspulse.co/<code>`, where
+`code` is a permanent 5-digit number each deal gets when it's saved
+(`bot/codes.js`, counter in `bot/codes.json`). Codes are sequential from 10001
+and never reused, so an old message can't open a different product. The site
+also still accepts `dealspulse.co/<dealId>` for messages sent before codes
+existed. A code whose deal has expired shows the "expired" page.
+
 **WhatsApp Channels.** Put channels in `WHATSAPP_CHANNELS` (their own tier
 and history). Channel posts end at the deal link, with no divider and no
 "join the group" footer, because WhatsApp attaches the channel's link when a

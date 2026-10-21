@@ -362,9 +362,10 @@ async function sendToWhatsApp(deals, groupNames) {
   }
 
   for (const deal of deals) {
-    // Plain short link straight to the deal page: dealspulse.co/<dealId>.
-    // No tracking hop — visits are measured with Vercel Analytics instead.
-    const shareLink = `${SITE_BASE}/${encodeURIComponent(deal.id)}`;
+    // Plain short link straight to the deal page: dealspulse.co/<code>, the
+    // deal's permanent 5-digit code (bot/codes.js). Falls back to the full id
+    // for any deal not yet coded. No tracking hop — Vercel Analytics instead.
+    const shareLink = `${SITE_BASE}/${deal.code || encodeURIComponent(deal.id)}`;
 
     // Compute savings
     const hasSavings = deal.originalPrice > 0 && deal.originalPrice > deal.dealPrice && deal.dealPrice > 0;
