@@ -1,5 +1,362 @@
 [
   {
+    "id": "sc_15435498586408",
+    "asin": "B00F3SQBVQ",
+    "title": "25 Pack Turbinado Cane Sugar Packets (OU-Parve)",
+    "category": "General",
+    "originalPrice": 13.06,
+    "dealPrice": 7.49,
+    "discount": 43,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41ze9AHC9lL._SL500_e374d9f4-87aa-4828-942c-36f9767b9a0b.jpg?v=1792585989",
+    "affiliate_url": "https://www.amazon.com/dp/B00F3SQBVQ?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:48.547Z",
+    "gender": "Unisex",
+    "code": 10200
+  },
+  {
+    "id": "sc_15435654463784",
+    "asin": "B0H7QWPWGH",
+    "title": "Lefant Self-Emptying Robot Vacuum and Mop",
+    "category": "Home & Kitchen",
+    "originalPrice": 499.99,
+    "dealPrice": 199.99,
+    "discount": 60,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41lXXnF_gvL._SL500.jpg?v=1792599872",
+    "affiliate_url": "https://www.amazon.com/dp/B0H7QWPWGH?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": true,
+    "posted_at": "2026-10-21T19:58:47.459Z",
+    "gender": "Unisex",
+    "code": 10199
+  },
+  {
+    "id": "sc_15435657347368",
+    "asin": "B0H2H6F28N",
+    "title": "50000mAh 22.5W Fast Charging Portable Power Bank",
+    "category": "Electronics",
+    "originalPrice": 39.99,
+    "dealPrice": 21.99,
+    "discount": 45,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31s5GXlqbDL._SL500.jpg?v=1792600357",
+    "affiliate_url": "https://www.amazon.com/dp/B0H2H6F28N?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:46.934Z",
+    "gender": "Unisex",
+    "code": 10198
+  },
+  {
+    "id": "sc_15435664458024",
+    "asin": "B0GQXJHNQZ",
+    "title": "medicube Mini Booster Pro Plus Facial Cleansing Device Set",
+    "category": "General",
+    "originalPrice": 168,
+    "dealPrice": 117.6,
+    "discount": 30,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31K68UXLXTL._SL500.jpg?v=1792601910",
+    "affiliate_url": "https://www.amazon.com/dp/B0GQXJHNQZ?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:46.394Z",
+    "gender": "Unisex",
+    "code": 10197
+  },
+  {
+    "id": "sc_15435667570984",
+    "asin": "B0GJ3GBY3T",
+    "title": "360 Count Heavy Duty Disposable Plastic Cutlery Set",
+    "category": "General",
+    "originalPrice": 32.49,
+    "dealPrice": 12.99,
+    "discount": 60,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41B_0hSeFYL._SL500_05966f9d-5722-4025-8e3d-bad9c69a1408.jpg?v=1792602707",
+    "affiliate_url": "https://www.amazon.com/dp/B0GJ3GBY3T?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": true,
+    "posted_at": "2026-10-21T19:58:45.841Z",
+    "gender": "Unisex",
+    "code": 10196
+  },
+  {
+    "id": "sc_15435682873640",
+    "asin": "B003Y1NWKC",
+    "title": "60 Pack Oreo Chocolate Sandwich Cookie Snack Packs (OU-D)",
+    "category": "Grocery",
+    "originalPrice": 18.65,
+    "dealPrice": 12.95,
+    "discount": 31,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/4145LF1qCrL._SL500_9e00373f-28e7-46e5-a90c-ca2637813aeb.jpg?v=1792604697",
+    "affiliate_url": "https://www.amazon.com/dp/B003Y1NWKC?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:45.261Z",
+    "gender": "Unisex",
+    "code": 10195
+  },
+  {
+    "id": "sc_15435687690536",
+    "asin": "B00HOVLHDM",
+    "title": "Whitmor 20 Pocket Over Door Shoe Organizer",
+    "category": "Home & Kitchen",
+    "originalPrice": 15,
+    "dealPrice": 7.98,
+    "discount": 47,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41PM4L4_GfL._SL500.jpg?v=1792605921",
+    "affiliate_url": "https://www.amazon.com/dp/B00HOVLHDM?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:44.702Z",
+    "gender": "Unisex",
+    "code": 10194
+  },
+  {
+    "id": "sc_15435708858664",
+    "asin": "B0FD81TKN4",
+    "title": "375 Count Q-tips Cotton Swabs, 12 Pack",
+    "category": "General",
+    "originalPrice": 37.36,
+    "dealPrice": 23.98,
+    "discount": 36,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41Eh5q1nCuL._SL500.jpg?v=1792606975",
+    "affiliate_url": "https://www.amazon.com/dp/B0FD81TKN4?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:44.126Z",
+    "gender": "Unisex",
+    "code": 10193
+  },
+  {
+    "id": "sc_15435729240360",
+    "asin": "B0GJ3GBY3T",
+    "title": "Infrared Red Light Therapy Pad for Body Pain",
+    "category": "General",
+    "originalPrice": 80.99,
+    "dealPrice": 29.99,
+    "discount": 63,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51aHk-YRksL._SL500.jpg?v=1792607638",
+    "affiliate_url": "https://www.amazon.com/dp/B0GJ3GBY3T?lv=shuf&tag=dealspulse06-20&channelId=1&plpRedirect=mhFallback",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": true,
+    "posted_at": "2026-10-21T19:58:43.562Z",
+    "gender": "Unisex",
+    "code": 10192
+  },
+  {
+    "id": "sc_15435759157544",
+    "asin": "B0F593J5JR",
+    "title": "Athlefit Fuzzy Memory Foam Indoor Outdoor Slippers",
+    "category": "Fashion",
+    "originalPrice": 19.99,
+    "dealPrice": 9.99,
+    "discount": 50,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/419ufPI6sbL._SL500.jpg?v=1792611156",
+    "affiliate_url": "https://www.amazon.com/dp/B0F593J5JR?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:42.949Z",
+    "gender": "Unisex",
+    "code": 10191
+  },
+  {
+    "id": "sc_15435759190312",
+    "asin": "B0DFWGYXYT",
+    "title": "Rechargeable 3000 Lumen Zoomable LED Headlamp",
+    "category": "General",
+    "originalPrice": 31.97,
+    "dealPrice": 23.98,
+    "discount": 25,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51V5VnGO-CL._SL500_35d8dbbf-ca4a-40d2-8790-0fc52924e749.jpg?v=1792611158",
+    "affiliate_url": "https://www.amazon.com/dp/B0DFWGYXYT?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:42.370Z",
+    "gender": "Unisex",
+    "code": 10190
+  },
+  {
+    "id": "sc_15435760435496",
+    "asin": "B0FVXJS6BX",
+    "title": "1:24 Scale High Speed RC Pickup Truck",
+    "category": "General",
+    "originalPrice": 18.99,
+    "dealPrice": 9.99,
+    "discount": 47,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51NmaR28q5L._SL500_3eff2c11-3e16-4673-ae98-218867fd71a9.jpg?v=1792611550",
+    "affiliate_url": "https://www.amazon.com/dp/B0FVXJS6BX?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.787Z",
+    "gender": "Unisex",
+    "code": 10189
+  },
+  {
+    "id": "sd_37607",
+    "asin": "B0H7HML77Z",
+    "title": "Foot Massager Machine",
+    "category": "General",
+    "originalPrice": 59.99,
+    "dealPrice": 39.99,
+    "discount": 33,
+    "image": "https://m.media-amazon.com/images/I/41GI0QzsoML._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0H7HML77Z?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-23",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.365Z",
+    "gender": "Unisex",
+    "code": 10183
+  },
+  {
+    "id": "sd_37603",
+    "asin": "B0GJCYWVQX",
+    "title": "Bathroom Wall Mirror 47\" x 30",
+    "category": "General",
+    "originalPrice": 39.99,
+    "dealPrice": 19.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/41Qyn2pCdJL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0GJCYWVQX?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-23",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.365Z",
+    "gender": "Unisex",
+    "code": 10184
+  },
+  {
+    "id": "sd_37602",
+    "asin": "B0G22WDQPT",
+    "title": "NutriChef 14 Quart Stockpot",
+    "category": "Home & Kitchen",
+    "originalPrice": 79.99,
+    "dealPrice": 53.99,
+    "discount": 33,
+    "image": "https://m.media-amazon.com/images/I/41Pfmv+cXcL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0G22WDQPT?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-23",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.365Z",
+    "gender": "Unisex",
+    "code": 10185
+  },
+  {
+    "id": "sd_37601",
+    "asin": "B0DXR8FK1Y",
+    "title": "3 Piece NutriChef Baking Pans",
+    "category": "Home & Kitchen",
+    "originalPrice": 28.99,
+    "dealPrice": 16.99,
+    "discount": 41,
+    "image": "https://m.media-amazon.com/images/I/41LQUxKXhPL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DXR8FK1Y?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-23",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.365Z",
+    "gender": "Unisex",
+    "code": 10186
+  },
+  {
+    "id": "sd_37599",
+    "asin": "B0FBH9PRYH",
+    "title": "24 Piece Revolution Makeup Advent Calendar",
+    "category": "Beauty",
+    "originalPrice": 65,
+    "dealPrice": 27.2,
+    "discount": 58,
+    "image": "https://m.media-amazon.com/images/I/41EqSF0LpHL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FBH9PRYH?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-23",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.365Z",
+    "gender": "Unisex",
+    "code": 10187
+  },
+  {
+    "id": "sd_37597",
+    "asin": "B0H5TJVKKB",
+    "title": "NutriChef Heated Butter Knife",
+    "category": "Home & Kitchen",
+    "originalPrice": 24.99,
+    "dealPrice": 16.99,
+    "discount": 32,
+    "image": "https://m.media-amazon.com/images/I/41TEmWcH6TL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0H5TJVKKB?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-25",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.365Z",
+    "gender": "Unisex",
+    "code": 10188
+  },
+  {
+    "id": "sd_36633",
+    "asin": "B0DL5S6936",
+    "title": "VEVOR Podium Stand 47",
+    "category": "General",
+    "originalPrice": 119.99,
+    "dealPrice": 71.82,
+    "discount": 40,
+    "image": "https://m.media-amazon.com/images/I/41KmBne-HGL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0DL5S6936?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-23",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.364Z",
+    "gender": "Unisex",
+    "code": 10182
+  },
+  {
+    "id": "sd_37605",
+    "asin": "B0GWCWXN7Q",
+    "title": "Baseus Multi Port 70W USB C Charger",
+    "category": "Electronics",
+    "originalPrice": 39.99,
+    "dealPrice": 19.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/31T5BjJ5rxL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0GWCWXN7Q?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-24",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.363Z",
+    "gender": "Unisex",
+    "code": 10181
+  },
+  {
+    "id": "sd_37606",
+    "asin": "B0FD81TKN4",
+    "title": "12 Pack Q-tips Cotton Swabs 375 Ct.",
+    "category": "General",
+    "originalPrice": 41.88,
+    "dealPrice": 23.98,
+    "discount": 43,
+    "image": "https://m.media-amazon.com/images/I/41Eh5q1nCuL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FD81TKN4?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-23",
+    "hot": false,
+    "posted_at": "2026-10-21T19:58:41.362Z",
+    "gender": "Unisex",
+    "code": 10180
+  },
+  {
     "id": "sc_15435562352936",
     "asin": "B0H5PFHRJS",
     "title": "12 Pack Disposable Rectangle Plastic Tablecloths",
@@ -13,7 +370,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:33.580Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10179
   },
   {
     "id": "sc_15435567235368",
@@ -29,7 +387,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:32.944Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10178
   },
   {
     "id": "sc_15435570708776",
@@ -45,7 +404,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:32.287Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10177
   },
   {
     "id": "sc_15435594629416",
@@ -61,7 +421,8 @@
     "expires": "2026-10-26",
     "hot": true,
     "posted_at": "2026-10-21T16:00:31.631Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10176
   },
   {
     "id": "sc_15435608359208",
@@ -77,7 +438,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:30.963Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10175
   },
   {
     "id": "sc_15435613012264",
@@ -93,7 +455,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:30.295Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10174
   },
   {
     "id": "sc_15435616518440",
@@ -109,7 +472,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:29.596Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10173
   },
   {
     "id": "sc_15435620385064",
@@ -125,7 +489,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:28.926Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10172
   },
   {
     "id": "sc_15435621794088",
@@ -141,7 +506,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:28.272Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10171
   },
   {
     "id": "sc_15435638538536",
@@ -157,7 +523,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:27.620Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10170
   },
   {
     "id": "sc_15435642470696",
@@ -173,7 +540,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:26.990Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10169
   },
   {
     "id": "sc_15435643191592",
@@ -189,7 +557,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:26.322Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10168
   },
   {
     "id": "sc_15435643846952",
@@ -205,7 +574,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:25.723Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10167
   },
   {
     "id": "sc_15435645223208",
@@ -221,7 +591,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:25.089Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10166
   },
   {
     "id": "sc_15435646140712",
@@ -237,23 +608,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T16:00:24.453Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sd_37563",
-    "asin": "B0C8276FRX",
-    "title": "6 Pack Rust-Oleum Engine Enamel Spray",
-    "category": "General",
-    "originalPrice": 50.46,
-    "dealPrice": 10.15,
-    "discount": 80,
-    "image": "https://m.media-amazon.com/images/I/51wXLAYHdDL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0C8276FRX?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-20",
-    "hot": true,
-    "posted_at": "2026-10-21T16:00:23.798Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10165
   },
   {
     "id": "sd_37503",
@@ -269,7 +625,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-21T16:00:23.797Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10156
   },
   {
     "id": "sd_37595",
@@ -283,9 +640,10 @@
     "affiliate_url": "https://www.amazon.com/dp/B012SAJYEM?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-10-25",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-10-21T16:00:23.797Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10157
   },
   {
     "id": "sd_37594",
@@ -301,7 +659,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-21T16:00:23.797Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10158
   },
   {
     "id": "sd_37593",
@@ -317,7 +676,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-21T16:00:23.797Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10159
   },
   {
     "id": "sd_37591",
@@ -333,7 +693,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-21T16:00:23.797Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10160
   },
   {
     "id": "sd_37590",
@@ -347,9 +708,10 @@
     "affiliate_url": "https://www.amazon.com/dp/B0CZPPDF2H?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-10-23",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-10-21T16:00:23.797Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10161
   },
   {
     "id": "sd_37589",
@@ -365,7 +727,8 @@
     "expires": "2026-10-23",
     "hot": true,
     "posted_at": "2026-10-21T16:00:23.797Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10162
   },
   {
     "id": "sd_37588",
@@ -381,7 +744,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-21T16:00:23.797Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10163
   },
   {
     "id": "sd_37587",
@@ -397,7 +761,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-21T16:00:23.797Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10164
   },
   {
     "id": "sc_15433771319592",
@@ -413,7 +778,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T10:00:32.735Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10155
   },
   {
     "id": "sc_15433959080232",
@@ -429,7 +795,8 @@
     "expires": "2026-10-26",
     "hot": true,
     "posted_at": "2026-10-21T10:00:31.435Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10154
   },
   {
     "id": "sc_15434519642408",
@@ -445,7 +812,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T10:00:30.699Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10153
   },
   {
     "id": "sc_15434554474792",
@@ -461,7 +829,8 @@
     "expires": "2026-10-26",
     "hot": true,
     "posted_at": "2026-10-21T10:00:29.317Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10152
   },
   {
     "id": "sc_15434698588456",
@@ -477,7 +846,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T10:00:28.690Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10151
   },
   {
     "id": "sc_15434703044904",
@@ -493,7 +863,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T10:00:28.083Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10150
   },
   {
     "id": "sc_15434710843688",
@@ -509,7 +880,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T10:00:27.433Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10149
   },
   {
     "id": "sc_15434712416552",
@@ -525,7 +897,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T10:00:26.793Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10148
   },
   {
     "id": "sc_15435226743080",
@@ -541,7 +914,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T10:00:25.574Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10147
   },
   {
     "id": "sc_15435366990120",
@@ -557,7 +931,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T10:00:24.844Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10146
   },
   {
     "id": "sc_15435369742632",
@@ -573,7 +948,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T10:00:24.128Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10145
   },
   {
     "id": "sc_15435376886056",
@@ -589,7 +965,8 @@
     "expires": "2026-10-26",
     "hot": true,
     "posted_at": "2026-10-21T10:00:23.498Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10144
   },
   {
     "id": "sc_15434712842536",
@@ -605,7 +982,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:30.806Z",
-    "gender": "Women"
+    "gender": "Women",
+    "code": 10143
   },
   {
     "id": "sc_15434732175656",
@@ -621,7 +999,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:30.213Z",
-    "gender": "Women"
+    "gender": "Women",
+    "code": 10142
   },
   {
     "id": "sc_15434745610536",
@@ -637,7 +1016,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:29.602Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10141
   },
   {
     "id": "sc_15434747019560",
@@ -653,7 +1033,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:28.449Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10140
   },
   {
     "id": "sc_15434747380008",
@@ -669,7 +1050,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:27.834Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10139
   },
   {
     "id": "sc_15434747478312",
@@ -685,7 +1067,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:27.249Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10138
   },
   {
     "id": "sc_15434748756264",
@@ -701,7 +1084,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:26.651Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10137
   },
   {
     "id": "sc_15434749247784",
@@ -717,7 +1101,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:26.065Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10136
   },
   {
     "id": "sc_15434749509928",
@@ -733,7 +1118,8 @@
     "expires": "2026-10-26",
     "hot": true,
     "posted_at": "2026-10-21T04:00:25.466Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10135
   },
   {
     "id": "sc_15434757144872",
@@ -749,7 +1135,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:24.878Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10134
   },
   {
     "id": "sc_15434760388904",
@@ -765,7 +1152,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:24.306Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10133
   },
   {
     "id": "sc_15434773987624",
@@ -781,7 +1169,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:23.641Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10132
   },
   {
     "id": "sc_15434776707368",
@@ -797,7 +1186,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:23.090Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10131
   },
   {
     "id": "sc_15434779853096",
@@ -813,7 +1203,8 @@
     "expires": "2026-10-26",
     "hot": false,
     "posted_at": "2026-10-21T04:00:22.498Z",
-    "gender": "Men"
+    "gender": "Men",
+    "code": 10130
   },
   {
     "id": "sd_37203",
@@ -829,7 +1220,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-21T04:00:22.047Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10128
   },
   {
     "id": "sd_37585",
@@ -845,7 +1237,8 @@
     "expires": "2026-10-23",
     "hot": true,
     "posted_at": "2026-10-21T04:00:22.047Z",
-    "gender": "Women"
+    "gender": "Women",
+    "code": 10129
   },
   {
     "id": "sd_37586",
@@ -861,7 +1254,8 @@
     "expires": "2026-10-23",
     "hot": true,
     "posted_at": "2026-10-21T04:00:22.045Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10127
   },
   {
     "id": "sc_15434556211496",
@@ -877,7 +1271,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T22:00:27.982Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10126
   },
   {
     "id": "sc_15434569842984",
@@ -893,7 +1288,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T22:00:27.375Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10125
   },
   {
     "id": "sc_15434576920872",
@@ -909,7 +1305,8 @@
     "expires": "2026-10-25",
     "hot": true,
     "posted_at": "2026-10-20T22:00:26.443Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10124
   },
   {
     "id": "sc_15434602971432",
@@ -925,7 +1322,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T22:00:25.805Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10123
   },
   {
     "id": "sc_15434670571816",
@@ -941,7 +1339,8 @@
     "expires": "2026-10-25",
     "hot": true,
     "posted_at": "2026-10-20T22:00:24.998Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10122
   },
   {
     "id": "sc_15434679943464",
@@ -957,7 +1356,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T22:00:24.239Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10121
   },
   {
     "id": "sc_15434688856360",
@@ -973,7 +1373,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T22:00:23.529Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10120
   },
   {
     "id": "sd_37566",
@@ -989,7 +1390,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.561Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10117
   },
   {
     "id": "sd_37565",
@@ -1005,7 +1407,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.561Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10118
   },
   {
     "id": "sd_37559",
@@ -1021,7 +1424,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.561Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10119
   },
   {
     "id": "sd_37577",
@@ -1037,7 +1441,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.560Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10110
   },
   {
     "id": "sd_37576",
@@ -1053,7 +1458,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.560Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10111
   },
   {
     "id": "sd_37574",
@@ -1069,7 +1475,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.560Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10112
   },
   {
     "id": "sd_37571",
@@ -1085,7 +1492,8 @@
     "expires": "2026-10-22",
     "hot": true,
     "posted_at": "2026-10-20T22:00:22.560Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10113
   },
   {
     "id": "sd_37570",
@@ -1101,7 +1509,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.560Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10114
   },
   {
     "id": "sd_37569",
@@ -1117,7 +1526,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.560Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10115
   },
   {
     "id": "sd_37567",
@@ -1133,7 +1543,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.560Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10116
   },
   {
     "id": "sd_37584",
@@ -1149,7 +1560,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.559Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10105
   },
   {
     "id": "sd_37583",
@@ -1165,7 +1577,8 @@
     "expires": "2026-10-22",
     "hot": true,
     "posted_at": "2026-10-20T22:00:22.559Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10106
   },
   {
     "id": "sd_37582",
@@ -1181,7 +1594,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.559Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10107
   },
   {
     "id": "sd_37581",
@@ -1197,7 +1611,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.559Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10108
   },
   {
     "id": "sd_37578",
@@ -1213,7 +1628,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.559Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10109
   },
   {
     "id": "sd_37575",
@@ -1229,7 +1645,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T22:00:22.556Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10104
   },
   {
     "id": "sc_15433285730600",
@@ -1245,7 +1662,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:35.187Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10103
   },
   {
     "id": "sc_15433290121512",
@@ -1261,7 +1679,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:34.598Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10102
   },
   {
     "id": "sc_15433292546344",
@@ -1277,7 +1696,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:33.984Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10101
   },
   {
     "id": "sc_15433333965096",
@@ -1293,7 +1713,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:33.396Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10100
   },
   {
     "id": "sc_15433391604008",
@@ -1309,7 +1730,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:32.787Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10099
   },
   {
     "id": "sc_15433409069352",
@@ -1325,7 +1747,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:32.156Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10098
   },
   {
     "id": "sc_15433442033960",
@@ -1341,7 +1764,8 @@
     "expires": "2026-10-25",
     "hot": true,
     "posted_at": "2026-10-20T16:00:31.554Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10097
   },
   {
     "id": "sc_15433445441832",
@@ -1357,7 +1781,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:30.923Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10096
   },
   {
     "id": "sc_15433455305000",
@@ -1373,7 +1798,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:30.312Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10095
   },
   {
     "id": "sc_15433480208680",
@@ -1389,7 +1815,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:29.695Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10094
   },
   {
     "id": "sc_15433484632360",
@@ -1405,7 +1832,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:29.116Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10093
   },
   {
     "id": "sc_15433485844776",
@@ -1421,7 +1849,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:28.532Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10092
   },
   {
     "id": "sc_15433486860584",
@@ -1437,7 +1866,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:27.949Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10091
   },
   {
     "id": "sc_15433487679784",
@@ -1453,7 +1883,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T16:00:27.332Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10090
   },
   {
     "id": "sc_15433489285416",
@@ -1469,7 +1900,8 @@
     "expires": "2026-10-25",
     "hot": true,
     "posted_at": "2026-10-20T16:00:26.703Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10089
   },
   {
     "id": "sd_37557",
@@ -1485,7 +1917,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T16:00:26.194Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10085
   },
   {
     "id": "sd_37555",
@@ -1501,7 +1934,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T16:00:26.194Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10086
   },
   {
     "id": "sd_37553",
@@ -1517,7 +1951,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-20T16:00:26.194Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10087
   },
   {
     "id": "sd_37551",
@@ -1533,7 +1968,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T16:00:26.194Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10088
   },
   {
     "id": "sc_15432654094632",
@@ -1549,7 +1985,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:31.244Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10084
   },
   {
     "id": "sc_15432655470888",
@@ -1565,7 +2002,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:30.056Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10083
   },
   {
     "id": "sc_15432655765800",
@@ -1581,7 +2019,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:29.467Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10082
   },
   {
     "id": "sc_15432656748840",
@@ -1597,7 +2036,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:28.834Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10081
   },
   {
     "id": "sc_15432657305896",
@@ -1613,7 +2053,8 @@
     "expires": "2026-10-25",
     "hot": true,
     "posted_at": "2026-10-20T10:00:28.211Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10080
   },
   {
     "id": "sc_15432658813224",
@@ -1629,7 +2070,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:27.621Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10079
   },
   {
     "id": "sc_15432659796264",
@@ -1645,7 +2087,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:27.041Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10078
   },
   {
     "id": "sc_15432659927336",
@@ -1661,7 +2104,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:26.466Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10077
   },
   {
     "id": "sc_15432837890344",
@@ -1677,7 +2121,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:25.273Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10076
   },
   {
     "id": "sc_15432841265448",
@@ -1693,7 +2138,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:24.641Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10075
   },
   {
     "id": "sc_15432863809832",
@@ -1709,7 +2155,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:24.039Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10074
   },
   {
     "id": "sc_15432888320296",
@@ -1725,7 +2172,8 @@
     "expires": "2026-10-25",
     "hot": true,
     "posted_at": "2026-10-20T10:00:23.414Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10073
   },
   {
     "id": "sc_15432931410216",
@@ -1741,7 +2189,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T10:00:22.737Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10072
   },
   {
     "id": "sc_15432660517160",
@@ -1757,7 +2206,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:31.999Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10071
   },
   {
     "id": "sc_15432662352168",
@@ -1773,7 +2223,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:31.336Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10070
   },
   {
     "id": "sc_15432666710312",
@@ -1789,7 +2240,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:29.806Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10069
   },
   {
     "id": "sc_15432667005224",
@@ -1805,7 +2257,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:29.209Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10068
   },
   {
     "id": "sc_15432668512552",
@@ -1821,7 +2274,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:28.608Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10067
   },
   {
     "id": "sc_15432672543016",
@@ -1837,7 +2291,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:27.958Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10066
   },
   {
     "id": "sc_15432677687592",
@@ -1853,7 +2308,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:27.326Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10065
   },
   {
     "id": "sc_15432691745064",
@@ -1869,7 +2325,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:26.739Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10064
   },
   {
     "id": "sc_15432701903144",
@@ -1885,7 +2342,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:26.149Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10063
   },
   {
     "id": "sc_15432709603624",
@@ -1901,7 +2359,8 @@
     "expires": "2026-10-25",
     "hot": true,
     "posted_at": "2026-10-20T04:00:25.525Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10062
   },
   {
     "id": "sc_15432716288296",
@@ -1917,7 +2376,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:24.917Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10061
   },
   {
     "id": "sc_15432716976424",
@@ -1933,7 +2393,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:24.246Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10060
   },
   {
     "id": "sc_15432717762856",
@@ -1949,7 +2410,8 @@
     "expires": "2026-10-25",
     "hot": false,
     "posted_at": "2026-10-20T04:00:23.637Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10059
   },
   {
     "id": "sc_15432744010024",
@@ -1965,7 +2427,8 @@
     "expires": "2026-10-25",
     "hot": true,
     "posted_at": "2026-10-20T04:00:23.035Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10058
   },
   {
     "id": "sd_29081",
@@ -1981,7 +2444,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T04:00:22.621Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10052
   },
   {
     "id": "sd_27648",
@@ -1995,9 +2459,10 @@
     "affiliate_url": "https://www.amazon.com/dp/B00GMN7IJK?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-10-22",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-10-20T04:00:22.621Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10053
   },
   {
     "id": "sd_26033",
@@ -2013,7 +2478,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T04:00:22.621Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10054
   },
   {
     "id": "sd_37549",
@@ -2029,7 +2495,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T04:00:22.621Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10055
   },
   {
     "id": "sd_37548",
@@ -2045,7 +2512,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T04:00:22.621Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10056
   },
   {
     "id": "sd_37547",
@@ -2061,7 +2529,8 @@
     "expires": "2026-10-23",
     "hot": true,
     "posted_at": "2026-10-20T04:00:22.621Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10057
   },
   {
     "id": "sd_37346",
@@ -2077,7 +2546,8 @@
     "expires": "2026-10-22",
     "hot": false,
     "posted_at": "2026-10-20T04:00:22.620Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10051
   },
   {
     "id": "sc_15432164704552",
@@ -2093,7 +2563,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:34.198Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10050
   },
   {
     "id": "sc_15432204779816",
@@ -2109,7 +2580,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:33.535Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10049
   },
   {
     "id": "sc_15432224768296",
@@ -2125,7 +2597,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:32.891Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10048
   },
   {
     "id": "sc_15432238924072",
@@ -2141,7 +2614,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:32.272Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10047
   },
   {
     "id": "sc_15432243151144",
@@ -2157,7 +2631,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:31.625Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10046
   },
   {
     "id": "sc_15432243773736",
@@ -2173,7 +2648,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:31.000Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10045
   },
   {
     "id": "sc_15432252096808",
@@ -2189,7 +2665,8 @@
     "expires": "2026-10-24",
     "hot": true,
     "posted_at": "2026-10-19T22:00:30.371Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10044
   },
   {
     "id": "sc_15432284864808",
@@ -2205,7 +2682,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:29.118Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10043
   },
   {
     "id": "sc_15432295481640",
@@ -2221,7 +2699,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:28.485Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10042
   },
   {
     "id": "sc_15432340439336",
@@ -2237,7 +2716,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:27.245Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10041
   },
   {
     "id": "sc_15432362230056",
@@ -2253,7 +2733,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:26.541Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10040
   },
   {
     "id": "sc_15432368029992",
@@ -2269,7 +2750,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:25.940Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10039
   },
   {
     "id": "sc_15432389198120",
@@ -2285,7 +2767,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T22:00:25.309Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10038
   },
   {
     "id": "sd_37535",
@@ -2301,7 +2784,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T22:00:24.813Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10031
   },
   {
     "id": "sd_37533",
@@ -2317,7 +2801,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T22:00:24.813Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10032
   },
   {
     "id": "sd_37531",
@@ -2333,7 +2818,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T22:00:24.813Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10033
   },
   {
     "id": "sd_37529",
@@ -2349,7 +2835,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T22:00:24.813Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10034
   },
   {
     "id": "sd_37527",
@@ -2365,7 +2852,8 @@
     "expires": "2026-10-23",
     "hot": true,
     "posted_at": "2026-10-19T22:00:24.813Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10035
   },
   {
     "id": "sd_37526",
@@ -2381,7 +2869,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-19T22:00:24.813Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10036
   },
   {
     "id": "sd_37525",
@@ -2397,7 +2886,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-19T22:00:24.813Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10037
   },
   {
     "id": "sd_37545",
@@ -2413,7 +2903,8 @@
     "expires": "2026-10-23",
     "hot": true,
     "posted_at": "2026-10-19T22:00:24.812Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10028
   },
   {
     "id": "sd_37543",
@@ -2429,7 +2920,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T22:00:24.812Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10029
   },
   {
     "id": "sd_37537",
@@ -2445,7 +2937,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-19T22:00:24.812Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10030
   },
   {
     "id": "sc_15431757070632",
@@ -2461,7 +2954,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:30.065Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10027
   },
   {
     "id": "sc_15431759429928",
@@ -2477,7 +2971,8 @@
     "expires": "2026-10-24",
     "hot": true,
     "posted_at": "2026-10-19T16:00:29.389Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10026
   },
   {
     "id": "sc_15431759528232",
@@ -2493,7 +2988,8 @@
     "expires": "2026-10-24",
     "hot": true,
     "posted_at": "2026-10-19T16:00:28.691Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10025
   },
   {
     "id": "sc_15431760445736",
@@ -2509,7 +3005,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:28.063Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10024
   },
   {
     "id": "sc_15431760511272",
@@ -2525,7 +3022,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:27.393Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10023
   },
   {
     "id": "sc_15431761396008",
@@ -2541,7 +3039,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:26.807Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10022
   },
   {
     "id": "sc_15431762215208",
@@ -2557,7 +3056,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:26.153Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10021
   },
   {
     "id": "sc_15431777255720",
@@ -2573,7 +3073,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:25.542Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10020
   },
   {
     "id": "sc_15431789150504",
@@ -2589,7 +3090,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:24.843Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10019
   },
   {
     "id": "sc_15431808090408",
@@ -2605,7 +3107,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:24.202Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10018
   },
   {
     "id": "sc_15431835058472",
@@ -2621,7 +3124,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:23.554Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10017
   },
   {
     "id": "sc_15431860846888",
@@ -2637,7 +3141,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:22.836Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10016
   },
   {
     "id": "sc_15431905575208",
@@ -2653,7 +3158,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T16:00:22.180Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10015
   },
   {
     "id": "sd_37518",
@@ -2669,7 +3175,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-19T16:00:21.575Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10011
   },
   {
     "id": "sd_37517",
@@ -2685,7 +3192,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T16:00:21.575Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10012
   },
   {
     "id": "sd_37516",
@@ -2701,7 +3209,8 @@
     "expires": "2026-10-23",
     "hot": false,
     "posted_at": "2026-10-19T16:00:21.575Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10013
   },
   {
     "id": "sd_37514",
@@ -2717,7 +3226,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T16:00:21.575Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10014
   },
   {
     "id": "sd_37522",
@@ -2733,7 +3243,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T16:00:21.574Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10008
   },
   {
     "id": "sd_37520",
@@ -2749,7 +3260,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T16:00:21.574Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10009
   },
   {
     "id": "sd_37519",
@@ -2765,7 +3277,8 @@
     "expires": "2026-10-21",
     "hot": false,
     "posted_at": "2026-10-19T16:00:21.574Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10010
   },
   {
     "id": "sc_15430991413544",
@@ -2781,7 +3294,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T10:00:30.424Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10007
   },
   {
     "id": "sc_15430992724264",
@@ -2797,7 +3311,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T10:00:29.684Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10006
   },
   {
     "id": "sc_15431003046184",
@@ -2811,9 +3326,10 @@
     "affiliate_url": "https://www.amazon.com/dp/B003Y3LSIS?tag=dealspulse06-20&m=ATVPDKIKX0DER",
     "store": "Amazon",
     "expires": "2026-10-24",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-10-19T10:00:29.055Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10005
   },
   {
     "id": "sc_15431005962536",
@@ -2829,7 +3345,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T10:00:28.427Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10004
   },
   {
     "id": "sc_15431011074344",
@@ -2845,7 +3362,8 @@
     "expires": "2026-10-24",
     "hot": true,
     "posted_at": "2026-10-19T10:00:27.795Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10003
   },
   {
     "id": "sc_15431065043240",
@@ -2861,7 +3379,8 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T10:00:24.529Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10002
   },
   {
     "id": "sc_15431066681640",
@@ -2877,326 +3396,7 @@
     "expires": "2026-10-24",
     "hot": false,
     "posted_at": "2026-10-19T10:00:23.886Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431076610344",
-    "asin": "B08V7G5GYH",
-    "title": "Stardrops Miracle Cleaning Paste and Spray Bundle",
-    "category": "General",
-    "originalPrice": 21.88,
-    "dealPrice": 12.92,
-    "discount": 41,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51d9WjXZgOL._SL500_98961b55-94e5-4bee-b7cb-63a77ee161a7.jpg?v=1792368025",
-    "affiliate_url": "https://www.amazon.com/dp/B08V7G5GYH?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:31.881Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431123829032",
-    "asin": "B0HGQC7173",
-    "title": "21V Cordless String Trimmer with 2 Batteries",
-    "category": "General",
-    "originalPrice": 99.99,
-    "dealPrice": 27.99,
-    "discount": 72,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/511ZPIOTqBL._SL500.jpg?v=1792370991",
-    "affiliate_url": "https://www.amazon.com/dp/B0HGQC7173?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": true,
-    "posted_at": "2026-10-19T04:00:31.264Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431134675240",
-    "asin": "B0H2YGRVNJ",
-    "title": "Max Flame Propane Torch Gun",
-    "category": "General",
-    "originalPrice": 39.99,
-    "dealPrice": 13.99,
-    "discount": 65,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/317DxgfeBrL._SL500.jpg?v=1792372935",
-    "affiliate_url": "https://www.amazon.com/dp/B0H2YGRVNJ?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": true,
-    "posted_at": "2026-10-19T04:00:30.055Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431135592744",
-    "asin": "B0CP3N9P36",
-    "title": "Beautyrest Heated Electric Mattress Pad Twin",
-    "category": "Home & Kitchen",
-    "originalPrice": 54.99,
-    "dealPrice": 17.1,
-    "discount": 69,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/416N86pOlNL._SL500.jpg?v=1792373045",
-    "affiliate_url": "https://www.amazon.com/dp/B0CP3N9P36?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": true,
-    "posted_at": "2026-10-19T04:00:29.443Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431136215336",
-    "asin": "B01LYDBRYF",
-    "title": "36 Pack Nabisco Lorna Doone Shortbread Cookies (OU-D)",
-    "category": "Grocery",
-    "originalPrice": 31.01,
-    "dealPrice": 13.76,
-    "discount": 56,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51fH73uwH0L._SL500_09538354-6254-4cf7-8ad0-a5f02112eba2.jpg?v=1792373193",
-    "affiliate_url": "https://www.amazon.com/dp/B01LYDBRYF?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:28.839Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431138148648",
-    "asin": "B07H8PYVRX",
-    "title": "Franklin Sports Fun 5 Outdoor Game Combo Set",
-    "category": "Sports",
-    "originalPrice": 54.99,
-    "dealPrice": 19.99,
-    "discount": 64,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51d2_tqM39L._SL500_70eeaece-1208-4a84-91cc-6b7edde29eb1.jpg?v=1792373443",
-    "affiliate_url": "https://www.amazon.com/dp/B07H8PYVRX?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": true,
-    "posted_at": "2026-10-19T04:00:28.248Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431150272808",
-    "asin": "B078NN17K3",
-    "title": "Keurig K-Elite Single Serve Programmable Coffee Maker",
-    "category": "Home & Kitchen",
-    "originalPrice": 149.99,
-    "dealPrice": 99.99,
-    "discount": 33,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41MI7T21FgL._SL500_01930191-0631-45eb-9595-6fe96c2653fb.jpg?v=1792374600",
-    "affiliate_url": "https://www.amazon.com/dp/B078NN17K3?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:27.625Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431242383656",
-    "asin": "B0FK9S8RLF",
-    "title": "USB Rechargeable Electric Water Dispenser Pump for Gallon Bottles",
-    "category": "Electronics",
-    "originalPrice": 15.99,
-    "dealPrice": 7.99,
-    "discount": 50,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41FIiVVqRiL._SL500.jpg?v=1792376525",
-    "affiliate_url": "https://www.amazon.com/dp/B0FK9S8RLF?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:26.982Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431248216360",
-    "asin": "B0G3NTB21W",
-    "title": "4K Front and Rear GPS WiFi Dash Cam",
-    "category": "Electronics",
-    "originalPrice": 79.99,
-    "dealPrice": 39.99,
-    "discount": 50,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51egkVcehDL._SL500.jpg?v=1792376872",
-    "affiliate_url": "https://www.amazon.com/dp/B0G3NTB21W?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:26.393Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431251427624",
-    "asin": "B0DBDKT4QC",
-    "title": "9L Insulated Leakproof Cooler Lunch Box",
-    "category": "Sports",
-    "originalPrice": 12.99,
-    "dealPrice": 4.99,
-    "discount": 62,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/41w24kLyRVL._SL500_4e6a50eb-46d9-49eb-acde-54cde463a86c.jpg?v=1792377039",
-    "affiliate_url": "https://www.amazon.com/dp/B0DBDKT4QC?tag=dealspulse06-20&m=A14UAOAVPNR18U",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": true,
-    "posted_at": "2026-10-19T04:00:25.792Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431261356328",
-    "asin": "B01329XE2Q",
-    "title": "6 Bottles NIVEA MEN Active Clean Body Wash",
-    "category": "Beauty",
-    "originalPrice": 28.62,
-    "dealPrice": 16.45,
-    "discount": 43,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51JOYDxOExL._SL500.jpg?v=1792377969",
-    "affiliate_url": "https://www.amazon.com/dp/B01329XE2Q?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:25.122Z",
-    "gender": "Men"
-  },
-  {
-    "id": "sc_15431264764200",
-    "asin": "B0H4GD6NVF",
-    "title": "4 Pack Heavy Duty 500 lb Folding Chairs",
-    "category": "Furniture",
-    "originalPrice": 99.67,
-    "dealPrice": 59.98,
-    "discount": 40,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51YRsI1uqML._SL500.jpg?v=1792379164",
-    "affiliate_url": "https://www.amazon.com/dp/B0H4GD6NVF?tag=dealspulse06-20&m=ATVPDKIKX0DER",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:24.508Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431265485096",
-    "asin": "B0G4WCLQXH",
-    "title": "8 Pack Flushable Biodegradable Travel Wipes, Unscented",
-    "category": "General",
-    "originalPrice": 8.47,
-    "dealPrice": 3.9,
-    "discount": 54,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/51ZH6JhYqwL._SL500.jpg?v=1792379545",
-    "affiliate_url": "https://www.amazon.com/dp/B0G4WCLQXH?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:23.819Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sc_15431265878312",
-    "asin": "B01IH2TWFQ",
-    "title": "16 fl oz Mrs. Meyer's Multi-Surface Cleaner",
-    "category": "Home & Kitchen",
-    "originalPrice": 59.76,
-    "dealPrice": 35.88,
-    "discount": 40,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/31thy3lDUlL._SL500.jpg?v=1792379858",
-    "affiliate_url": "https://www.amazon.com/dp/B01IH2TWFQ?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-24",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:23.233Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sd_37498",
-    "asin": "B07PZ8HLWD",
-    "title": "4 Pack Ziploc Gallon Freezer Bags 120 Ct.",
-    "category": "General",
-    "originalPrice": 23.88,
-    "dealPrice": 14.55,
-    "discount": 39,
-    "image": "https://m.media-amazon.com/images/I/51W+tTiXC9L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B07PZ8HLWD?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-21",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:22.569Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sd_33542",
-    "asin": "B0G6YB821B",
-    "title": "MimAuto 4 in 1 Retractable Car Charger",
-    "category": "Electronics",
-    "originalPrice": 17.99,
-    "dealPrice": 9.99,
-    "discount": 44,
-    "image": "https://m.media-amazon.com/images/I/51PF7Gud+dL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0G6YB821B?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-21",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:22.568Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sd_30556",
-    "asin": "B0FN5154SV",
-    "title": "12 Double Rolls = 24 Regular Sparkle Paper Towels",
-    "category": "Home & Kitchen",
-    "originalPrice": 31.72,
-    "dealPrice": 13.94,
-    "discount": 56,
-    "image": "https://m.media-amazon.com/images/I/51wYCCH7a1L._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0FN5154SV?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-21",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:22.568Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sd_30472",
-    "asin": "B09D44P9HK",
-    "title": "Monopoly Junior Super Mario Edition",
-    "category": "Toys & Games",
-    "originalPrice": 16.99,
-    "dealPrice": 11.99,
-    "discount": 29,
-    "image": "https://m.media-amazon.com/images/I/51WR7Ri7APL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B09D44P9HK?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-21",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:22.568Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sd_30291",
-    "asin": "B0CMH2JVMM",
-    "title": "Anker MagGo Qi2 15W Wireless Charger",
-    "category": "Electronics",
-    "originalPrice": 29.99,
-    "dealPrice": 14.99,
-    "discount": 50,
-    "image": "https://m.media-amazon.com/images/I/31yedxRDRrL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0CMH2JVMM?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-21",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:22.568Z",
-    "gender": "Unisex"
-  },
-  {
-    "id": "sd_37513",
-    "asin": "B0CM38DRXG",
-    "title": "20 Pack Food Storage Containers",
-    "category": "Home & Kitchen",
-    "originalPrice": 26.99,
-    "dealPrice": 18.97,
-    "discount": 30,
-    "image": "https://m.media-amazon.com/images/I/61250PKxHIL._SL500_.jpg",
-    "affiliate_url": "https://www.amazon.com/dp/B0CM38DRXG?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
-    "store": "Amazon",
-    "expires": "2026-10-21",
-    "hot": false,
-    "posted_at": "2026-10-19T04:00:22.568Z",
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "code": 10001
   }
 ]
