@@ -1,5 +1,22 @@
 [
   {
+    "id": "sd_37606",
+    "asin": "B0FD81TKN4",
+    "title": "12 Pack Q-tips Cotton Swabs 375 Ct.",
+    "category": "General",
+    "originalPrice": 41.88,
+    "dealPrice": 23.98,
+    "discount": 43,
+    "image": "https://m.media-amazon.com/images/I/41Eh5q1nCuL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0FD81TKN4?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-10-26",
+    "hot": false,
+    "posted_at": "2026-10-24T22:00:21.553Z",
+    "gender": "Unisex",
+    "code": 10401
+  },
+  {
     "id": "sc_15439790702888",
     "asin": "B0GTY4VLFW",
     "title": "40L Water-Resistant Travel Laptop Backpack",
@@ -3381,22 +3398,5 @@
     "posted_at": "2026-10-21T19:58:45.841Z",
     "gender": "Unisex",
     "code": 10196
-  },
-  {
-    "id": "sc_15435682873640",
-    "asin": "B003Y1NWKC",
-    "title": "60 Pack Oreo Chocolate Sandwich Cookie Snack Packs (OU-D)",
-    "category": "Grocery",
-    "originalPrice": 18.65,
-    "dealPrice": 12.95,
-    "discount": 31,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/4145LF1qCrL._SL500_9e00373f-28e7-46e5-a90c-ca2637813aeb.jpg?v=1792604697",
-    "affiliate_url": "https://www.amazon.com/dp/B003Y1NWKC?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-10-26",
-    "hot": false,
-    "posted_at": "2026-10-21T19:58:45.261Z",
-    "gender": "Unisex",
-    "code": 10195
   }
 ]
