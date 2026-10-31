@@ -1,5 +1,39 @@
 [
   {
+    "id": "sd_30291",
+    "asin": "B0CMH2JVMM",
+    "title": "Anker MagGo Qi2 15W Wireless Charger",
+    "category": "Electronics",
+    "originalPrice": 29.99,
+    "dealPrice": 14.99,
+    "discount": 50,
+    "image": "https://m.media-amazon.com/images/I/31yedxRDRrL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/B0CMH2JVMM?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-11-02",
+    "hot": false,
+    "posted_at": "2026-10-31T22:00:22.974Z",
+    "gender": "Unisex",
+    "code": 10894
+  },
+  {
+    "id": "sd_29081",
+    "asin": "1422644278",
+    "title": "Micro Peas Mini Bundt Cakes Kosher Cookbook",
+    "category": "General",
+    "originalPrice": 13.99,
+    "dealPrice": 8.81,
+    "discount": 37,
+    "image": "https://m.media-amazon.com/images/I/6160AaW2rWL._SL500_.jpg",
+    "affiliate_url": "https://www.amazon.com/dp/1422644278?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
+    "store": "Amazon",
+    "expires": "2026-11-02",
+    "hot": false,
+    "posted_at": "2026-10-31T22:00:22.974Z",
+    "gender": "Unisex",
+    "code": 10895
+  },
+  {
     "id": "sd_30556",
     "asin": "B0FN5154SV",
     "title": "12 Double Rolls = 24 Regular Sparkle Paper Towels",
@@ -521,7 +555,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B005K5GQ9O?tag=dealspulse06-20&m=ATVPDKIKX0DER",
     "store": "Amazon",
     "expires": "2026-11-04",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-10-30T16:00:24.168Z",
     "gender": "Unisex",
     "code": 10863
@@ -708,7 +742,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0012E0OPO?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-11-01",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-10-30T16:00:21.720Z",
     "gender": "Unisex",
     "code": 10852
@@ -2119,7 +2153,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0HJSW1G3J?tag=dealspulse06-20&m=ATVPDKIKX0DER",
     "store": "Amazon",
     "expires": "2026-11-03",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-10-29T10:00:24.933Z",
     "gender": "Unisex",
     "code": 10766
@@ -2646,7 +2680,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B00LND6BFG?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-10-31",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-10-28T22:00:23.743Z",
     "gender": "Unisex",
     "code": 10734
