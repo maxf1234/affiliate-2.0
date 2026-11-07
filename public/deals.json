@@ -1,5 +1,22 @@
 [
   {
+    "id": "sc_15471647326504",
+    "asin": "B0FDPX1SZP",
+    "title": "Rotary Cheese Grater with Handle and Suction Base",
+    "category": "General",
+    "originalPrice": 26.99,
+    "dealPrice": 16.31,
+    "discount": 40,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/71ji9iTxjcL._SL5000.jpg?v=1793912722",
+    "affiliate_url": "https://www.amazon.com/dp/B0FDPX1SZP?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-11-12",
+    "hot": false,
+    "posted_at": "2026-11-07T17:00:26.428Z",
+    "gender": "Unisex",
+    "code": 11398
+  },
+  {
     "id": "sc_15471065760040",
     "asin": "B0FB9MMG75",
     "title": "PlayMonster Marshmallow Madness Family Party Board Game",
@@ -3381,22 +3398,5 @@
     "posted_at": "2026-11-04T11:00:34.696Z",
     "gender": "Unisex",
     "code": 11182
-  },
-  {
-    "id": "sc_15467753963816",
-    "asin": "B0B8HD6RDB",
-    "title": "LOKITHOR 1750A Jump Starter with Air Compressor",
-    "category": "General",
-    "originalPrice": 119.95,
-    "dealPrice": 69.57,
-    "discount": 42,
-    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/71fMPj7nVrL._SL5000.jpg?v=1793753239",
-    "affiliate_url": "https://www.amazon.com/dp/B0B8HD6RDB?tag=dealspulse06-20",
-    "store": "Amazon",
-    "expires": "2026-11-09",
-    "hot": false,
-    "posted_at": "2026-11-04T11:00:33.481Z",
-    "gender": "Unisex",
-    "code": 11181
   }
 ]
