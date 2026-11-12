@@ -91,16 +91,18 @@ function extractAsin(url) {
 // Word-boundary matching so e.g. "Portable" no longer matches /table/.
 // First matching rule wins, so more specific categories come first.
 const CATEGORY_RULES = [
-  ["Electronics",    /\b(laptops?|phones?|smartphones?|tv|tvs|headphones?|earbuds?|speakers?|soundbars?|cameras?|tablets?|xbox|playstation|nintendo|ipads?|macbooks?|airpods?|monitors?|routers?|ssd|hdd|gpu|chargers?|cables?|bluetooth|power station|power bank|smartwatch|kindle|echo|alexa|drones?|projectors?|keyboards?|mouse|webcams?|microphones?|printers?|usb|gps)\b/],
-  ["Baby & Kids",    /\b(baby|toddler|infant|car seats?|strollers?|diapers?|cribs?|pacifiers?|onesies?|nursery|bottle warmers?|high chairs?|playpens?)\b/],
-  ["Toys & Games",   /\b(toys?|lego|board games?|puzzles?|playmobil|kinetic|dolls?|action figures?|nerf|hot wheels|monopoly|plush|rc car)\b/],
+  ["Electronics",    /\b(laptops?|phones?|smartphones?|tv|tvs|headphones?|earbuds?|speakers?|soundbars?|cameras?|tablets?|xbox|playstation|nintendo|ipads?|macbooks?|airpods?|monitors?|routers?|ssd|hdd|gpu|chargers?|cables?|bluetooth|power station|power bank|smartwatch|kindle|echo|alexa|drones?|projectors?|keyboards?|mouse|webcams?|microphones?|printers?|usb|gps|smart plugs?|smart bulbs?|airtags?|digital picture frames?|wireless charging|thermostats?)\b/],
+  ["Baby & Kids",    /\b(baby|toddler|infant|car seats?|strollers?|diapers?|cribs?|pacifiers?|onesies?|nursery|bottle warmers?|high chairs?|playpens?|rattles?|bright starts)\b/],
+  ["Toys & Games",   /\b(toys?|lego|board games?|puzzles?|playmobil|kinetic|dolls?|action figures?|nerf|hot wheels|monopoly|plush|rc car|games?|playsets?|jenga|hasbro|mattel|barbie|vtech|fisher-price|melissa (?:&|and) doug|bluey|building blocks|marble run|slot car|rc (?:racing |bumper )?cars?|fingerboard|squishy|dollhouse|dance mat|mini brands|race car set|bead jewelry kit)\b/],
   ["Grocery",        /\b(spring water|sparkling water|cereal|coffee pods?|k-cups?|snacks?|chips|candy|chocolate|protein bars?|energy drinks?|soda|juice|pasta|sauce|oatmeal|granola|nuts|cookies?|crackers?)\b/],
-  ["Beauty",         /\b(beauty|skincare|makeup|shampoo|conditioner|perfumes?|cologne|toothpaste|toothbrush(es)?|deodorants?|lotions?|serums?|moisturizers?|hair dryers?|straighteners?|razors?|nail|body wash|soap|sunscreen|hand sanitizer)\b/],
-  ["Home & Kitchen", /\b(kitchen|cookware|instant pot|air fryers?|blenders?|coffee|espresso|vacuums?|dyson|bedding|sheets|pillows?|towels?|pans?|pots?|grills?|cookers?|ovens?|juicers?|toasters?|stockpots?|tumblers?|water bottles?|mugs?|knife|knives|cutting boards?|storage|organizers?|cleaners?|detergents?|toilet paper|trash bags?|humidifiers?|purifiers?|lamps?|curtains?|rugs?|mattress(es)?|kettles?|choppers?|dinnerware|steel wool|tissues?|blankets?|hooks?|ice machine|shave ice|mops?|brooms?|dish|sponges?|foil|containers?|canisters?|thermos)\b/],
-  ["Fashion",        /\b(shirts?|t-shirts?|shoes?|pants|dress(es)?|jackets?|sneakers?|clothing|jeans|hoodies?|boots|socks|sunglasses|watch(es)?|handbags?|backpacks?|wallets?|leggings|bras?|underwear|boxer briefs?|boxers?|briefs?|coats?|hats?|caps?|scarf|scarves|gloves|slip-ons?|sandals?|loafers?|slippers?|flip[- ]flops?|apparel|footwear|skechers|crocs|adidas|reebok|puma|new balance|under armour|levis?|hanes|champion)\b/],
-  ["Sports",         /\b(sports?|fitness|gym|bikes?|bicycles?|yoga|running|golf|pool|camping|tents?|hiking|dumbbells?|treadmills?|basketball|soccer|tennis|fishing|kayaks?|scooters?|coolers?|wagons?|beach|outdoor)\b/],
+  ["Beauty",         /\b(beauty|skincare|makeup|shampoo|conditioner|perfumes?|cologne|toothpaste|toothbrush(es)?|deodorants?|lotions?|serums?|moisturizers?|hair dryers?|straighteners?|razors?|nail|body wash|soap|sunscreen|hand sanitizer|eau de (?:toilette|parfum)|jimmy choo|hugo boss|trimmers?|oral rinse|co-wash|wipes)\b/],
+  ["Home & Kitchen", /\b(kitchen|cookware|instant pot|air fryers?|blenders?|coffee|espresso|vacuums?|dyson|bedding|sheets|pillows?|towels?|pans?|pots?|grills?|cookers?|ovens?|juicers?|toasters?|stockpots?|tumblers?|water bottles?|mugs?|knife|knives|cutting boards?|storage|organizers?|cleaners?|detergents?|toilet paper|trash bags?|humidifiers?|purifiers?|lamps?|curtains?|rugs?|mattress(es)?|kettles?|choppers?|dinnerware|steel wool|tissues?|blankets?|hooks?|ice machine|shave ice|mops?|brooms?|dish|sponges?|foil|containers?|canisters?|thermos|waffle makers?|skillets?|hand vac|mixing bowls|tablecloths?|olive oil|stand mixers?|warming (?:mats?|trays?)|trash cans?|bathroom|candle lighters?|fabric softener|dishwashing|plugins|stair treads|artificial|faux|insulated)\b/],
+  ["Fashion",        /\b(shirts?|t-shirts?|shoes?|pants|dress(es)?|jackets?|sneakers?|clothing|jeans|hoodies?|boots|socks|sunglasses|watch(es)?|handbags?|backpacks?|wallets?|leggings|bras?|underwear|boxer briefs?|boxers?|briefs?|coats?|hats?|caps?|scarf|scarves|gloves|slip-ons?|sandals?|loafers?|slippers?|flip[- ]flops?|apparel|footwear|skechers|crocs|adidas|reebok|puma|new balance|under armour|levis?|hanes|champion|luggage|tote bags?)\b/],
+  ["Sports",         /\b(sports?|fitness|gym|bikes?|bicycles?|yoga|running|golf|pool|camping|tents?|hiking|dumbbells?|treadmills?|basketball|soccer|tennis|fishing|kayaks?|scooters?|coolers?|wagons?|beach|outdoor|skates?)\b/],
   ["Furniture",      /\b(chairs?|desks?|furniture|whiteboards?|sofas?|couch(es)?|tables?|bookshelf|bookshelves|shelf|shelves|shelving|cabinets?|dressers?|nightstands?|ottomans?|bench(es)?|stools?|patio)\b/],
   ["Books",          /\b(books?|audible|novels?|paperback|hardcover)\b/],
+  ["Tools",          /\b(drills?|drill drivers?|impact drivers?|staple guns?|tool box(es)?|tool sets?|pliers?|plier sets?|wrench(es)?|screwdrivers?|extension cords?|craftsman|dewalt|black\+decker|skil)\b/],
+  ["Office & School", /\b(markers?|pencil cases?|white ?boards?|dry erase|tempera paint|notebooks?|pens|staplers?)\b/],
 ];
 
 function guessCategory(name) {
@@ -278,11 +280,22 @@ function saveDeals(newDeals) {
       .map(d => ({ ...d, gender: guessGender(d.title) }))
   );
 
+  // Deals a source left as "General" get another pass through the title
+  // rules, so improved rules also fix deals stored earlier.
+  let recat = 0;
+  for (const d of allDeals) {
+    if (d.category === "General") {
+      const c = guessCategory(d.title);
+      if (c !== "General") { d.category = c; recat++; }
+    }
+  }
+  if (recat) console.log(`Re-categorised ${recat} "General" deal(s).`);
+
   // Permanent 5-digit short-link code (bot/codes.js); backfills older deals.
   const coded = assignCodes(allDeals);
   if (coded) console.log(`Assigned short-link codes to ${coded} deal(s).`);
 
-  const changed = additions.length > 0 || purged > 0 || untagged > 0 || coded > 0;
+  const changed = additions.length > 0 || purged > 0 || untagged > 0 || coded > 0 || recat > 0;
   if (untagged) console.log(`Gender-tagged ${untagged} stored deal(s).`);
   if (!changed) {
     console.log("No changes to save.");
