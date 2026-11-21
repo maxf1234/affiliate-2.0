@@ -1,5 +1,22 @@
 [
   {
+    "id": "sc_15505586782504",
+    "asin": "B0DGB56YNC",
+    "title": "Squishmallows Micromallows Snack Machine Plush Accessory Set",
+    "category": "Toys & Games",
+    "originalPrice": 19.99,
+    "dealPrice": 11.95,
+    "discount": 40,
+    "image": "https://cdn.shopify.com/s/files/1/0756/4155/3192/files/81UvSbdZN5L._SL5000.jpg?v=1795301167",
+    "affiliate_url": "https://www.amazon.com/dp/B0DGB56YNC?tag=dealspulse06-20",
+    "store": "Amazon",
+    "expires": "2026-11-26",
+    "hot": false,
+    "posted_at": "2026-11-21T23:00:26.218Z",
+    "gender": "Unisex",
+    "code": 12422
+  },
+  {
     "id": "sc_15502171898152",
     "asin": "B00LDAT9BW",
     "title": "Kenneth Cole Mankind Eau de Toilette Spray Cologne",
@@ -181,7 +198,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B09H7LPV13?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-11-26",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-11-21T11:00:27.694Z",
     "gender": "Unisex",
     "code": 12411
@@ -1677,7 +1694,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B09HHBYQXY?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-11-21",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-11-19T23:00:23.404Z",
     "gender": "Unisex",
     "code": 12317
@@ -2085,7 +2102,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B08TPCHYLW?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-11-24",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-11-19T17:00:31.978Z",
     "gender": "Unisex",
     "code": 12298
@@ -2340,7 +2357,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B09BW5GXYY?tag=dealspulse06-20&linkCode=ogi&th=1&psc=1",
     "store": "Amazon",
     "expires": "2026-11-21",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-11-19T17:00:24.600Z",
     "gender": "Unisex",
     "code": 12284
@@ -2646,7 +2663,7 @@
     "affiliate_url": "https://www.amazon.com/dp/B0H1M9C5FC?tag=dealspulse06-20",
     "store": "Amazon",
     "expires": "2026-11-24",
-    "hot": false,
+    "hot": true,
     "posted_at": "2026-11-19T05:00:32.444Z",
     "gender": "Unisex",
     "code": 12265
